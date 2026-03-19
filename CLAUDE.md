@@ -5,11 +5,19 @@ Personal portfolio website for Anh Dang (Data Analyst II). Single-page static si
 
 ## Architecture
 - Pure HTML/CSS/JS — no frameworks, no build process, no dependencies
-- Single file: `index.html` (~31KB) contains all markup, styles, and scripts
+- Multi-page static site: `index.html` (home) + 6 individual project detail pages
+- Shared design system extracted to `css/shared.css`
 - Deployed automatically via GitHub Pages at `https://anhtdang92.github.io`
 
 ## File Map
-- `index.html` — Entire site (HTML structure, embedded CSS, vanilla JS)
+- `index.html` — Home page (HTML structure, embedded CSS, vanilla JS)
+- `css/shared.css` — Shared design system (CSS vars, nav, footer, animations, responsive)
+- `projects/kraken-ml-trading-strategy.html` — Project detail page
+- `projects/curstar-video-upscaler.html` — Project detail page
+- `projects/deepseek-local-inference.html` — Project detail page
+- `projects/ml-trading-algorithm.html` — Project detail page
+- `projects/agentic-health-navigator.html` — Project detail page
+- `projects/signal-network-mapper.html` — Project detail page
 - `README.md` — Project readme
 - `CLAUDE.md` — This file (project index for AI-assisted development)
 
@@ -35,7 +43,10 @@ Personal portfolio website for Anh Dang (Data Analyst II). Single-page static si
 7. What's Next — career goals
 
 ## Development Notes
-- Edit `index.html` directly for any changes
+- Edit `index.html` for home page changes
+- Edit `css/shared.css` for design system changes (affects all pages)
+- Edit `projects/*.html` for individual project detail pages
 - No build step required — push to `main` to deploy
 - All content is hardcoded (no CMS or data files)
+- Project pages use `../css/shared.css` and `../index.html` relative paths
 - External links: GitHub profile, LinkedIn, email, 6 project repos

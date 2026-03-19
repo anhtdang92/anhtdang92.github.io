@@ -207,6 +207,9 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .project-impact{font-family:var(--mono);font-size:12px;color:var(--green);margin-bottom:8px;padding:4px 0;border-top:1px solid #ffffff06}
 .project-link{font-family:var(--mono);font-size:12px;color:var(--cyan)}
 .project:hover .project-link{color:var(--green)}
+.project-links-row{display:flex;gap:12px;align-items:center;margin-top:4px}
+.project-detail-link{font-family:var(--mono);font-size:12px;color:var(--purple);transition:color 0.2s}
+.project-detail-link:hover{color:var(--green)}
 .project-expand{margin-top:12px;padding-top:0;border-top:1px solid var(--border);max-height:0;overflow:hidden;opacity:0;transition:max-height 0.5s cubic-bezier(0.23,1,0.32,1),opacity 0.3s ease,padding-top 0.3s ease}
 .project-expand.open{max-height:600px;opacity:1;padding-top:12px}
 .project-expand h4{font-size:13px;font-family:var(--mono);color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;margin-top:10px}
@@ -528,7 +531,10 @@ nav .brand{margin-right:auto}
       <h4>Results</h4>
       <p>The model achieved a Sharpe ratio above 1.0 on backtested data with a 55%+ directional accuracy. More importantly, it demonstrated that a systematic ML pipeline — data ingestion, feature engineering, model training, deployment — can be built end-to-end by one person using open-source tools.</p>
     </div>
-    <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="project-link">View on GitHub →</a>
+    <div class="project-links-row">
+      <a href="projects/kraken-ml-trading-strategy.html" class="project-detail-link">Full Write-Up →</a>
+      <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="project-link">GitHub →</a>
+    </div>
   </div>
 
   <div class="project reveal reveal-d2">
@@ -546,7 +552,10 @@ nav .brand{margin-right:auto}
       <h4>Key Decisions</h4>
       <p>Chose the STAR diffusion architecture over GAN-based upscalers (Real-ESRGAN) because diffusion models produce fewer artifacts on diverse content types. Processed frames individually rather than using video-native models to maintain flexibility across different input formats and resolutions.</p>
     </div>
-    <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="project-link">View on GitHub →</a>
+    <div class="project-links-row">
+      <a href="projects/curstar-video-upscaler.html" class="project-detail-link">Full Write-Up →</a>
+      <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="project-link">GitHub →</a>
+    </div>
   </div>
 
   <div class="project reveal reveal-d3">
@@ -566,7 +575,10 @@ nav .brand{margin-right:auto}
       <h4>Results</h4>
       <p>Q4_K_M quantization fits in 20GB VRAM and generates ~15 tokens/sec — usable for interactive tasks. The model produces surprisingly strong SQL generation and financial reasoning outputs. Proved that local inference is viable for sensitive data analysis where cloud APIs aren't an option.</p>
     </div>
-    <a href="https://github.com/anhtdang92/deepseek-local-inference" class="project-link">View on GitHub →</a>
+    <div class="project-links-row">
+      <a href="projects/deepseek-local-inference.html" class="project-detail-link">Full Write-Up →</a>
+      <a href="https://github.com/anhtdang92/deepseek-local-inference" class="project-link">GitHub →</a>
+    </div>
   </div>
 
   <div class="project reveal reveal-d4">
@@ -584,7 +596,10 @@ nav .brand{margin-right:auto}
       <h4>Key Decisions</h4>
       <p>Walk-forward validation was non-negotiable — random train/test splits create lookahead bias in time-series data. Used feature importance analysis to prune redundant indicators and prevent overfitting. Focused on risk-adjusted returns (Sharpe ratio) rather than raw accuracy as the optimization target.</p>
     </div>
-    <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="project-link">View on GitHub →</a>
+    <div class="project-links-row">
+      <a href="projects/ml-trading-algorithm.html" class="project-detail-link">Full Write-Up →</a>
+      <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="project-link">GitHub →</a>
+    </div>
   </div>
 
   <div class="project reveal reveal-d5">
@@ -602,7 +617,10 @@ nav .brand{margin-right:auto}
       <h4>Key Decisions</h4>
       <p>Chose on-device inference over cloud APIs to keep sensitive health data private — no data leaves the phone. Used Core ML for model deployment rather than TensorFlow Lite for tighter iOS integration. Designed the agentic architecture to reason across multiple biometric signals rather than analyzing each in isolation.</p>
     </div>
-    <a href="https://github.com/anhtdang92/agentic-health-navigator" class="project-link">View on GitHub →</a>
+    <div class="project-links-row">
+      <a href="projects/agentic-health-navigator.html" class="project-detail-link">Full Write-Up →</a>
+      <a href="https://github.com/anhtdang92/agentic-health-navigator" class="project-link">GitHub →</a>
+    </div>
   </div>
 
   <div class="project reveal reveal-d6">
@@ -620,7 +638,10 @@ nav .brand{margin-right:auto}
       <h4>Key Decisions</h4>
       <p>Built as a pure web app (no backend required) so it can run on any laptop in the field without internet connectivity. Used vanilla JavaScript to minimize dependencies and ensure it works in restricted browser environments common in military settings.</p>
     </div>
-    <a href="https://github.com/anhtdang92/signal-network-mapper" class="project-link">View on GitHub →</a>
+    <div class="project-links-row">
+      <a href="projects/signal-network-mapper.html" class="project-detail-link">Full Write-Up →</a>
+      <a href="https://github.com/anhtdang92/signal-network-mapper" class="project-link">GitHub →</a>
+    </div>
   </div>
 </div>
 
