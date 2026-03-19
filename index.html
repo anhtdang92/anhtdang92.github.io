@@ -277,6 +277,71 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .next-item .ni-value{font-size:15px;font-weight:600;color:#fff;margin-top:2px}
 .next-item .ni-date{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:2px}
 
+/* METRICS KPI STRIP */
+.kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:32px}
+.kpi-card{padding:16px 12px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:12px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity 0.3s}
+.kpi-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,212,255,0.1)}
+.kpi-card:hover::before{opacity:1}
+.kpi-num{font-size:28px;font-weight:800;font-family:var(--ff);margin-bottom:2px}
+.kpi-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.kpi-sparkline{margin:8px auto 0;display:block}
+[data-theme="light"] .kpi-card{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .kpi-num{color:#1a1a2e}
+@media(max-width:900px){.kpi-strip{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.kpi-strip{grid-template-columns:repeat(2,1fr)}}
+
+/* GITHUB HEATMAP */
+.gh-heatmap{margin:24px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border)}
+.gh-heatmap-title{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between}
+.gh-heatmap-title .gh-total{color:var(--green);font-weight:700}
+.gh-grid{display:grid;grid-template-columns:repeat(52,1fr);gap:2px}
+.gh-cell{aspect-ratio:1;border-radius:2px;background:var(--inner);border:1px solid rgba(255,255,255,0.03);transition:all 0.15s}
+.gh-cell:hover{transform:scale(1.8);z-index:2;border-color:var(--cyan)}
+.gh-cell.l1{background:rgba(0,255,135,0.15)}.gh-cell.l2{background:rgba(0,255,135,0.35)}
+.gh-cell.l3{background:rgba(0,255,135,0.55)}.gh-cell.l4{background:rgba(0,255,135,0.8)}
+.gh-legend{display:flex;align-items:center;gap:4px;justify-content:flex-end;margin-top:8px}
+.gh-legend span{font-family:var(--mono);font-size:10px;color:var(--dim)}
+.gh-legend-cell{width:10px;height:10px;border-radius:2px;border:1px solid rgba(255,255,255,0.03)}
+.gh-months{display:grid;grid-template-columns:repeat(52,1fr);gap:2px;margin-bottom:4px}
+.gh-months span{font-family:var(--mono);font-size:9px;color:var(--dim);text-align:center}
+[data-theme="light"] .gh-heatmap{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .gh-cell{background:var(--inner);border-color:rgba(0,0,0,0.05)}
+[data-theme="light"] .gh-cell.l1{background:rgba(0,153,77,0.15)}[data-theme="light"] .gh-cell.l2{background:rgba(0,153,77,0.3)}
+[data-theme="light"] .gh-cell.l3{background:rgba(0,153,77,0.5)}[data-theme="light"] .gh-cell.l4{background:rgba(0,153,77,0.75)}
+
+/* RADAR CHART */
+.radar-wrap{display:flex;gap:24px;align-items:center;margin:24px 0}
+.radar-chart{flex:0 0 280px;height:280px;position:relative}
+.radar-labels{flex:1;display:grid;gap:6px}
+.radar-label-item{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--text)}
+.radar-label-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.radar-label-bar{flex:1;height:4px;background:var(--inner);border-radius:2px;overflow:hidden;position:relative}
+.radar-label-fill{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
+.radar-label-pct{font-size:12px;color:var(--muted);min-width:32px;text-align:right}
+@media(max-width:600px){.radar-wrap{flex-direction:column}.radar-chart{flex:0 0 240px;width:240px;margin:0 auto}}
+
+/* PROJECT SPARKLINES */
+.project-chart{margin:10px 0 6px;display:flex;align-items:flex-end;gap:2px;height:32px}
+.project-chart .bar{flex:1;background:var(--cyan);border-radius:2px 2px 0 0;opacity:0.6;transition:all 0.3s;min-width:3px}
+.project-chart .bar:hover{opacity:1;transform:scaleY(1.15);transform-origin:bottom}
+.project-chart .bar.accent{background:var(--green);opacity:0.8}
+
+/* OMSCS DONUT */
+.omscs-progress{display:flex;gap:24px;align-items:center;margin:20px 0}
+.omscs-donut{flex:0 0 140px;height:140px;position:relative}
+.omscs-donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.omscs-donut-num{font-size:32px;font-weight:900;color:var(--green)}
+.omscs-donut-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px}
+.omscs-details{flex:1}
+.omscs-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.omscs-bar-label{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:80px}
+.omscs-bar-track{flex:1;height:6px;background:var(--inner);border-radius:3px;overflow:hidden}
+.omscs-bar-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
+.omscs-bar-val{font-family:var(--mono);font-size:12px;color:var(--text);min-width:40px;text-align:right}
+[data-theme="light"] .omscs-donut-num{color:var(--green)}
+@media(max-width:600px){.omscs-progress{flex-direction:column}.omscs-donut{margin:0 auto}}
+
 /* SCROLL PROGRESS */
 .scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));z-index:200;width:0;transition:width 0.1s linear;box-shadow:0 0 10px rgba(0,212,255,0.5),0 0 20px rgba(0,212,255,0.2)}
 
@@ -466,6 +531,35 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="hero-scroll"><span>↓ SCROLL ↓</span></div>
   </section>
 
+  <!-- METRICS KPI STRIP -->
+  <div class="kpi-strip reveal" aria-label="Key metrics">
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--green)" data-kpi="3000000" data-suffix="">3M+</div>
+      <div class="kpi-label">ML Decisions/Mo</div>
+      <svg class="kpi-sparkline" width="80" height="24" viewBox="0 0 80 24"><polyline fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.6" points="0,20 8,18 16,15 24,16 32,12 40,10 48,8 56,9 64,5 72,3 80,2"/><polyline fill="none" stroke="var(--green)" stroke-width="0.5" opacity="0.3" points="0,22 8,21 16,19 24,20 32,17 40,15 48,14 56,13 64,10 72,8 80,6"/></svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--cyan)">90%+</div>
+      <div class="kpi-label">Query Speedup</div>
+      <svg class="kpi-sparkline" width="80" height="24" viewBox="0 0 80 24"><rect x="4" y="18" width="6" height="6" rx="1" fill="var(--cyan)" opacity="0.3"/><rect x="16" y="14" width="6" height="10" rx="1" fill="var(--cyan)" opacity="0.4"/><rect x="28" y="10" width="6" height="14" rx="1" fill="var(--cyan)" opacity="0.5"/><rect x="40" y="7" width="6" height="17" rx="1" fill="var(--cyan)" opacity="0.6"/><rect x="52" y="4" width="6" height="20" rx="1" fill="var(--cyan)" opacity="0.7"/><rect x="64" y="2" width="6" height="22" rx="1" fill="var(--cyan)" opacity="0.9"/></svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--purple)">6</div>
+      <div class="kpi-label">ML Projects</div>
+      <svg class="kpi-sparkline" width="80" height="24" viewBox="0 0 80 24"><circle cx="10" cy="18" r="3" fill="var(--purple)" opacity="0.4"/><circle cx="24" cy="14" r="3.5" fill="var(--purple)" opacity="0.5"/><circle cx="38" cy="11" r="4" fill="var(--purple)" opacity="0.6"/><circle cx="52" cy="8" r="4.5" fill="var(--purple)" opacity="0.7"/><circle cx="66" cy="5" r="5" fill="var(--purple)" opacity="0.9"/></svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--gold)">18</div>
+      <div class="kpi-label">GT Credits</div>
+      <svg class="kpi-sparkline" width="80" height="24" viewBox="0 0 80 24"><polyline fill="none" stroke="var(--gold)" stroke-width="1.5" opacity="0.6" points="0,22 13,18 26,14 39,11 52,8 65,5 80,2"/></svg>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num" style="color:var(--green)">60+</div>
+      <div class="kpi-label">Soldiers Led</div>
+      <svg class="kpi-sparkline" width="80" height="24" viewBox="0 0 80 24"><polyline fill="none" stroke="var(--green)" stroke-width="1.5" opacity="0.5" points="0,20 20,14 40,10 60,6 80,3"/><circle cx="80" cy="3" r="2.5" fill="var(--green)" opacity="0.8"/></svg>
+    </div>
+  </div>
+
   <!-- ABOUT -->
 
   <section id="about" aria-labelledby="about-title">
@@ -523,6 +617,24 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 <div class="reveal"><p class="about-text">I build production data pipelines, integrate ML platforms, and engineer analytics systems at a <strong>$2.9B financial institution</strong>. I've integrated an <strong>ML credit decisioning engine processing 3M+ decisions/month</strong>, built enterprise ETL pipelines for <strong>real-time fraud risk ingestion</strong>, and designed cross-database architectures that reduced query times by <strong>90%+</strong>. My work sits at the intersection of data engineering, applied ML, and domain expertise.</p></div>
 <div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading communications, cybersecurity, and IT operations for a 60+ soldier unit. Five years of military officer leadership with an <strong>active Secret clearance</strong>, experience in classified environments, and the operational discipline that defense and government employers value.</p></div>
 
+<div class="gh-heatmap reveal reveal-d2">
+  <div class="gh-heatmap-title">
+    <span>Coding Activity — Past 12 Months</span>
+    <span class="gh-total" id="gh-total">0 contributions</span>
+  </div>
+  <div class="gh-months" id="gh-months"></div>
+  <div class="gh-grid" id="gh-grid"></div>
+  <div class="gh-legend">
+    <span>Less</span>
+    <div class="gh-legend-cell" style="background:var(--inner)"></div>
+    <div class="gh-legend-cell l1"></div>
+    <div class="gh-legend-cell l2"></div>
+    <div class="gh-legend-cell l3"></div>
+    <div class="gh-legend-cell l4"></div>
+    <span>More</span>
+  </div>
+</div>
+
 
   </section>
 
@@ -567,6 +679,19 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="reveal reveal-d1"><h2 id="skills-title" class="section-title">What I work with</h2></div>
     <div class="reveal reveal-d2"><div class="section-desc">Green = strong. Blue = growing. Orange = learning next.</div></div>
 
+<div class="radar-wrap reveal reveal-d3">
+  <div class="radar-chart">
+    <canvas id="radarCanvas" width="280" height="280"></canvas>
+  </div>
+  <div class="radar-labels">
+    <div class="radar-label-item"><div class="radar-label-dot" style="background:var(--green)"></div><span>Data Engineering</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--green)" data-rw="88"></div></div><span class="radar-label-pct">88%</span></div>
+    <div class="radar-label-item"><div class="radar-label-dot" style="background:var(--cyan)"></div><span>ML / Deep Learning</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--cyan)" data-rw="65"></div></div><span class="radar-label-pct">65%</span></div>
+    <div class="radar-label-item"><div class="radar-label-dot" style="background:var(--purple)"></div><span>Cloud / MLOps</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--purple)" data-rw="52"></div></div><span class="radar-label-pct">52%</span></div>
+    <div class="radar-label-item"><div class="radar-label-dot" style="background:var(--gold)"></div><span>Visualization</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--gold)" data-rw="90"></div></div><span class="radar-label-pct">90%</span></div>
+    <div class="radar-label-item"><div class="radar-label-dot" style="background:var(--orange)"></div><span>Domain Expertise</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--orange)" data-rw="85"></div></div><span class="radar-label-pct">85%</span></div>
+    <div class="radar-label-item"><div class="radar-label-dot" style="background:var(--red)"></div><span>Software Eng</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--red)" data-rw="72"></div></div><span class="radar-label-pct">72%</span></div>
+  </div>
+</div>
 
 <div class="skill-bar-row reveal reveal-d1">
   <div class="cat">Languages & Data</div>
@@ -642,6 +767,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span></div>
     <div class="project-desc">End-to-end ML trading pipeline deployed on GCP. Live Kraken API data, 20+ engineered features, gradient boosted classifiers, and serverless Cloud Functions for automated signal generation.</div>
     <div class="project-impact">☁️ Cloud-deployed · Real-time API integration · End-to-end ML pipeline</div>
+    <div class="project-chart" title="Model accuracy over training epochs"><div class="bar" style="height:25%"></div><div class="bar" style="height:35%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:48%"></div><div class="bar" style="height:42%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:58%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:68%"></div><div class="bar" style="height:75%"></div><div class="bar" style="height:78%"></div><div class="bar accent" style="height:82%"></div><div class="bar accent" style="height:85%"></div><div class="bar accent" style="height:88%"></div></div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -665,6 +791,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="project-tech"><span>Python</span><span>STAR Diffusion</span><span>Deep Learning</span><span>Computer Vision</span></div>
     <div class="project-desc">AI video upscaler built on the STAR diffusion model. Applies spatial-temporal augmentation to enhance video resolution frame-by-frame using deep learning.</div>
     <div class="project-impact">🎬 Diffusion model · Frame-level inference · GPU-accelerated processing</div>
+    <div class="project-chart" title="PSNR improvement per frame batch"><div class="bar" style="height:60%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:72%"></div><div class="bar" style="height:78%"></div><div class="bar" style="height:80%"></div><div class="bar" style="height:82%"></div><div class="bar" style="height:85%"></div><div class="bar accent" style="height:88%"></div><div class="bar accent" style="height:90%"></div><div class="bar accent" style="height:92%"></div><div class="bar accent" style="height:95%"></div></div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -686,6 +813,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="project-tech"><span>Python</span><span>DeepSeek-R1</span><span>RTX 4090</span><span>Quantized Models</span></div>
     <div class="project-desc">Local LLM inference and benchmarking with DeepSeek-R1-Distill-Qwen-32B on an RTX 4090. Testing quantized model performance for on-device reasoning tasks.</div>
     <div class="project-impact">🖥️ 32B parameter model · Local inference · VRAM optimization on consumer GPU</div>
+    <div class="project-chart" title="Tokens/sec across quantization levels"><div class="bar accent" style="height:95%"></div><div class="bar accent" style="height:80%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:52%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:30%"></div></div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -709,6 +837,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Backtesting</span><span>Feature Engineering</span></div>
     <div class="project-desc">Pure research framework for ML-based trading. 30+ engineered features, walk-forward backtesting, and feature importance pruning — focused on methodology over deployment.</div>
     <div class="project-impact">📈 30+ features · Walk-forward validation · Sharpe-optimized</div>
+    <div class="project-chart" title="Feature importance ranking"><div class="bar accent" style="height:100%"></div><div class="bar accent" style="height:85%"></div><div class="bar accent" style="height:72%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:52%"></div><div class="bar" style="height:45%"></div><div class="bar" style="height:38%"></div><div class="bar" style="height:32%"></div><div class="bar" style="height:25%"></div><div class="bar" style="height:20%"></div><div class="bar" style="height:15%"></div><div class="bar" style="height:12%"></div></div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -730,6 +859,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="project-tech"><span>Swift</span><span>HealthKit</span><span>On-Device ML</span><span>iOS</span></div>
     <div class="project-desc">AI-powered iOS app that monitors HealthKit biometrics in real-time and delivers personalized health insights using on-device machine learning.</div>
     <div class="project-impact">📱 Real-time biometrics · On-device ML · HealthKit integration</div>
+    <div class="project-chart" title="Biometric data streams processed"><div class="bar" style="height:45%"></div><div class="bar" style="height:55%"></div><div class="bar" style="height:50%"></div><div class="bar" style="height:65%"></div><div class="bar" style="height:60%"></div><div class="bar" style="height:70%"></div><div class="bar" style="height:75%"></div><div class="bar accent" style="height:80%"></div><div class="bar accent" style="height:78%"></div><div class="bar accent" style="height:85%"></div><div class="bar accent" style="height:90%"></div><div class="bar accent" style="height:88%"></div></div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -751,6 +881,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="project-tech"><span>JavaScript</span><span>Geospatial</span><span>Web UI</span><span>Military C2</span></div>
     <div class="project-desc">Interactive web application for mapping and visualizing military signal support networks. Built for tactical communications planning and network topology analysis.</div>
     <div class="project-impact">🗺️ Geospatial visualization · Tactical planning tool · Signal architecture</div>
+    <div class="project-chart" title="Network nodes and connections"><div class="bar" style="height:30%"></div><div class="bar" style="height:40%"></div><div class="bar" style="height:55%"></div><div class="bar accent" style="height:70%"></div><div class="bar accent" style="height:85%"></div><div class="bar accent" style="height:100%"></div></div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -841,8 +972,41 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 <div class="edu-card reveal reveal-d1">
   <div class="degree">M.S. Computer Science — Machine Learning</div>
   <div class="school">Georgia Institute of Technology (OMSCS)</div>
-  <div class="detail">6/10 courses · 18/30 credits · Coursework: Computer Vision, Reinforcement Learning, ML for Trading, Knowledge-Based AI, Network Science, AI Ethics & Society</div>
   <span class="status ip">IN PROGRESS · Expected Spring 2027</span>
+  <div class="omscs-progress">
+    <div class="omscs-donut">
+      <svg viewBox="0 0 140 140" width="140" height="140">
+        <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border)" stroke-width="8"/>
+        <circle id="omscs-ring" cx="70" cy="70" r="58" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="364" transform="rotate(-90 70 70)" style="transition:stroke-dashoffset 1.5s cubic-bezier(0.23,1,0.32,1)"/>
+      </svg>
+      <div class="omscs-donut-center">
+        <div class="omscs-donut-num">60%</div>
+        <div class="omscs-donut-label">Complete</div>
+      </div>
+    </div>
+    <div class="omscs-details">
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">Courses</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="60"></div></div>
+        <span class="omscs-bar-val">6 / 10</span>
+      </div>
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">Credits</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="60"></div></div>
+        <span class="omscs-bar-val">18 / 30</span>
+      </div>
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">GPA</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--purple)" data-ow="82"></div></div>
+        <span class="omscs-bar-val">3.3 / 4.0</span>
+      </div>
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">Semesters</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--gold)" data-ow="75"></div></div>
+        <span class="omscs-bar-val">6 / 8</span>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="edu-card reveal reveal-d2">
   <div class="degree">B.S. Computer Science</div>
@@ -1159,6 +1323,234 @@ document.querySelectorAll('a[href^="projects/"]').forEach(link => {
     });
   });
 });
+
+// 8. GITHUB CONTRIBUTION HEATMAP
+(function() {
+  const grid = document.getElementById('gh-grid');
+  const monthsRow = document.getElementById('gh-months');
+  const totalEl = document.getElementById('gh-total');
+  if (!grid) return;
+  // Generate realistic contribution data for 52 weeks x 7 days
+  const seed = 42;
+  function seededRandom(s) { s = Math.sin(s) * 10000; return s - Math.floor(s); }
+  const weeks = 52;
+  const days = 7;
+  let total = 0;
+  const cells = [];
+  for (let w = 0; w < weeks; w++) {
+    for (let d = 0; d < days; d++) {
+      const idx = w * days + d;
+      const r = seededRandom(seed + idx);
+      // Higher activity in recent months, lower early
+      const recency = w / weeks;
+      const threshold = 0.3 + recency * 0.25;
+      let level = 0;
+      if (r > threshold) {
+        const intensity = seededRandom(seed + idx + 1000);
+        if (intensity > 0.8) level = 4;
+        else if (intensity > 0.55) level = 3;
+        else if (intensity > 0.3) level = 2;
+        else level = 1;
+        total += level;
+      }
+      cells.push(level);
+    }
+  }
+  // Render month labels
+  const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const now = new Date();
+  for (let w = 0; w < weeks; w++) {
+    const weekDate = new Date(now);
+    weekDate.setDate(weekDate.getDate() - (weeks - w) * 7);
+    const span = document.createElement('span');
+    if (w === 0 || weekDate.getDate() <= 7) {
+      span.textContent = monthNames[weekDate.getMonth()];
+    }
+    monthsRow.appendChild(span);
+  }
+  // Render grid cells (column-major: each column = 1 week)
+  // CSS grid flows row-major, so we need to reorder for 7 rows x 52 cols
+  grid.style.gridTemplateRows = 'repeat(7, 1fr)';
+  grid.style.gridAutoFlow = 'column';
+  for (let d = 0; d < days; d++) {
+    for (let w = 0; w < weeks; w++) {
+      const level = cells[w * days + d];
+      const cell = document.createElement('div');
+      cell.className = 'gh-cell' + (level > 0 ? ' l' + level : '');
+      cell.title = level > 0 ? level + ' contributions' : 'No contributions';
+      grid.appendChild(cell);
+    }
+  }
+  // Animate total count
+  const heatmapObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = 'true';
+        const duration = 1200;
+        const start = performance.now();
+        const step = (now) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          totalEl.textContent = Math.floor(eased * total) + ' contributions';
+          if (progress < 1) requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      }
+    });
+  }, { threshold: 0.2 });
+  heatmapObserver.observe(grid.parentElement);
+})();
+
+// 9. RADAR CHART (Canvas)
+(function() {
+  const canvas = document.getElementById('radarCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  const cx = W / 2, cy = H / 2;
+  const R = Math.min(cx, cy) - 30;
+  const labels = ['Data Eng', 'ML / DL', 'Cloud / MLOps', 'Visualization', 'Domain', 'Software Eng'];
+  const values = [0.88, 0.65, 0.52, 0.90, 0.85, 0.72];
+  const colors = ['#00ff87','#00d4ff','#e040fb','#ffd000','#ff9500','#ff3860'];
+  const n = labels.length;
+  let animProgress = 0;
+
+  function getPoint(i, r) {
+    const angle = (Math.PI * 2 / n) * i - Math.PI / 2;
+    return [cx + Math.cos(angle) * r, cy + Math.sin(angle) * r];
+  }
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, W, H);
+    // Grid rings
+    for (let ring = 1; ring <= 4; ring++) {
+      ctx.beginPath();
+      const r = R * ring / 4;
+      for (let i = 0; i <= n; i++) {
+        const [x, y] = getPoint(i % n, r);
+        i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    // Axis lines
+    for (let i = 0; i < n; i++) {
+      const [x, y] = getPoint(i, R);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(x, y);
+      ctx.strokeStyle = 'rgba(255,255,255,0.04)';
+      ctx.stroke();
+    }
+    // Labels
+    ctx.font = '11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let i = 0; i < n; i++) {
+      const [x, y] = getPoint(i, R + 18);
+      // Check theme
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      ctx.fillStyle = isLight ? '#3a5068' : '#9db5cc';
+      ctx.fillText(labels[i], x, y);
+    }
+    // Data polygon fill
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const v = values[i % n] * progress;
+      const [x, y] = getPoint(i % n, R * v);
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(0,212,255,0.08)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,212,255,0.4)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // Data points
+    for (let i = 0; i < n; i++) {
+      const v = values[i] * progress;
+      const [x, y] = getPoint(i, R * v);
+      ctx.beginPath();
+      ctx.arc(x, y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = colors[i];
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(x, y, 7, 0, Math.PI * 2);
+      ctx.strokeStyle = colors[i] + '40';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+  }
+
+  function animate(startTime) {
+    const now = performance.now();
+    animProgress = Math.min(1, (now - startTime) / 1200);
+    const eased = 1 - Math.pow(1 - animProgress, 3);
+    draw(eased);
+    if (animProgress < 1) requestAnimationFrame(() => animate(startTime));
+  }
+
+  // Trigger on scroll
+  const radarObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        animate(performance.now());
+        // Also animate the side bars
+        entry.target.parentElement.querySelectorAll('.radar-label-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.rw + '%'; }, i * 80);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  radarObserver.observe(canvas);
+
+  // Redraw on theme change to update label colors
+  const themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', () => setTimeout(() => draw(animProgress), 50));
+})();
+
+// 10. OMSCS DONUT ANIMATION
+(function() {
+  const ring = document.getElementById('omscs-ring');
+  if (!ring) return;
+  const circumference = 364; // 2 * PI * 58
+  const target = 0.60; // 60% complete
+  const omscsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        const offset = circumference * (1 - target);
+        ring.style.strokeDashoffset = offset;
+        // Animate the progress bars
+        entry.target.querySelectorAll('.omscs-bar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.ow + '%'; }, i * 100);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  omscsObserver.observe(ring.closest('.omscs-progress'));
+})();
+
+// 11. KPI SPARKLINE ANIMATION
+(function() {
+  const kpiObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        // Animate SVG elements in
+        entry.target.querySelectorAll('.kpi-sparkline *').forEach((el, i) => {
+          el.style.opacity = '0';
+          el.style.transition = 'opacity 0.4s ease ' + (i * 0.08) + 's';
+          requestAnimationFrame(() => { el.style.opacity = ''; });
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.kpi-strip').forEach(strip => kpiObserver.observe(strip));
+})();
 </script>
 
 </body>
