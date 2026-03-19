@@ -1,78 +1,514 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Anh Dang | Portfolio</title>
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      background: #0d1117;
-      color: #e6edf3;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      text-align: center;
-      padding: 2rem;
-      max-width: 600px;
-    }
-    h1 { font-size: 2.5rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .title {
-      font-size: 1.1rem;
-      color: #58a6ff;
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-    .tagline {
-      font-size: 1rem;
-      color: #8b949e;
-      margin-bottom: 2.5rem;
-      line-height: 1.6;
-    }
-    .badge {
-      display: inline-block;
-      background: #161b22;
-      border: 1px solid #30363d;
-      border-radius: 6px;
-      padding: 0.75rem 1.5rem;
-      font-size: 0.95rem;
-      color: #58a6ff;
-      margin-bottom: 2rem;
-    }
-    .links a {
-      display: inline-block;
-      margin: 0.4rem;
-      padding: 0.5rem 1.2rem;
-      background: #21262d;
-      border: 1px solid #30363d;
-      border-radius: 6px;
-      color: #e6edf3;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: border-color 0.2s;
-    }
-    .links a:hover { border-color: #58a6ff; color: #58a6ff; }
-    .footer { margin-top: 3rem; font-size: 0.8rem; color: #484f58; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anh Dang — Data Analyst II · ML · Army Officer</title>
+<meta name="description" content="Data Analyst II at a $2.9B credit union. Georgia Tech OMSCS (Machine Learning). U.S. Army Signal Officer. Secret Clearance. Houston, TX.">
+<meta property="og:title" content="Anh Dang — Data Analyst · ML · Army Officer">
+<meta property="og:description" content="Data Analyst II building ML systems at a $2.9B credit union. Georgia Tech OMSCS. Secret Clearance. Houston, TX.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anhtdang92.github.io">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#04070d;--card:#0b1120;--inner:#070c17;--border:#1e2d42;
+  --text:#c8daf0;--muted:#5a7a97;--dim:#3d5570;
+  --green:#00ff87;--cyan:#00d4ff;--purple:#e040fb;--gold:#ffd000;--orange:#ff9500;--red:#ff3860;--violet:#bf5fff;
+  --ff:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--ff);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--cyan);text-decoration:none;transition:color 0.2s}
+a:hover{color:var(--green)}
+::selection{background:var(--purple);color:#fff}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 24px;background:rgba(4,7,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff06;display:flex;justify-content:center;gap:6px;transition:all 0.3s}
+nav a{font-family:var(–mono);font-size:12px;padding:6px 14px;border-radius:6px;color:var(–muted);transition:all 0.2s;letter-spacing:0.5px}
+nav a:hover{color:var(–cyan);background:rgba(0,212,255,0.06)}
+nav .brand{color:#fff;font-weight:700;margin-right:auto;font-family:var(–ff);font-size:14px;padding:6px 0}
+
+/* AMBIENT */
+.ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
+.ambient span{position:absolute;border-radius:50%;animation:float 6s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+/* LAYOUT */
+.container{max-width:780px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+section{padding:60px 0}
+section+section{border-top:1px solid #ffffff06}
+
+/* REVEAL ANIMATION */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-d1{transition-delay:0.05s}.reveal-d2{transition-delay:0.1s}.reveal-d3{transition-delay:0.15s}
+.reveal-d4{transition-delay:0.2s}.reveal-d5{transition-delay:0.25s}.reveal-d6{transition-delay:0.3s}
+
+/* HERO */
+.hero{padding:100px 0 60px;text-align:center}
+.hero-label{font-family:var(–mono);font-size:13px;letter-spacing:4px;color:var(–purple);text-transform:uppercase;margin-bottom:16px;animation:fadeIn 0.6s ease both}
+.hero h1{font-size:clamp(36px,7vw,56px);font-weight:900;letter-spacing:-1px;color:#fff;margin-bottom:8px;animation:fadeUp 0.6s ease 0.1s both}
+.hero h1 .accent{background:linear-gradient(135deg,var(–purple),var(–cyan),var(–green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{font-size:18px;color:var(–muted);font-weight:400;max-width:540px;margin:0 auto 24px;animation:fadeUp 0.6s ease 0.2s both}
+.hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;animation:fadeUp 0.6s ease 0.3s both}
+.hero-tags span{font-family:var(–mono);font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(–border);color:var(–muted);transition:all 0.3s}
+.hero-tags span:hover{border-color:var(–cyan);color:var(–cyan);background:rgba(0,212,255,0.05)}
+.hero-links{display:flex;gap:12px;justify-content:center;margin-top:20px;animation:fadeUp 0.6s ease 0.4s both}
+.hero-links a{font-family:var(–mono);font-size:13px;padding:8px 20px;border-radius:8px;border:1px solid var(–border);color:var(–text);transition:all 0.3s}
+.hero-links a:hover{border-color:var(–green);color:var(–green);background:rgba(0,255,135,0.05);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,255,135,0.1)}
+.hero-links a.primary{background:var(–green);color:var(–bg);border-color:var(–green);font-weight:700}
+.hero-links a.primary:hover{background:#33ff99;transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,255,135,0.3)}
+.hero-scroll{margin-top:40px;animation:fadeUp 0.6s ease 0.5s both}
+.hero-scroll span{font-family:var(–mono);font-size:11px;color:var(–dim);letter-spacing:2px;display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:0.4}50%{opacity:0.8}}
+
+/* SECTIONS */
+.section-label{font-family:var(–mono);font-size:12px;letter-spacing:4px;color:var(–purple);text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
+.section-desc{font-size:15px;color:var(–muted);margin-bottom:32px;max-width:560px}
+
+/* STATS ROW */
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
+.stat{padding:14px;background:var(–card);border-radius:10px;border:1px solid var(–border);text-align:center;transition:all 0.3s}
+.stat:hover{border-color:var(–cyan);transform:translateY(-2px)}
+.stat .num{font-size:22px;font-weight:800;font-family:var(–ff)}
+.stat .lbl{font-family:var(–mono);font-size:11px;color:var(–muted);letter-spacing:1px;margin-top:2px}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
+.about-card{padding:16px;background:var(–card);border-radius:12px;border:1px solid var(–border);transition:all 0.3s}
+.about-card:hover{border-color:var(–cyan);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,212,255,0.08)}
+.about-card .label{font-family:var(–mono);font-size:11px;letter-spacing:2px;color:var(–muted);text-transform:uppercase;margin-bottom:4px}
+.about-card .value{font-size:17px;font-weight:700;color:#fff}
+.about-card .sub{font-size:13px;color:var(–dim);margin-top:2px}
+.about-text{font-size:15px;color:var(–text);line-height:1.8;margin-bottom:16px}
+.about-text strong{color:#fff;font-weight:600}
+
+/* SKILLS */
+.skill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.skill-row .cat{font-family:var(–mono);font-size:11px;letter-spacing:2px;color:var(–muted);text-transform:uppercase;width:100%;margin-bottom:2px}
+.skill-tag{font-family:var(–mono);font-size:13px;padding:6px 14px;border-radius:6px;border:1px solid var(–border);color:var(–text);background:var(–inner);transition:all 0.3s}
+.skill-tag:hover{border-color:var(–green);color:var(–green);background:rgba(0,255,135,0.05)}
+.skill-tag.s{border-color:var(–green);color:var(–green)}
+.skill-tag.g{border-color:var(–cyan);color:var(–cyan)}
+.skill-tag.l{border-color:var(–orange);color:var(–orange);opacity:0.7}
+
+/* PROJECTS */
+.project-grid{display:grid;gap:12px}
+.project{padding:20px;background:var(–card);border-radius:14px;border:1px solid var(–border);transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;display:block;color:inherit}
+.project::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(–cyan),transparent);opacity:0;transition:opacity 0.3s}
+.project:hover{border-color:var(–cyan);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,212,255,0.1)}
+.project:hover::before{opacity:1}
+.project-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.project-tech{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.project-tech span{font-family:var(–mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(–inner);color:var(–muted);border:1px solid #ffffff08}
+.project-desc{font-size:14px;color:var(–text);line-height:1.6;margin-bottom:10px}
+.project-impact{font-family:var(–mono);font-size:12px;color:var(–green);margin-bottom:8px;padding:4px 0;border-top:1px solid #ffffff06}
+.project-link{font-family:var(–mono);font-size:12px;color:var(–cyan)}
+.project:hover .project-link{color:var(–green)}
+.project-badge{position:absolute;top:12px;right:12px;font-family:var(–mono);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px}
+.badge-ml{background:rgba(224,64,251,0.15);color:var(–purple);border:1px solid rgba(224,64,251,0.3)}
+.badge-ai{background:rgba(0,255,135,0.1);color:var(–green);border:1px solid rgba(0,255,135,0.3)}
+.badge-web{background:rgba(0,212,255,0.1);color:var(–cyan);border:1px solid rgba(0,212,255,0.3)}
+.badge-ios{background:rgba(255,213,0,0.1);color:var(–gold);border:1px solid rgba(255,213,0,0.3)}
+.badge-work{background:rgba(255,149,0,0.1);color:var(–orange);border:1px solid rgba(255,149,0,0.3)}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:’’;position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(–green),var(–cyan),var(–purple),var(–violet))}
+.tl{position:relative;margin-bottom:24px}
+.tl::before{content:’’;position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(–cyan);background:var(–bg)}
+.tl.now::before{background:var(–green);border-color:var(–green);box-shadow:0 0 12px rgba(0,255,135,0.4)}
+.tl .role{font-size:16px;font-weight:700;color:#fff}
+.tl .org{font-size:14px;color:var(–cyan)}
+.tl .date{font-family:var(–mono);font-size:12px;color:var(–muted);margin-top:2px}
+.tl .desc{font-size:14px;color:var(–dim);margin-top:4px;line-height:1.6}
+.tl .highlights{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.tl .highlights span{font-family:var(–mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(–inner);color:var(–muted);border:1px solid #ffffff08}
+
+/* EDUCATION */
+.edu-card{padding:16px 20px;background:var(–card);border-radius:12px;border:1px solid var(–border);margin-bottom:10px;transition:all 0.3s}
+.edu-card:hover{border-color:var(–purple);transform:translateY(-2px)}
+.edu-card .degree{font-size:17px;font-weight:700;color:#fff}
+.edu-card .school{font-size:14px;color:var(–purple)}
+.edu-card .detail{font-family:var(–mono);font-size:12px;color:var(–muted);margin-top:4px}
+.edu-card .status{font-family:var(–mono);font-size:11px;padding:2px 8px;border-radius:4px;display:inline-block;margin-top:6px}
+.edu-card .status.ip{background:rgba(0,255,135,0.1);color:var(–green);border:1px solid rgba(0,255,135,0.3)}
+.edu-card .status.done{background:rgba(191,95,255,0.1);color:var(–violet);border:1px solid rgba(191,95,255,0.3)}
+
+/* NEXT */
+.next-card{padding:20px;background:linear-gradient(135deg,#0a0825,var(–card),#071510);border-radius:14px;border:1px solid var(–purple);position:relative;overflow:hidden}
+.next-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(–purple),var(–green),transparent)}
+.next-card h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px}
+.next-card p{font-size:14px;color:var(–text);line-height:1.7;margin-bottom:8px}
+.next-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.next-item{padding:10px;background:var(–inner);border-radius:8px;border:1px solid var(–border)}
+.next-item .ni-label{font-family:var(–mono);font-size:11px;color:var(–muted);letter-spacing:1px;text-transform:uppercase}
+.next-item .ni-value{font-size:14px;font-weight:600;color:#fff;margin-top:2px}
+.next-item .ni-date{font-family:var(–mono);font-size:11px;color:var(–dim);margin-top:2px}
+
+/* FOOTER */
+.footer{padding:40px 0;text-align:center;border-top:1px solid #ffffff06}
+.footer-text{font-family:var(–mono);font-size:12px;color:var(–dim);letter-spacing:1px}
+.footer-links{display:flex;gap:16px;justify-content:center;margin-bottom:12px}
+.footer-links a{font-family:var(–mono);font-size:13px;color:var(–muted);transition:color 0.2s}
+.footer-links a:hover{color:var(–green)}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:600px){
+nav{gap:2px;padding:10px 12px}
+nav a{font-size:11px;padding:5px 8px}
+.about-grid,.stats-row,.next-items{grid-template-columns:1fr}
+.stats-row{grid-template-columns:1fr 1fr}
+.hero{padding:80px 0 40px}
+section{padding:40px 0}
+.hero-links{flex-direction:column;align-items:center}
+}
+</style>
+
 </head>
 <body>
-  <div class="container">
-    <h1>Anh Dang</h1>
-    <div class="title">Data Analyst II &rarr; Data Scientist</div>
-    <p class="tagline">
-      Building toward a career in ML &amp; data science.<br />
-      Georgia Tech OMSCS &middot; U.S. Army Reserve &middot; Houston, TX
-    </p>
-    <div class="badge">&#128679; Portfolio coming soon</div>
-    <div class="links">
-      <a href="https://github.com/anhtdang92" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/anhtdang92" target="_blank">LinkedIn</a>
+
+<nav>
+  <span class="brand">AD</span>
+  <a href="#about">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#experience">Experience</a>
+  <a href="#education">Education</a>
+  <a href="#next">Next</a>
+</nav>
+
+<div class="ambient">
+  <span style="width:3px;height:3px;background:var(--purple);opacity:0.12;left:12%;top:20%;animation-duration:7s"></span>
+  <span style="width:2px;height:2px;background:var(--green);opacity:0.1;left:70%;top:35%;animation-duration:5s;animation-delay:1s"></span>
+  <span style="width:3px;height:3px;background:var(--cyan);opacity:0.08;left:40%;top:60%;animation-duration:8s;animation-delay:2s"></span>
+  <span style="width:2px;height:2px;background:var(--gold);opacity:0.1;left:85%;top:75%;animation-duration:6s;animation-delay:0.5s"></span>
+  <span style="width:2px;height:2px;background:var(--red);opacity:0.06;left:25%;top:85%;animation-duration:9s;animation-delay:3s"></span>
+</div>
+
+<div class="container">
+
+  <!-- HERO -->
+
+  <section class="hero">
+    <div class="hero-label">Data Analyst · ML · Army Signal Officer</div>
+    <h1>Anh <span class="accent">Dang</span></h1>
+    <p class="hero-sub">Building data pipelines and ML systems at a $2.9B credit union. Pursuing Georgia Tech's ML masters. U.S. Army officer with Secret clearance. Vietnamese American. Houston, TX.</p>
+    <div class="hero-tags">
+      <span>SQL</span><span>Python</span><span>T-SQL</span><span>Power BI</span><span>scikit-learn</span><span>Azure ML</span><span>Databricks</span><span>Pandas</span><span>Git</span>
     </div>
-    <div class="footer">Last updated March 2026</div>
+    <div class="hero-links">
+      <a href="https://github.com/anhtdang92" class="primary">GitHub</a>
+      <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+      <a href="mailto:anhtdang92@gmail.com">Contact</a>
+    </div>
+    <div class="hero-scroll"><span>↓ SCROLL ↓</span></div>
+  </section>
+
+  <!-- ABOUT -->
+
+  <section id="about">
+    <div class="reveal"><div class="section-label">About</div></div>
+    <div class="reveal reveal-d1"><div class="section-title">The short version</div></div>
+    <div class="reveal reveal-d2"><div class="section-desc">5 years of data analytics in financial services. 5 years of military officer leadership. One direction: ML-powered decision systems.</div></div>
+
+```
+<div class="stats-row">
+  <div class="stat reveal reveal-d1"><div class="num" style="color:var(--green)">5</div><div class="lbl">Years DA</div></div>
+  <div class="stat reveal reveal-d2"><div class="num" style="color:var(--cyan)">176K+</div><div class="lbl">Members Served</div></div>
+  <div class="stat reveal reveal-d3"><div class="num" style="color:var(--purple)">$2.9B</div><div class="lbl">CU Assets</div></div>
+  <div class="stat reveal reveal-d4"><div class="num" style="color:var(--gold)">60+</div><div class="lbl">Soldiers Led</div></div>
+</div>
+
+<div class="about-grid">
+  <div class="about-card reveal reveal-d1">
+    <div class="label">Current Role</div>
+    <div class="value">Data Analyst II</div>
+    <div class="sub">First Community Credit Union · Houston, TX</div>
   </div>
+  <div class="about-card reveal reveal-d2">
+    <div class="label">Education</div>
+    <div class="value">Georgia Tech OMSCS</div>
+    <div class="sub">M.S. Computer Science · Machine Learning · 2027</div>
+  </div>
+  <div class="about-card reveal reveal-d3">
+    <div class="label">Military</div>
+    <div class="value">1LT Signal Officer</div>
+    <div class="sub">U.S. Army Reserve · S6 OIC · Secret Clearance</div>
+  </div>
+  <div class="about-card reveal reveal-d4">
+    <div class="label">Focus</div>
+    <div class="value">ML + Financial Data</div>
+    <div class="sub">Credit decisioning · Risk analytics · Data pipelines</div>
+  </div>
+</div>
+
+<div class="reveal"><p class="about-text">I write T-SQL against enterprise data warehouses, build Power BI dashboards for executive teams, and develop Python analytics pipelines for a credit union serving <strong>176K+ members across 41 Texas counties</strong>. I've supported the integration of an <strong>ML-powered credit decisioning platform</strong> (Scienaptic AI, processing 3M+ decisions/month) and currently building data pipelines for <strong>Visa DPS risk factor ingestion</strong>.</p></div>
+<div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading communications and IT operations for a 60+ soldier unit. Five years of military officer leadership with an <strong>active Secret clearance</strong>, experience in classified environments, and the discipline that comes from managing people and operations under pressure.</p></div>
+```
+
+  </section>
+
+  <!-- SKILLS -->
+
+  <section id="skills">
+    <div class="reveal"><div class="section-label">Skills</div></div>
+    <div class="reveal reveal-d1"><div class="section-title">What I work with</div></div>
+    <div class="reveal reveal-d2"><div class="section-desc">Green = strong. Blue = growing. Orange = learning next.</div></div>
+
+```
+<div class="reveal reveal-d1">
+  <div class="skill-row"><div class="cat">Languages & Data</div>
+    <span class="skill-tag s">SQL (T-SQL)</span><span class="skill-tag s">Python</span><span class="skill-tag s">Pandas</span><span class="skill-tag g">NumPy</span><span class="skill-tag g">Matplotlib</span><span class="skill-tag g">R</span>
+  </div>
+</div>
+<div class="reveal reveal-d2">
+  <div class="skill-row"><div class="cat">Tools & Platforms</div>
+    <span class="skill-tag s">Power BI</span><span class="skill-tag s">MS SQL Server</span><span class="skill-tag s">Azure Data Studio</span><span class="skill-tag g">Tableau</span><span class="skill-tag g">Azure ML</span><span class="skill-tag g">Azure DevOps</span><span class="skill-tag l">Databricks</span><span class="skill-tag s">Git</span><span class="skill-tag s">Excel</span><span class="skill-tag s">Jupyter</span>
+  </div>
+</div>
+<div class="reveal reveal-d3">
+  <div class="skill-row"><div class="cat">ML & AI</div>
+    <span class="skill-tag g">scikit-learn</span><span class="skill-tag l">PyTorch</span><span class="skill-tag l">TensorFlow</span><span class="skill-tag g">LLM / GenAI</span><span class="skill-tag l">MLOps</span><span class="skill-tag l">Cloud ML</span>
+  </div>
+</div>
+<div class="reveal reveal-d4">
+  <div class="skill-row"><div class="cat">Domain & Clearance</div>
+    <span class="skill-tag s">Financial Services</span><span class="skill-tag s">Regulatory Compliance</span><span class="skill-tag g">Risk Analytics</span><span class="skill-tag g">DoD / Signal Ops</span><span class="skill-tag s">Secret Clearance</span>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- PROJECTS -->
+
+  <section id="projects">
+    <div class="reveal"><div class="section-label">Projects</div></div>
+    <div class="reveal reveal-d1"><div class="section-title">What I've built</div></div>
+    <div class="reveal reveal-d2"><div class="section-desc">Side projects and applied work in ML, AI, and data engineering.</div></div>
+
+```
+<div class="project-grid">
+  <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="project reveal reveal-d1">
+    <span class="project-badge badge-ml">ML</span>
+    <div class="project-name">kraken-ml-trading-strategy</div>
+    <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span></div>
+    <div class="project-desc">ML-powered cryptocurrency trading strategy. Feature engineering on live market data, model training with scikit-learn, and cloud deployment on GCP for automated signal generation.</div>
+    <div class="project-impact">☁️ Cloud-deployed · Real-time API integration · End-to-end ML pipeline</div>
+    <div class="project-link">View on GitHub →</div>
+  </a>
+
+  <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="project reveal reveal-d2">
+    <span class="project-badge badge-ai">AI</span>
+    <div class="project-name">curstar-video-upscaler</div>
+    <div class="project-tech"><span>Python</span><span>STAR Diffusion</span><span>Deep Learning</span><span>Computer Vision</span></div>
+    <div class="project-desc">AI video upscaler built on the STAR diffusion model. Applies spatial-temporal augmentation to enhance video resolution frame-by-frame using deep learning.</div>
+    <div class="project-impact">🎬 Diffusion model · Frame-level inference · GPU-accelerated processing</div>
+    <div class="project-link">View on GitHub →</div>
+  </a>
+
+  <a href="https://github.com/anhtdang92/deepseek-local-inference" class="project reveal reveal-d3">
+    <span class="project-badge badge-ai">AI</span>
+    <div class="project-name">deepseek-local-inference</div>
+    <div class="project-tech"><span>Python</span><span>DeepSeek-R1</span><span>RTX 4090</span><span>Quantized Models</span></div>
+    <div class="project-desc">Local LLM inference and benchmarking with DeepSeek-R1-Distill-Qwen-32B on an RTX 4090. Testing quantized model performance for on-device reasoning tasks.</div>
+    <div class="project-impact">🖥️ 32B parameter model · Local inference · VRAM optimization on consumer GPU</div>
+    <div class="project-link">View on GitHub →</div>
+  </a>
+
+  <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="project reveal reveal-d4">
+    <span class="project-badge badge-ml">ML</span>
+    <div class="project-name">ml-trading-algorithm</div>
+    <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Backtesting</span><span>Feature Engineering</span></div>
+    <div class="project-desc">Machine learning trading algorithm with custom feature engineering pipeline, walk-forward backtesting methodology, and systematic signal generation.</div>
+    <div class="project-impact">📈 Custom feature pipeline · Walk-forward validation · Systematic strategy</div>
+    <div class="project-link">View on GitHub →</div>
+  </a>
+
+  <a href="https://github.com/anhtdang92/agentic-health-navigator" class="project reveal reveal-d5">
+    <span class="project-badge badge-ios">iOS</span>
+    <div class="project-name">agentic-health-navigator</div>
+    <div class="project-tech"><span>Swift</span><span>HealthKit</span><span>On-Device ML</span><span>iOS</span></div>
+    <div class="project-desc">AI-powered iOS app that monitors HealthKit biometrics in real-time and delivers personalized health insights using on-device machine learning.</div>
+    <div class="project-impact">📱 Real-time biometrics · On-device ML · HealthKit integration</div>
+    <div class="project-link">View on GitHub →</div>
+  </a>
+
+  <a href="https://github.com/anhtdang92/signal-network-mapper" class="project reveal reveal-d6">
+    <span class="project-badge badge-web">WEB</span>
+    <div class="project-name">signal-network-mapper</div>
+    <div class="project-tech"><span>JavaScript</span><span>Geospatial</span><span>Web UI</span><span>Military C2</span></div>
+    <div class="project-desc">Interactive web application for mapping and visualizing military signal support networks. Built for tactical communications planning and network topology analysis.</div>
+    <div class="project-impact">🗺️ Geospatial visualization · Tactical planning tool · Signal architecture</div>
+    <div class="project-link">View on GitHub →</div>
+  </a>
+</div>
+```
+
+  </section>
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience">
+    <div class="reveal"><div class="section-label">Experience</div></div>
+    <div class="reveal reveal-d1"><div class="section-title">Where I've worked</div></div>
+    <div class="reveal reveal-d2"><div class="section-desc"></div></div>
+
+```
+<div class="timeline">
+  <div class="tl now reveal">
+    <div class="role">Data Analyst II</div>
+    <div class="org">First Community Credit Union · $2.9B · 176K members</div>
+    <div class="date">Apr 2026 – Present · Houston, TX</div>
+    <div class="desc">Enterprise SQL pipelines for Visa DPS risk factor ingestion. ML platform integration (Scienaptic AI, 3M+ decisions/month). Power BI executive dashboards. Compliance audits across 41 Texas counties. Cross-database optimization eliminating 90%+ query bottlenecks.</div>
+    <div class="highlights"><span>T-SQL</span><span>Power BI</span><span>Azure ML</span><span>Scienaptic AI</span><span>Visa DPS</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d1">
+    <div class="role">Data Analyst I</div>
+    <div class="org">First Community Credit Union</div>
+    <div class="date">Apr 2023 – Apr 2026</div>
+    <div class="desc">Cross-database record matching (DNA/XP2) using staging table architecture. Python statistical analysis for transaction limit refinement. Stored procedure development. Data warehouse reporting.</div>
+    <div class="highlights"><span>Python</span><span>Pandas</span><span>SQL Server</span><span>Stored Procs</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d2">
+    <div class="role">IT Data Analyst</div>
+    <div class="org">First Community Credit Union</div>
+    <div class="date">Aug 2021 – Apr 2023</div>
+    <div class="desc">SQL Server administration across 19 branches. Tableau visualizations for business stakeholders. Automated eligibility engine for Early Access funds program.</div>
+    <div class="highlights"><span>SQL Server</span><span>Tableau</span><span>Azure Data Studio</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d3">
+    <div class="role">Marketing Data Analyst Intern</div>
+    <div class="org">First Community Credit Union</div>
+    <div class="date">Jun – Aug 2021</div>
+    <div class="desc">Python/Pandas data pipelines for campaign performance. Tableau dashboards for member segmentation and acquisition targeting.</div>
+  </div>
+
+  <div class="tl reveal reveal-d4">
+    <div class="role">Web Developer Intern</div>
+    <div class="org">Elle Investments Inc</div>
+    <div class="date">Jun – Aug 2020 · New York, NY (Remote)</div>
+    <div class="desc">SQL-backed web application (phpMyAdmin). Python web scraping with Beautiful Soup. Automated data export pipelines.</div>
+  </div>
+
+  <div class="tl now reveal reveal-d5">
+    <div class="role">S6 OIC — Signal Operations Officer (1LT)</div>
+    <div class="org">U.S. Army Reserve · 1181st DDSB</div>
+    <div class="date">May 2025 – Present · Houston, TX</div>
+    <div class="desc">Lead all unit communications and IT operations. Network integration, COMSEC management, classified information handling for 60+ soldiers. Active Secret clearance.</div>
+    <div class="highlights"><span>Secret Clearance</span><span>COMSEC</span><span>Signal Ops</span><span>60+ Soldiers</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d6">
+    <div class="role">Signal Officer (2LT)</div>
+    <div class="org">U.S. Army Reserve</div>
+    <div class="date">Jul 2022 – May 2025</div>
+    <div class="desc">Led 60+ soldiers. OIC for live-fire range operations — planned, resourced, and executed M17 qualification with zero safety incidents.</div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education">
+    <div class="reveal"><div class="section-label">Education</div></div>
+    <div class="reveal reveal-d1"><div class="section-title">Credentials</div></div>
+    <div class="reveal reveal-d2"><div class="section-desc"></div></div>
+
+```
+<div class="edu-card reveal reveal-d1">
+  <div class="degree">M.S. Computer Science — Machine Learning</div>
+  <div class="school">Georgia Institute of Technology (OMSCS)</div>
+  <div class="detail">6/10 courses · 18/30 credits · Coursework: Computer Vision, Reinforcement Learning, ML for Trading, Knowledge-Based AI, Network Science, AI Ethics & Society</div>
+  <span class="status ip">IN PROGRESS · Expected Spring 2027</span>
+</div>
+<div class="edu-card reveal reveal-d2">
+  <div class="degree">B.S. Computer Science</div>
+  <div class="school">University of Houston-Downtown</div>
+  <div class="detail">Focus: Artificial Intelligence, Data Structures, Algorithms, Cryptography</div>
+  <span class="status done">COMPLETED · 2021</span>
+</div>
+```
+
+  </section>
+
+  <!-- WHAT'S NEXT -->
+
+  <section id="next">
+    <div class="reveal"><div class="section-label">What's Next</div></div>
+    <div class="reveal reveal-d1"><div class="section-title">Building toward</div></div>
+
+```
+<div class="next-card reveal reveal-d2">
+  <h3>ML-powered analytics in financial services or defense</h3>
+  <p>Finishing my Georgia Tech ML masters while building applied ML projects in credit risk, time series forecasting, and NLP. Targeting Data Scientist or ML-adjacent roles in Houston's energy, defense, or financial services sectors — where my domain expertise, clearance, and technical skills converge.</p>
+  <div class="next-items">
+    <div class="next-item">
+      <div class="ni-label">OMSCS Graduation</div>
+      <div class="ni-value">Georgia Tech MSCS</div>
+      <div class="ni-date">Spring 2027</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-label">Next Course</div>
+      <div class="ni-value">CS 7641: Machine Learning</div>
+      <div class="ni-date">Fall 2026</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-label">Target Roles</div>
+      <div class="ni-value">Data Scientist · Analytics Engineer</div>
+      <div class="ni-date">Summer 2027+</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-label">Target Sectors</div>
+      <div class="ni-value">Energy · Defense · FinServ</div>
+      <div class="ni-date">Houston, TX</div>
+    </div>
+  </div>
+</div>
+```
+
+  </section>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://github.com/anhtdang92">GitHub</a>
+      <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+      <a href="mailto:anhtdang92@gmail.com">Email</a>
+    </div>
+    <div class="footer-text">Anh Dang · Houston, TX · 2026</div>
+  </footer>
+
+</div>
+
+<script>
+// Scroll-triggered reveal animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
 </body>
 </html>
