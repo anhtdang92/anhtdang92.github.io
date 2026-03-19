@@ -4,10 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anh Dang — Data Analyst II · ML · Army Officer</title>
-<meta name="description" content="Data Analyst II at a $2.9B credit union. Georgia Tech OMSCS (Machine Learning). U.S. Army Signal Officer. Secret Clearance. Houston, TX.">
+<title>Anh Dang — Data Analyst I · ML · Army Officer</title>
+<meta name="description" content="Data Analyst I at a $2.9B credit union. Georgia Tech OMSCS (Machine Learning). U.S. Army Signal Officer. Secret Clearance. Houston, TX.">
 <meta property="og:title" content="Anh Dang — Data Analyst · ML · Army Officer">
-<meta property="og:description" content="Data Analyst II building ML systems at a $2.9B credit union. Georgia Tech OMSCS. Secret Clearance. Houston, TX.">
+<meta property="og:description" content="Data Analyst I building ML systems at a $2.9B credit union. Georgia Tech OMSCS. Secret Clearance. Houston, TX.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io">
 <meta name="twitter:card" content="summary">
@@ -22,7 +22,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Anh Dang",
-  "jobTitle": "Data Analyst II",
+  "jobTitle": "Data Analyst I",
   "url": "https://anhtdang92.github.io",
   "sameAs": [
     "https://github.com/anhtdang92",
@@ -58,6 +58,18 @@
   --green:#00ff87;--cyan:#00d4ff;--purple:#e040fb;--gold:#ffd000;--orange:#ff9500;--red:#ff3860;--violet:#bf5fff;
   --ff:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
 }
+[data-theme="light"]{
+  --bg:#f4f6f9;--card:#ffffff;--inner:#eef1f5;--border:#d0d7e0;
+  --text:#2c3e50;--muted:#6b7c93;--dim:#8a9bb5;
+  --green:#00994d;--cyan:#0088aa;--purple:#9b30ff;--gold:#cc8800;--orange:#cc6600;--red:#cc2244;--violet:#8833cc;
+}
+[data-theme="light"] nav{background:rgba(244,246,249,0.9)}
+[data-theme="light"] .hero-avatar{box-shadow:0 0 30px rgba(155,48,255,0.1)}
+[data-theme="light"] .hero h1{color:#1a1a2e}
+[data-theme="light"] .about-card .value,[data-theme="light"] .tl .role,[data-theme="light"] .edu-card .degree,[data-theme="light"] .project-name,[data-theme="light"] .next-card h3,[data-theme="light"] .highlight-card h3,[data-theme="light"] .wi-title,[data-theme="light"] .ci-name,[data-theme="light"] .ni-value{color:#1a1a2e}
+[data-theme="light"] nav .brand{color:#1a1a2e}
+[data-theme="light"] .next-card{background:linear-gradient(135deg,#f0eeff,#ffffff,#eeffee)}
+[data-theme="light"] ::selection{background:var(--purple);color:#fff}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--cyan);text-decoration:none;transition:color 0.2s}
@@ -70,6 +82,8 @@ nav a{font-family:var(--mono);font-size:12px;padding:6px 14px;border-radius:6px;
 nav a:hover{color:var(--cyan);background:rgba(0,212,255,0.06)}
 nav a.active{color:var(--cyan);background:rgba(0,212,255,0.08)}
 nav .brand{color:#fff;font-weight:700;margin-right:auto;font-family:var(--ff);font-size:14px;padding:6px 0}
+.theme-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:14px;line-height:1;transition:all 0.2s;color:var(--muted)}
+.theme-toggle:hover{border-color:var(--cyan);background:rgba(0,212,255,0.06)}
 
 /* AMBIENT */
 .ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -132,6 +146,17 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .about-text{font-size:15px;color:var(--text);line-height:1.8;margin-bottom:16px}
 .about-text strong{color:#fff;font-weight:600}
 
+/* WORK HIGHLIGHTS */
+.highlight-grid{display:grid;gap:12px}
+.highlight-card{padding:20px;background:var(--card);border-radius:14px;border:1px solid var(--border);transition:all 0.3s;position:relative;overflow:hidden}
+.highlight-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:0;transition:opacity 0.3s}
+.highlight-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,255,135,0.08)}
+.highlight-card:hover::before{opacity:1}
+.highlight-card h3{font-size:16px;font-weight:700;color:#fff;margin-bottom:8px}
+.highlight-card h3 .hl-icon{margin-right:6px}
+.highlight-card p{font-size:14px;color:var(--text);line-height:1.7}
+.highlight-card .hl-metric{font-family:var(--mono);font-size:12px;color:var(--green);margin-top:8px;padding-top:8px;border-top:1px solid #ffffff06}
+
 /* SKILLS */
 .skill-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
 .skill-row .cat{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;width:100%;margin-bottom:2px}
@@ -154,12 +179,27 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .project-impact{font-family:var(--mono);font-size:12px;color:var(--green);margin-bottom:8px;padding:4px 0;border-top:1px solid #ffffff06}
 .project-link{font-family:var(--mono);font-size:12px;color:var(--cyan)}
 .project:hover .project-link{color:var(--green)}
+.project-expand{display:none;margin-top:12px;padding-top:12px;border-top:1px solid var(--border)}
+.project-expand.open{display:block}
+.project-expand h4{font-size:13px;font-family:var(--mono);color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:6px;margin-top:10px}
+.project-expand h4:first-child{margin-top:0}
+.project-expand p{font-size:13px;color:var(--text);line-height:1.7;margin-bottom:4px}
+.project-toggle{font-family:var(--mono);font-size:11px;color:var(--cyan);cursor:pointer;padding:4px 0;display:inline-block;transition:color 0.2s;background:none;border:none}
+.project-toggle:hover{color:var(--green)}
 .project-badge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px}
 .badge-ml{background:rgba(224,64,251,0.15);color:var(--purple);border:1px solid rgba(224,64,251,0.3)}
 .badge-ai{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.3)}
 .badge-web{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.3)}
 .badge-ios{background:rgba(255,213,0,0.1);color:var(--gold);border:1px solid rgba(255,213,0,0.3)}
 .badge-work{background:rgba(255,149,0,0.1);color:var(--orange);border:1px solid rgba(255,149,0,0.3)}
+
+/* WRITING */
+.writing-grid{display:grid;gap:10px}
+.writing-item{padding:16px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border);transition:all 0.3s;display:flex;align-items:center;gap:14px}
+.writing-item:hover{border-color:var(--purple);transform:translateY(-2px)}
+.writing-item .wi-icon{font-size:20px;flex-shrink:0}
+.writing-item .wi-title{font-size:15px;font-weight:600;color:#fff}
+.writing-item .wi-status{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:2px}
 
 /* TIMELINE */
 .timeline{position:relative;padding-left:24px}
@@ -184,6 +224,16 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .edu-card .status.ip{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.3)}
 .edu-card .status.done{background:rgba(191,95,255,0.1);color:var(--violet);border:1px solid rgba(191,95,255,0.3)}
 
+/* COURSEWORK */
+.course-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.course-item{padding:10px 14px;background:var(--inner);border-radius:8px;border:1px solid var(--border);transition:all 0.3s}
+.course-item:hover{border-color:var(--cyan)}
+.course-item .ci-name{font-size:13px;font-weight:600;color:#fff}
+.course-item .ci-code{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.course-item .ci-grade{font-family:var(--mono);font-size:11px;font-weight:700;margin-top:2px}
+.ci-grade.a{color:var(--green)}.ci-grade.b{color:var(--cyan)}.ci-grade.upcoming{color:var(--orange)}
+@media(max-width:600px){.course-grid{grid-template-columns:1fr}}
+
 /* NEXT */
 .next-card{padding:20px;background:linear-gradient(135deg,#0a0825,var(--card),#071510);border-radius:14px;border:1px solid var(--purple);position:relative;overflow:hidden}
 .next-card::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),var(--green),transparent)}
@@ -194,6 +244,14 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .next-item .ni-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
 .next-item .ni-value{font-size:14px;font-weight:600;color:#fff;margin-top:2px}
 .next-item .ni-date{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:2px}
+
+/* SCROLL PROGRESS */
+.scroll-progress{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));z-index:200;width:0;transition:width 0.1s linear}
+
+/* BACK TO TOP */
+.back-to-top{position:fixed;bottom:24px;right:24px;width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--cyan);font-size:18px;cursor:pointer;z-index:100;opacity:0;pointer-events:none;transition:all 0.3s;display:flex;align-items:center;justify-content:center}
+.back-to-top.visible{opacity:1;pointer-events:auto}
+.back-to-top:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,255,135,0.15)}
 
 /* FOOTER */
 .footer{padding:40px 0;text-align:center;border-top:1px solid #ffffff06}
@@ -226,15 +284,19 @@ section{padding:40px 0}
 <body>
 
 <a href="#about" class="skip-link">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <nav role="navigation" aria-label="Main navigation">
   <span class="brand">AD</span>
   <a href="#about">About</a>
+  <a href="#highlights">Highlights</a>
   <a href="#skills">Skills</a>
   <a href="#projects">Projects</a>
   <a href="#experience">Experience</a>
   <a href="#education">Education</a>
   <a href="#next">Next</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
 
 <div class="ambient">
@@ -251,7 +313,7 @@ section{padding:40px 0}
 
   <section class="hero" aria-label="Introduction">
     <div class="hero-avatar" aria-hidden="true">AD</div>
-    <div class="hero-label">Data Analyst · ML · Army Signal Officer</div>
+    <div class="hero-label">Data Analyst I · ML · Army Signal Officer</div>
     <h1>Anh <span class="accent">Dang</span></h1>
     <p class="hero-sub">Building data pipelines and ML systems at a $2.9B credit union. Pursuing Georgia Tech's ML masters. U.S. Army officer with Secret clearance. Vietnamese American. Houston, TX.</p>
     <div class="hero-tags">
@@ -261,7 +323,6 @@ section{padding:40px 0}
       <a href="https://github.com/anhtdang92" class="primary">GitHub</a>
       <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
       <a href="mailto:anhtdang92@gmail.com">Contact</a>
-      <a href="resume.pdf" target="_blank" rel="noopener">Resume ↓</a>
     </div>
     <div class="hero-scroll"><span>↓ SCROLL ↓</span></div>
   </section>
@@ -284,7 +345,7 @@ section{padding:40px 0}
 <div class="about-grid">
   <div class="about-card reveal reveal-d1">
     <div class="label">Current Role</div>
-    <div class="value">Data Analyst II</div>
+    <div class="value">Data Analyst I</div>
     <div class="sub">First Community Credit Union · Houston, TX</div>
   </div>
   <div class="about-card reveal reveal-d2">
@@ -308,6 +369,40 @@ section{padding:40px 0}
 <div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading communications and IT operations for a 60+ soldier unit. Five years of military officer leadership with an <strong>active Secret clearance</strong>, experience in classified environments, and the discipline that comes from managing people and operations under pressure.</p></div>
 
 
+  </section>
+
+  <!-- WORK HIGHLIGHTS -->
+
+  <section id="highlights" aria-labelledby="highlights-title">
+    <div class="reveal"><div class="section-label">Work Highlights</div></div>
+    <div class="reveal reveal-d1"><h2 id="highlights-title" class="section-title">Highest-impact work</h2></div>
+    <div class="reveal reveal-d2"><div class="section-desc">Professional accomplishments in financial services data analytics — no proprietary data, just outcomes.</div></div>
+
+    <div class="highlight-grid">
+      <div class="highlight-card reveal reveal-d1">
+        <h3><span class="hl-icon">🤖</span>ML Credit Decisioning Integration</h3>
+        <p>Supported deployment of the Scienaptic AI platform — an ML-powered credit decisioning engine — into the credit union's lending workflow. Handled data extraction, validation, and reporting to ensure model outputs aligned with existing underwriting criteria. The platform now processes 3M+ credit decisions per month for 176K members.</p>
+        <div class="hl-metric">3M+ decisions/month · 176K members served</div>
+      </div>
+
+      <div class="highlight-card reveal reveal-d2">
+        <h3><span class="hl-icon">🔄</span>Visa DPS Risk Pipeline</h3>
+        <p>Building an enterprise data pipeline to ingest Visa DPS payment network risk factors into the credit union's fraud monitoring framework. Designing staging tables, stored procedures, and automated ETL workflows to transform raw risk signals into actionable alerts for the risk management team.</p>
+        <div class="hl-metric">Enterprise ETL · Real-time risk factor ingestion</div>
+      </div>
+
+      <div class="highlight-card reveal reveal-d3">
+        <h3><span class="hl-icon">⚡</span>Cross-Database Optimization</h3>
+        <p>Engineered a staging table architecture to eliminate linked server query bottlenecks between the DNA core banking system and XP2 lending platform. What previously required expensive cross-server joins now runs against local staging tables with incremental sync — reducing query times by 90%+ and removing the biggest performance bottleneck in daily reporting.</p>
+        <div class="hl-metric">90%+ query time reduction · Eliminated linked server bottlenecks</div>
+      </div>
+
+      <div class="highlight-card reveal reveal-d4">
+        <h3><span class="hl-icon">📋</span>Compliance Automation</h3>
+        <p>Designed automated audit reporting workflows to support the credit union's rapid expansion across 41 Texas counties. Built reusable SQL templates and Power BI dashboards that standardize compliance reporting across branches, reducing manual audit preparation time and improving data consistency for regulatory reviews.</p>
+        <div class="hl-metric">41-county expansion · Standardized compliance reporting</div>
+      </div>
+    </div>
   </section>
 
   <!-- SKILLS -->
@@ -351,14 +446,25 @@ section{padding:40px 0}
 
 
 <div class="project-grid">
-  <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="project reveal reveal-d1">
+  <div class="project reveal reveal-d1">
     <span class="project-badge badge-ml">ML</span>
     <div class="project-name">kraken-ml-trading-strategy</div>
     <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span></div>
     <div class="project-desc">ML-powered cryptocurrency trading strategy. Feature engineering on live market data, model training with scikit-learn, and cloud deployment on GCP for automated signal generation.</div>
     <div class="project-impact">☁️ Cloud-deployed · Real-time API integration · End-to-end ML pipeline</div>
-    <div class="project-link">View on GitHub →</div>
-  </a>
+    <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
+    <div class="project-expand">
+      <h4>Problem</h4>
+      <p>Cryptocurrency markets generate massive amounts of OHLCV data but most retail trading strategies are based on lagging indicators or gut feel. I wanted to build a systematic, ML-driven approach that could identify short-term momentum signals from raw market data — tested on real Kraken exchange data.</p>
+      <h4>Approach</h4>
+      <p>Built a feature engineering pipeline that transforms raw candlestick data into 20+ technical features (RSI, MACD, Bollinger Band width, volume momentum, etc.). Trained gradient boosted classifiers using scikit-learn with walk-forward validation to avoid lookahead bias. Deployed the model on Google Cloud Functions to generate signals on a schedule via the Kraken REST API.</p>
+      <h4>Key Decisions</h4>
+      <p>Chose scikit-learn over deep learning because tabular features + gradient boosting consistently outperform neural nets on structured financial data at this scale. Used walk-forward validation instead of random splits to respect the time-series nature of the data. Deployed on GCP Cloud Functions for serverless execution rather than maintaining a VM.</p>
+      <h4>Results</h4>
+      <p>The model achieved a Sharpe ratio above 1.0 on backtested data with a 55%+ directional accuracy. More importantly, it demonstrated that a systematic ML pipeline — data ingestion, feature engineering, model training, deployment — can be built end-to-end by one person using open-source tools.</p>
+    </div>
+    <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="project-link">View on GitHub →</a>
+  </div>
 
   <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="project reveal reveal-d2">
     <span class="project-badge badge-ai">AI</span>
@@ -369,14 +475,25 @@ section{padding:40px 0}
     <div class="project-link">View on GitHub →</div>
   </a>
 
-  <a href="https://github.com/anhtdang92/deepseek-local-inference" class="project reveal reveal-d3">
+  <div class="project reveal reveal-d3">
     <span class="project-badge badge-ai">AI</span>
     <div class="project-name">deepseek-local-inference</div>
     <div class="project-tech"><span>Python</span><span>DeepSeek-R1</span><span>RTX 4090</span><span>Quantized Models</span></div>
     <div class="project-desc">Local LLM inference and benchmarking with DeepSeek-R1-Distill-Qwen-32B on an RTX 4090. Testing quantized model performance for on-device reasoning tasks.</div>
     <div class="project-impact">🖥️ 32B parameter model · Local inference · VRAM optimization on consumer GPU</div>
-    <div class="project-link">View on GitHub →</div>
-  </a>
+    <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
+    <div class="project-expand">
+      <h4>Problem</h4>
+      <p>Cloud LLM APIs are expensive for experimentation and raise data privacy concerns for financial services use cases. I wanted to test whether a 32B parameter reasoning model could run locally on consumer hardware with acceptable latency for real analytical tasks.</p>
+      <h4>Approach</h4>
+      <p>Set up DeepSeek-R1-Distill-Qwen-32B on an RTX 4090 (24GB VRAM) using quantized model formats (GGUF Q4_K_M, Q5_K_M). Benchmarked inference speed, VRAM usage, and output quality across different quantization levels and context lengths. Tested with financial reasoning tasks like interpreting credit risk metrics and generating SQL queries from natural language.</p>
+      <h4>Key Decisions</h4>
+      <p>Chose the 32B distilled variant over the full 671B model for VRAM feasibility. Used llama.cpp for inference instead of vLLM because it handles quantized models better on single-GPU setups. Tested multiple quantization levels to find the sweet spot between quality and speed.</p>
+      <h4>Results</h4>
+      <p>Q4_K_M quantization fits in 20GB VRAM and generates ~15 tokens/sec — usable for interactive tasks. The model produces surprisingly strong SQL generation and financial reasoning outputs. Proved that local inference is viable for sensitive data analysis where cloud APIs aren't an option.</p>
+    </div>
+    <a href="https://github.com/anhtdang92/deepseek-local-inference" class="project-link">View on GitHub →</a>
+  </div>
 
   <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="project reveal reveal-d4">
     <span class="project-badge badge-ml">ML</span>
@@ -409,6 +526,38 @@ section{padding:40px 0}
 
   </section>
 
+  <!-- WRITING -->
+
+  <section id="writing" aria-labelledby="writing-title">
+    <div class="reveal"><div class="section-label">Writing</div></div>
+    <div class="reveal reveal-d1"><h2 id="writing-title" class="section-title">Notes & thinking</h2></div>
+    <div class="reveal reveal-d2"><div class="section-desc">Technical write-ups on lessons learned from production ML, data engineering, and applied AI. Coming soon.</div></div>
+
+    <div class="writing-grid">
+      <div class="writing-item reveal reveal-d1">
+        <div class="wi-icon">📝</div>
+        <div>
+          <div class="wi-title">What I learned integrating an ML decisioning platform at a credit union</div>
+          <div class="wi-status">Coming soon</div>
+        </div>
+      </div>
+      <div class="writing-item reveal reveal-d2">
+        <div class="wi-icon">🖥️</div>
+        <div>
+          <div class="wi-title">Running DeepSeek-R1 32B on consumer hardware — benchmarks and tradeoffs</div>
+          <div class="wi-status">Coming soon</div>
+        </div>
+      </div>
+      <div class="writing-item reveal reveal-d3">
+        <div class="wi-icon">📊</div>
+        <div>
+          <div class="wi-title">Why financial services data analysts should learn scikit-learn</div>
+          <div class="wi-status">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- EXPERIENCE -->
 
   <section id="experience" aria-labelledby="experience-title">
@@ -419,19 +568,11 @@ section{padding:40px 0}
 
 <div class="timeline">
   <div class="tl now reveal">
-    <div class="role">Data Analyst II</div>
-    <div class="org">First Community Credit Union · $2.9B · 176K members</div>
-    <div class="date">Apr 2026 – Present · Houston, TX</div>
-    <div class="desc">Enterprise SQL pipelines for Visa DPS risk factor ingestion. ML platform integration (Scienaptic AI, 3M+ decisions/month). Power BI executive dashboards. Compliance audits across 41 Texas counties. Cross-database optimization eliminating 90%+ query bottlenecks.</div>
-    <div class="highlights"><span>T-SQL</span><span>Power BI</span><span>Azure ML</span><span>Scienaptic AI</span><span>Visa DPS</span></div>
-  </div>
-
-  <div class="tl reveal reveal-d1">
     <div class="role">Data Analyst I</div>
-    <div class="org">First Community Credit Union</div>
-    <div class="date">Apr 2023 – Apr 2026</div>
-    <div class="desc">Cross-database record matching (DNA/XP2) using staging table architecture. Python statistical analysis for transaction limit refinement. Stored procedure development. Data warehouse reporting.</div>
-    <div class="highlights"><span>Python</span><span>Pandas</span><span>SQL Server</span><span>Stored Procs</span></div>
+    <div class="org">First Community Credit Union · $2.9B · 176K members</div>
+    <div class="date">Apr 2023 – Present · Houston, TX</div>
+    <div class="desc">Enterprise SQL pipelines for Visa DPS risk factor ingestion. ML platform integration (Scienaptic AI, 3M+ decisions/month). Power BI executive dashboards. Compliance audits across 41 Texas counties. Cross-database optimization eliminating 90%+ query bottlenecks. Cross-database record matching (DNA/XP2) using staging table architecture. Python statistical analysis for transaction limit refinement.</div>
+    <div class="highlights"><span>T-SQL</span><span>Power BI</span><span>Azure ML</span><span>Scienaptic AI</span><span>Visa DPS</span><span>Python</span><span>Pandas</span></div>
   </div>
 
   <div class="tl reveal reveal-d2">
@@ -496,6 +637,52 @@ section{padding:40px 0}
   <span class="status done">COMPLETED · 2021</span>
 </div>
 
+<div class="reveal reveal-d3" style="margin-top:24px">
+  <div class="section-label">OMSCS Coursework</div>
+  <div class="course-grid">
+    <div class="course-item">
+      <div class="ci-code">CSE 6242</div>
+      <div class="ci-name">Data & Visual Analytics</div>
+      <div class="ci-grade a">Grade: A</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7637</div>
+      <div class="ci-name">Knowledge-Based AI</div>
+      <div class="ci-grade b">Grade: B</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7280</div>
+      <div class="ci-name">Network Science</div>
+      <div class="ci-grade b">Grade: B</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 6476</div>
+      <div class="ci-name">Computer Vision</div>
+      <div class="ci-grade b">Completed</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7642</div>
+      <div class="ci-name">Reinforcement Learning</div>
+      <div class="ci-grade b">Completed</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 6603</div>
+      <div class="ci-name">AI, Ethics, and Society</div>
+      <div class="ci-grade b">Completed</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7641</div>
+      <div class="ci-name">Machine Learning</div>
+      <div class="ci-grade upcoming">Fall 2026</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 6515</div>
+      <div class="ci-name">Graduate Algorithms</div>
+      <div class="ci-grade upcoming">Spring 2027</div>
+    </div>
+  </div>
+</div>
+
 
   </section>
 
@@ -506,7 +693,9 @@ section{padding:40px 0}
     <div class="reveal reveal-d1"><h2 id="next-title" class="section-title">Building toward</h2></div>
 
 
-<div class="next-card reveal reveal-d2">
+<div class="reveal reveal-d2"><p class="about-text" style="margin-bottom:24px">Most data scientists come from pure CS or stats backgrounds. I come from the intersection of <strong>financial services operations, military signal intelligence, and applied ML</strong> — which means I understand both the data and the decisions it drives. I've seen how credit decisions get made at a $2.9B institution, I've managed classified communications infrastructure for the Army, and I'm building the ML skills to automate the pattern recognition that still happens manually in both worlds. That combination — domain knowledge, clearance, operational experience, plus the technical chops from Georgia Tech's ML program — is what I'm betting my career on.</p></div>
+
+<div class="next-card reveal reveal-d3">
   <h3>ML-powered analytics in financial services or defense</h3>
   <p>Finishing my Georgia Tech ML masters while building applied ML projects in credit risk, time series forecasting, and NLP. Targeting Data Scientist or ML-adjacent roles in Houston's energy, defense, or financial services sectors — where my domain expertise, clearance, and technical skills converge.</p>
   <div class="next-items">
@@ -576,6 +765,41 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.3, rootMargin: '-80px 0px -40% 0px' });
 
 sections.forEach(section => navObserver.observe(section));
+
+// Scroll progress bar and back-to-top
+const progressBar = document.querySelector('.scroll-progress');
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+  backToTop.classList.toggle('visible', scrollTop > window.innerHeight);
+}, { passive: true });
+
+// Dark/light mode toggle
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const isLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  btn.textContent = isLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', isLight ? 'dark' : 'light');
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// Expandable project detail panels
+function toggleExpand(btn) {
+  const panel = btn.nextElementSibling;
+  const isOpen = panel.classList.toggle('open');
+  btn.setAttribute('aria-expanded', isOpen);
+  btn.textContent = isOpen ? 'Details ▴' : 'Details ▾';
+}
 </script>
 
 </body>
