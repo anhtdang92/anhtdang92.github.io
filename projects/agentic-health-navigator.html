@@ -9,6 +9,7 @@
 <meta property="og:description" content="iOS health app with on-device ML. Real-time biometric monitoring and personalized insights using HealthKit and Core ML.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://anhtdang92.github.io/projects/agentic-health-navigator.html">
+<meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/agentic-health-navigator.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,10 +19,10 @@
 <style>
 .project-hero{padding:120px 0 40px;text-align:center}.project-hero .project-badge{margin-bottom:16px;font-size:12px;padding:4px 14px}.project-hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;color:#fff;font-family:var(--mono);margin-bottom:16px;animation:fadeUp 0.6s ease 0.1s both}.project-hero .project-desc{font-size:17px;max-width:620px;margin:0 auto 16px;color:var(--text);line-height:1.8;animation:fadeUp 0.6s ease 0.2s both}.project-hero .project-impact{font-family:var(--mono);font-size:13px;color:var(--green);animation:fadeUp 0.6s ease 0.25s both}.project-hero .tech-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;animation:fadeUp 0.6s ease 0.15s both}.project-hero .tech-tags span{font-family:var(--mono);font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--muted)}
 .project-links{display:flex;gap:12px;justify-content:center;margin-top:24px;animation:fadeUp 0.6s ease 0.3s both}.project-links a{font-family:var(--mono);font-size:13px;padding:10px 24px;border-radius:8px;border:1px solid var(--border);color:var(--text);transition:all 0.3s}.project-links a:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,135,0.05);transform:translateY(-2px)}.project-links a.primary{background:var(--green);color:var(--bg);border-color:var(--green);font-weight:700}.project-links a.primary:hover{background:#33ff99;box-shadow:0 4px 20px rgba(0,255,135,0.3)}.project-links a.back{border-color:var(--muted);color:var(--muted)}.project-links a.back:hover{border-color:var(--cyan);color:var(--cyan)}
-.writeup{padding:48px 0}.writeup h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}.writeup h3 .w-icon{font-size:22px}.writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}.writeup p strong{color:#fff;font-weight:600}.writeup-section{padding:32px 0;border-top:1px solid var(--border)}.writeup-section:first-child{border-top:none}
+.writeup{padding:48px 0}.writeup h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}.writeup h2 .w-icon{font-size:22px}.writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}.writeup p strong{color:#fff;font-weight:600}.writeup-section{padding:32px 0;border-top:1px solid var(--border)}.writeup-section:first-child{border-top:none}
 .tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}.tech-card{padding:16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}.tech-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);transition:none}.tech-card:hover::after{animation:shimmer 0.6s ease}.tech-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,212,255,0.08)}.tech-card .tech-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text)}.tech-card .tech-cat{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}.tech-card .tech-icon{font-size:24px;margin-bottom:8px;display:block}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),var(--orange));margin:0 auto;border-radius:2px}
-[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h3{color:#1a1a2e}
+[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2{color:#1a1a2e}
 @media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}}
 </style>
 </head>
@@ -65,26 +66,26 @@
 
   <section class="writeup" aria-label="Project details">
     <div class="writeup-section reveal">
-      <h3><span class="w-icon">🎯</span> Problem</h3>
+      <h2><span class="w-icon">🎯</span> Problem</h2>
       <p>Health data from Apple Watch and iPhone stays siloed in HealthKit — users see raw numbers (heart rate, steps, sleep) but get no contextual analysis. A resting heart rate of 72 BPM means nothing without knowing your trend, your sleep quality, or your recent activity level.</p>
       <p>I wanted to build an <strong>agentic system</strong> that interprets biometric patterns across multiple data streams and delivers actionable health insights, all processed <strong>entirely on-device</strong> for privacy.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d1">
-      <h3><span class="w-icon">🔧</span> Approach</h3>
+      <h2><span class="w-icon">🔧</span> Approach</h2>
       <p>Built a native Swift iOS app integrating with <strong>HealthKit APIs</strong> to pull real-time biometric data — heart rate, HRV, steps, sleep stages, blood oxygen. The app monitors these streams continuously and builds a rolling profile of the user's health baselines.</p>
       <p>Implemented <strong>on-device ML models using Core ML</strong> to analyze trends and detect anomalies. The agentic layer synthesizes multiple data streams into personalized health recommendations — for example, detecting that elevated resting heart rate combined with poor sleep quality suggests overtraining.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d2">
-      <h3><span class="w-icon">🧠</span> Key Decisions</h3>
+      <h2><span class="w-icon">🧠</span> Key Decisions</h2>
       <p>Chose <strong>on-device inference over cloud APIs</strong> to keep sensitive health data private — no data leaves the phone. Health data is among the most sensitive personal information, and users shouldn't have to trust a third-party server with their biometrics.</p>
       <p>Used <strong>Core ML for model deployment</strong> rather than TensorFlow Lite for tighter iOS integration. Core ML integrates natively with the Apple Neural Engine and GPU, providing better performance and battery efficiency on Apple silicon.</p>
       <p>Designed the <strong>agentic architecture to reason across multiple biometric signals</strong> rather than analyzing each in isolation. Heart rate, sleep, activity, and HRV are interconnected — an elevated heart rate means different things depending on whether you just exercised, slept poorly, or are getting sick.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d3">
-      <h3><span class="w-icon">🛠️</span> Tech Stack</h3>
+      <h2><span class="w-icon">🛠️</span> Tech Stack</h2>
       <div class="tech-grid">
         <div class="tech-card"><span class="tech-icon">🍎</span><div class="tech-name">Swift</div><div class="tech-cat">Language</div></div>
         <div class="tech-card"><span class="tech-icon">❤️</span><div class="tech-name">HealthKit</div><div class="tech-cat">Data Source</div></div>
@@ -100,7 +101,7 @@
 
   <section style="padding:48px 0;text-align:center" class="reveal">
     <div class="section-label">Source Code</div>
-    <h2 class="section-title" style="margin-bottom:16px">Explore the full codebase</h2>
+    <h3 class="section-title" style="margin-bottom:16px">Explore the full codebase</h3>
     <div class="project-links" style="animation:none">
       <a href="https://github.com/anhtdang92/agentic-health-navigator" class="primary">View on GitHub &rarr;</a>
       <a href="../index.html#projects" class="back">&larr; Back to Portfolio</a>

@@ -9,6 +9,7 @@
 <meta property="og:description" content="ML-powered cryptocurrency trading strategy. Feature engineering on live market data, model training with scikit-learn, and cloud deployment on GCP.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://anhtdang92.github.io/projects/kraken-ml-trading-strategy.html">
+<meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/kraken-ml-trading-strategy.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,8 +35,8 @@
 
 /* WRITEUP */
 .writeup{padding:48px 0}
-.writeup h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.writeup h3 .w-icon{font-size:22px}
+.writeup h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.writeup h2 .w-icon{font-size:22px}
 .writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}
 .writeup p strong{color:#fff;font-weight:600}
 .writeup-section{padding:32px 0;border-top:1px solid var(--border)}
@@ -61,7 +62,7 @@
 /* SEPARATOR */
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));margin:0 auto;border-radius:2px}
 
-[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h3{color:#1a1a2e}
+[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2{color:#1a1a2e}
 @media(max-width:600px){
 .project-hero{padding:80px 0 30px}
 .project-hero h1{font-size:22px}
@@ -115,26 +116,26 @@
 
   <section class="writeup" aria-label="Project details">
     <div class="writeup-section reveal">
-      <h3><span class="w-icon">🎯</span> Problem</h3>
+      <h2><span class="w-icon">🎯</span> Problem</h2>
       <p>Cryptocurrency markets generate massive amounts of OHLCV data but most retail trading strategies are based on lagging indicators or gut feel. I wanted to build a systematic, ML-driven approach that could identify short-term momentum signals from raw market data — tested on real Kraken exchange data.</p>
       <p>The goal wasn't to build a get-rich-quick bot. It was to prove that a <strong>rigorous, end-to-end ML pipeline</strong> — from data ingestion through feature engineering, model training, and cloud deployment — could be built by one person using open-source tools, producing measurably better-than-random directional predictions.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d1">
-      <h3><span class="w-icon">🔧</span> Approach</h3>
+      <h2><span class="w-icon">🔧</span> Approach</h2>
       <p>Built a feature engineering pipeline that transforms raw candlestick data into <strong>20+ technical features</strong> (RSI, MACD, Bollinger Band width, volume momentum, etc.). Trained gradient boosted classifiers using scikit-learn with walk-forward validation to avoid lookahead bias.</p>
       <p>Deployed the model on <strong>Google Cloud Functions</strong> to generate signals on a schedule via the Kraken REST API. The pipeline runs serverless — no VM to maintain, automatic scaling, and cost-efficient execution for periodic inference.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d2">
-      <h3><span class="w-icon">🧠</span> Key Decisions</h3>
+      <h2><span class="w-icon">🧠</span> Key Decisions</h2>
       <p>Chose <strong>scikit-learn over deep learning</strong> because tabular features + gradient boosting consistently outperform neural nets on structured financial data at this scale. The research literature backs this up — XGBoost/LightGBM dominate Kaggle tabular competitions for a reason.</p>
       <p>Used <strong>walk-forward validation</strong> instead of random splits to respect the time-series nature of the data. Random cross-validation on time-series data creates lookahead bias and produces artificially inflated metrics that collapse in live deployment.</p>
       <p>Deployed on <strong>GCP Cloud Functions</strong> for serverless execution rather than maintaining a VM. This keeps costs near-zero during development while providing a production-ready deployment path.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d3">
-      <h3><span class="w-icon">📊</span> Results</h3>
+      <h2><span class="w-icon">📊</span> Results</h2>
       <div class="metrics-row">
         <div class="metric"><div class="m-value" style="color:var(--green)">&gt;1.0</div><div class="m-label">Sharpe Ratio</div></div>
         <div class="metric"><div class="m-value" style="color:var(--cyan)">55%+</div><div class="m-label">Directional Accuracy</div></div>
@@ -144,7 +145,7 @@
     </div>
 
     <div class="writeup-section reveal reveal-d4">
-      <h3><span class="w-icon">🛠️</span> Tech Stack</h3>
+      <h2><span class="w-icon">🛠️</span> Tech Stack</h2>
       <div class="tech-grid">
         <div class="tech-card"><span class="tech-icon">🐍</span><div class="tech-name">Python</div><div class="tech-cat">Language</div></div>
         <div class="tech-card"><span class="tech-icon">🤖</span><div class="tech-name">scikit-learn</div><div class="tech-cat">ML Framework</div></div>
@@ -160,7 +161,7 @@
 
   <section style="padding:48px 0;text-align:center" class="reveal">
     <div class="section-label">Source Code</div>
-    <h2 class="section-title" style="margin-bottom:16px">Explore the full codebase</h2>
+    <h3 class="section-title" style="margin-bottom:16px">Explore the full codebase</h3>
     <div class="project-links" style="animation:none">
       <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="primary">View on GitHub &rarr;</a>
       <a href="../index.html#projects" class="back">&larr; Back to Portfolio</a>
