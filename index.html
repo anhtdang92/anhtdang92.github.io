@@ -491,6 +491,52 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 /* Footer terminal style */
 .footer-build{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:8px;opacity:0.5;letter-spacing:0.5px}
 .footer-build::before{content:'> ';color:var(--green)}
+
+/* CAREER VALUE BANNER */
+.value-banner{margin:32px 0;padding:24px;background:linear-gradient(135deg,rgba(224,64,251,0.08),rgba(0,212,255,0.06),rgba(0,255,135,0.05));border-radius:16px;border:1px solid rgba(224,64,251,0.2);position:relative;overflow:hidden}
+.value-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green),var(--gold));background-size:300% 100%;animation:valueBorderFlow 4s ease infinite}
+@keyframes valueBorderFlow{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
+.value-banner-title{font-family:var(--mono);font-size:12px;letter-spacing:3px;color:var(--purple);text-transform:uppercase;margin-bottom:12px}
+.value-pills{display:flex;gap:8px;flex-wrap:wrap}
+.value-pill{font-family:var(--mono);font-size:12px;padding:6px 14px;border-radius:20px;border:1px solid;transition:all 0.3s;cursor:default}
+.value-pill:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.value-pill.clearance{border-color:rgba(0,255,135,0.4);color:var(--green);background:rgba(0,255,135,0.06)}
+.value-pill.clearance:hover{background:rgba(0,255,135,0.12);box-shadow:0 0 20px rgba(0,255,135,0.2)}
+.value-pill.degree{border-color:rgba(224,64,251,0.4);color:var(--purple);background:rgba(224,64,251,0.06)}
+.value-pill.degree:hover{background:rgba(224,64,251,0.12);box-shadow:0 0 20px rgba(224,64,251,0.2)}
+.value-pill.sector{border-color:rgba(0,212,255,0.4);color:var(--cyan);background:rgba(0,212,255,0.06)}
+.value-pill.sector:hover{background:rgba(0,212,255,0.12);box-shadow:0 0 20px rgba(0,212,255,0.2)}
+.value-pill.tech{border-color:rgba(255,208,0,0.4);color:var(--gold);background:rgba(255,208,0,0.06)}
+.value-pill.tech:hover{background:rgba(255,208,0,0.12);box-shadow:0 0 20px rgba(255,208,0,0.2)}
+[data-theme="light"] .value-banner{background:linear-gradient(135deg,rgba(155,48,255,0.05),rgba(0,136,170,0.04),rgba(0,153,77,0.03))}
+
+/* CAREER TRAJECTORY CHART */
+.trajectory-chart{margin:24px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);position:relative;overflow:hidden}
+.trajectory-chart::before{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+.trajectory-title{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:16px}
+.trajectory-svg{width:100%;height:auto;display:block}
+[data-theme="light"] .trajectory-chart{background:rgba(255,255,255,0.55)}
+.traj-line{stroke-dasharray:1200;stroke-dashoffset:1200;transition:stroke-dashoffset 2s cubic-bezier(0.23,1,0.32,1)}
+.trajectory-chart.visible .traj-line{stroke-dashoffset:0}
+.traj-dot{opacity:0;transition:opacity 0.4s ease}
+.trajectory-chart.visible .traj-dot{opacity:1}
+.trajectory-chart.visible .traj-dot:nth-child(4){transition-delay:0.3s}
+.trajectory-chart.visible .traj-dot:nth-child(5){transition-delay:0.6s}
+.trajectory-chart.visible .traj-dot:nth-child(6){transition-delay:0.9s}
+.trajectory-chart.visible .traj-dot:nth-child(7){transition-delay:1.2s}
+.trajectory-chart.visible .traj-dot:nth-child(8){transition-delay:1.5s}
+
+/* IMPACT NUMBERS ROW */
+.impact-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}
+.impact-card{padding:20px 16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.impact-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 30%,rgba(0,212,255,0.04),transparent 70%);opacity:0;transition:opacity 0.3s}
+.impact-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,212,255,0.1)}
+.impact-card:hover::after{opacity:1}
+.impact-num{font-size:36px;font-weight:900;font-family:var(--ff);margin-bottom:4px;background:linear-gradient(135deg,var(--cyan),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.impact-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.impact-sub{font-size:13px;color:var(--text);margin-top:4px}
+[data-theme="light"] .impact-card{background:rgba(255,255,255,0.55)}
+@media(max-width:600px){.impact-row{grid-template-columns:1fr}.value-pills{justify-content:center}}
 </style>
 
 </head>
@@ -532,7 +578,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 
   <!-- HERO -->
 
-  <section class="hero" aria-label="Introduction">
+  <canvas id="heroParticles" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
+  <section class="hero" aria-label="Introduction" style="position:relative;z-index:1">
     <div class="hero-avatar" aria-hidden="true">AD</div>
     <div class="hero-label">ML Engineer · Data Scientist · Army Signal Officer</div>
     <h1>Anh <span class="accent">Dang</span></h1>
@@ -583,13 +630,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
   <section id="about" aria-labelledby="about-title">
     <div class="reveal visible"><div class="section-label">About</div></div>
     <div class="reveal reveal-d1 visible"><h2 id="about-title" class="section-title">The short version</h2></div>
-    <div class="reveal reveal-d2 visible"><div class="section-desc">5 years building production data systems. 5 years of military officer leadership. One direction: ML engineering at scale.</div></div>
+    <div class="reveal reveal-d2 visible"><div class="section-desc"><span id="da-years">5</span>+ years building production data systems. <span id="mil-years">4</span>+ years of military officer leadership. One direction: ML engineering at scale.</div></div>
 
 
 <div class="stats-ring-row">
   <div class="stat-ring reveal reveal-d1">
-    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--green)" data-pct="50"/></svg>
-    <span class="ring-value" style="color:var(--green)">5</span>
+    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--green)" id="ring-da-fill" data-pct="50"/></svg>
+    <span class="ring-value" style="color:var(--green)" id="ring-da-val">5</span>
     <span class="ring-label">Years Data Eng</span>
   </div>
   <div class="stat-ring reveal reveal-d2">
@@ -633,9 +680,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 </div>
 
 <div class="reveal"><p class="about-text">I build production data pipelines, integrate ML platforms, and engineer analytics systems at a <strong>$2.9B financial institution</strong>. I've integrated an <strong>ML credit decisioning engine processing 3M+ decisions/month</strong>, built enterprise ETL pipelines for <strong>real-time fraud risk ingestion</strong>, and designed cross-database architectures that reduced query times by <strong>90%+</strong>. My work sits at the intersection of data engineering, applied ML, and domain expertise.</p></div>
-<div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading communications, cybersecurity, and IT operations for a 60+ soldier unit. Five years of military officer leadership with an <strong>active Secret clearance</strong>, experience in classified environments, and the operational discipline that defense and government employers value.</p></div>
+<div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading communications, cybersecurity, and IT operations for a 60+ soldier unit. <strong><span id="mil-years-2">4</span>+ years</strong> of military officer leadership with an <strong>active Secret clearance</strong>, experience in classified environments, and the operational discipline that defense and government employers value.</p></div>
 
-<div class="gh-heatmap reveal reveal-d2">
+<div class="value-banner reveal reveal-d2">
+  <div class="value-banner-title">Why Hire Me</div>
+  <div class="value-pills">
+    <span class="value-pill clearance">Secret Clearance (Active)</span>
+    <span class="value-pill degree">Georgia Tech MSCS · ML</span>
+    <span class="value-pill sector">FAANG · Defense · FinTech</span>
+    <span class="value-pill tech">Production ML Systems</span>
+    <span class="value-pill clearance">U.S. Army Officer</span>
+    <span class="value-pill sector">Open to Relocation</span>
+  </div>
+</div>
+
+<div class="gh-heatmap reveal reveal-d3">
   <div class="gh-heatmap-title">
     <span>Coding Activity — Past 12 Months</span>
     <span class="gh-total" id="gh-total">0 contributions</span>
@@ -662,6 +721,63 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="reveal"><div class="section-label">Work Highlights</div></div>
     <div class="reveal reveal-d1"><h2 id="highlights-title" class="section-title">Highest-impact work</h2></div>
     <div class="reveal reveal-d2"><div class="section-desc">Professional accomplishments in financial services data analytics — no proprietary data, just outcomes.</div></div>
+
+    <div class="impact-row">
+      <div class="impact-card reveal reveal-d1">
+        <div class="impact-num" id="impact-decisions">$2.9B</div>
+        <div class="impact-label">Institution AUM</div>
+        <div class="impact-sub">ML-powered decisioning</div>
+      </div>
+      <div class="impact-card reveal reveal-d2">
+        <div class="impact-num">176K</div>
+        <div class="impact-label">Members Impacted</div>
+        <div class="impact-sub">Credit decisioning reach</div>
+      </div>
+      <div class="impact-card reveal reveal-d3">
+        <div class="impact-num">41</div>
+        <div class="impact-label">County Expansion</div>
+        <div class="impact-sub">Compliance automation</div>
+      </div>
+    </div>
+
+    <div class="trajectory-chart reveal reveal-d2">
+      <div class="trajectory-title">Career Trajectory</div>
+      <svg class="trajectory-svg" viewBox="0 0 700 160" role="img" aria-label="Career trajectory showing progression from intern to Data Analyst II with military service in parallel">
+        <!-- Grid lines -->
+        <line x1="60" y1="20" x2="60" y2="130" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4"/>
+        <line x1="200" y1="20" x2="200" y2="130" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4"/>
+        <line x1="340" y1="20" x2="340" y2="130" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4"/>
+        <line x1="480" y1="20" x2="480" y2="130" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4"/>
+        <line x1="620" y1="20" x2="620" y2="130" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4"/>
+        <!-- Civilian track -->
+        <polyline fill="none" stroke="url(#trajGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="60,110 200,95 340,70 480,50 620,30" class="traj-line"/>
+        <defs><linearGradient id="trajGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--cyan)"/><stop offset="100%" stop-color="var(--green)"/></linearGradient></defs>
+        <!-- Dots -->
+        <circle cx="60" cy="110" r="5" fill="var(--cyan)" class="traj-dot"/>
+        <circle cx="200" cy="95" r="5" fill="var(--cyan)" class="traj-dot"/>
+        <circle cx="340" cy="70" r="5" fill="var(--cyan)" class="traj-dot"/>
+        <circle cx="480" cy="50" r="6" fill="var(--green)" class="traj-dot"/>
+        <circle cx="620" cy="30" r="7" fill="var(--green)" stroke="var(--green)" stroke-width="2" stroke-opacity="0.3" class="traj-dot"/>
+        <!-- Military parallel track -->
+        <polyline fill="none" stroke="var(--purple)" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" points="340,120 480,105 620,85"/>
+        <circle cx="340" cy="120" r="4" fill="var(--purple)"/>
+        <circle cx="480" cy="105" r="4" fill="var(--purple)"/>
+        <circle cx="620" cy="85" r="5" fill="var(--purple)" stroke="var(--purple)" stroke-width="2" stroke-opacity="0.3"/>
+        <!-- Labels -->
+        <text x="60" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">Intern</text>
+        <text x="200" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">IT DA</text>
+        <text x="340" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">DA I</text>
+        <text x="480" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">DA II</text>
+        <text x="620" y="150" fill="var(--green)" font-family="var(--mono)" font-size="10" text-anchor="middle" font-weight="700">ML Eng</text>
+        <!-- Military labels -->
+        <text x="340" y="138" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">2LT</text>
+        <text x="480" y="138" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">1LT</text>
+        <text x="620" y="100" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">S6 OIC</text>
+        <!-- Legend -->
+        <line x1="20" y1="12" x2="45" y2="12" stroke="var(--cyan)" stroke-width="2"/><text x="50" y="15" fill="var(--muted)" font-family="var(--mono)" font-size="9">Civilian</text>
+        <line x1="110" y1="12" x2="135" y2="12" stroke="var(--purple)" stroke-width="2" stroke-dasharray="4,3"/><text x="140" y="15" fill="var(--muted)" font-family="var(--mono)" font-size="9">Military</text>
+      </svg>
+    </div>
 
     <div class="highlight-grid">
       <div class="highlight-card reveal reveal-d1">
@@ -1113,13 +1229,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     </div>
     <div class="next-item">
       <div class="ni-label">Target Roles</div>
-      <div class="ni-value">ML Engineer · Data Scientist</div>
-      <div class="ni-date">Open to relocation</div>
+      <div class="ni-value">ML Engineer · MLE · Data Scientist</div>
+      <div class="ni-date">IC or Tech Lead · Remote/Hybrid/Onsite</div>
     </div>
     <div class="next-item">
-      <div class="ni-label">Sectors</div>
-      <div class="ni-value">Tech · Defense · Finance · Energy</div>
-      <div class="ni-date">Clearance eligible</div>
+      <div class="ni-label">Top Sectors</div>
+      <div class="ni-value">FAANG · Defense · FinTech · Energy</div>
+      <div class="ni-date">Secret Clearance · Open to relocation</div>
     </div>
   </div>
 </div>
@@ -1143,6 +1259,37 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
   </footer>
 
 <script>
+// DYNAMIC DATE CALCULATIONS — never hardcode years or age
+(function() {
+  const now = new Date();
+  // Data engineering career start: Aug 2021 (IT Data Analyst)
+  const daStart = new Date(2021, 7, 1); // Aug 2021
+  const daYears = Math.floor((now - daStart) / (365.25 * 24 * 60 * 60 * 1000));
+  // Military officer career start: Jul 2022
+  const milStart = new Date(2022, 6, 1); // Jul 2022
+  const milYears = Math.floor((now - milStart) / (365.25 * 24 * 60 * 60 * 1000));
+  // Ring percentage: scale years (10 years = 100%)
+  const daPct = Math.min(100, Math.round(daYears / 10 * 100));
+
+  // Update section-desc
+  const daEl = document.getElementById('da-years');
+  const milEl = document.getElementById('mil-years');
+  const milEl2 = document.getElementById('mil-years-2');
+  if (daEl) daEl.textContent = daYears;
+  if (milEl) milEl.textContent = milYears;
+  if (milEl2) milEl2.textContent = milYears;
+
+  // Update stat ring value + percentage
+  const ringVal = document.getElementById('ring-da-val');
+  const ringFill = document.getElementById('ring-da-fill');
+  if (ringVal) ringVal.textContent = daYears;
+  if (ringFill) ringFill.dataset.pct = daPct;
+
+  // Update footer year
+  const footerYear = document.querySelector('.footer-text[style]');
+  if (footerYear) footerYear.textContent = 'Anh Dang · Houston, TX · ' + now.getFullYear();
+})();
+
 // Scroll-triggered reveal animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
@@ -1268,6 +1415,17 @@ if (kpiStrip) {
     });
   }, { threshold: 0.3 });
   kpiObserver.observe(kpiStrip);
+}
+
+// TRAJECTORY CHART animation on scroll
+const trajChart = document.querySelector('.trajectory-chart');
+if (trajChart) {
+  const trajObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.3 });
+  trajObserver.observe(trajChart);
 }
 
 // === FUTURISTIC ENHANCEMENTS ===
@@ -1594,6 +1752,84 @@ document.querySelectorAll('a[href^="projects/"]').forEach(link => {
     });
   }, { threshold: 0.3 });
   document.querySelectorAll('.kpi-strip').forEach(strip => kpiObserver.observe(strip));
+})();
+
+// HERO PARTICLE CONSTELLATION
+(function() {
+  const canvas = document.getElementById('heroParticles');
+  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  let W, H, particles = [];
+  const PARTICLE_COUNT = 60;
+  const CONNECT_DIST = 120;
+  const colors = ['#e040fb','#00d4ff','#00ff87','#ffd000','#bf5fff'];
+
+  function resize() {
+    const container = canvas.parentElement;
+    W = container.offsetWidth;
+    H = Math.min(container.offsetHeight, window.innerHeight);
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.scale(dpr, dpr);
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * W,
+        y: Math.random() * H,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        r: Math.random() * 2 + 0.5,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        alpha: Math.random() * 0.4 + 0.1
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // Connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < CONNECT_DIST) {
+          const opacity = (1 - dist / CONNECT_DIST) * 0.12;
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(0,212,255,${opacity})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+    }
+    // Particles
+    for (const p of particles) {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  init();
+  draw();
+  window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
 })();
 </script>
 
