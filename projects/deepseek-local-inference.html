@@ -9,6 +9,7 @@
 <meta property="og:description" content="Running a 32B parameter LLM locally on consumer hardware. Benchmarking quantized model performance on an RTX 4090.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://anhtdang92.github.io/projects/deepseek-local-inference.html">
+<meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/deepseek-local-inference.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,8 +32,8 @@
 .project-links a.back{border-color:var(--muted);color:var(--muted)}
 .project-links a.back:hover{border-color:var(--cyan);color:var(--cyan)}
 .writeup{padding:48px 0}
-.writeup h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.writeup h3 .w-icon{font-size:22px}
+.writeup h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.writeup h2 .w-icon{font-size:22px}
 .writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}
 .writeup p strong{color:#fff;font-weight:600}
 .writeup-section{padding:32px 0;border-top:1px solid var(--border)}
@@ -51,7 +52,7 @@
 .metric .m-value{font-size:20px;font-weight:800;font-family:var(--ff)}
 .metric .m-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan));margin:0 auto;border-radius:2px}
-[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h3{color:#1a1a2e}
+[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2{color:#1a1a2e}
 @media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}}
 </style>
 </head>
@@ -99,26 +100,26 @@
 
   <section class="writeup" aria-label="Project details">
     <div class="writeup-section reveal">
-      <h3><span class="w-icon">🎯</span> Problem</h3>
+      <h2><span class="w-icon">🎯</span> Problem</h2>
       <p>Cloud LLM APIs are expensive for experimentation and raise data privacy concerns for financial services use cases. When you're working with member data, credit risk metrics, or internal business logic, sending queries to OpenAI or Anthropic's API isn't always an option.</p>
       <p>I wanted to test whether a <strong>32B parameter reasoning model</strong> could run locally on consumer hardware with acceptable latency for real analytical tasks — SQL generation, financial reasoning, document analysis — without any data leaving the machine.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d1">
-      <h3><span class="w-icon">🔧</span> Approach</h3>
+      <h2><span class="w-icon">🔧</span> Approach</h2>
       <p>Set up <strong>DeepSeek-R1-Distill-Qwen-32B</strong> on an RTX 4090 (24GB VRAM) using quantized model formats (GGUF Q4_K_M, Q5_K_M). Benchmarked inference speed, VRAM usage, and output quality across different quantization levels and context lengths.</p>
       <p>Tested with <strong>financial reasoning tasks</strong> like interpreting credit risk metrics, generating SQL queries from natural language descriptions, and analyzing regulatory compliance requirements — the kinds of tasks I actually encounter in my day job.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d2">
-      <h3><span class="w-icon">🧠</span> Key Decisions</h3>
+      <h2><span class="w-icon">🧠</span> Key Decisions</h2>
       <p>Chose the <strong>32B distilled variant</strong> over the full 671B model for VRAM feasibility. The 671B model requires 8x A100s or aggressive quantization that degrades quality significantly. The 32B distill retains most of the reasoning capability while fitting on a single consumer GPU.</p>
       <p>Used <strong>llama.cpp for inference</strong> instead of vLLM because it handles quantized models better on single-GPU setups. vLLM is designed for multi-GPU serving workloads, while llama.cpp is optimized for single-card interactive use.</p>
       <p>Tested <strong>multiple quantization levels</strong> to find the sweet spot between quality and speed. Q4_K_M vs Q5_K_M vs Q8_0 each have different VRAM/quality/speed tradeoffs that matter for different use cases.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d3">
-      <h3><span class="w-icon">📊</span> Results</h3>
+      <h2><span class="w-icon">📊</span> Results</h2>
       <div class="metrics-row">
         <div class="metric"><div class="m-value" style="color:var(--green)">20GB</div><div class="m-label">VRAM Usage (Q4)</div></div>
         <div class="metric"><div class="m-value" style="color:var(--cyan)">~15</div><div class="m-label">Tokens/sec</div></div>
@@ -129,7 +130,7 @@
     </div>
 
     <div class="writeup-section reveal reveal-d4">
-      <h3><span class="w-icon">🛠️</span> Tech Stack</h3>
+      <h2><span class="w-icon">🛠️</span> Tech Stack</h2>
       <div class="tech-grid">
         <div class="tech-card"><span class="tech-icon">🐍</span><div class="tech-name">Python</div><div class="tech-cat">Language</div></div>
         <div class="tech-card"><span class="tech-icon">🧠</span><div class="tech-name">DeepSeek-R1</div><div class="tech-cat">Model</div></div>
@@ -145,7 +146,7 @@
 
   <section style="padding:48px 0;text-align:center" class="reveal">
     <div class="section-label">Source Code</div>
-    <h2 class="section-title" style="margin-bottom:16px">Explore the full codebase</h2>
+    <h3 class="section-title" style="margin-bottom:16px">Explore the full codebase</h3>
     <div class="project-links" style="animation:none">
       <a href="https://github.com/anhtdang92/deepseek-local-inference" class="primary">View on GitHub &rarr;</a>
       <a href="../index.html#projects" class="back">&larr; Back to Portfolio</a>

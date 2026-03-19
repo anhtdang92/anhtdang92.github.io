@@ -12,6 +12,7 @@
 <meta property="og:url" content="https://anhtdang92.github.io">
 <meta name="twitter:card" content="summary">
 <meta name="robots" content="index, follow">
+<meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -66,7 +67,7 @@
 [data-theme="light"] nav{background:rgba(244,246,249,0.9)}
 [data-theme="light"] .hero-avatar{box-shadow:0 0 30px rgba(155,48,255,0.1)}
 [data-theme="light"] .hero h1{color:#1a1a2e}
-[data-theme="light"] .about-card .value,[data-theme="light"] .tl .role,[data-theme="light"] .edu-card .degree,[data-theme="light"] .project-name,[data-theme="light"] .next-card h3,[data-theme="light"] .highlight-card h3,[data-theme="light"] .wi-title,[data-theme="light"] .ci-name,[data-theme="light"] .ni-value{color:#1a1a2e}
+[data-theme="light"] .about-card .value,[data-theme="light"] .tl .role,[data-theme="light"] .edu-card .degree,[data-theme="light"] .project-name,[data-theme="light"] .next-card h3,[data-theme="light"] .highlight-card h3,[data-theme="light"] .ci-name,[data-theme="light"] .ni-value{color:#1a1a2e}
 [data-theme="light"] nav .brand{color:#1a1a2e}
 [data-theme="light"] .next-card{background:linear-gradient(135deg,#f0eeff,#ffffff,#eeffee)}
 [data-theme="light"] ::selection{background:var(--purple);color:#fff}
@@ -229,15 +230,6 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .project:hover .badge-ios{background:rgba(255,213,0,0.2);box-shadow:0 0 12px rgba(255,213,0,0.4)}
 .project:hover .badge-work{background:rgba(255,149,0,0.2);box-shadow:0 0 12px rgba(255,149,0,0.4)}
 
-/* WRITING */
-.writing-grid{display:grid;gap:10px}
-.writing-item{padding:16px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border);transition:all 0.3s;display:flex;align-items:center;gap:14px}
-.writing-item:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,64,251,0.08)}
-.writing-item .wi-icon{font-size:20px;flex-shrink:0;transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1)}
-.writing-item:hover .wi-icon{transform:scale(1.3) rotate(-5deg)}
-.writing-item .wi-title{font-size:16px;font-weight:600;color:#fff}
-.writing-item .wi-status{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:2px}
-
 /* TIMELINE */
 .timeline{position:relative;padding-left:24px}
 .timeline::before{content:’’;position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--green),var(--cyan),var(--purple),var(--violet))}
@@ -327,7 +319,7 @@ section{padding:40px 0}
 .edu-card .status.ip{animation:none}
 .next-card::before{animation:none}
 .section-label::after{animation:none}
-.ambient,.mesh-gradient,.noise-overlay,.cursor-dot,.tl-glow{display:none}
+.ambient,.mesh-gradient,.noise-overlay,.tl-glow{display:none}
 .hero-scroll span{animation:none;opacity:0.6}
 .reveal{opacity:1;transform:none;transition:none}
 .skill-bar-fill{transition:none;width:var(--w,0)}.skill-bar-fill::after{animation:none}
@@ -335,7 +327,7 @@ section{padding:40px 0}
 h2.section-title{text-shadow:none}
 .mesh-gradient .mg1,.mesh-gradient .mg2,.mesh-gradient .mg3{animation:none}
 }
-@media(max-width:500px){
+@media(max-width:768px){
 .nav-toggle{display:block}
 nav{flex-wrap:wrap}
 nav a{display:none}
@@ -348,8 +340,8 @@ nav .brand{margin-right:auto}
 /* === FUTURISTIC ENHANCEMENTS === */
 
 /* GLASSMORPHISM */
-.about-card,.highlight-card,.project,.edu-card,.writing-item,.stat,.course-item,.next-item,.next-card{background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-[data-theme="light"] .about-card,[data-theme="light"] .highlight-card,[data-theme="light"] .project,[data-theme="light"] .edu-card,[data-theme="light"] .writing-item,[data-theme="light"] .stat,[data-theme="light"] .course-item,[data-theme="light"] .next-item,[data-theme="light"] .next-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.about-card,.highlight-card,.project,.edu-card,.stat,.course-item,.next-item,.next-card{background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+[data-theme="light"] .about-card,[data-theme="light"] .highlight-card,[data-theme="light"] .project,[data-theme="light"] .edu-card,[data-theme="light"] .stat,[data-theme="light"] .course-item,[data-theme="light"] .next-item,[data-theme="light"] .next-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 
 /* MESH GRADIENT */
 .mesh-gradient{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;opacity:0.35}
@@ -409,9 +401,6 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 /* SCROLL-SYNCED TIMELINE GLOW */
 .timeline{position:relative}
 .timeline .tl-glow{position:absolute;left:5px;top:8px;width:3px;height:0;background:linear-gradient(180deg,var(--green),var(--cyan),var(--purple));border-radius:2px;box-shadow:0 0 10px rgba(0,255,135,0.5),0 0 25px rgba(0,212,255,0.2);z-index:1;transition:height 0.15s linear;pointer-events:none}
-
-/* CURSOR PARTICLES */
-.cursor-dot{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;mix-blend-mode:screen;transition:opacity 0.4s ease}
 
 /* VIEW TRANSITIONS */
 @view-transition{navigation:auto}
@@ -642,7 +631,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <span class="project-badge badge-ml">ML</span>
     <div class="project-name">kraken-ml-trading-strategy</div>
     <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span></div>
-    <div class="project-desc">ML-powered cryptocurrency trading strategy. Feature engineering on live market data, model training with scikit-learn, and cloud deployment on GCP for automated signal generation.</div>
+    <div class="project-desc">End-to-end ML trading pipeline deployed on GCP. Live Kraken API data, 20+ engineered features, gradient boosted classifiers, and serverless Cloud Functions for automated signal generation.</div>
     <div class="project-impact">☁️ Cloud-deployed · Real-time API integration · End-to-end ML pipeline</div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
@@ -709,8 +698,8 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <span class="project-badge badge-ml">ML</span>
     <div class="project-name">ml-trading-algorithm</div>
     <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Backtesting</span><span>Feature Engineering</span></div>
-    <div class="project-desc">Machine learning trading algorithm with custom feature engineering pipeline, walk-forward backtesting methodology, and systematic signal generation.</div>
-    <div class="project-impact">📈 Custom feature pipeline · Walk-forward validation · Systematic strategy</div>
+    <div class="project-desc">Pure research framework for ML-based trading. 30+ engineered features, walk-forward backtesting, and feature importance pruning — focused on methodology over deployment.</div>
+    <div class="project-impact">📈 30+ features · Walk-forward validation · Sharpe-optimized</div>
     <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
     <div class="project-expand">
       <h4>Problem</h4>
@@ -772,37 +761,6 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
   </section>
 
-  <!-- WRITING -->
-
-  <section id="writing" aria-labelledby="writing-title">
-    <div class="reveal"><div class="section-label">Writing</div></div>
-    <div class="reveal reveal-d1"><h2 id="writing-title" class="section-title">Notes & thinking</h2></div>
-    <div class="reveal reveal-d2"><div class="section-desc">Technical write-ups on lessons learned from production ML, data engineering, and applied AI. Coming soon.</div></div>
-
-    <div class="writing-grid">
-      <div class="writing-item reveal reveal-d1">
-        <div class="wi-icon">📝</div>
-        <div>
-          <div class="wi-title">What I learned integrating an ML decisioning platform at a credit union</div>
-          <div class="wi-status">Coming soon</div>
-        </div>
-      </div>
-      <div class="writing-item reveal reveal-d2">
-        <div class="wi-icon">🖥️</div>
-        <div>
-          <div class="wi-title">Running DeepSeek-R1 32B on consumer hardware — benchmarks and tradeoffs</div>
-          <div class="wi-status">Coming soon</div>
-        </div>
-      </div>
-      <div class="writing-item reveal reveal-d3">
-        <div class="wi-icon">📊</div>
-        <div>
-          <div class="wi-title">Why financial services data analysts should learn scikit-learn</div>
-          <div class="wi-status">Coming soon</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- EXPERIENCE -->
 
@@ -1108,26 +1066,14 @@ function toggleExpand(btn) {
 
 // === FUTURISTIC ENHANCEMENTS ===
 
-// 1. TYPING EFFECT on hero subtitle
+// 1. BLINKING CURSOR on hero subtitle (text shown immediately)
 (function() {
   const sub = document.querySelector('.hero-sub');
   if (!sub || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const fullText = sub.textContent;
-  sub.textContent = '';
   const cursor = document.createElement('span');
   cursor.className = 'type-cursor';
   sub.appendChild(cursor);
-  let i = 0;
-  function type() {
-    if (i < fullText.length) {
-      sub.insertBefore(document.createTextNode(fullText[i]), cursor);
-      i++;
-      setTimeout(type, 18 + Math.random() * 12);
-    } else {
-      setTimeout(() => cursor.style.display = 'none', 2000);
-    }
-  }
-  setTimeout(type, 600);
+  setTimeout(() => cursor.style.display = 'none', 2500);
 })();
 
 // 2. MAGNETIC HOVER on CTA buttons
@@ -1143,25 +1089,6 @@ document.querySelectorAll('.hero-links a, .project-links-row a, .next-card').for
   });
 });
 
-// 3. CURSOR PARTICLE TRAIL
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  if ('ontouchstart' in window) return;
-  const colors = ['var(--purple)', 'var(--cyan)', 'var(--green)'];
-  let particles = [];
-  const MAX = 6;
-  document.addEventListener('mousemove', e => {
-    const dot = document.createElement('div');
-    dot.className = 'cursor-dot';
-    const size = 3 + Math.random() * 4;
-    dot.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX}px;top:${e.clientY}px;background:${colors[Math.floor(Math.random()*colors.length)]};opacity:0.6`;
-    document.body.appendChild(dot);
-    particles.push(dot);
-    setTimeout(() => { dot.style.opacity = '0'; dot.style.transform = `translate(${(Math.random()-0.5)*20}px, ${(Math.random()-0.5)*20}px) scale(0)`; }, 50);
-    setTimeout(() => { dot.remove(); particles = particles.filter(p => p !== dot); }, 500);
-    while (particles.length > MAX) { const old = particles.shift(); old.remove(); }
-  });
-})();
 
 // 4. SCROLL-SYNCED TIMELINE GLOW
 (function() {

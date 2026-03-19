@@ -9,6 +9,7 @@
 <meta property="og:description" content="Machine learning trading algorithm with custom feature engineering, walk-forward backtesting, and systematic signal generation.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://anhtdang92.github.io/projects/ml-trading-algorithm.html">
+<meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/ml-trading-algorithm.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +19,11 @@
 <style>
 .project-hero{padding:120px 0 40px;text-align:center}.project-hero .project-badge{margin-bottom:16px;font-size:12px;padding:4px 14px}.project-hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;color:#fff;font-family:var(--mono);margin-bottom:16px;animation:fadeUp 0.6s ease 0.1s both}.project-hero .project-desc{font-size:17px;max-width:620px;margin:0 auto 16px;color:var(--text);line-height:1.8;animation:fadeUp 0.6s ease 0.2s both}.project-hero .project-impact{font-family:var(--mono);font-size:13px;color:var(--green);animation:fadeUp 0.6s ease 0.25s both}.project-hero .tech-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;animation:fadeUp 0.6s ease 0.15s both}.project-hero .tech-tags span{font-family:var(--mono);font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--muted)}
 .project-links{display:flex;gap:12px;justify-content:center;margin-top:24px;animation:fadeUp 0.6s ease 0.3s both}.project-links a{font-family:var(--mono);font-size:13px;padding:10px 24px;border-radius:8px;border:1px solid var(--border);color:var(--text);transition:all 0.3s}.project-links a:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,135,0.05);transform:translateY(-2px)}.project-links a.primary{background:var(--green);color:var(--bg);border-color:var(--green);font-weight:700}.project-links a.primary:hover{background:#33ff99;box-shadow:0 4px 20px rgba(0,255,135,0.3)}.project-links a.back{border-color:var(--muted);color:var(--muted)}.project-links a.back:hover{border-color:var(--cyan);color:var(--cyan)}
-.writeup{padding:48px 0}.writeup h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}.writeup h3 .w-icon{font-size:22px}.writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}.writeup p strong{color:#fff;font-weight:600}.writeup-section{padding:32px 0;border-top:1px solid var(--border)}.writeup-section:first-child{border-top:none}
+.writeup{padding:48px 0}.writeup h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}.writeup h2 .w-icon{font-size:22px}.writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}.writeup p strong{color:#fff;font-weight:600}.writeup-section{padding:32px 0;border-top:1px solid var(--border)}.writeup-section:first-child{border-top:none}
 .tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}.tech-card{padding:16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}.tech-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);transition:none}.tech-card:hover::after{animation:shimmer 0.6s ease}.tech-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,212,255,0.08)}.tech-card .tech-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text)}.tech-card .tech-cat{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}.tech-card .tech-icon{font-size:24px;margin-bottom:8px;display:block}
 .metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0}.metric{padding:16px;background:var(--card);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.3s}.metric:hover{border-color:var(--green);transform:translateY(-2px)}.metric .m-value{font-size:20px;font-weight:800;font-family:var(--ff)}.metric .m-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));margin:0 auto;border-radius:2px}
-[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h3{color:#1a1a2e}
+[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2{color:#1a1a2e}
 @media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}}
 </style>
 </head>
@@ -66,26 +67,26 @@
 
   <section class="writeup" aria-label="Project details">
     <div class="writeup-section reveal">
-      <h3><span class="w-icon">🎯</span> Problem</h3>
+      <h2><span class="w-icon">🎯</span> Problem</h2>
       <p>Most retail trading strategies rely on single indicators or discretionary rules that don't generalize. RSI overbought, MACD crossover, moving average golden cross — these are <strong>lagging signals</strong> that every other market participant can see too.</p>
       <p>I wanted to build a rigorous ML pipeline that treats trading as a <strong>classification problem</strong> — can a model learn to predict short-term price direction from engineered features better than random chance? And can it do so with proper validation that doesn't overfit to historical patterns?</p>
     </div>
 
     <div class="writeup-section reveal reveal-d1">
-      <h3><span class="w-icon">🔧</span> Approach</h3>
+      <h2><span class="w-icon">🔧</span> Approach</h2>
       <p>Built a custom feature engineering pipeline generating <strong>30+ technical and statistical features</strong> from OHLCV data. Features include standard technical indicators plus custom features like volume regime changes, volatility clustering metrics, and cross-timeframe momentum signals.</p>
       <p>Implemented <strong>walk-forward backtesting</strong> to simulate real-world deployment — training on historical windows and testing on unseen future data to avoid overfitting. Used scikit-learn's gradient boosted classifiers with hyperparameter tuning via cross-validation.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d2">
-      <h3><span class="w-icon">🧠</span> Key Decisions</h3>
+      <h2><span class="w-icon">🧠</span> Key Decisions</h2>
       <p><strong>Walk-forward validation was non-negotiable</strong> — random train/test splits create lookahead bias in time-series data. If your model trains on data from next Tuesday to predict last Monday, your backtested Sharpe ratio is meaningless.</p>
       <p>Used <strong>feature importance analysis</strong> to prune redundant indicators and prevent overfitting. Many technical indicators are correlated (RSI and Stochastic oscillator measure similar things), and including both just adds noise without signal.</p>
       <p>Focused on <strong>risk-adjusted returns</strong> (Sharpe ratio) rather than raw accuracy as the optimization target. A 90% accuracy model that's wrong on the 10% biggest moves is worse than a 55% accuracy model that correctly captures volatility events.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d3">
-      <h3><span class="w-icon">📊</span> Results</h3>
+      <h2><span class="w-icon">📊</span> Results</h2>
       <div class="metrics-row">
         <div class="metric"><div class="m-value" style="color:var(--green)">30+</div><div class="m-label">Engineered Features</div></div>
         <div class="metric"><div class="m-value" style="color:var(--cyan)">Walk-Fwd</div><div class="m-label">Validation Method</div></div>
@@ -95,7 +96,7 @@
     </div>
 
     <div class="writeup-section reveal reveal-d4">
-      <h3><span class="w-icon">🛠️</span> Tech Stack</h3>
+      <h2><span class="w-icon">🛠️</span> Tech Stack</h2>
       <div class="tech-grid">
         <div class="tech-card"><span class="tech-icon">🐍</span><div class="tech-name">Python</div><div class="tech-cat">Language</div></div>
         <div class="tech-card"><span class="tech-icon">🤖</span><div class="tech-name">scikit-learn</div><div class="tech-cat">ML Framework</div></div>
@@ -111,7 +112,7 @@
 
   <section style="padding:48px 0;text-align:center" class="reveal">
     <div class="section-label">Source Code</div>
-    <h2 class="section-title" style="margin-bottom:16px">Explore the full codebase</h2>
+    <h3 class="section-title" style="margin-bottom:16px">Explore the full codebase</h3>
     <div class="project-links" style="animation:none">
       <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="primary">View on GitHub &rarr;</a>
       <a href="../index.html#projects" class="back">&larr; Back to Portfolio</a>

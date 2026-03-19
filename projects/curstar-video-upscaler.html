@@ -9,6 +9,7 @@
 <meta property="og:description" content="AI video upscaler built on the STAR diffusion model. GPU-accelerated frame-level inference for video super-resolution.">
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://anhtdang92.github.io/projects/curstar-video-upscaler.html">
+<meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/curstar-video-upscaler.html">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,8 +32,8 @@
 .project-links a.back{border-color:var(--muted);color:var(--muted)}
 .project-links a.back:hover{border-color:var(--cyan);color:var(--cyan)}
 .writeup{padding:48px 0}
-.writeup h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.writeup h3 .w-icon{font-size:22px}
+.writeup h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.writeup h2 .w-icon{font-size:22px}
 .writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}
 .writeup p strong{color:#fff;font-weight:600}
 .writeup-section{padding:32px 0;border-top:1px solid var(--border)}
@@ -46,7 +47,7 @@
 .tech-card .tech-cat{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}
 .tech-card .tech-icon{font-size:24px;margin-bottom:8px;display:block}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan));margin:0 auto;border-radius:2px}
-[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h3{color:#1a1a2e}
+[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2{color:#1a1a2e}
 @media(max-width:600px){
 .project-hero{padding:80px 0 30px}
 .project-hero h1{font-size:22px}
@@ -99,25 +100,25 @@
 
   <section class="writeup" aria-label="Project details">
     <div class="writeup-section reveal">
-      <h3><span class="w-icon">🎯</span> Problem</h3>
+      <h2><span class="w-icon">🎯</span> Problem</h2>
       <p>Low-resolution video footage — whether from older cameras, compressed streams, or surveillance systems — loses critical visual detail. Traditional upscaling methods like bicubic and Lanczos interpolation just blur pixels larger without reconstructing real detail.</p>
       <p>I wanted to test whether <strong>diffusion-based super-resolution</strong> could reconstruct meaningful visual detail at the frame level, producing output that looks genuinely sharper rather than simply smoothed.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d1">
-      <h3><span class="w-icon">🔧</span> Approach</h3>
+      <h2><span class="w-icon">🔧</span> Approach</h2>
       <p>Implemented the <strong>STAR (Spatial-Temporal Augmented Resolution)</strong> diffusion model pipeline in Python. The system processes video frame-by-frame, applying a pretrained diffusion model to upscale each frame while maintaining temporal consistency.</p>
       <p>Optimized for <strong>GPU-accelerated batch processing</strong> on an RTX 4090. The pipeline handles video decoding, frame extraction, model inference, and video re-encoding in a single automated workflow.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d2">
-      <h3><span class="w-icon">🧠</span> Key Decisions</h3>
+      <h2><span class="w-icon">🧠</span> Key Decisions</h2>
       <p>Chose the <strong>STAR diffusion architecture over GAN-based upscalers</strong> (Real-ESRGAN) because diffusion models produce fewer artifacts on diverse content types. GANs can hallucinate textures that look plausible but aren't actually present in the source material — diffusion models tend to be more conservative and faithful.</p>
       <p>Processed frames <strong>individually rather than using video-native models</strong> to maintain flexibility across different input formats and resolutions. This trades some temporal smoothness for broader compatibility and simpler pipeline architecture.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d3">
-      <h3><span class="w-icon">🛠️</span> Tech Stack</h3>
+      <h2><span class="w-icon">🛠️</span> Tech Stack</h2>
       <div class="tech-grid">
         <div class="tech-card"><span class="tech-icon">🐍</span><div class="tech-name">Python</div><div class="tech-cat">Language</div></div>
         <div class="tech-card"><span class="tech-icon">🎨</span><div class="tech-name">STAR Diffusion</div><div class="tech-cat">Model</div></div>
@@ -133,7 +134,7 @@
 
   <section style="padding:48px 0;text-align:center" class="reveal">
     <div class="section-label">Source Code</div>
-    <h2 class="section-title" style="margin-bottom:16px">Explore the full codebase</h2>
+    <h3 class="section-title" style="margin-bottom:16px">Explore the full codebase</h3>
     <div class="project-links" style="animation:none">
       <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="primary">View on GitHub &rarr;</a>
       <a href="../index.html#projects" class="back">&larr; Back to Portfolio</a>
