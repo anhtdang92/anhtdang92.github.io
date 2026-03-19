@@ -537,6 +537,39 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .impact-sub{font-size:13px;color:var(--text);margin-top:4px}
 [data-theme="light"] .impact-card{background:rgba(255,255,255,0.55)}
 @media(max-width:600px){.impact-row{grid-template-columns:1fr}.value-pills{justify-content:center}}
+
+/* AI & AUTOMATION SECTION */
+.ai-ecosystem{margin:24px 0}
+.ai-tier{margin-bottom:20px}
+.ai-tier-label{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.ai-tier-label::after{content:'';flex:1;height:1px;background:var(--border)}
+.ai-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px}
+.ai-card{padding:12px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:10px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);text-align:center;position:relative;overflow:hidden}
+.ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.3s}
+.ai-card:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
+.ai-card:hover::before{opacity:1}
+.ai-card .ai-icon{font-size:24px;margin-bottom:6px;display:block}
+.ai-card .ai-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
+.ai-card .ai-sub{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:0.5px}
+/* Color variants */
+.ai-card.c-green{border-color:rgba(0,255,135,0.15)}.ai-card.c-green:hover{border-color:var(--green);box-shadow:0 8px 30px rgba(0,255,135,0.12)}.ai-card.c-green::before{background:linear-gradient(90deg,transparent,var(--green),transparent)}
+.ai-card.c-cyan{border-color:rgba(0,212,255,0.15)}.ai-card.c-cyan:hover{border-color:var(--cyan);box-shadow:0 8px 30px rgba(0,212,255,0.12)}.ai-card.c-cyan::before{background:linear-gradient(90deg,transparent,var(--cyan),transparent)}
+.ai-card.c-purple{border-color:rgba(224,64,251,0.15)}.ai-card.c-purple:hover{border-color:var(--purple);box-shadow:0 8px 30px rgba(224,64,251,0.12)}.ai-card.c-purple::before{background:linear-gradient(90deg,transparent,var(--purple),transparent)}
+.ai-card.c-gold{border-color:rgba(255,208,0,0.15)}.ai-card.c-gold:hover{border-color:var(--gold);box-shadow:0 8px 30px rgba(255,208,0,0.12)}.ai-card.c-gold::before{background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.ai-card.c-orange{border-color:rgba(255,149,0,0.15)}.ai-card.c-orange:hover{border-color:var(--orange);box-shadow:0 8px 30px rgba(255,149,0,0.12)}.ai-card.c-orange::before{background:linear-gradient(90deg,transparent,var(--orange),transparent)}
+.ai-card.c-red{border-color:rgba(255,56,96,0.15)}.ai-card.c-red:hover{border-color:var(--red);box-shadow:0 8px 30px rgba(255,56,96,0.12)}.ai-card.c-red::before{background:linear-gradient(90deg,transparent,var(--red),transparent)}
+[data-theme="light"] .ai-card{background:rgba(255,255,255,0.55)}
+
+/* AI workflow diagram */
+.ai-workflow{margin:20px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border)}
+.ai-workflow-title{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:16px}
+.ai-flow-row{display:flex;align-items:center;gap:0;justify-content:center;flex-wrap:wrap}
+.ai-flow-step{padding:10px 16px;background:var(--inner);border-radius:8px;border:1px solid var(--border);font-family:var(--mono);font-size:12px;color:var(--text);text-align:center;transition:all 0.3s;flex-shrink:0}
+.ai-flow-step:hover{transform:translateY(-2px);border-color:var(--cyan)}
+.ai-flow-step .step-icon{font-size:18px;display:block;margin-bottom:4px}
+.ai-flow-arrow{font-family:var(--mono);font-size:16px;color:var(--dim);padding:0 6px;flex-shrink:0}
+[data-theme="light"] .ai-workflow{background:rgba(255,255,255,0.55)}
+@media(max-width:600px){.ai-grid{grid-template-columns:repeat(2,1fr)}.ai-flow-row{gap:4px}.ai-flow-step{padding:8px 10px;font-size:11px}.ai-flow-arrow{font-size:12px;padding:0 2px}}
 </style>
 
 </head>
@@ -555,6 +588,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
   <a href="#projects">Projects</a>
   <a href="#experience">Experience</a>
   <a href="#education">Education</a>
+  <a href="#ai">AI</a>
   <a href="#next">Next</a>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
@@ -1201,6 +1235,88 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
   </div>
 </div>
 
+
+  </section>
+
+  <!-- AI & AUTOMATION -->
+
+  <section id="ai" aria-labelledby="ai-title">
+    <div class="reveal"><div class="section-label">AI & Automation</div></div>
+    <div class="reveal reveal-d1"><h2 id="ai-title" class="section-title">AI-native workflow</h2></div>
+    <div class="reveal reveal-d2"><div class="section-desc">I don't just use AI tools — I build with them, deploy them, and run them locally. Every major model, every coding assistant, every orchestration layer.</div></div>
+
+    <div class="ai-ecosystem">
+
+      <div class="ai-tier reveal reveal-d1">
+        <div class="ai-tier-label">Frontier Models — Daily Use</div>
+        <div class="ai-grid">
+          <div class="ai-card c-purple"><span class="ai-icon">C</span><div class="ai-name">Claude</div><div class="ai-sub">Opus · Sonnet · Haiku</div></div>
+          <div class="ai-card c-green"><span class="ai-icon">G</span><div class="ai-name">GPT-4o</div><div class="ai-sub">OpenAI · o1 · o3</div></div>
+          <div class="ai-card c-cyan"><span class="ai-icon">G</span><div class="ai-name">Gemini</div><div class="ai-sub">2.5 Pro · Flash</div></div>
+          <div class="ai-card c-red"><span class="ai-icon">D</span><div class="ai-name">DeepSeek</div><div class="ai-sub">R1 · V3 · Coder</div></div>
+          <div class="ai-card c-orange"><span class="ai-icon">L</span><div class="ai-name">Llama</div><div class="ai-sub">3.x · 405B · 70B</div></div>
+          <div class="ai-card c-gold"><span class="ai-icon">M</span><div class="ai-name">Mistral</div><div class="ai-sub">Large · Codestral</div></div>
+          <div class="ai-card c-cyan"><span class="ai-icon">Q</span><div class="ai-name">Qwen</div><div class="ai-sub">2.5 · Coder</div></div>
+          <div class="ai-card c-green"><span class="ai-icon">P</span><div class="ai-name">Phi</div><div class="ai-sub">Microsoft · 4-mini</div></div>
+        </div>
+      </div>
+
+      <div class="ai-tier reveal reveal-d2">
+        <div class="ai-tier-label">AI Coding Assistants</div>
+        <div class="ai-grid">
+          <div class="ai-card c-purple"><span class="ai-icon">CC</span><div class="ai-name">Claude Code</div><div class="ai-sub">CLI · Agentic</div></div>
+          <div class="ai-card c-green"><span class="ai-icon">Cx</span><div class="ai-name">Codex</div><div class="ai-sub">OpenAI CLI</div></div>
+          <div class="ai-card c-cyan"><span class="ai-icon">Cu</span><div class="ai-name">Cursor</div><div class="ai-sub">AI IDE</div></div>
+          <div class="ai-card c-gold"><span class="ai-icon">Cp</span><div class="ai-name">Copilot</div><div class="ai-sub">GitHub · VS Code</div></div>
+          <div class="ai-card c-orange"><span class="ai-icon">Ag</span><div class="ai-name">Aider</div><div class="ai-sub">Git-native AI</div></div>
+          <div class="ai-card c-red"><span class="ai-icon">Oc</span><div class="ai-name">OpenHands</div><div class="ai-sub">Agentic SWE</div></div>
+        </div>
+      </div>
+
+      <div class="ai-tier reveal reveal-d3">
+        <div class="ai-tier-label">Local Inference — RTX 4090</div>
+        <div class="ai-grid">
+          <div class="ai-card c-green"><span class="ai-icon">OL</span><div class="ai-name">Ollama</div><div class="ai-sub">Local model serving</div></div>
+          <div class="ai-card c-cyan"><span class="ai-icon">LM</span><div class="ai-name">LM Studio</div><div class="ai-sub">GGUF · quantized</div></div>
+          <div class="ai-card c-purple"><span class="ai-icon">vL</span><div class="ai-name">vLLM</div><div class="ai-sub">High-throughput</div></div>
+          <div class="ai-card c-gold"><span class="ai-icon">HF</span><div class="ai-name">HuggingFace</div><div class="ai-sub">Transformers · PEFT</div></div>
+        </div>
+      </div>
+
+      <div class="ai-tier reveal reveal-d4">
+        <div class="ai-tier-label">AI Orchestration & Platforms</div>
+        <div class="ai-grid">
+          <div class="ai-card c-orange"><span class="ai-icon">LC</span><div class="ai-name">LangChain</div><div class="ai-sub">Agent chains</div></div>
+          <div class="ai-card c-purple"><span class="ai-icon">n8</span><div class="ai-name">n8n</div><div class="ai-sub">Workflow automation</div></div>
+          <div class="ai-card c-green"><span class="ai-icon">Rg</span><div class="ai-name">RAG Pipelines</div><div class="ai-sub">Vector search · embeddings</div></div>
+          <div class="ai-card c-cyan"><span class="ai-icon">MCP</span><div class="ai-name">MCP</div><div class="ai-sub">Model Context Protocol</div></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="ai-workflow reveal reveal-d3">
+      <div class="ai-workflow-title">End-to-End AI Development Pipeline</div>
+      <div class="ai-flow-row">
+        <div class="ai-flow-step"><span class="step-icon">📊</span>Data<br>Ingestion</div>
+        <div class="ai-flow-arrow">→</div>
+        <div class="ai-flow-step"><span class="step-icon">⚙️</span>Feature<br>Engineering</div>
+        <div class="ai-flow-arrow">→</div>
+        <div class="ai-flow-step"><span class="step-icon">🧠</span>Model<br>Training</div>
+        <div class="ai-flow-arrow">→</div>
+        <div class="ai-flow-step"><span class="step-icon">🔬</span>Eval &<br>Testing</div>
+        <div class="ai-flow-arrow">→</div>
+        <div class="ai-flow-step"><span class="step-icon">🐳</span>Container<br>Deploy</div>
+        <div class="ai-flow-arrow">→</div>
+        <div class="ai-flow-step"><span class="step-icon">📡</span>Monitor &<br>Iterate</div>
+      </div>
+    </div>
+
+    <div class="highlight-card reveal reveal-d4" style="margin-top:16px">
+      <h3><span class="hl-icon">🖥️</span>Local AI Lab — RTX 4090 Workstation</h3>
+      <p>Running frontier open-source models locally for rapid prototyping, fine-tuning experiments, and private inference. DeepSeek R1, Llama 3 70B (quantized), Mistral, Qwen, and Phi models via Ollama and LM Studio. Full CUDA 12 stack with 24GB VRAM for real-time experimentation without cloud costs or data leaving the machine.</p>
+      <div class="hl-metric">24GB VRAM · CUDA 12 · Zero-latency inference · Full data privacy</div>
+    </div>
 
   </section>
 
