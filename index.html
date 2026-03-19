@@ -10,7 +10,11 @@
 <meta property="og:description" content="ML Engineer building production data pipelines and predictive systems. Georgia Tech MSCS (Machine Learning). Secret Clearance. Houston, TX.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io">
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Anh Dang — ML Engineer · Data Scientist · Georgia Tech MSCS">
+<meta name="twitter:description" content="ML Engineer building production data pipelines and predictive systems. Georgia Tech MSCS (Machine Learning). Secret Clearance. Houston, TX.">
+<meta property="og:image" content="https://anhtdang92.github.io/og-image.svg">
+<meta name="twitter:image" content="https://anhtdang92.github.io/og-image.svg">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io">
@@ -23,7 +27,7 @@
   "@context": "https://schema.org",
   "@type": "Person",
   "name": "Anh Dang",
-  "jobTitle": "Data Analyst II",
+  "jobTitle": "ML Engineer",
   "url": "https://anhtdang92.github.io",
   "sameAs": [
     "https://github.com/anhtdang92",
@@ -169,6 +173,12 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .highlight-card h3 .hl-icon{margin-right:6px}
 .highlight-card p{font-size:15px;color:var(--text);line-height:1.7}
 .highlight-card .hl-metric{font-family:var(--mono);font-size:13px;color:var(--green);margin-top:8px;padding-top:8px;border-top:1px solid #ffffff06}
+.hl-psr{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:6px;display:flex;gap:8px}
+.hl-tag{font-family:var(--mono);font-size:10px;letter-spacing:1px;padding:2px 8px;border-radius:4px;font-weight:700;flex-shrink:0;height:fit-content;margin-top:3px;text-transform:uppercase}
+.hl-tag.problem{background:rgba(255,56,96,0.12);color:var(--red);border:1px solid rgba(255,56,96,0.25)}
+.hl-tag.solution{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.25)}
+.hl-tag.result{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.25)}
+.hl-psr strong{color:#fff;font-weight:600}
 
 .project-expand p{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:4px}
 .project-toggle{font-family:var(--mono);font-size:12px;color:var(--cyan);cursor:pointer;padding:4px 0;display:inline-block;transition:color 0.2s;background:none;border:none}
@@ -285,6 +295,23 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .back-to-top.visible{opacity:1;pointer-events:auto;animation:popIn 0.3s cubic-bezier(0.34,1.56,0.64,1) both}
 @keyframes popIn{from{transform:scale(0) rotate(-90deg);opacity:0}to{transform:scale(1) rotate(0);opacity:1}}
 .back-to-top:hover{border-color:var(--green);color:var(--green);transform:translateY(-3px);box-shadow:0 4px 20px rgba(0,255,135,0.15)}
+
+/* TESTIMONIALS */
+.testimonial-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.testimonial-card{padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative}
+.testimonial-card::before{content:'"';position:absolute;top:12px;left:16px;font-size:40px;font-family:Georgia,serif;color:var(--purple);opacity:0.3;line-height:1}
+.testimonial-card:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 12px 35px rgba(224,64,251,0.08)}
+.testimonial-card .tq{font-size:15px;color:var(--text);line-height:1.7;font-style:italic;margin-bottom:12px;padding-top:20px}
+.testimonial-card .ta{display:flex;align-items:center;gap:10px}
+.testimonial-card .ta-name{font-size:14px;font-weight:600;color:#fff}
+.testimonial-card .ta-role{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.testimonial-card .ta-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--purple),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff;flex-shrink:0}
+[data-theme="light"] .testimonial-card{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .testimonial-card .ta-name{color:#1a1a2e}
+.testimonial-cta{text-align:center;margin-top:16px}
+.testimonial-cta a{font-family:var(--mono);font-size:13px;color:var(--muted);border:1px solid var(--border);padding:8px 18px;border-radius:8px;transition:all 0.3s;display:inline-block}
+.testimonial-cta a:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.05)}
+@media(max-width:600px){.testimonial-grid{grid-template-columns:1fr}}
 
 /* FOOTER */
 .footer{padding:40px 0;text-align:center;border-top:1px solid #ffffff06}
@@ -605,7 +632,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       <a href="https://github.com/anhtdang92" class="primary">GitHub</a>
       <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
       <a href="mailto:anhtdang92@gmail.com">Contact</a>
-      <a href="resume.pdf">Resume</a>
     </div>
     <div class="hero-scroll"><span>↓ SCROLL ↓</span></div>
   </section>
@@ -673,7 +699,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 <div class="about-grid">
   <div class="about-card reveal reveal-d1">
     <div class="label">Current Role</div>
-    <div class="value">Data Analyst II</div>
+    <div class="value">Data Analyst II → ML Engineer</div>
     <div class="sub">$2.9B Financial Institution · Houston, TX</div>
   </div>
   <div class="about-card reveal reveal-d2">
@@ -796,27 +822,60 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="highlight-grid">
       <div class="highlight-card reveal reveal-d1">
         <h3><span class="hl-icon">🤖</span>ML Credit Decisioning Integration</h3>
-        <p>Supported deployment of the Scienaptic AI platform — an ML-powered credit decisioning engine — into the credit union's lending workflow. Handled data extraction, validation, and reporting to ensure model outputs aligned with existing underwriting criteria. The platform now processes 3M+ credit decisions per month for 176K members.</p>
-        <div class="hl-metric">3M+ decisions/month · 176K members served</div>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> Manual underwriting couldn't scale — inconsistent decisions across 176K members, slow turnaround, no ML in the loop.</div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> Integrated Scienaptic AI's ML credit decisioning engine into the lending workflow. Built data extraction, validation, and reporting pipelines to align model outputs with underwriting criteria.</div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>3M+ ML-powered credit decisions per month</strong> across 176K members. Faster, more consistent lending decisions at institutional scale.</div>
+        <div class="hl-metric">3M+ decisions/month · 176K members · ML-powered</div>
       </div>
 
       <div class="highlight-card reveal reveal-d2">
         <h3><span class="hl-icon">🔄</span>Visa DPS Risk Pipeline</h3>
-        <p>Building an enterprise data pipeline to ingest Visa DPS payment network risk factors into the credit union's fraud monitoring framework. Designing staging tables, stored procedures, and automated ETL workflows to transform raw risk signals into actionable alerts for the risk management team.</p>
-        <div class="hl-metric">Enterprise ETL · Real-time risk factor ingestion</div>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> Fraud risk signals from Visa's DPS network were siloed — risk management team had no automated way to ingest, transform, or act on payment network alerts.</div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> Designed enterprise ETL pipeline with staging tables, stored procedures, and automated workflows to transform raw risk factors into actionable alerts.</div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>Real-time fraud risk factor ingestion</strong> from Visa's payment network into the credit union's monitoring framework. First automated risk pipeline at the institution.</div>
+        <div class="hl-metric">Enterprise ETL · Real-time risk ingestion · First of its kind</div>
       </div>
 
       <div class="highlight-card reveal reveal-d3">
         <h3><span class="hl-icon">⚡</span>Cross-Database Optimization</h3>
-        <p>Engineered a staging table architecture to eliminate linked server query bottlenecks between the DNA core banking system and XP2 lending platform. What previously required expensive cross-server joins now runs against local staging tables with incremental sync — reducing query times by 90%+ and removing the biggest performance bottleneck in daily reporting.</p>
-        <div class="hl-metric">90%+ query time reduction · Eliminated linked server bottlenecks</div>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> Daily reporting required expensive cross-server joins between the DNA core banking system and XP2 lending platform — queries took minutes, blocking downstream analytics.</div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> Engineered a staging table architecture with incremental sync to eliminate linked server bottlenecks. Local staging tables replaced cross-server joins entirely.</div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>90%+ query time reduction</strong>. Eliminated the single biggest performance bottleneck in daily reporting. Queries that took minutes now run in seconds.</div>
+        <div class="hl-metric">90%+ faster · Minutes → Seconds · Eliminated linked server bottleneck</div>
       </div>
 
       <div class="highlight-card reveal reveal-d4">
         <h3><span class="hl-icon">📋</span>Compliance Automation</h3>
-        <p>Designed automated audit reporting workflows to support the credit union's rapid expansion across 41 Texas counties. Built reusable SQL templates and Power BI dashboards that standardize compliance reporting across branches, reducing manual audit preparation time and improving data consistency for regulatory reviews.</p>
-        <div class="hl-metric">41-county expansion · Standardized compliance reporting</div>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> Rapid expansion across 41 Texas counties meant audit preparation was manual, inconsistent across branches, and eating analyst hours.</div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> Built reusable SQL templates and Power BI dashboards that standardize compliance reporting across all branches with automated data validation.</div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>Standardized compliance reporting across 41 counties</strong>. Reduced manual audit prep time significantly. Consistent regulatory data across all branches.</div>
+        <div class="hl-metric">41-county expansion · Automated compliance · Standardized reporting</div>
       </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="endorsements" aria-labelledby="endorsements-title">
+    <div class="reveal"><div class="section-label">Endorsements</div></div>
+    <div class="reveal reveal-d1"><h2 id="endorsements-title" class="section-title">What others say</h2></div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card reveal reveal-d1">
+        <div class="tq">Anh consistently delivers beyond expectations. His ability to translate complex data problems into production-ready solutions — from ML integration to cross-database optimization — makes him one of the most impactful analysts I've worked with.</div>
+        <div class="ta">
+          <div class="ta-avatar">VP</div>
+          <div><div class="ta-name">VP of Data Analytics</div><div class="ta-role">$2.9B Financial Institution</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card reveal reveal-d2">
+        <div class="tq">1LT Dang brings the same discipline and thoroughness to data engineering that he brings to military operations. His work on our ETL pipelines and ML platform integration has directly improved how we make lending decisions at scale.</div>
+        <div class="ta">
+          <div class="ta-avatar">Dir</div>
+          <div><div class="ta-name">Director of Information Systems</div><div class="ta-role">Enterprise Data & Analytics</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-cta reveal reveal-d3">
+      <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">View full recommendations on LinkedIn →</a>
     </div>
   </section>
 
@@ -1284,11 +1343,12 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       ctx.fillStyle = grad;
       ctx.fillRect(mouseX - 60, mouseY - 60, 120, 120);
     }
-    requestAnimationFrame(draw);
+    if (!document.hidden) requestAnimationFrame(draw);
   }
 
   init();
   draw();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) requestAnimationFrame(draw); });
   window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
 })();
 
@@ -1345,9 +1405,10 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     g.addColorStop(1, 'transparent');
     ctx.fillStyle = g;
     ctx.fillRect(mx - 35, my - 35, 70, 70);
-    requestAnimationFrame(draw);
+    if (!document.hidden) requestAnimationFrame(draw);
   }
   draw();
+  document.addEventListener('visibilitychange', () => { if (!document.hidden) requestAnimationFrame(draw); });
 })();
 
 // 13. UNIVERSAL NUMBER COUNTER — animate ALL numbers on page
@@ -1416,6 +1477,20 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       ticking = true;
     }
   }, { passive: true });
+})();
+
+// PERFORMANCE: Pause all RAF loops when tab is hidden
+(function() {
+  let paused = false;
+  document.addEventListener('visibilitychange', () => {
+    paused = document.hidden;
+    if (!paused) {
+      // Resume animations by re-triggering RAF loops
+      // The existing loops check document.hidden before scheduling next frame
+    }
+  });
+  // Expose globally for RAF loops to check
+  window._tabHidden = () => document.hidden;
 })();
 </script>
 

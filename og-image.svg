@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#04070d"/>
+      <stop offset="50%" style="stop-color:#0b1120"/>
+      <stop offset="100%" style="stop-color:#04070d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e040fb"/>
+      <stop offset="50%" style="stop-color:#00d4ff"/>
+      <stop offset="100%" style="stop-color:#00ff87"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <rect x="0" y="626" width="1200" height="4" fill="url(#accent)"/>
+  <!-- Name -->
+  <text x="100" y="200" font-family="'Outfit', 'Segoe UI', sans-serif" font-size="72" font-weight="900" fill="#ffffff">Anh Dang</text>
+  <!-- Title -->
+  <text x="100" y="270" font-family="'JetBrains Mono', monospace" font-size="28" fill="#00d4ff" letter-spacing="2">ML ENGINEER · DATA SCIENTIST</text>
+  <!-- Divider -->
+  <rect x="100" y="300" width="200" height="3" rx="2" fill="url(#accent)"/>
+  <!-- Stats -->
+  <text x="100" y="370" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">Georgia Tech MSCS (Machine Learning)</text>
+  <text x="100" y="410" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">U.S. Army Signal Officer · Secret Clearance</text>
+  <text x="100" y="450" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">3M+ ML Decisions/Mo · 90%+ Query Optimization</text>
+  <!-- Tags -->
+  <text x="100" y="530" font-family="'JetBrains Mono', monospace" font-size="16" fill="#00ff87">Python · PyTorch · SQL · MLOps · LangChain · Docker</text>
+  <!-- URL -->
+  <text x="100" y="580" font-family="'JetBrains Mono', monospace" font-size="16" fill="#7a96b0">anhtdang92.github.io</text>
+  <!-- Decorative circles -->
+  <circle cx="1050" cy="180" r="120" fill="none" stroke="#e040fb" stroke-width="1" opacity="0.15"/>
+  <circle cx="1080" cy="220" r="80" fill="none" stroke="#00d4ff" stroke-width="1" opacity="0.2"/>
+  <circle cx="1020" cy="160" r="40" fill="none" stroke="#00ff87" stroke-width="1" opacity="0.25"/>
+</svg>
