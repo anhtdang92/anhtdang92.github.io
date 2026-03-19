@@ -23,9 +23,11 @@ a:hover{color:var(--green)}
 
 /* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 24px;background:rgba(4,7,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff06;display:flex;justify-content:center;gap:6px;transition:all 0.3s}
-nav a{font-family:var(--mono);font-size:12px;padding:6px 14px;border-radius:6px;color:var(--muted);transition:all 0.2s;letter-spacing:0.5px}
+nav a{font-family:var(--mono);font-size:12px;padding:6px 14px;border-radius:6px;color:var(--muted);transition:all 0.2s;letter-spacing:0.5px;position:relative}
 nav a:hover{color:var(--cyan);background:rgba(0,212,255,0.06)}
 nav a.active{color:var(--cyan);background:rgba(0,212,255,0.08);box-shadow:0 0 12px rgba(0,212,255,0.15)}
+nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:2px;background:var(--cyan);border-radius:2px;box-shadow:0 0 8px rgba(0,212,255,0.6),0 0 16px rgba(0,212,255,0.3);animation:navGlowIn 0.3s ease both}
+@keyframes navGlowIn{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
 nav .brand{color:#fff;font-weight:700;margin-right:auto;font-family:var(--ff);font-size:14px;padding:6px 0}
 .theme-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:14px;line-height:1;transition:all 0.2s;color:var(--muted)}
 .theme-toggle:hover{border-color:var(--cyan);background:rgba(0,212,255,0.06)}
@@ -154,15 +156,29 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @keyframes shimmer{to{left:100%}}
 
+/* SECTION DIVIDER ANIMATION */
+section+section{border-image:linear-gradient(90deg,transparent,var(--purple),var(--cyan),var(--green),transparent) 1;border-top-width:1px;border-top-style:solid;opacity:1}
+.section-divider-glow{position:relative}
+.section-divider-glow::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--green),transparent);background-size:200% 100%;animation:dividerShift 4s ease-in-out infinite;opacity:0;transition:opacity 0.6s ease}
+.section-divider-glow.visible::before{opacity:1}
+@keyframes dividerShift{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
+
+/* CARD HOVER GLOW */
+.card-glow{position:relative;overflow:hidden}
+.card-glow::before{content:'';position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.12),transparent 70%);pointer-events:none;opacity:0;transition:opacity 0.3s ease;transform:translate(-50%,-50%);z-index:0}
+.card-glow:hover::before{opacity:1}
+
 /* RESPONSIVE */
 @media(max-width:768px){
 .nav-toggle{display:block}
 nav{flex-wrap:wrap}
 nav a{display:none}
-nav.open a{display:inline-block;width:100%;text-align:center;padding:10px 14px;font-size:14px}
+nav.open a{display:inline-block;width:100%;text-align:center;padding:12px 14px;font-size:14px;min-height:44px;display:flex;align-items:center;justify-content:center}
 nav .brand{margin-right:auto}
-.theme-toggle{order:2}
-.nav-toggle{order:1;margin-right:8px}
+.theme-toggle{order:2;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center}
+.nav-toggle{order:1;margin-right:8px;min-height:44px;min-width:44px;display:flex;align-items:center;justify-content:center}
+body.nav-open{overflow:hidden}
+nav.open{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,7,13,0.97);align-content:flex-start;padding-top:70px;z-index:100}
 }
 @media(max-width:600px){
 nav{gap:2px;padding:10px 12px}
@@ -174,4 +190,6 @@ section{padding:40px 0}
 .section-label::after{animation:none}
 .reveal{opacity:1;transform:none;transition:none}
 h2.section-title{text-shadow:none}
+nav a.active::after{animation:none}
+.section-divider-glow::before{animation:none}
 }
