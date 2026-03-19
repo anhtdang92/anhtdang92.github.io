@@ -327,9 +327,13 @@ section{padding:40px 0}
 .edu-card .status.ip{animation:none}
 .next-card::before{animation:none}
 .section-label::after{animation:none}
-.ambient{display:none}
+.ambient,.mesh-gradient,.noise-overlay,.cursor-dot,.tl-glow{display:none}
 .hero-scroll span{animation:none;opacity:0.6}
 .reveal{opacity:1;transform:none;transition:none}
+.skill-bar-fill{transition:none;width:var(--w,0)}.skill-bar-fill::after{animation:none}
+.stat-ring .ring-fill{transition:none}
+h2.section-title{text-shadow:none}
+.mesh-gradient .mg1,.mesh-gradient .mg2,.mesh-gradient .mg3{animation:none}
 }
 @media(max-width:500px){
 .nav-toggle{display:block}
@@ -340,6 +344,81 @@ nav .brand{margin-right:auto}
 .theme-toggle{order:2}
 .nav-toggle{order:1;margin-right:8px}
 }
+
+/* === FUTURISTIC ENHANCEMENTS === */
+
+/* GLASSMORPHISM */
+.about-card,.highlight-card,.project,.edu-card,.writing-item,.stat,.course-item,.next-item,.next-card{background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+[data-theme="light"] .about-card,[data-theme="light"] .highlight-card,[data-theme="light"] .project,[data-theme="light"] .edu-card,[data-theme="light"] .writing-item,[data-theme="light"] .stat,[data-theme="light"] .course-item,[data-theme="light"] .next-item,[data-theme="light"] .next-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+
+/* MESH GRADIENT */
+.mesh-gradient{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;opacity:0.35}
+.mesh-gradient .mg1,.mesh-gradient .mg2,.mesh-gradient .mg3{position:absolute;border-radius:50%;filter:blur(120px)}
+.mesh-gradient .mg1{width:600px;height:600px;background:radial-gradient(circle,rgba(224,64,251,0.18),transparent 70%);top:-200px;left:-100px;animation:meshA 14s ease-in-out infinite alternate}
+.mesh-gradient .mg2{width:500px;height:500px;background:radial-gradient(circle,rgba(0,212,255,0.14),transparent 70%);bottom:-150px;right:-100px;animation:meshB 12s ease-in-out infinite alternate}
+.mesh-gradient .mg3{width:400px;height:400px;background:radial-gradient(circle,rgba(0,255,135,0.1),transparent 70%);top:40%;left:30%;animation:meshC 16s ease-in-out infinite alternate}
+@keyframes meshA{0%{transform:translate(0,0) scale(1)}100%{transform:translate(80px,60px) scale(1.15)}}
+@keyframes meshB{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-60px,-40px) scale(1.2)}}
+@keyframes meshC{0%{transform:translate(0,0) scale(0.8)}100%{transform:translate(40px,-50px) scale(1.1)}}
+[data-theme="light"] .mesh-gradient{opacity:0.2}
+
+/* NEON GLOW SECTION TITLES */
+h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
+#highlights h2.section-title{text-shadow:0 0 20px rgba(0,255,135,0.3),0 0 60px rgba(0,255,135,0.1)}
+#skills h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.3),0 0 60px rgba(0,212,255,0.1)}
+#projects h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.3),0 0 60px rgba(224,64,251,0.1)}
+#experience h2.section-title{text-shadow:0 0 20px rgba(191,95,255,0.3),0 0 60px rgba(191,95,255,0.1)}
+#education h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
+[data-theme="light"] h2.section-title{color:#1a1a2e;text-shadow:none}
+
+/* TYPING CURSOR */
+.type-cursor{display:inline-block;width:2px;height:1em;background:var(--cyan);margin-left:2px;animation:blink 0.8s step-end infinite;vertical-align:text-bottom}
+
+/* NOISE TEXTURE */
+.noise-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9997;pointer-events:none;opacity:0.035;mix-blend-mode:overlay}
+[data-theme="light"] .noise-overlay{opacity:0.02}
+
+/* ANIMATED SKILL BARS */
+.skill-bar-row{margin-bottom:20px}
+.skill-bar-row .cat{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.skill-bars-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+.skill-bar-item{display:flex;align-items:center;gap:10px}
+.skill-bar-label{font-family:var(--mono);font-size:12px;color:var(--text);min-width:110px;flex-shrink:0}
+.skill-bar-track{flex:1;height:6px;background:var(--inner);border-radius:3px;overflow:hidden;border:1px solid rgba(30,45,66,0.5)}
+.skill-bar-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.skill-bar-fill::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);animation:shimmer 2s ease infinite}
+.skill-bar-fill.fill-s{background:linear-gradient(90deg,var(--green),#33ff99)}
+.skill-bar-fill.fill-g{background:linear-gradient(90deg,var(--cyan),#66e0ff)}
+.skill-bar-fill.fill-l{background:linear-gradient(90deg,var(--orange),#ffaa33)}
+@media(max-width:600px){.skill-bars-grid{grid-template-columns:1fr}.skill-bar-label{min-width:100px;font-size:11px}}
+
+/* SVG PROGRESS RINGS */
+.stats-ring-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-ring{text-align:center;padding:16px 8px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1)}
+.stat-ring:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,212,255,0.12)}
+.stat-ring svg{width:72px;height:72px;transform:rotate(-90deg);margin-bottom:4px}
+.stat-ring circle{fill:none;stroke-width:4}
+.stat-ring .ring-bg{stroke:var(--border)}
+.stat-ring .ring-fill{stroke-dasharray:226;stroke-dashoffset:226;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(0.23,1,0.32,1)}
+.stat-ring .ring-label{font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:1px;display:block}
+.stat-ring .ring-value{font-size:18px;font-weight:800;display:block;margin-top:2px}
+[data-theme="light"] .stat-ring{background:rgba(255,255,255,0.55)}
+@media(max-width:900px){.stats-ring-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.stats-ring-row{grid-template-columns:1fr 1fr}}
+
+/* SCROLL-SYNCED TIMELINE GLOW */
+.timeline{position:relative}
+.timeline .tl-glow{position:absolute;left:5px;top:8px;width:3px;height:0;background:linear-gradient(180deg,var(--green),var(--cyan),var(--purple));border-radius:2px;box-shadow:0 0 10px rgba(0,255,135,0.5),0 0 25px rgba(0,212,255,0.2);z-index:1;transition:height 0.15s linear;pointer-events:none}
+
+/* CURSOR PARTICLES */
+.cursor-dot{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;mix-blend-mode:screen;transition:opacity 0.4s ease}
+
+/* VIEW TRANSITIONS */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:vtFadeOut 0.2s ease both}
+::view-transition-new(root){animation:vtFadeIn 0.3s ease both}
+@keyframes vtFadeOut{to{opacity:0;transform:scale(0.98)}}
+@keyframes vtFadeIn{from{opacity:0;transform:scale(1.02)}}
 </style>
 
 </head>
@@ -362,6 +441,8 @@ nav .brand{margin-right:auto}
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
 
+<div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
+<svg class="noise-overlay" aria-hidden="true"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
 <div class="ambient">
   <span style="width:3px;height:3px;background:var(--purple);opacity:0.12;left:12%;top:20%;animation-duration:7s"></span>
   <span class="drift" style="width:2px;height:2px;background:var(--green);opacity:0.1;left:70%;top:35%;animation-duration:10s;animation-delay:1s"></span>
@@ -403,11 +484,27 @@ nav .brand{margin-right:auto}
     <div class="reveal reveal-d2 visible"><div class="section-desc">5 years of data analytics in financial services. 5 years of military officer leadership. One direction: ML-powered decision systems.</div></div>
 
 
-<div class="stats-row">
-  <div class="stat reveal reveal-d1"><div class="num" style="color:var(--green)">5</div><div class="lbl">Years DA</div></div>
-  <div class="stat reveal reveal-d2"><div class="num" style="color:var(--cyan)">176K+</div><div class="lbl">Members Served</div></div>
-  <div class="stat reveal reveal-d3"><div class="num" style="color:var(--purple)">$2.9B</div><div class="lbl">CU Assets</div></div>
-  <div class="stat reveal reveal-d4"><div class="num" style="color:var(--gold)">60+</div><div class="lbl">Soldiers Led</div></div>
+<div class="stats-ring-row">
+  <div class="stat-ring reveal reveal-d1">
+    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--green)" data-pct="50"/></svg>
+    <span class="ring-value" style="color:var(--green)">5</span>
+    <span class="ring-label">Years DA</span>
+  </div>
+  <div class="stat-ring reveal reveal-d2">
+    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--cyan)" data-pct="88"/></svg>
+    <span class="ring-value" style="color:var(--cyan)">176K+</span>
+    <span class="ring-label">Members Served</span>
+  </div>
+  <div class="stat-ring reveal reveal-d3">
+    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--purple)" data-pct="58"/></svg>
+    <span class="ring-value" style="color:var(--purple)">$2.9B</span>
+    <span class="ring-label">CU Assets</span>
+  </div>
+  <div class="stat-ring reveal reveal-d4">
+    <svg viewBox="0 0 80 80"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--gold)" data-pct="60"/></svg>
+    <span class="ring-value" style="color:var(--gold)">60+</span>
+    <span class="ring-label">Soldiers Led</span>
+  </div>
 </div>
 
 <div class="about-grid">
@@ -481,24 +578,51 @@ nav .brand{margin-right:auto}
     <div class="reveal reveal-d2"><div class="section-desc">Green = strong. Blue = growing. Orange = learning next.</div></div>
 
 
-<div class="reveal reveal-d1">
-  <div class="skill-row"><div class="cat">Languages & Data</div>
-    <span class="skill-tag s">SQL (T-SQL)</span><span class="skill-tag s">Python</span><span class="skill-tag s">Pandas</span><span class="skill-tag g">NumPy</span><span class="skill-tag g">Matplotlib</span><span class="skill-tag g">R</span>
+<div class="skill-bar-row reveal reveal-d1">
+  <div class="cat">Languages & Data</div>
+  <div class="skill-bars-grid">
+    <div class="skill-bar-item"><span class="skill-bar-label">SQL (T-SQL)</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="95"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="88"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Pandas</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="82"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">NumPy</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="68"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Matplotlib</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="62"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">R</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="45"></div></div></div>
   </div>
 </div>
-<div class="reveal reveal-d2">
-  <div class="skill-row"><div class="cat">Tools & Platforms</div>
-    <span class="skill-tag s">Power BI</span><span class="skill-tag s">MS SQL Server</span><span class="skill-tag s">Azure Data Studio</span><span class="skill-tag g">Tableau</span><span class="skill-tag g">Azure ML</span><span class="skill-tag g">Azure DevOps</span><span class="skill-tag l">Databricks</span><span class="skill-tag s">Git</span><span class="skill-tag s">Excel</span><span class="skill-tag s">Jupyter</span>
+<div class="skill-bar-row reveal reveal-d2">
+  <div class="cat">Tools & Platforms</div>
+  <div class="skill-bars-grid">
+    <div class="skill-bar-item"><span class="skill-bar-label">Power BI</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="92"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">MS SQL Server</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="90"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Azure Data Studio</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="85"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Git</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="82"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Excel</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="88"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Jupyter</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="80"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Tableau</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="68"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Azure ML</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="58"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Azure DevOps</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="55"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Databricks</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-width="38"></div></div></div>
   </div>
 </div>
-<div class="reveal reveal-d3">
-  <div class="skill-row"><div class="cat">ML & AI</div>
-    <span class="skill-tag g">scikit-learn</span><span class="skill-tag l">PyTorch</span><span class="skill-tag l">TensorFlow</span><span class="skill-tag g">LLM / GenAI</span><span class="skill-tag l">MLOps</span><span class="skill-tag l">Cloud ML</span>
+<div class="skill-bar-row reveal reveal-d3">
+  <div class="cat">ML & AI</div>
+  <div class="skill-bars-grid">
+    <div class="skill-bar-item"><span class="skill-bar-label">scikit-learn</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="65"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">LLM / GenAI</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="60"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">PyTorch</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-width="35"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">TensorFlow</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-width="32"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">MLOps</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-width="30"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Cloud ML</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-width="28"></div></div></div>
   </div>
 </div>
-<div class="reveal reveal-d4">
-  <div class="skill-row"><div class="cat">Domain & Clearance</div>
-    <span class="skill-tag s">Financial Services</span><span class="skill-tag s">Regulatory Compliance</span><span class="skill-tag g">Risk Analytics</span><span class="skill-tag g">DoD / Signal Ops</span><span class="skill-tag s">Secret Clearance</span>
+<div class="skill-bar-row reveal reveal-d4">
+  <div class="cat">Domain & Clearance</div>
+  <div class="skill-bars-grid">
+    <div class="skill-bar-item"><span class="skill-bar-label">Financial Services</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="90"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Regulatory Compliance</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="85"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Secret Clearance</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-width="88"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">Risk Analytics</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="70"></div></div></div>
+    <div class="skill-bar-item"><span class="skill-bar-label">DoD / Signal Ops</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-width="72"></div></div></div>
   </div>
 </div>
 
@@ -689,6 +813,7 @@ nav .brand{margin-right:auto}
 
 
 <div class="timeline">
+  <div class="tl-glow" aria-hidden="true"></div>
   <div class="tl now reveal">
     <div class="role">Data Analyst I</div>
     <div class="org">First Community Credit Union · $2.9B · 176K members</div>
@@ -980,6 +1105,124 @@ function toggleExpand(btn) {
   btn.setAttribute('aria-expanded', isOpen);
   btn.textContent = isOpen ? 'Details ▴' : 'Details ▾';
 }
+
+// === FUTURISTIC ENHANCEMENTS ===
+
+// 1. TYPING EFFECT on hero subtitle
+(function() {
+  const sub = document.querySelector('.hero-sub');
+  if (!sub || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const fullText = sub.textContent;
+  sub.textContent = '';
+  const cursor = document.createElement('span');
+  cursor.className = 'type-cursor';
+  sub.appendChild(cursor);
+  let i = 0;
+  function type() {
+    if (i < fullText.length) {
+      sub.insertBefore(document.createTextNode(fullText[i]), cursor);
+      i++;
+      setTimeout(type, 18 + Math.random() * 12);
+    } else {
+      setTimeout(() => cursor.style.display = 'none', 2000);
+    }
+  }
+  setTimeout(type, 600);
+})();
+
+// 2. MAGNETIC HOVER on CTA buttons
+document.querySelectorAll('.hero-links a, .project-links-row a, .next-card').forEach(btn => {
+  btn.addEventListener('mousemove', e => {
+    const rect = btn.getBoundingClientRect();
+    const x = e.clientX - rect.left - rect.width / 2;
+    const y = e.clientY - rect.top - rect.height / 2;
+    btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+  });
+  btn.addEventListener('mouseleave', () => {
+    btn.style.transform = '';
+  });
+});
+
+// 3. CURSOR PARTICLE TRAIL
+(function() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if ('ontouchstart' in window) return;
+  const colors = ['var(--purple)', 'var(--cyan)', 'var(--green)'];
+  let particles = [];
+  const MAX = 6;
+  document.addEventListener('mousemove', e => {
+    const dot = document.createElement('div');
+    dot.className = 'cursor-dot';
+    const size = 3 + Math.random() * 4;
+    dot.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX}px;top:${e.clientY}px;background:${colors[Math.floor(Math.random()*colors.length)]};opacity:0.6`;
+    document.body.appendChild(dot);
+    particles.push(dot);
+    setTimeout(() => { dot.style.opacity = '0'; dot.style.transform = `translate(${(Math.random()-0.5)*20}px, ${(Math.random()-0.5)*20}px) scale(0)`; }, 50);
+    setTimeout(() => { dot.remove(); particles = particles.filter(p => p !== dot); }, 500);
+    while (particles.length > MAX) { const old = particles.shift(); old.remove(); }
+  });
+})();
+
+// 4. SCROLL-SYNCED TIMELINE GLOW
+(function() {
+  const timeline = document.querySelector('.timeline');
+  const glow = document.querySelector('.tl-glow');
+  if (!timeline || !glow) return;
+  const line = timeline.querySelector(':scope > .tl:last-child');
+  window.addEventListener('scroll', () => {
+    const rect = timeline.getBoundingClientRect();
+    const viewH = window.innerHeight;
+    if (rect.top > viewH || rect.bottom < 0) { glow.style.height = '0px'; return; }
+    const totalH = rect.height - 16;
+    const scrolled = Math.max(0, viewH * 0.6 - rect.top);
+    const pct = Math.min(1, scrolled / totalH);
+    glow.style.height = (pct * totalH) + 'px';
+  }, { passive: true });
+})();
+
+// 5. ANIMATED SKILL BARS on scroll
+const skillBarObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      entry.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
+        setTimeout(() => {
+          bar.style.width = bar.dataset.width + '%';
+        }, i * 60);
+      });
+    }
+  });
+}, { threshold: 0.2 });
+document.querySelectorAll('.skill-bar-row').forEach(row => skillBarObserver.observe(row));
+
+// 6. SVG PROGRESS RING animation on scroll
+const ringObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !entry.target.dataset.animated) {
+      entry.target.dataset.animated = 'true';
+      const fill = entry.target.querySelector('.ring-fill');
+      if (fill) {
+        const pct = parseFloat(fill.dataset.pct);
+        const circumference = 226;
+        const offset = circumference * (1 - pct / 100);
+        fill.style.strokeDashoffset = offset;
+      }
+    }
+  });
+}, { threshold: 0.3 });
+document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(ring));
+
+// 7. VIEW TRANSITIONS API for internal navigation
+document.querySelectorAll('a[href^="projects/"]').forEach(link => {
+  link.addEventListener('click', e => {
+    if (!document.startViewTransition) return;
+    e.preventDefault();
+    const href = link.href;
+    document.startViewTransition(() => {
+      window.location.href = href;
+    });
+  });
+});
 </script>
 
 </body>
