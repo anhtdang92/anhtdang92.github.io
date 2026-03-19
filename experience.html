@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience & Education — Anh Dang</title>
+<meta name="description" content="Professional experience, education credentials, and career goals for Anh Dang — Data Analyst II, Georgia Tech OMSCS, U.S. Army Signal Officer.">
+<meta property="og:title" content="Experience & Education — Anh Dang">
+<meta property="og:description" content="Professional experience timeline, Georgia Tech OMSCS progress, and career goals.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anhtdang92.github.io/experience.html">
+<meta name="theme-color" content="#04070d">
+<link rel="canonical" href="https://anhtdang92.github.io/experience.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* TIMELINE */
+.timeline{position:relative;padding-left:24px}
+.timeline::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1px;background:linear-gradient(180deg,var(--green),var(--cyan),var(--purple),var(--violet))}
+.tl{position:relative;margin-bottom:24px}
+.tl::before{content:'';position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;border:2px solid var(--cyan);background:var(--bg)}
+.tl.now::before{background:var(--green);border-color:var(--green);box-shadow:0 0 12px rgba(0,255,135,0.4);animation:tlPulse 2s ease-in-out infinite}
+@keyframes tlPulse{0%,100%{box-shadow:0 0 8px rgba(0,255,135,0.3)}50%{box-shadow:0 0 20px rgba(0,255,135,0.7),0 0 40px rgba(0,255,135,0.2)}}
+.tl .role{font-size:18px;font-weight:700;color:#fff}
+.tl .org{font-size:15px;color:var(--cyan)}
+.tl .date{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:2px}
+.tl .desc{font-size:15px;color:var(--text);margin-top:4px;line-height:1.6}
+.tl .highlights{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
+.tl .highlights span{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:4px;background:var(--inner);color:var(--text);border:1px solid var(--border)}
+.tl{padding:12px 16px;border-radius:10px;border:1px solid transparent;margin-left:-16px;padding-left:32px;cursor:default}
+
+/* Timeline hover glow */
+.tl:hover{background:rgba(0,212,255,0.03);border-color:rgba(0,212,255,0.15);box-shadow:0 4px 20px rgba(0,212,255,0.06)}
+.tl.now:hover{background:rgba(0,255,135,0.03);border-color:rgba(0,255,135,0.15);box-shadow:0 4px 20px rgba(0,255,135,0.08)}
+
+/* Timeline scroll glow */
+.timeline .tl-glow{position:absolute;left:5px;top:8px;width:3px;height:0;background:linear-gradient(180deg,var(--green),var(--cyan),var(--purple));border-radius:2px;box-shadow:0 0 10px rgba(0,255,135,0.5),0 0 25px rgba(0,212,255,0.2);z-index:1;transition:height 0.15s linear;pointer-events:none}
+
+/* Timeline entry reveal */
+.tl{opacity:0;transform:translateX(-12px);transition:all 0.5s cubic-bezier(0.23,1,0.32,1)}
+.tl.visible{opacity:1;transform:translateX(0)}
+
+/* EDUCATION CARDS */
+.edu-card{padding:16px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:10px;transition:all 0.3s}
+.edu-card:hover{border-color:var(--purple);transform:translateY(-2px);box-shadow:0 8px 30px rgba(224,64,251,0.1)}
+.edu-card .degree{font-size:19px;font-weight:700;color:#fff}
+.edu-card .school{font-size:15px;color:var(--purple)}
+.edu-card .detail{font-family:var(--mono);font-size:13px;color:var(--muted);margin-top:4px}
+.edu-card .status{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:4px;display:inline-block;margin-top:6px}
+.edu-card .status.ip{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.3);animation:statusPulse 3s ease-in-out infinite}
+@keyframes statusPulse{0%,100%{box-shadow:0 0 0 rgba(0,255,135,0)}50%{box-shadow:0 0 12px rgba(0,255,135,0.2)}}
+.edu-card .status.done{background:rgba(191,95,255,0.1);color:var(--violet);border:1px solid rgba(191,95,255,0.3)}
+
+/* OMSCS PROGRESS */
+.omscs-progress{display:flex;gap:24px;align-items:center;margin:20px 0}
+.omscs-donut{flex:0 0 140px;height:140px;position:relative}
+.omscs-donut-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.omscs-donut-num{font-size:32px;font-weight:900;color:var(--green)}
+.omscs-donut-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px}
+.omscs-details{flex:1}
+.omscs-bar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px}
+.omscs-bar-label{font-family:var(--mono);font-size:12px;color:var(--muted);min-width:80px}
+.omscs-bar-track{flex:1;height:6px;background:var(--inner);border-radius:3px;overflow:hidden}
+.omscs-bar-fill{height:100%;border-radius:3px;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
+.omscs-bar-val{font-family:var(--mono);font-size:12px;color:var(--text);min-width:40px;text-align:right}
+[data-theme="light"] .omscs-donut-num{color:var(--green)}
+@media(max-width:600px){.omscs-progress{flex-direction:column}.omscs-donut{margin:0 auto}}
+
+/* COURSEWORK */
+.course-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
+.course-item{padding:10px 14px;background:var(--inner);border-radius:8px;border:1px solid var(--border);transition:all 0.3s cubic-bezier(0.23,1,0.32,1)}
+.course-item:hover{border-color:var(--cyan);transform:translateY(-2px) scale(1.02);box-shadow:0 4px 16px rgba(0,212,255,0.08)}
+.course-item .ci-name{font-size:14px;font-weight:600;color:#fff}
+.course-item .ci-code{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.course-item .ci-grade{font-family:var(--mono);font-size:12px;font-weight:700;margin-top:2px}
+.ci-grade.a{color:var(--green)}.ci-grade.b{color:var(--cyan)}.ci-grade.upcoming{color:var(--orange)}
+.course-item:hover .ci-grade.a{text-shadow:0 0 8px rgba(0,255,135,0.6)}
+.course-item:hover .ci-grade.b{text-shadow:0 0 8px rgba(0,212,255,0.6)}
+.course-item:hover .ci-grade.upcoming{text-shadow:0 0 8px rgba(255,149,0,0.6)}
+@media(max-width:600px){.course-grid{grid-template-columns:1fr}}
+
+/* NEXT CARD */
+.next-card{padding:20px;background:linear-gradient(135deg,#0a0825,var(--card),#071510);border-radius:14px;border:1px solid var(--purple);position:relative;overflow:hidden}
+.next-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--purple),var(--green),transparent);background-size:200% 100%;animation:nextBorderFlow 3s ease infinite}
+@keyframes nextBorderFlow{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
+.next-card h3{font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.next-card p{font-size:16px;color:var(--text);line-height:1.7;margin-bottom:8px}
+.next-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.next-item{padding:10px;background:var(--inner);border-radius:8px;border:1px solid var(--border)}
+.next-item .ni-label{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+.next-item .ni-value{font-size:15px;font-weight:600;color:#fff;margin-top:2px}
+.next-item .ni-date{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:2px}
+
+/* ABOUT TEXT */
+.about-text{font-size:16px;color:var(--text);line-height:1.8;margin-bottom:16px}
+.about-text strong{color:#fff;font-weight:600}
+
+/* GLASSMORPHISM */
+.edu-card,.course-item,.next-item,.next-card{background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+[data-theme="light"] .edu-card,[data-theme="light"] .course-item,[data-theme="light"] .next-item,[data-theme="light"] .next-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+
+/* NEON GLOW ON SECTION TITLES */
+h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
+[data-theme="light"] h2.section-title{text-shadow:none}
+
+/* LIGHT THEME OVERRIDES */
+[data-theme="light"] .tl .role,[data-theme="light"] .edu-card .degree,[data-theme="light"] .next-card h3,[data-theme="light"] .ci-name,[data-theme="light"] .ni-value,[data-theme="light"] .about-text strong,[data-theme="light"] .next-card p strong{color:#1a1a2e}
+[data-theme="light"] .next-card{background:linear-gradient(135deg,#f0eeff,#ffffff,#eeffee)}
+
+/* REDUCED MOTION */
+@media(prefers-reduced-motion:reduce){
+.tl.now::before{animation:none}
+.edu-card .status.ip{animation:none}
+.next-card::before{animation:none}
+.ambient,.mesh-gradient,.noise-overlay,.tl-glow{display:none}
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+.next-items{grid-template-columns:1fr}
+}
+
+/* TRANSITIONS */
+nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:background,background-color,color,border-color,box-shadow,transform,opacity;transition-duration:0.4s;transition-timing-function:ease}
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="brand">AD</a>
+  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html">Skills & AI</a>
+  <a href="experience.html" class="active">Experience</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+</nav>
+
+<div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
+<svg class="noise-overlay" aria-hidden="true"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+<div class="ambient">
+  <span style="width:3px;height:3px;background:var(--purple);opacity:0.1;left:15%;top:25%;animation-duration:7s"></span>
+  <span class="drift" style="width:2px;height:2px;background:var(--green);opacity:0.08;left:75%;top:30%;animation-duration:11s"></span>
+  <span style="width:3px;height:3px;background:var(--cyan);opacity:0.06;left:45%;top:55%;animation-duration:9s;animation-delay:2s"></span>
+  <span class="drift" style="width:2px;height:2px;background:var(--gold);opacity:0.08;left:88%;top:70%;animation-duration:13s;animation-delay:1s"></span>
+</div>
+
+<main class="container" role="main" id="content">
+
+  <!-- EXPERIENCE -->
+
+  <section id="experience" aria-labelledby="experience-title" style="padding-top:120px">
+    <div class="reveal"><div class="section-label">Experience</div></div>
+    <div class="reveal reveal-d1"><h2 id="experience-title" class="section-title">Where I've worked</h2></div>
+
+
+<div class="timeline">
+  <div class="tl-glow" aria-hidden="true"></div>
+  <div class="tl now reveal">
+    <div class="role">Data Analyst II</div>
+    <div class="org">$2.9B Financial Institution &middot; 176K members &middot; Houston, TX</div>
+    <div class="date">Apr 2026 – Present</div>
+    <div class="desc">Promoted to lead advanced analytics initiatives. Continuing ML platform integration, enterprise ETL development, and cross-database architecture work at expanded scope.</div>
+    <div class="highlights"><span>Python</span><span>T-SQL</span><span>ML Integration</span><span>ETL Pipelines</span><span>Power BI</span><span>Risk Analytics</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d2">
+    <div class="role">Data Analyst I</div>
+    <div class="org">$2.9B Financial Institution &middot; Houston, TX</div>
+    <div class="date">Apr 2023 – Apr 2026</div>
+    <div class="desc">Integrated ML credit decisioning platform processing 3M+ decisions/month. Built enterprise ETL pipeline for Visa DPS fraud risk factor ingestion. Designed cross-database staging architecture reducing query times by 90%+. Built executive dashboards driving data-informed strategy across 41-county operation.</div>
+    <div class="highlights"><span>Python</span><span>T-SQL</span><span>ML Integration</span><span>ETL Pipelines</span><span>Power BI</span><span>Risk Analytics</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d3">
+    <div class="role">IT Data Analyst</div>
+    <div class="org">$2.9B Financial Institution</div>
+    <div class="date">Aug 2021 – Apr 2023</div>
+    <div class="desc">Administered SQL Server infrastructure across 19 branches. Built automated eligibility engine for financial products. Created Tableau dashboards for business stakeholder decision-making.</div>
+    <div class="highlights"><span>SQL Server</span><span>Tableau</span><span>Azure Data Studio</span></div>
+  </div>
+
+  <div class="tl reveal reveal-d4">
+    <div class="role">Data Analyst Intern</div>
+    <div class="org">$2.9B Financial Institution</div>
+    <div class="date">Jun – Aug 2021</div>
+    <div class="desc">Built Python/Pandas data pipelines for marketing campaign analytics. Created member segmentation dashboards that informed acquisition targeting strategy.</div>
+  </div>
+
+  <div class="tl reveal reveal-d5">
+    <div class="role">Web Developer Intern</div>
+    <div class="org">Elle Investments Inc &middot; New York, NY</div>
+    <div class="date">Jun – Aug 2020</div>
+    <div class="desc">Built SQL-backed web applications. Developed Python web scraping pipelines with Beautiful Soup. Automated data export workflows.</div>
+  </div>
+
+  <div class="tl now reveal reveal-d6">
+    <div class="role">S6 OIC — Signal Operations Officer (1LT)</div>
+    <div class="org">U.S. Army Reserve &middot; 1181st DDSB</div>
+    <div class="date">May 2025 – Present &middot; Houston, TX</div>
+    <div class="desc">Lead all communications, cybersecurity, and IT operations for 60+ soldier unit. Manage COMSEC, classified network infrastructure, and signal architecture. Active Secret clearance.</div>
+    <div class="highlights"><span>Secret Clearance</span><span>Cybersecurity</span><span>Network Ops</span><span>60+ Soldiers</span></div>
+  </div>
+
+  <div class="tl reveal">
+    <div class="role">Signal Officer (2LT)</div>
+    <div class="org">U.S. Army Reserve</div>
+    <div class="date">Jul 2022 – May 2025</div>
+    <div class="desc">Led 60+ soldiers in communications operations. OIC for live-fire qualifications — planned, resourced, and executed with zero safety incidents across multiple exercises.</div>
+  </div>
+</div>
+
+
+  </section>
+
+  <!-- EDUCATION -->
+
+  <section id="education" aria-labelledby="education-title">
+    <div class="reveal"><div class="section-label">Education</div></div>
+    <div class="reveal reveal-d1"><h2 id="education-title" class="section-title">Credentials</h2></div>
+
+
+<div class="edu-card reveal reveal-d1">
+  <div class="degree">M.S. Computer Science — Machine Learning</div>
+  <div class="school">Georgia Institute of Technology (OMSCS)</div>
+  <span class="status ip">IN PROGRESS</span>
+  <div class="omscs-progress">
+    <div class="omscs-donut">
+      <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="OMSCS progress: 60% complete, 6 of 10 courses finished">
+        <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border)" stroke-width="8"/>
+        <circle id="omscs-ring" cx="70" cy="70" r="58" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="364" transform="rotate(-90 70 70)" style="transition:stroke-dashoffset 1.5s cubic-bezier(0.23,1,0.32,1)"/>
+      </svg>
+      <div class="omscs-donut-center">
+        <div class="omscs-donut-num">60%</div>
+        <div class="omscs-donut-label">Complete</div>
+      </div>
+    </div>
+    <div class="omscs-details">
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">Courses</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="60"></div></div>
+        <span class="omscs-bar-val">6 / 10</span>
+      </div>
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">Credits</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="60"></div></div>
+        <span class="omscs-bar-val">18 / 30</span>
+      </div>
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">GPA</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--purple)" data-ow="82"></div></div>
+        <span class="omscs-bar-val">3.3 / 4.0</span>
+      </div>
+      <div class="omscs-bar-row">
+        <span class="omscs-bar-label">Semesters</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--gold)" data-ow="75"></div></div>
+        <span class="omscs-bar-val">6 / 8</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="edu-card reveal reveal-d2">
+  <div class="degree">B.S. Computer Science</div>
+  <div class="school">University of Houston-Downtown</div>
+  <div class="detail">Focus: Artificial Intelligence, Data Structures, Algorithms, Cryptography</div>
+  <span class="status done">COMPLETED</span>
+</div>
+
+<div class="reveal reveal-d3" style="margin-top:24px">
+  <div class="section-label">OMSCS Coursework</div>
+  <div class="course-grid">
+    <div class="course-item">
+      <div class="ci-code">CSE 6242</div>
+      <div class="ci-name">Data & Visual Analytics</div>
+      <div class="ci-grade a">Grade: A</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7637</div>
+      <div class="ci-name">Knowledge-Based AI</div>
+      <div class="ci-grade b">Grade: B</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7280</div>
+      <div class="ci-name">Network Science</div>
+      <div class="ci-grade b">Grade: B</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 6476</div>
+      <div class="ci-name">Computer Vision</div>
+      <div class="ci-grade b">Completed</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7642</div>
+      <div class="ci-name">Reinforcement Learning</div>
+      <div class="ci-grade b">Completed</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 6603</div>
+      <div class="ci-name">AI, Ethics, and Society</div>
+      <div class="ci-grade b">Completed</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 7641</div>
+      <div class="ci-name">Machine Learning</div>
+      <div class="ci-grade upcoming">Upcoming</div>
+    </div>
+    <div class="course-item">
+      <div class="ci-code">CS 6515</div>
+      <div class="ci-name">Graduate Algorithms</div>
+      <div class="ci-grade upcoming">Upcoming</div>
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+  <!-- WHAT'S NEXT -->
+
+  <section id="next" aria-labelledby="next-title">
+    <div class="reveal"><div class="section-label">What's Next</div></div>
+    <div class="reveal reveal-d1"><h2 id="next-title" class="section-title">Building toward</h2></div>
+
+
+<div class="reveal reveal-d2"><p class="about-text" style="margin-bottom:24px">Most ML engineers come from pure CS or research backgrounds. I come from the intersection of <strong>production data systems, military operations, and applied ML</strong> — which means I understand both the models and the real-world decisions they power. I've shipped ML integrations processing millions of decisions at a $2.9B institution, managed classified communications infrastructure for the Army, and I'm building deep ML expertise through Georgia Tech's program. That combination — <strong>production experience, Secret clearance, domain knowledge, and Georgia Tech ML training</strong> — is what I bring to the table.</p></div>
+
+<div class="next-card reveal reveal-d3">
+  <h3>Building production ML systems that drive decisions</h3>
+  <p>Completing Georgia Tech's ML masters while building end-to-end ML projects — from feature engineering and model training to containerized deployment and monitoring. Looking for ML Engineer, Data Scientist, or MLE roles where I can build predictive systems at scale.</p>
+  <div class="next-items">
+    <div class="next-item">
+      <div class="ni-label">OMSCS</div>
+      <div class="ni-value">Georgia Tech MSCS</div>
+      <div class="ni-date">In progress</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-label">Next Course</div>
+      <div class="ni-value">CS 7641: Machine Learning</div>
+      <div class="ni-date">Upcoming</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-label">Target Roles</div>
+      <div class="ni-value">ML Engineer &middot; MLE &middot; Data Scientist</div>
+      <div class="ni-date">IC or Tech Lead &middot; Remote/Hybrid/Onsite</div>
+    </div>
+    <div class="next-item">
+      <div class="ni-label">Top Sectors</div>
+      <div class="ni-value">FAANG &middot; Defense &middot; FinTech &middot; Energy</div>
+      <div class="ni-date">Secret Clearance &middot; Open to relocation</div>
+    </div>
+  </div>
+</div>
+
+
+  </section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <a href="https://github.com/anhtdang92">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+    <a href="mailto:anhtdang92@gmail.com">Email</a>
+  </div>
+  <div class="footer-text">Built with HTML, caffeine, and an RTX 4090</div>
+  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
+</footer>
+
+<script>
+// 1. REVEAL OBSERVER
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// 2. SCROLL PROGRESS + BACK-TO-TOP
+const progressBar = document.querySelector('.scroll-progress');
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+  backToTop.classList.toggle('visible', scrollTop > window.innerHeight);
+}, { passive: true });
+
+// 3. THEME TOGGLE
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const isLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  btn.textContent = isLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', isLight ? 'dark' : 'light');
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// 4. SCROLL-SYNCED TIMELINE GLOW
+(function() {
+  const timeline = document.querySelector('.timeline');
+  const glow = document.querySelector('.tl-glow');
+  if (!timeline || !glow) return;
+  window.addEventListener('scroll', () => {
+    const rect = timeline.getBoundingClientRect();
+    const viewH = window.innerHeight;
+    if (rect.top > viewH || rect.bottom < 0) { glow.style.height = '0px'; return; }
+    const totalH = rect.height - 16;
+    const scrolled = Math.max(0, viewH * 0.6 - rect.top);
+    const pct = Math.min(1, scrolled / totalH);
+    glow.style.height = (pct * totalH) + 'px';
+  }, { passive: true });
+})();
+
+// 5. TIMELINE ENTRY REVEAL VIA INTERSECTIONOBSERVER
+const tlObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.tl').forEach(el => tlObserver.observe(el));
+
+// 6. OMSCS DONUT ANIMATION
+(function() {
+  const ring = document.getElementById('omscs-ring');
+  if (!ring) return;
+  const circumference = 364; // 2 * PI * 58
+  const target = 0.60; // 60% complete
+  const omscsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        const offset = circumference * (1 - target);
+        ring.style.strokeDashoffset = offset;
+        // Animate the progress bars
+        entry.target.querySelectorAll('.omscs-bar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.ow + '%'; }, i * 100);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  omscsObserver.observe(ring.closest('.omscs-progress'));
+})();
+
+// 7. CLOSE MOBILE NAV
+document.querySelectorAll('nav a:not(.brand)').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.querySelector('nav');
+    if (nav) nav.classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>
