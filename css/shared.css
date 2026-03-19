@@ -92,8 +92,7 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .noise-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9997;pointer-events:none;opacity:0.035;mix-blend-mode:overlay}
 [data-theme="light"] .noise-overlay{opacity:0.02}
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
-[data-theme="light"] h2.section-title{color:#1a1a2e;text-shadow:none}
-.cursor-dot{position:fixed;border-radius:50%;pointer-events:none;z-index:9998;mix-blend-mode:screen;transition:opacity 0.4s ease}
+[data-theme="light"] h2.section-title,[data-theme="light"] h3.section-title{color:#1a1a2e;text-shadow:none}
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vtFadeOut 0.2s ease both}
 ::view-transition-new(root){animation:vtFadeIn 0.3s ease both}
