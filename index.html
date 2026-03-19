@@ -68,7 +68,9 @@
 [data-theme="light"] .next-card{background:linear-gradient(135deg,#f0eeff,#ffffff,#eeffee)}
 [data-theme="light"] ::selection{background:var(--purple);color:#fff}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--ff);line-height:1.7;-webkit-font-smoothing:antialiased}
+body{background:var(--bg);color:var(--text);font-family:var(--ff);line-height:1.7;-webkit-font-smoothing:antialiased;transition:background 0.5s ease,color 0.4s ease}
+*,*::before,*::after{transition-property:none}
+nav,nav a,.about-card,.highlight-card,.project,.edu-card,.course-item,.next-item,.next-card,.kpi-card,.stat-ring,.ai-card,.impact-card,.value-pill,.tl,.gh-heatmap,.trajectory-chart,.ai-workflow,.radar-wrap,.value-banner{transition-property:background,background-color,color,border-color,box-shadow,transform,opacity;transition-duration:0.4s;transition-timing-function:ease}
 a{color:var(--cyan);text-decoration:none;transition:color 0.2s}
 a:hover{color:var(--green)}
 ::selection{background:var(--purple);color:#fff}
@@ -220,6 +222,9 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .tl .desc{font-size:15px;color:var(--text);margin-top:4px;line-height:1.6}
 .tl .highlights{margin-top:6px;display:flex;gap:6px;flex-wrap:wrap}
 .tl .highlights span{font-family:var(--mono);font-size:12px;padding:2px 8px;border-radius:4px;background:var(--inner);color:var(--text);border:1px solid var(--border)}
+.tl{padding:12px 16px;border-radius:10px;border:1px solid transparent;margin-left:-16px;padding-left:32px;cursor:default}
+.tl:hover{background:rgba(0,212,255,0.03);border-color:rgba(0,212,255,0.15);box-shadow:0 4px 20px rgba(0,212,255,0.06)}
+.tl.now:hover{background:rgba(0,255,135,0.03);border-color:rgba(0,255,135,0.15);box-shadow:0 4px 20px rgba(0,255,135,0.08)}
 
 /* EDUCATION */
 .edu-card{padding:16px 20px;background:var(--card);border-radius:12px;border:1px solid var(--border);margin-bottom:10px;transition:all 0.3s}
@@ -262,7 +267,14 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .kpi-card:hover::before{opacity:1}
 .kpi-num{font-size:28px;font-weight:800;font-family:var(--ff);margin-bottom:2px}
 .kpi-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-.kpi-sparkline{margin:8px auto 0;display:block}
+.kpi-sparkline{margin:8px auto 0;display:block;overflow:visible}
+.kpi-sparkline polyline,.kpi-sparkline rect,.kpi-sparkline circle{opacity:0;transition:opacity 0.6s ease}
+.kpi-sparkline polyline{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s cubic-bezier(0.23,1,0.32,1),opacity 0.3s ease}
+.kpi-strip.visible .kpi-sparkline polyline{stroke-dashoffset:0;opacity:1}
+.kpi-strip.visible .kpi-sparkline rect{opacity:1;animation:barGrow 0.8s cubic-bezier(0.23,1,0.32,1) both}
+.kpi-strip.visible .kpi-sparkline circle{opacity:1;animation:dotPop 0.5s cubic-bezier(0.34,1.56,0.64,1) both}
+@keyframes barGrow{from{transform:scaleY(0);transform-origin:bottom}}
+@keyframes dotPop{from{transform:scale(0)}}
 [data-theme="light"] .kpi-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 [data-theme="light"] .kpi-num{color:#1a1a2e}
 @media(max-width:900px){.kpi-strip{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
@@ -509,6 +521,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .value-pill.tech{border-color:rgba(255,208,0,0.4);color:var(--gold);background:rgba(255,208,0,0.06)}
 .value-pill.tech:hover{background:rgba(255,208,0,0.12);box-shadow:0 0 20px rgba(255,208,0,0.2)}
 [data-theme="light"] .value-banner{background:linear-gradient(135deg,rgba(155,48,255,0.05),rgba(0,136,170,0.04),rgba(0,153,77,0.03))}
+/* Value pill staggered entrance */
+.value-pill{opacity:0;transform:translateY(10px) scale(0.9)}
+.value-banner.visible .value-pill{opacity:1;transform:translateY(0) scale(1);transition:all 0.4s cubic-bezier(0.23,1,0.32,1)}
+.value-banner.visible .value-pill:nth-child(1){transition-delay:0s}
+.value-banner.visible .value-pill:nth-child(2){transition-delay:0.06s}
+.value-banner.visible .value-pill:nth-child(3){transition-delay:0.12s}
+.value-banner.visible .value-pill:nth-child(4){transition-delay:0.18s}
+.value-banner.visible .value-pill:nth-child(5){transition-delay:0.24s}
+.value-banner.visible .value-pill:nth-child(6){transition-delay:0.3s}
+/* Clearance pill glow pulse */
+.value-banner.visible .value-pill.clearance{animation:clearancePulse 3s ease-in-out 1s infinite}
+@keyframes clearancePulse{0%,100%{box-shadow:0 0 0 rgba(0,255,135,0)}40%{box-shadow:0 0 16px rgba(0,255,135,0.25),0 0 32px rgba(0,255,135,0.08)}60%{box-shadow:0 0 16px rgba(0,255,135,0.25),0 0 32px rgba(0,255,135,0.08)}}
 
 /* CAREER TRAJECTORY CHART */
 .trajectory-chart{margin:24px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);position:relative;overflow:hidden}
@@ -548,7 +572,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .ai-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity 0.3s}
 .ai-card:hover{transform:translateY(-3px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,0.2)}
 .ai-card:hover::before{opacity:1}
-.ai-card .ai-icon{font-size:24px;margin-bottom:6px;display:block}
+.ai-card .ai-icon{font-size:20px;font-weight:800;font-family:var(--mono);margin-bottom:6px;display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;margin:0 auto 8px;border:1px solid rgba(255,255,255,0.06);transition:all 0.3s}
+.ai-card.c-green .ai-icon{background:linear-gradient(135deg,rgba(0,255,135,0.12),rgba(0,255,135,0.03));color:var(--green)}
+.ai-card.c-cyan .ai-icon{background:linear-gradient(135deg,rgba(0,212,255,0.12),rgba(0,212,255,0.03));color:var(--cyan)}
+.ai-card.c-purple .ai-icon{background:linear-gradient(135deg,rgba(224,64,251,0.12),rgba(224,64,251,0.03));color:var(--purple)}
+.ai-card.c-gold .ai-icon{background:linear-gradient(135deg,rgba(255,208,0,0.12),rgba(255,208,0,0.03));color:var(--gold)}
+.ai-card.c-orange .ai-icon{background:linear-gradient(135deg,rgba(255,149,0,0.12),rgba(255,149,0,0.03));color:var(--orange)}
+.ai-card.c-red .ai-icon{background:linear-gradient(135deg,rgba(255,56,96,0.12),rgba(255,56,96,0.03));color:var(--red)}
+.ai-card:hover .ai-icon{transform:scale(1.1);box-shadow:0 0 16px rgba(0,212,255,0.15)}
 .ai-card .ai-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px}
 .ai-card .ai-sub{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:0.5px}
 /* Color variants */
@@ -567,7 +598,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .ai-flow-step{padding:10px 16px;background:var(--inner);border-radius:8px;border:1px solid var(--border);font-family:var(--mono);font-size:12px;color:var(--text);text-align:center;transition:all 0.3s;flex-shrink:0}
 .ai-flow-step:hover{transform:translateY(-2px);border-color:var(--cyan)}
 .ai-flow-step .step-icon{font-size:18px;display:block;margin-bottom:4px}
-.ai-flow-arrow{font-family:var(--mono);font-size:16px;color:var(--dim);padding:0 6px;flex-shrink:0}
+.ai-flow-arrow{font-family:var(--mono);font-size:16px;color:var(--dim);padding:0 6px;flex-shrink:0;animation:arrowPulse 2s ease-in-out infinite}
+.ai-flow-arrow:nth-child(2){animation-delay:0s}
+.ai-flow-arrow:nth-child(4){animation-delay:0.3s}
+.ai-flow-arrow:nth-child(6){animation-delay:0.6s}
+.ai-flow-arrow:nth-child(8){animation-delay:0.9s}
+.ai-flow-arrow:nth-child(10){animation-delay:1.2s}
+@keyframes arrowPulse{0%,100%{color:var(--dim);transform:translateX(0)}50%{color:var(--cyan);transform:translateX(3px);text-shadow:0 0 8px rgba(0,212,255,0.5)}}
 [data-theme="light"] .ai-workflow{background:rgba(255,255,255,0.55)}
 @media(max-width:600px){.ai-grid{grid-template-columns:repeat(2,1fr)}.ai-flow-row{gap:4px}.ai-flow-step{padding:8px 10px;font-size:11px}.ai-flow-arrow{font-size:12px;padding:0 2px}}
 </style>
@@ -575,6 +612,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 </head>
 <body>
 
+<canvas id="cursorGlow" aria-hidden="true" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:0.7"></canvas>
 <a href="#about" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
@@ -1879,7 +1917,17 @@ document.querySelectorAll('a[href^="projects/"]').forEach(link => {
   let W, H, particles = [];
   const PARTICLE_COUNT = 60;
   const CONNECT_DIST = 120;
+  const REPULSE_DIST = 100;
+  const REPULSE_FORCE = 3;
   const colors = ['#e040fb','#00d4ff','#00ff87','#ffd000','#bf5fff'];
+  let mouseX = -9999, mouseY = -9999;
+
+  canvas.parentElement.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    mouseX = e.clientX - rect.left;
+    mouseY = e.clientY - rect.top;
+  });
+  canvas.parentElement.addEventListener('mouseleave', () => { mouseX = -9999; mouseY = -9999; });
 
   function resize() {
     const container = canvas.parentElement;
@@ -1927,8 +1975,20 @@ document.querySelectorAll('a[href^="projects/"]').forEach(link => {
         }
       }
     }
-    // Particles
+    // Particles with mouse repulsion
     for (const p of particles) {
+      // Mouse repulsion
+      const mdx = p.x - mouseX;
+      const mdy = p.y - mouseY;
+      const mDist = Math.sqrt(mdx * mdx + mdy * mdy);
+      if (mDist < REPULSE_DIST && mDist > 0) {
+        const force = (1 - mDist / REPULSE_DIST) * REPULSE_FORCE;
+        p.vx += (mdx / mDist) * force * 0.02;
+        p.vy += (mdy / mDist) * force * 0.02;
+      }
+      // Dampen velocity
+      p.vx *= 0.99;
+      p.vy *= 0.99;
       p.x += p.vx;
       p.y += p.vy;
       if (p.x < 0 || p.x > W) p.vx *= -1;
@@ -1940,12 +2000,146 @@ document.querySelectorAll('a[href^="projects/"]').forEach(link => {
       ctx.fill();
       ctx.globalAlpha = 1;
     }
+    // Draw mouse glow in hero
+    if (mouseX > 0 && mouseY > 0) {
+      const grad = ctx.createRadialGradient(mouseX, mouseY, 0, mouseX, mouseY, 60);
+      grad.addColorStop(0, 'rgba(0,212,255,0.06)');
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fillRect(mouseX - 60, mouseY - 60, 120, 120);
+    }
     requestAnimationFrame(draw);
   }
 
   init();
   draw();
   window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
+})();
+
+// 12. CURSOR GLOW TRAIL (full page)
+(function() {
+  const canvas = document.getElementById('cursorGlow');
+  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches || 'ontouchstart' in window) return;
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  let W, H;
+  let trail = [];
+  const MAX_TRAIL = 20;
+  let mx = -100, my = -100;
+
+  function resize() {
+    W = window.innerWidth;
+    H = window.innerHeight;
+    canvas.width = W * dpr;
+    canvas.height = H * dpr;
+    canvas.style.width = W + 'px';
+    canvas.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX;
+    my = e.clientY;
+    trail.push({ x: mx, y: my, age: 0 });
+    if (trail.length > MAX_TRAIL) trail.shift();
+  });
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // Draw trail
+    for (let i = 0; i < trail.length; i++) {
+      const t = trail[i];
+      t.age++;
+      const life = 1 - t.age / 30;
+      if (life <= 0) { trail.splice(i, 1); i--; continue; }
+      const r = 20 * life;
+      const grad = ctx.createRadialGradient(t.x, t.y, 0, t.x, t.y, r);
+      grad.addColorStop(0, `rgba(0,212,255,${0.08 * life})`);
+      grad.addColorStop(0.5, `rgba(224,64,251,${0.04 * life})`);
+      grad.addColorStop(1, 'transparent');
+      ctx.fillStyle = grad;
+      ctx.fillRect(t.x - r, t.y - r, r * 2, r * 2);
+    }
+    // Main glow orb
+    const g = ctx.createRadialGradient(mx, my, 0, mx, my, 35);
+    g.addColorStop(0, 'rgba(0,212,255,0.1)');
+    g.addColorStop(0.4, 'rgba(224,64,251,0.04)');
+    g.addColorStop(1, 'transparent');
+    ctx.fillStyle = g;
+    ctx.fillRect(mx - 35, my - 35, 70, 70);
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+
+// 13. UNIVERSAL NUMBER COUNTER — animate ALL numbers on page
+(function() {
+  function countUp(el, finalText) {
+    const nums = finalText.match(/[\d.]+/);
+    if (!nums) return;
+    const target = parseFloat(nums[0]);
+    const prefix = finalText.substring(0, finalText.indexOf(nums[0]));
+    const suffix = finalText.substring(finalText.indexOf(nums[0]) + nums[0].length);
+    const isDecimal = nums[0].includes('.');
+    const duration = 1200;
+    const start = performance.now();
+    el.textContent = prefix + '0' + suffix;
+    const step = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      if (p >= 1) { el.textContent = finalText; return; }
+      const val = isDecimal ? (e * target).toFixed(1) : Math.floor(e * target);
+      el.textContent = prefix + val + suffix;
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
+  // Impact numbers
+  const impactObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.counted) {
+        entry.target.dataset.counted = 'true';
+        entry.target.querySelectorAll('.impact-num').forEach(el => {
+          countUp(el, el.textContent.trim());
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  document.querySelectorAll('.impact-row').forEach(r => impactObserver.observe(r));
+})();
+
+// 14. VALUE BANNER scroll observer
+(function() {
+  const bannerObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) entry.target.classList.add('visible');
+    });
+  }, { threshold: 0.2 });
+  document.querySelectorAll('.value-banner').forEach(b => bannerObs.observe(b));
+})();
+
+// 15. PARALLAX DEPTH on mesh gradient blobs
+(function() {
+  const mg1 = document.querySelector('.mg1');
+  const mg2 = document.querySelector('.mg2');
+  const mg3 = document.querySelector('.mg3');
+  if (!mg1) return;
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const s = window.scrollY;
+        mg1.style.transform = `translate(${Math.sin(s * 0.001) * 40}px, ${s * 0.08}px) scale(1.1)`;
+        mg2.style.transform = `translate(${Math.cos(s * 0.0015) * 30}px, ${s * -0.05}px) scale(1.15)`;
+        mg3.style.transform = `translate(${Math.sin(s * 0.002) * 25}px, ${s * 0.03}px) scale(0.95)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
 })();
 </script>
 
