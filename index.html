@@ -84,6 +84,8 @@ nav a.active{color:var(--cyan);background:rgba(0,212,255,0.08)}
 nav .brand{color:#fff;font-weight:700;margin-right:auto;font-family:var(--ff);font-size:14px;padding:6px 0}
 .theme-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:14px;line-height:1;transition:all 0.2s;color:var(--muted)}
 .theme-toggle:hover{border-color:var(--cyan);background:rgba(0,212,255,0.06)}
+.nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);transition:all 0.2s}
+.nav-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
 
 /* AMBIENT */
 .ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -167,8 +169,10 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .skill-tag.l{border-color:var(--orange);color:var(--orange);opacity:0.7}
 
 /* PROJECTS */
-.project-grid{display:grid;gap:12px}
-.project{padding:20px;background:var(--card);border-radius:14px;border:1px solid var(--border);transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;display:block;color:inherit}
+#projects{background:linear-gradient(180deg,transparent 0%,rgba(0,212,255,0.02) 30%,rgba(224,64,251,0.02) 70%,transparent 100%);margin:0 -24px;padding-left:24px;padding-right:24px;border-radius:24px}
+[data-theme="light"] #projects{background:linear-gradient(180deg,transparent 0%,rgba(0,136,170,0.03) 30%,rgba(155,48,255,0.03) 70%,transparent 100%)}
+.project-grid{display:grid;gap:16px}
+.project{padding:24px;background:var(--card);border-radius:14px;border:1px solid var(--border);transition:all 0.3s;cursor:pointer;position:relative;overflow:hidden;display:block;color:inherit}
 .project::before{content:’’;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity 0.3s}
 .project:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,212,255,0.1)}
 .project:hover::before{opacity:1}
@@ -187,11 +191,16 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 .project-toggle{font-family:var(--mono);font-size:11px;color:var(--cyan);cursor:pointer;padding:4px 0;display:inline-block;transition:color 0.2s;background:none;border:none}
 .project-toggle:hover{color:var(--green)}
 .project-badge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:10px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px}
-.badge-ml{background:rgba(224,64,251,0.15);color:var(--purple);border:1px solid rgba(224,64,251,0.3)}
-.badge-ai{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.3)}
-.badge-web{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.3)}
-.badge-ios{background:rgba(255,213,0,0.1);color:var(--gold);border:1px solid rgba(255,213,0,0.3)}
-.badge-work{background:rgba(255,149,0,0.1);color:var(--orange);border:1px solid rgba(255,149,0,0.3)}
+.badge-ml{background:rgba(224,64,251,0.15);color:var(--purple);border:1px solid rgba(224,64,251,0.3);transition:all 0.3s}
+.badge-ai{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.3);transition:all 0.3s}
+.badge-web{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.3);transition:all 0.3s}
+.badge-ios{background:rgba(255,213,0,0.1);color:var(--gold);border:1px solid rgba(255,213,0,0.3);transition:all 0.3s}
+.badge-work{background:rgba(255,149,0,0.1);color:var(--orange);border:1px solid rgba(255,149,0,0.3);transition:all 0.3s}
+.project:hover .badge-ml{background:rgba(224,64,251,0.3);box-shadow:0 0 12px rgba(224,64,251,0.4)}
+.project:hover .badge-ai{background:rgba(0,255,135,0.2);box-shadow:0 0 12px rgba(0,255,135,0.4)}
+.project:hover .badge-web{background:rgba(0,212,255,0.2);box-shadow:0 0 12px rgba(0,212,255,0.4)}
+.project:hover .badge-ios{background:rgba(255,213,0,0.2);box-shadow:0 0 12px rgba(255,213,0,0.4)}
+.project:hover .badge-work{background:rgba(255,149,0,0.2);box-shadow:0 0 12px rgba(255,149,0,0.4)}
 
 /* WRITING */
 .writing-grid{display:grid;gap:10px}
@@ -278,6 +287,15 @@ nav a{font-size:11px;padding:5px 8px}
 section{padding:40px 0}
 .hero-links{flex-direction:column;align-items:center}
 }
+@media(max-width:500px){
+.nav-toggle{display:block}
+nav{flex-wrap:wrap}
+nav a{display:none}
+nav.open a{display:inline-block;width:100%;text-align:center;padding:10px 14px;font-size:13px}
+nav .brand{margin-right:auto}
+.theme-toggle{order:2}
+.nav-toggle{order:1;margin-right:8px}
+}
 </style>
 
 </head>
@@ -289,6 +307,7 @@ section{padding:40px 0}
 
 <nav role="navigation" aria-label="Main navigation">
   <span class="brand">AD</span>
+  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
   <a href="#about">About</a>
   <a href="#highlights">Highlights</a>
   <a href="#skills">Skills</a>
@@ -330,9 +349,9 @@ section{padding:40px 0}
   <!-- ABOUT -->
 
   <section id="about" aria-labelledby="about-title">
-    <div class="reveal"><div class="section-label">About</div></div>
-    <div class="reveal reveal-d1"><h2 id="about-title" class="section-title">The short version</h2></div>
-    <div class="reveal reveal-d2"><div class="section-desc">5 years of data analytics in financial services. 5 years of military officer leadership. One direction: ML-powered decision systems.</div></div>
+    <div class="reveal visible"><div class="section-label">About</div></div>
+    <div class="reveal reveal-d1 visible"><h2 id="about-title" class="section-title">The short version</h2></div>
+    <div class="reveal reveal-d2 visible"><div class="section-desc">5 years of data analytics in financial services. 5 years of military officer leadership. One direction: ML-powered decision systems.</div></div>
 
 
 <div class="stats-row">
@@ -466,14 +485,23 @@ section{padding:40px 0}
     <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="project-link">View on GitHub →</a>
   </div>
 
-  <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="project reveal reveal-d2">
+  <div class="project reveal reveal-d2">
     <span class="project-badge badge-ai">AI</span>
     <div class="project-name">curstar-video-upscaler</div>
     <div class="project-tech"><span>Python</span><span>STAR Diffusion</span><span>Deep Learning</span><span>Computer Vision</span></div>
     <div class="project-desc">AI video upscaler built on the STAR diffusion model. Applies spatial-temporal augmentation to enhance video resolution frame-by-frame using deep learning.</div>
     <div class="project-impact">🎬 Diffusion model · Frame-level inference · GPU-accelerated processing</div>
-    <div class="project-link">View on GitHub →</div>
-  </a>
+    <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
+    <div class="project-expand">
+      <h4>Problem</h4>
+      <p>Low-resolution video footage — whether from older cameras, compressed streams, or surveillance systems — loses critical visual detail. Traditional upscaling (bicubic, Lanczos) just blurs pixels larger. I wanted to test whether diffusion-based super-resolution could reconstruct meaningful detail at the frame level.</p>
+      <h4>Approach</h4>
+      <p>Implemented the STAR (Spatial-Temporal Augmented Resolution) diffusion model pipeline in Python. The system processes video frame-by-frame, applying a pretrained diffusion model to upscale each frame while maintaining temporal consistency. Optimized for GPU-accelerated batch processing on an RTX 4090.</p>
+      <h4>Key Decisions</h4>
+      <p>Chose the STAR diffusion architecture over GAN-based upscalers (Real-ESRGAN) because diffusion models produce fewer artifacts on diverse content types. Processed frames individually rather than using video-native models to maintain flexibility across different input formats and resolutions.</p>
+    </div>
+    <a href="https://github.com/anhtdang92/curstar-video-upscaler" class="project-link">View on GitHub →</a>
+  </div>
 
   <div class="project reveal reveal-d3">
     <span class="project-badge badge-ai">AI</span>
@@ -495,32 +523,59 @@ section{padding:40px 0}
     <a href="https://github.com/anhtdang92/deepseek-local-inference" class="project-link">View on GitHub →</a>
   </div>
 
-  <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="project reveal reveal-d4">
+  <div class="project reveal reveal-d4">
     <span class="project-badge badge-ml">ML</span>
     <div class="project-name">ml-trading-algorithm</div>
     <div class="project-tech"><span>Python</span><span>scikit-learn</span><span>Backtesting</span><span>Feature Engineering</span></div>
     <div class="project-desc">Machine learning trading algorithm with custom feature engineering pipeline, walk-forward backtesting methodology, and systematic signal generation.</div>
     <div class="project-impact">📈 Custom feature pipeline · Walk-forward validation · Systematic strategy</div>
-    <div class="project-link">View on GitHub →</div>
-  </a>
+    <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
+    <div class="project-expand">
+      <h4>Problem</h4>
+      <p>Most retail trading strategies rely on single indicators or discretionary rules that don't generalize. I wanted to build a rigorous ML pipeline that treats trading as a classification problem — can a model learn to predict short-term price direction from engineered features better than random?</p>
+      <h4>Approach</h4>
+      <p>Built a custom feature engineering pipeline generating 30+ technical and statistical features from OHLCV data. Implemented walk-forward backtesting to simulate real-world deployment — training on historical windows and testing on unseen future data to avoid overfitting. Used scikit-learn's gradient boosted classifiers with hyperparameter tuning via cross-validation.</p>
+      <h4>Key Decisions</h4>
+      <p>Walk-forward validation was non-negotiable — random train/test splits create lookahead bias in time-series data. Used feature importance analysis to prune redundant indicators and prevent overfitting. Focused on risk-adjusted returns (Sharpe ratio) rather than raw accuracy as the optimization target.</p>
+    </div>
+    <a href="https://github.com/anhtdang92/ml-trading-algorithm" class="project-link">View on GitHub →</a>
+  </div>
 
-  <a href="https://github.com/anhtdang92/agentic-health-navigator" class="project reveal reveal-d5">
+  <div class="project reveal reveal-d5">
     <span class="project-badge badge-ios">iOS</span>
     <div class="project-name">agentic-health-navigator</div>
     <div class="project-tech"><span>Swift</span><span>HealthKit</span><span>On-Device ML</span><span>iOS</span></div>
     <div class="project-desc">AI-powered iOS app that monitors HealthKit biometrics in real-time and delivers personalized health insights using on-device machine learning.</div>
     <div class="project-impact">📱 Real-time biometrics · On-device ML · HealthKit integration</div>
-    <div class="project-link">View on GitHub →</div>
-  </a>
+    <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
+    <div class="project-expand">
+      <h4>Problem</h4>
+      <p>Health data from Apple Watch and iPhone stays siloed in HealthKit — users see raw numbers (heart rate, steps, sleep) but get no contextual analysis. I wanted to build an agentic system that interprets biometric patterns and delivers actionable health insights, all processed on-device for privacy.</p>
+      <h4>Approach</h4>
+      <p>Built a native Swift iOS app integrating with HealthKit APIs to pull real-time biometric data (heart rate, HRV, steps, sleep, blood oxygen). Implemented on-device ML models using Core ML to analyze trends and detect anomalies. The agentic layer synthesizes multiple data streams into personalized health recommendations.</p>
+      <h4>Key Decisions</h4>
+      <p>Chose on-device inference over cloud APIs to keep sensitive health data private — no data leaves the phone. Used Core ML for model deployment rather than TensorFlow Lite for tighter iOS integration. Designed the agentic architecture to reason across multiple biometric signals rather than analyzing each in isolation.</p>
+    </div>
+    <a href="https://github.com/anhtdang92/agentic-health-navigator" class="project-link">View on GitHub →</a>
+  </div>
 
-  <a href="https://github.com/anhtdang92/signal-network-mapper" class="project reveal reveal-d6">
+  <div class="project reveal reveal-d6">
     <span class="project-badge badge-web">WEB</span>
     <div class="project-name">signal-network-mapper</div>
     <div class="project-tech"><span>JavaScript</span><span>Geospatial</span><span>Web UI</span><span>Military C2</span></div>
     <div class="project-desc">Interactive web application for mapping and visualizing military signal support networks. Built for tactical communications planning and network topology analysis.</div>
     <div class="project-impact">🗺️ Geospatial visualization · Tactical planning tool · Signal architecture</div>
-    <div class="project-link">View on GitHub →</div>
-  </a>
+    <button class="project-toggle" onclick="toggleExpand(this)" aria-expanded="false">Details ▾</button>
+    <div class="project-expand">
+      <h4>Problem</h4>
+      <p>Military signal officers plan communications networks using static PowerPoint slides and manual diagrams — no interactive tooling exists for visualizing how signal nodes, relay points, and communication links connect across a tactical area of operations.</p>
+      <h4>Approach</h4>
+      <p>Built a web-based interactive mapper using JavaScript with geospatial libraries. Users place signal nodes (radio retransmission sites, TOCs, satellite terminals) on a map and define communication links between them. The tool automatically calculates line-of-sight, link budgets, and network topology.</p>
+      <h4>Key Decisions</h4>
+      <p>Built as a pure web app (no backend required) so it can run on any laptop in the field without internet connectivity. Used vanilla JavaScript to minimize dependencies and ensure it works in restricted browser environments common in military settings.</p>
+    </div>
+    <a href="https://github.com/anhtdang92/signal-network-mapper" class="project-link">View on GitHub →</a>
+  </div>
 </div>
 
 
@@ -735,7 +790,8 @@ section{padding:40px 0}
       <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
       <a href="mailto:anhtdang92@gmail.com">Email</a>
     </div>
-    <div class="footer-text">Anh Dang · Houston, TX · 2026</div>
+    <div class="footer-text">Built with HTML, caffeine, and an RTX 4090</div>
+    <div class="footer-text" style="margin-top:4px">Anh Dang · Houston, TX · 2026</div>
   </footer>
 
 <script>
@@ -792,6 +848,11 @@ function toggleTheme() {
     document.querySelector('.theme-toggle').textContent = '☀️';
   }
 })();
+
+// Close mobile nav on link click
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => document.querySelector('nav').classList.remove('open'));
+});
 
 // Expandable project detail panels
 function toggleExpand(btn) {
