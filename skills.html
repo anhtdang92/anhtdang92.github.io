@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skills & AI — Anh Dang</title>
+<meta name="description" content="Technical skills, AI tools, and automation expertise of Anh Dang — from Python and ML frameworks to local LLM inference on RTX 4090.">
+<meta property="og:title" content="Skills & AI — Anh Dang">
+<meta property="og:description" content="Full tech stack, AI model expertise, and automation tools.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://anhtdang92.github.io/skills.html">
+<meta name="theme-color" content="#04070d">
+<link rel="canonical" href="https://anhtdang92.github.io/skills.html">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/shared.css">
+<style>
+/* RADAR CHART */
+.radar-wrap{display:flex;gap:24px;align-items:center;margin:24px 0}
+.radar-chart{flex:0 0 280px;height:280px;position:relative}
+.radar-labels{flex:1;display:grid;gap:6px}
+.radar-label-item{display:flex;align-items:center;gap:10px;font-family:var(--mono);font-size:13px;color:var(--text)}
+.radar-label-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.radar-label-bar{flex:1;height:4px;background:var(--inner);border-radius:2px;overflow:hidden;position:relative}
+.radar-label-fill{height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
+.radar-label-pct{font-size:12px;color:var(--muted);min-width:32px;text-align:right}
+@media(max-width:600px){.radar-wrap{flex-direction:column}.radar-chart{flex:0 0 240px;width:240px;margin:0 auto}}
+
+/* SKILL BARS */
+.skill-bar-row{margin-bottom:20px}
+.skill-bar-row .cat{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
+.skill-bars-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px 24px}
+.skill-bar-item{display:flex;align-items:center;gap:10px}
+.skill-bar-label{font-family:var(--mono);font-size:13px;color:var(--text);min-width:110px;flex-shrink:0}
+.skill-bar-track{flex:1;height:6px;background:var(--inner);border-radius:3px;overflow:hidden;border:1px solid rgba(30,45,66,0.5)}
+.skill-bar-fill{height:100%;border-radius:3px;width:0;transition:width 1.2s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.skill-bar-fill::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.25),transparent);animation:shimmer 2s ease infinite}
+@keyframes shimmer{to{left:100%}}
+.skill-bar-fill.fill-s{background:linear-gradient(90deg,var(--green),#33ff99)}
+.skill-bar-fill.fill-g{background:linear-gradient(90deg,var(--cyan),#66e0ff)}
+.skill-bar-fill.fill-l{background:linear-gradient(90deg,var(--orange),#ffaa33)}
+@media(max-width:600px){.skill-bars-grid{grid-template-columns:1fr}}
+
+/* AI & AUTOMATION */
+.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.ai-card{padding:16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:12px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1)}
+.ai-card:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 12px 35px rgba(224,64,251,0.1)}
+.ai-card .ai-tier{font-family:var(--mono);font-size:11px;letter-spacing:2px;color:var(--purple);text-transform:uppercase;margin-bottom:6px}
+.ai-card .ai-title{font-size:17px;font-weight:700;color:#fff;margin-bottom:6px}
+.ai-card .ai-list{display:flex;flex-wrap:wrap;gap:4px}
+.ai-card .ai-list span{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(--inner);color:var(--text);border:1px solid var(--border);transition:all 0.3s}
+.ai-card:hover .ai-list span{border-color:rgba(224,64,251,0.2)}
+
+/* AI WORKFLOW */
+.ai-workflow{margin:24px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border)}
+.ai-workflow .wf-title{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:16px}
+.wf-flow{display:flex;align-items:center;gap:0;flex-wrap:wrap;justify-content:center}
+.wf-step{padding:8px 14px;background:var(--inner);border-radius:8px;border:1px solid var(--border);font-family:var(--mono);font-size:12px;color:var(--text);transition:all 0.3s;white-space:nowrap}
+.wf-step:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,212,255,0.1)}
+.wf-arrow{color:var(--green);font-size:16px;padding:0 6px;animation:arrowPulse 2s ease-in-out infinite}
+@keyframes arrowPulse{0%,100%{opacity:0.4;transform:translateX(0)}50%{opacity:1;transform:translateX(3px)}}
+
+/* GPU CARD */
+.gpu-card{margin:20px 0;padding:18px 20px;background:linear-gradient(135deg,rgba(224,64,251,0.08),rgba(0,212,255,0.06),rgba(0,255,135,0.04));border-radius:14px;border:1px solid var(--purple);position:relative;overflow:hidden}
+.gpu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));background-size:200% 100%;animation:gpuBorder 3s ease infinite}
+@keyframes gpuBorder{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
+.gpu-card .gpu-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:4px}
+.gpu-card .gpu-specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.gpu-card .gpu-specs span{font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:6px;background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.2)}
+.gpu-card .gpu-desc{font-size:14px;color:var(--muted);margin-top:6px}
+
+/* LIGHT THEME */
+[data-theme="light"] .ai-card{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .ai-card .ai-title,[data-theme="light"] .gpu-card .gpu-title{color:#1a1a2e}
+[data-theme="light"] .ai-workflow{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .gpu-card{background:linear-gradient(135deg,rgba(155,48,255,0.06),rgba(0,136,170,0.05),rgba(0,153,77,0.04))}
+
+/* NAV-TOGGLE (mobile) */
+.nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);transition:all 0.2s}
+.nav-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
+
+/* NEON GLOW ON SECTION TITLES */
+h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
+[data-theme="light"] h2.section-title{text-shadow:none;color:#1a1a2e}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.nav-toggle{display:block}
+nav{flex-wrap:wrap}
+nav a{display:none}
+nav.open a{display:inline-block;width:100%;text-align:center;padding:10px 14px;font-size:14px}
+nav .brand{margin-right:auto}
+.theme-toggle{order:2}
+.nav-toggle{order:1;margin-right:8px}
+}
+@media(max-width:600px){
+.ai-grid{grid-template-columns:1fr}
+.wf-flow{gap:4px}
+}
+@media(prefers-reduced-motion:reduce){
+.skill-bar-fill::after{animation:none}
+.wf-arrow{animation:none;opacity:0.7}
+.gpu-card::before{animation:none}
+.ambient,.mesh-gradient,.noise-overlay{display:none}
+.reveal{opacity:1;transform:none;transition:none}
+h2.section-title{text-shadow:none}
+}
+
+/* TRANSITIONS */
+nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-color,color,border-color,box-shadow,transform,opacity;transition-duration:0.4s;transition-timing-function:ease}
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="brand">AD</a>
+  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
+  <a href="index.html">Home</a>
+  <a href="projects.html">Projects</a>
+  <a href="skills.html" class="active">Skills & AI</a>
+  <a href="experience.html">Experience</a>
+  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+</nav>
+
+<div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
+<svg class="noise-overlay" aria-hidden="true"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+<div class="ambient">
+  <span style="width:3px;height:3px;background:var(--purple);opacity:0.1;left:15%;top:25%;animation-duration:7s"></span>
+  <span class="drift" style="width:2px;height:2px;background:var(--green);opacity:0.08;left:75%;top:30%;animation-duration:11s"></span>
+  <span style="width:3px;height:3px;background:var(--cyan);opacity:0.06;left:45%;top:55%;animation-duration:9s;animation-delay:2s"></span>
+  <span class="drift" style="width:2px;height:2px;background:var(--gold);opacity:0.08;left:88%;top:70%;animation-duration:13s;animation-delay:1s"></span>
+</div>
+
+<main class="container" role="main" id="content">
+
+  <!-- SKILLS -->
+  <section id="skills" aria-labelledby="skills-title" style="padding-top:120px">
+    <div class="reveal"><div class="section-label">Skills</div></div>
+    <div class="reveal reveal-d1"><h2 id="skills-title" class="section-title">Tech stack</h2></div>
+    <div class="reveal reveal-d2"><p class="section-desc" style="font-size:15px;color:var(--muted);margin-bottom:24px">Proficiency breakdown across core domains. <span style="color:var(--green)">Green = strong</span> · <span style="color:var(--cyan)">Cyan = growing</span> · <span style="color:var(--orange)">Orange = learning</span></p></div>
+
+    <!-- RADAR + LABELS -->
+    <div class="radar-wrap reveal reveal-d2">
+      <div class="radar-chart">
+        <canvas id="radarCanvas" width="280" height="280"></canvas>
+      </div>
+      <div class="radar-labels" id="radarLabels">
+        <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--green)"></span><span>Data Engineering</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--green)" data-w="92"></div></div><span class="radar-label-pct">92%</span></div>
+        <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--cyan)"></span><span>ML / AI</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--cyan)" data-w="85"></div></div><span class="radar-label-pct">85%</span></div>
+        <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--purple)"></span><span>Python</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--purple)" data-w="90"></div></div><span class="radar-label-pct">90%</span></div>
+        <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--gold)"></span><span>SQL / Data</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--gold)" data-w="95"></div></div><span class="radar-label-pct">95%</span></div>
+        <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--orange)"></span><span>Cloud / MLOps</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--orange)" data-w="72"></div></div><span class="radar-label-pct">72%</span></div>
+        <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--red)"></span><span>Visualization</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--red)" data-w="88"></div></div><span class="radar-label-pct">88%</span></div>
+      </div>
+    </div>
+
+    <!-- DETAILED SKILL BARS -->
+    <div class="reveal reveal-d3" id="skillBars">
+      <div class="skill-bar-row">
+        <div class="cat">Languages & Data</div>
+        <div class="skill-bars-grid">
+          <div class="skill-bar-item"><span class="skill-bar-label">Python</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="92"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">T-SQL</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="95"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Pandas</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="90"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">PySpark</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="70"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">JavaScript</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="68"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">R</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="55"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="cat">ML & AI Frameworks</div>
+        <div class="skill-bars-grid">
+          <div class="skill-bar-item"><span class="skill-bar-label">scikit-learn</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="88"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">PyTorch</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="78"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">TensorFlow</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="72"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">XGBoost</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="85"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">LangChain</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="75"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Hugging Face</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="70"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="cat">Data & Cloud</div>
+        <div class="skill-bars-grid">
+          <div class="skill-bar-item"><span class="skill-bar-label">SQL Server</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="95"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Power BI</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="90"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Tableau</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="85"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Azure</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="72"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Docker</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="68"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Git / GitHub</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="88"></div></div></div>
+        </div>
+      </div>
+      <div class="skill-bar-row">
+        <div class="cat">Specializations</div>
+        <div class="skill-bars-grid">
+          <div class="skill-bar-item"><span class="skill-bar-label">ETL Pipelines</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="92"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Feature Eng.</span><div class="skill-bar-track"><div class="skill-bar-fill fill-s" data-w="85"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">NLP / LLMs</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="75"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Computer Vision</span><div class="skill-bar-track"><div class="skill-bar-fill fill-g" data-w="70"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">Reinforcement L.</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-w="60"></div></div></div>
+          <div class="skill-bar-item"><span class="skill-bar-label">MLOps</span><div class="skill-bar-track"><div class="skill-bar-fill fill-l" data-w="65"></div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI & AUTOMATION -->
+  <section id="ai" aria-labelledby="ai-title">
+    <div class="reveal"><div class="section-label">AI & Automation</div></div>
+    <div class="reveal reveal-d1"><h2 id="ai-title" class="section-title">AI-native workflow</h2></div>
+    <div class="reveal reveal-d2"><p class="section-desc" style="font-size:15px;color:var(--muted);margin-bottom:24px">I don't just use AI — I run it locally, build with it daily, and integrate it across my entire stack. Every major model, every coding tool, every workflow automated.</p></div>
+
+    <div class="ai-grid">
+      <div class="ai-card reveal reveal-d1">
+        <div class="ai-tier">Tier 1 — Frontier Models</div>
+        <div class="ai-title">Foundation LLMs</div>
+        <div class="ai-list">
+          <span>GPT-4o</span><span>GPT-4 Turbo</span><span>Claude 3.5/4</span><span>Gemini 2.0</span><span>DeepSeek-R1</span><span>Llama 3.1</span><span>Mistral</span><span>Qwen 2.5</span><span>Phi-4</span>
+        </div>
+      </div>
+      <div class="ai-card reveal reveal-d2">
+        <div class="ai-tier">Tier 2 — Coding Tools</div>
+        <div class="ai-title">AI-Assisted Development</div>
+        <div class="ai-list">
+          <span>Claude Code</span><span>GitHub Copilot</span><span>Cursor</span><span>Codex CLI</span><span>Aider</span><span>Continue</span><span>OpenHands</span><span>Cline</span>
+        </div>
+      </div>
+      <div class="ai-card reveal reveal-d3">
+        <div class="ai-tier">Tier 3 — Local Inference</div>
+        <div class="ai-title">Self-Hosted AI Stack</div>
+        <div class="ai-list">
+          <span>LM Studio</span><span>Ollama</span><span>llama.cpp</span><span>vLLM</span><span>GGUF Quant</span><span>ExLlamaV2</span><span>text-gen-webui</span>
+        </div>
+      </div>
+      <div class="ai-card reveal reveal-d4">
+        <div class="ai-tier">Tier 4 — Automation</div>
+        <div class="ai-title">Workflow & Integration</div>
+        <div class="ai-list">
+          <span>LangChain</span><span>LangGraph</span><span>RAG Pipelines</span><span>Embeddings</span><span>Vector DBs</span><span>n8n</span><span>Zapier</span><span>API Chains</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- GPU CARD -->
+    <div class="gpu-card reveal reveal-d3">
+      <div class="gpu-title">RTX 4090 — Local AI Powerhouse</div>
+      <div class="gpu-desc">Running 7B–33B parameter models locally with full GPU acceleration. No API costs, no latency, complete privacy.</div>
+      <div class="gpu-specs">
+        <span>24 GB VRAM</span><span>CUDA 12</span><span>16,384 cores</span><span>42 tok/s (33B)</span><span>82 tok/s (7B)</span>
+      </div>
+    </div>
+
+    <!-- AI WORKFLOW DIAGRAM -->
+    <div class="ai-workflow reveal reveal-d4">
+      <div class="wf-title">TYPICAL AI WORKFLOW</div>
+      <div class="wf-flow">
+        <div class="wf-step">Research</div><span class="wf-arrow">→</span>
+        <div class="wf-step">Prototype</div><span class="wf-arrow">→</span>
+        <div class="wf-step">Local LLM</div><span class="wf-arrow">→</span>
+        <div class="wf-step">Fine-tune</div><span class="wf-arrow">→</span>
+        <div class="wf-step">Deploy</div><span class="wf-arrow">→</span>
+        <div class="wf-step">Monitor</div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <a href="https://github.com/anhtdang92">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+    <a href="mailto:anhtdang92@gmail.com">Email</a>
+  </div>
+  <div class="footer-text">Built with HTML, caffeine, and an RTX 4090</div>
+  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
+</footer>
+
+<script>
+// REVEAL OBSERVER
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// SCROLL PROGRESS + BACK-TO-TOP
+const progressBar = document.querySelector('.scroll-progress');
+const backToTop = document.querySelector('.back-to-top');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  if (docHeight > 0) progressBar.style.width = (scrollTop / docHeight * 100) + '%';
+  backToTop.classList.toggle('visible', scrollTop > window.innerHeight);
+}, { passive: true });
+
+// THEME TOGGLE
+function toggleTheme() {
+  const html = document.documentElement;
+  const btn = document.querySelector('.theme-toggle');
+  const isLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
+  btn.textContent = isLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', isLight ? 'dark' : 'light');
+}
+(function() {
+  const saved = localStorage.getItem('theme');
+  if (saved === 'light') {
+    document.documentElement.setAttribute('data-theme', 'light');
+    document.querySelector('.theme-toggle').textContent = '☀️';
+  }
+})();
+
+// RADAR CHART CANVAS
+(function() {
+  const canvas = document.getElementById('radarCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const cx = w / 2, cy = h / 2, r = 110;
+  const labels = ['Data Eng', 'ML / AI', 'Python', 'SQL', 'Cloud', 'Viz'];
+  const values = [0.92, 0.85, 0.90, 0.95, 0.72, 0.88];
+  const colors = ['#00ff87', '#00d4ff', '#e040fb', '#ffd000', '#ff9500', '#ff3860'];
+  const n = labels.length;
+  const angleStep = (Math.PI * 2) / n;
+  let animProgress = 0;
+  let animated = false;
+
+  function getPoint(i, scale) {
+    const angle = -Math.PI / 2 + i * angleStep;
+    return { x: cx + Math.cos(angle) * r * scale, y: cy + Math.sin(angle) * r * scale };
+  }
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, w, h);
+    // Grid rings
+    for (let ring = 0.25; ring <= 1; ring += 0.25) {
+      ctx.beginPath();
+      for (let i = 0; i <= n; i++) {
+        const p = getPoint(i % n, ring);
+        i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+      }
+      ctx.closePath();
+      ctx.strokeStyle = 'rgba(42,63,90,0.4)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    // Axes
+    for (let i = 0; i < n; i++) {
+      const p = getPoint(i, 1);
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(p.x, p.y);
+      ctx.strokeStyle = 'rgba(42,63,90,0.3)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    // Data polygon
+    ctx.beginPath();
+    for (let i = 0; i <= n; i++) {
+      const val = values[i % n] * progress;
+      const p = getPoint(i % n, val);
+      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+    }
+    ctx.closePath();
+    ctx.fillStyle = 'rgba(0,212,255,0.12)';
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(0,212,255,0.6)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+    // Data points
+    for (let i = 0; i < n; i++) {
+      const val = values[i] * progress;
+      const p = getPoint(i, val);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
+      ctx.fillStyle = colors[i];
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    }
+    // Labels
+    ctx.font = '500 11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let i = 0; i < n; i++) {
+      const p = getPoint(i, 1.18);
+      ctx.fillStyle = colors[i];
+      ctx.fillText(labels[i], p.x, p.y);
+    }
+  }
+
+  function animate() {
+    if (animProgress < 1) {
+      animProgress = Math.min(1, animProgress + 0.025);
+      draw(animProgress);
+      requestAnimationFrame(animate);
+    }
+  }
+
+  draw(0);
+
+  const radarObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        animate();
+        // Also animate the sidebar bars
+        document.querySelectorAll('.radar-label-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, i * 80);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  radarObs.observe(canvas);
+})();
+
+// SKILL BAR ANIMATION
+(function() {
+  const skillBars = document.getElementById('skillBars');
+  if (!skillBars) return;
+  const skillObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !entry.target.dataset.animated) {
+        entry.target.dataset.animated = 'true';
+        entry.target.querySelectorAll('.skill-bar-fill').forEach((bar, i) => {
+          setTimeout(() => { bar.style.width = bar.dataset.w + '%'; }, i * 40);
+        });
+      }
+    });
+  }, { threshold: 0.15 });
+  skillObs.observe(skillBars);
+})();
+
+// CLOSE MOBILE NAV
+document.querySelectorAll('nav a:not(.brand)').forEach(link => {
+  link.addEventListener('click', () => {
+    const nav = document.querySelector('nav');
+    if (nav) nav.classList.remove('open');
+  });
+});
+</script>
+
+</body>
+</html>

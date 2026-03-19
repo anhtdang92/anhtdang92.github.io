@@ -29,6 +29,8 @@ nav a.active{color:var(--cyan);background:rgba(0,212,255,0.08);box-shadow:0 0 12
 nav .brand{color:#fff;font-weight:700;margin-right:auto;font-family:var(--ff);font-size:14px;padding:6px 0}
 .theme-toggle{background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:14px;line-height:1;transition:all 0.2s;color:var(--muted)}
 .theme-toggle:hover{border-color:var(--cyan);background:rgba(0,212,255,0.06)}
+.nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);transition:all 0.2s}
+.nav-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
 
 /* AMBIENT */
 .ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
@@ -111,6 +113,15 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 @keyframes shimmer{to{left:100%}}
 
 /* RESPONSIVE */
+@media(max-width:768px){
+.nav-toggle{display:block}
+nav{flex-wrap:wrap}
+nav a{display:none}
+nav.open a{display:inline-block;width:100%;text-align:center;padding:10px 14px;font-size:14px}
+nav .brand{margin-right:auto}
+.theme-toggle{order:2}
+.nav-toggle{order:1;margin-right:8px}
+}
 @media(max-width:600px){
 nav{gap:2px;padding:10px 12px}
 nav a{font-size:11px;padding:5px 8px}
