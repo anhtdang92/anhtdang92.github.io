@@ -111,6 +111,11 @@
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
 [data-theme="light"] h2.section-title{text-shadow:none}
 
+/* NAV UNDERLINE */
+nav a{position:relative}
+nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:2px;background:var(--cyan);border-radius:2px;box-shadow:0 0 8px rgba(0,212,255,0.6),0 0 16px rgba(0,212,255,0.3);animation:navGlowIn 0.3s ease both}
+@keyframes navGlowIn{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+
 /* LIGHT THEME OVERRIDES */
 [data-theme="light"] .tl .role,[data-theme="light"] .edu-card .degree,[data-theme="light"] .next-card h3,[data-theme="light"] .ci-name,[data-theme="light"] .ni-value,[data-theme="light"] .about-text strong,[data-theme="light"] .next-card p strong{color:#1a1a2e}
 [data-theme="light"] .next-card{background:linear-gradient(135deg,#f0eeff,#ffffff,#eeffee)}
@@ -458,13 +463,48 @@ document.querySelectorAll('.tl').forEach(el => tlObserver.observe(el));
   omscsObserver.observe(ring.closest('.omscs-progress'));
 })();
 
-// 7. CLOSE MOBILE NAV
+// CLOSE MOBILE NAV + SCROLL LOCK
 document.querySelectorAll('nav a:not(.brand)').forEach(link => {
   link.addEventListener('click', () => {
     const nav = document.querySelector('nav');
     if (nav) nav.classList.remove('open');
+    document.body.classList.remove('nav-open');
   });
 });
+(function() {
+  const navToggle = document.querySelector('.nav-toggle');
+  if (!navToggle) return;
+  navToggle.removeAttribute('onclick');
+  navToggle.addEventListener('click', () => {
+    const nav = document.querySelector('nav');
+    nav.classList.toggle('open');
+    document.body.classList.toggle('nav-open', nav.classList.contains('open'));
+  });
+})();
+
+// CARD HOVER GLOW
+document.querySelectorAll('.tl,.edu-card,.course-item,.next-item').forEach(card => {
+  card.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.background = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(0,212,255,0.05), transparent), var(--card)`;
+  });
+  card.addEventListener('mouseleave', () => { card.style.background = ''; });
+});
+
+// VIEW TRANSITIONS
+(function() {
+  if (!document.startViewTransition) return;
+  document.querySelectorAll('a[href$=".html"]').forEach(link => {
+    link.addEventListener('click', (e) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('http') || href.startsWith('#')) return;
+      e.preventDefault();
+      document.startViewTransition(() => { window.location.href = href; });
+    });
+  });
+})();
 </script>
 
 </body>
