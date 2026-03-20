@@ -69,7 +69,23 @@
 .metric .m-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan));margin:0 auto;border-radius:2px}
 [data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup p strong{color:#1a1a2e}
-@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}}
+/* CODE SNIPPETS */
+.code-section{margin-top:16px}
+.code-block{background:rgba(4,7,13,0.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;transition:border-color 0.3s}
+.code-block:hover{border-color:var(--cyan)}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.code-filename{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.5px}
+.code-lang{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.code-body{padding:16px;overflow-x:auto}
+.code-body pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--text);white-space:pre}
+.code-body .kw{color:var(--purple)}
+.code-body .fn{color:var(--cyan)}
+.code-body .str{color:var(--green)}
+.code-body .num{color:var(--gold)}
+.code-body .cm{color:var(--muted);font-style:italic}
+.code-body .op{color:var(--orange)}
+.code-body .var{color:#e0e0e0}
+@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}.code-body pre{font-size:11px}}
 </style>
 </head>
 <body>
@@ -162,6 +178,36 @@
         <div class="tech-card"><span class="tech-icon">🖥️</span><div class="tech-name">RTX 4090</div><div class="tech-cat">GPU (24GB)</div></div>
         <div class="tech-card"><span class="tech-icon">📦</span><div class="tech-name">GGUF</div><div class="tech-cat">Quantization</div></div>
         <div class="tech-card"><span class="tech-icon">🐧</span><div class="tech-name">Linux</div><div class="tech-cat">Platform</div></div>
+      </div>
+    </div>
+
+    <div class="writeup-section reveal reveal-d5">
+      <h2><span class="w-icon">💻</span> Key Code</h2>
+      <p>Model loading with quantization config and inference benchmarking loop.</p>
+      <div class="code-section">
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">inference.py</span><span class="code-lang">Python</span></div>
+          <div class="code-body"><pre><span class="kw">from</span> llama_cpp <span class="kw">import</span> <span class="fn">Llama</span>
+
+<span class="var">llm</span> = <span class="fn">Llama</span>(
+    model_path=<span class="str">"deepseek-r1-distill-qwen-32b-Q4_K_M.gguf"</span>,
+    n_gpu_layers=<span class="num">-1</span>,  <span class="cm"># offload all layers to GPU</span>
+    n_ctx=<span class="num">4096</span>,
+    verbose=<span class="kw">False</span>
+)</pre></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">benchmark.py</span><span class="code-lang">Python</span></div>
+          <div class="code-body"><pre><span class="kw">def</span> <span class="fn">benchmark</span>(<span class="var">llm</span>, <span class="var">prompt</span>, <span class="var">max_tokens</span>=<span class="num">512</span>):
+    <span class="var">t0</span> = <span class="fn">time.perf_counter</span>()
+    <span class="var">out</span> = <span class="var">llm</span>.<span class="fn">create_completion</span>(
+        <span class="var">prompt</span>, max_tokens=<span class="var">max_tokens</span>,
+        temperature=<span class="num">0.7</span>, top_p=<span class="num">0.9</span>
+    )
+    <span class="var">elapsed</span> = <span class="fn">time.perf_counter</span>() - <span class="var">t0</span>
+    <span class="var">tokens</span> = <span class="var">out</span>[<span class="str">"usage"</span>][<span class="str">"completion_tokens"</span>]
+    <span class="kw">return</span> <span class="var">tokens</span> / <span class="var">elapsed</span>  <span class="cm"># tokens/sec</span></pre></div>
+        </div>
       </div>
     </div>
   </section>

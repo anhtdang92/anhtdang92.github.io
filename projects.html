@@ -101,6 +101,44 @@ nav .brand{margin-right:auto}
 h2.section-title{text-shadow:none}
 }
 
+/* FILTER BAR */
+.filter-bar{display:flex;align-items:center;gap:8px;margin-top:20px;flex-wrap:wrap}
+.filter-btn{font-family:var(--mono);font-size:12px;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.25s}
+.filter-btn:hover{border-color:var(--cyan);color:var(--cyan)}
+.filter-btn.active{background:rgba(0,212,255,0.12);border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.15)}
+.sort-select{font-family:var(--mono);font-size:12px;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;margin-left:auto;transition:all 0.25s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7280'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
+.sort-select:hover,.sort-select:focus{border-color:var(--cyan);color:var(--cyan);outline:none}
+[data-theme="light"] .sort-select{background-color:rgba(255,255,255,0.7)}
+
+/* COMPARISON MATRIX */
+.comparison-matrix{margin-top:40px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);overflow:hidden}
+.ml-panel-header{padding:14px 20px;border-bottom:1px solid var(--border);background:rgba(224,64,251,0.04)}
+.ml-panel-title{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--purple);letter-spacing:0.5px}
+.cmp-table-wrap{overflow-x:auto}
+.cmp-table{width:100%;border-collapse:collapse;font-size:13px}
+.cmp-table thead{background:rgba(255,255,255,0.02)}
+.cmp-table th{padding:10px 16px;text-align:left;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);white-space:nowrap}
+.cmp-table th.cmp-sortable{cursor:pointer;user-select:none;transition:color 0.2s}
+.cmp-table th.cmp-sortable:hover{color:var(--cyan)}
+.cmp-table th.cmp-sorted{color:var(--cyan)}
+.cmp-arrow{font-size:10px;opacity:0.4;margin-left:4px;transition:opacity 0.2s}
+.cmp-sorted .cmp-arrow{opacity:1}
+.cmp-table td{padding:10px 16px;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.03);font-family:var(--mono);font-size:12px}
+.cmp-table tbody tr{transition:background 0.2s}
+.cmp-table tbody tr:hover{background:rgba(0,212,255,0.04)}
+.deploy-badge{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;letter-spacing:0.5px}
+.deploy-local{background:rgba(224,64,251,0.12);color:var(--purple);border:1px solid rgba(224,64,251,0.25)}
+.deploy-paper{background:rgba(255,213,0,0.1);color:var(--gold);border:1px solid rgba(255,213,0,0.25)}
+.deploy-api{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.25)}
+.deploy-web{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.25)}
+[data-theme="light"] .comparison-matrix{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .cmp-table th{color:#666}
+[data-theme="light"] .cmp-table td{color:#333}
+
+/* FILTER TRANSITION */
+.project.filter-hidden{opacity:0;transform:scale(0.92);pointer-events:none;position:absolute;visibility:hidden}
+.project-grid{position:relative}
+
 /* NEON GLOW ON SECTION TITLES */
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
 [data-theme="light"] h2.section-title{text-shadow:none}
@@ -143,16 +181,31 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
     <div class="reveal reveal-d1"><h2 id="projects-title" class="section-title">What I've built</h2></div>
     <div class="reveal reveal-d2"><p class="section-desc">End-to-end ML & AI projects — from research and training to containerized deployment. Each repo includes full documentation and reproducible results.</p></div>
 
+    <div class="filter-bar reveal reveal-d2">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="ml">ML</button>
+      <button class="filter-btn" data-filter="ai">AI</button>
+      <button class="filter-btn" data-filter="web">Web</button>
+      <select class="sort-select" id="sortSelect">
+        <option value="default">Sort: Default</option>
+        <option value="accuracy">Accuracy ↓</option>
+        <option value="complexity">Complexity ↓</option>
+      </select>
+    </div>
+
     <div class="project-grid">
 
       <!-- PROJECT 1: Kraken ML Trading -->
-      <div class="project reveal reveal-d1">
+      <div class="project reveal reveal-d1" data-cat="ml" data-accuracy="73" data-complexity="9">
         <span class="project-badge badge-ml">ML</span>
         <div class="project-name">Kraken ML Trading Strategy</div>
         <div class="project-desc">Deep learning trading system using LSTM networks for cryptocurrency price prediction on Kraken exchange. Features real-time data ingestion, feature engineering, and backtesting framework.</div>
         <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">73% directional accuracy · 50+ engineered features · Walk-forward validated</div>
-        <svg class="project-sparkline" width="100%" height="30" viewBox="0 0 120 30" preserveAspectRatio="none">
-          <polyline points="0,25 15,20 30,22 45,12 55,15 70,5 85,8 100,3 115,10 120,6" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Equity curve showing profit growth over time">
+          <defs><linearGradient id="kraken-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
+          <polygon points="0,38 0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6 120,38" fill="url(#kraken-fill)"/>
+          <polyline points="0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Equity Curve</text>
         </svg>
         <div class="project-tech">
           <span>Python</span><span>PyTorch</span><span>LSTM</span><span>Kraken API</span><span>Pandas</span>
@@ -168,13 +221,20 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
       </div>
 
       <!-- PROJECT 2: Curstar Video Upscaler -->
-      <div class="project reveal reveal-d2">
+      <div class="project reveal reveal-d2" data-cat="ai" data-accuracy="0" data-complexity="7">
         <span class="project-badge badge-ai">AI</span>
         <div class="project-name">Curstar Video Upscaler</div>
         <div class="project-desc">Real-time video upscaling application using Real-ESRGAN neural network. GPU-accelerated processing with RTX 4090 for 4K output from low-resolution source material.</div>
         <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">4x resolution upscale · 2.3 FPS on RTX 4090 · 1080p→4K pipeline</div>
-        <svg class="project-sparkline" width="100%" height="30" viewBox="0 0 120 30" preserveAspectRatio="none">
-          <polyline points="0,28 20,24 40,18 60,12 80,8 100,4 120,2" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="FPS throughput at different resolutions">
+          <defs><linearGradient id="curstar-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--green)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--green)" stop-opacity="0"/></linearGradient></defs>
+          <rect x="5" y="28" width="14" height="10" rx="2" fill="url(#curstar-fill)" stroke="var(--green)" stroke-width="1"/>
+          <rect x="25" y="22" width="14" height="16" rx="2" fill="url(#curstar-fill)" stroke="var(--green)" stroke-width="1"/>
+          <rect x="45" y="16" width="14" height="22" rx="2" fill="url(#curstar-fill)" stroke="var(--green)" stroke-width="1"/>
+          <rect x="65" y="10" width="14" height="28" rx="2" fill="url(#curstar-fill)" stroke="var(--green)" stroke-width="1"/>
+          <rect x="85" y="6" width="14" height="32" rx="2" fill="url(#curstar-fill)" stroke="var(--green)" stroke-width="1"/>
+          <rect x="105" y="3" width="14" height="35" rx="2" fill="url(#curstar-fill)" stroke="var(--green)" stroke-width="1"/>
+          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">FPS Throughput</text>
         </svg>
         <div class="project-tech">
           <span>Python</span><span>Real-ESRGAN</span><span>CUDA</span><span>FFmpeg</span><span>RTX 4090</span>
@@ -190,13 +250,22 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
       </div>
 
       <!-- PROJECT 3: DeepSeek Local Inference -->
-      <div class="project reveal reveal-d3">
+      <div class="project reveal reveal-d3" data-cat="ai" data-accuracy="0" data-complexity="6">
         <span class="project-badge badge-ai">AI</span>
         <div class="project-name">DeepSeek Local Inference</div>
         <div class="project-desc">Local deployment of DeepSeek LLM models on consumer GPU hardware. Optimized quantization and inference pipeline for running 7B–33B parameter models on RTX 4090.</div>
         <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">42 tok/s (33B) · 82 tok/s (7B) · Zero API costs · Full privacy</div>
-        <svg class="project-sparkline" width="100%" height="30" viewBox="0 0 120 30" preserveAspectRatio="none">
-          <polyline points="0,26 25,20 50,14 75,10 100,6 120,3" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Tokens per second by model size">
+          <defs><linearGradient id="deepseek-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/></linearGradient></defs>
+          <rect x="8" y="4" width="20" height="34" rx="2" fill="url(#deepseek-fill)" stroke="var(--cyan)" stroke-width="1"/>
+          <rect x="35" y="14" width="20" height="24" rx="2" fill="url(#deepseek-fill)" stroke="var(--cyan)" stroke-width="1"/>
+          <rect x="62" y="20" width="20" height="18" rx="2" fill="url(#deepseek-fill)" stroke="var(--cyan)" stroke-width="1"/>
+          <rect x="89" y="24" width="20" height="14" rx="2" fill="url(#deepseek-fill)" stroke="var(--cyan)" stroke-width="1"/>
+          <text x="12" y="37" fill="var(--bg)" font-size="4.5" font-family="var(--mono)">7B</text>
+          <text x="38" y="37" fill="var(--bg)" font-size="4.5" font-family="var(--mono)">13B</text>
+          <text x="65" y="37" fill="var(--bg)" font-size="4.5" font-family="var(--mono)">22B</text>
+          <text x="92" y="37" fill="var(--bg)" font-size="4.5" font-family="var(--mono)">33B</text>
+          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">tok/s by Model</text>
         </svg>
         <div class="project-tech">
           <span>Python</span><span>llama.cpp</span><span>GGUF</span><span>CUDA</span><span>LM Studio</span>
@@ -212,13 +281,17 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
       </div>
 
       <!-- PROJECT 4: ML Trading Algorithm -->
-      <div class="project reveal reveal-d4">
+      <div class="project reveal reveal-d4" data-cat="ml" data-accuracy="68" data-complexity="8">
         <span class="project-badge badge-ml">ML</span>
         <div class="project-name">ML Trading Algorithm</div>
         <div class="project-desc">Ensemble machine learning trading system combining Random Forest, XGBoost, and neural networks for equity market prediction with automated risk management.</div>
         <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">68% signal accuracy · Ensemble of 3 models · Automated paper trading</div>
-        <svg class="project-sparkline" width="100%" height="30" viewBox="0 0 120 30" preserveAspectRatio="none">
-          <polyline points="0,22 15,18 30,20 50,10 65,14 80,8 100,5 120,7" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Portfolio value growth over time">
+          <defs><linearGradient id="mltrade-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
+          <polygon points="0,38 0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8 120,38" fill="url(#mltrade-fill)"/>
+          <polyline points="0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="96" y1="16" x2="96" y2="38" stroke="var(--orange)" stroke-width="0.8" stroke-dasharray="2"/>
+          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Portfolio Value</text>
         </svg>
         <div class="project-tech">
           <span>Python</span><span>XGBoost</span><span>scikit-learn</span><span>Alpaca API</span>
@@ -234,13 +307,18 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
       </div>
 
       <!-- PROJECT 5: Agentic Health Navigator -->
-      <div class="project reveal reveal-d5">
+      <div class="project reveal reveal-d5" data-cat="ai" data-accuracy="89" data-complexity="9">
         <span class="project-badge badge-ai">AI</span>
         <div class="project-name">Agentic Health Navigator</div>
         <div class="project-desc">Multi-agent AI system for healthcare navigation using LangChain and GPT-4. Orchestrates specialist agents for symptom analysis, provider matching, and insurance verification.</div>
         <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">89% routing accuracy · 4 specialist agents · 10K+ provider records</div>
-        <svg class="project-sparkline" width="100%" height="30" viewBox="0 0 120 30" preserveAspectRatio="none">
-          <polyline points="0,28 20,22 40,16 55,18 75,10 95,6 120,3" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Routing accuracy improving over iterations">
+          <defs><linearGradient id="health-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--green)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--green)" stop-opacity="0"/></linearGradient></defs>
+          <polygon points="0,38 0,34 15,30 30,26 45,22 60,18 75,14 90,8 105,6 120,4 120,38" fill="url(#health-fill)"/>
+          <polyline points="0,34 15,30 30,26 45,22 60,18 75,14 90,8 105,6 120,4" fill="none" stroke="var(--green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="0" y1="4" x2="120" y2="4" stroke="var(--green)" stroke-width="0.5" stroke-dasharray="3" opacity="0.4"/>
+          <text x="70" y="8" fill="var(--dim)" font-size="4.5" font-family="var(--mono)">89% target</text>
+          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Routing Acc.</text>
         </svg>
         <div class="project-tech">
           <span>Python</span><span>LangChain</span><span>GPT-4</span><span>RAG</span><span>FastAPI</span>
@@ -256,13 +334,17 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
       </div>
 
       <!-- PROJECT 6: Signal Network Mapper -->
-      <div class="project reveal reveal-d6">
+      <div class="project reveal reveal-d6" data-cat="web" data-accuracy="0" data-complexity="7">
         <span class="project-badge badge-web">NET</span>
         <div class="project-name">Signal Network Mapper</div>
         <div class="project-desc">Network topology visualization and analysis tool for military signal operations. Maps communication pathways, identifies vulnerabilities, and optimizes relay placement.</div>
         <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">200+ node analysis · A* optimal routing · Real-time topology updates</div>
-        <svg class="project-sparkline" width="100%" height="30" viewBox="0 0 120 30" preserveAspectRatio="none">
-          <polyline points="0,24 25,18 50,20 70,12 90,8 110,5 120,6" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Network latency decreasing with optimization">
+          <defs><linearGradient id="signal-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/></linearGradient></defs>
+          <polygon points="0,38 0,6 15,10 30,14 45,12 60,18 75,16 90,22 105,26 120,32 120,38" fill="url(#signal-fill)"/>
+          <polyline points="0,6 15,10 30,14 45,12 60,18 75,16 90,22 105,26 120,32" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Latency (ms)</text>
+          <text x="85" y="8" fill="var(--dim)" font-size="4.5" font-family="var(--mono)">optimized ↓</text>
         </svg>
         <div class="project-tech">
           <span>Python</span><span>NetworkX</span><span>D3.js</span><span>Graph Theory</span>
@@ -277,7 +359,71 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
         </div>
       </div>
 
+    </div><!-- project-grid -->
+
+    <div class="comparison-matrix reveal">
+      <div class="ml-panel-header">
+        <span class="ml-panel-title">Project Comparison Matrix</span>
+      </div>
+      <div class="cmp-table-wrap">
+        <table class="cmp-table" id="cmpTable">
+          <thead>
+            <tr>
+              <th class="cmp-sortable" data-col="name">Project <span class="cmp-arrow">↕</span></th>
+              <th class="cmp-sortable" data-col="accuracy">Accuracy <span class="cmp-arrow">↕</span></th>
+              <th class="cmp-sortable" data-col="dataset">Dataset <span class="cmp-arrow">↕</span></th>
+              <th class="cmp-sortable" data-col="techcount">Tech Count <span class="cmp-arrow">↕</span></th>
+              <th class="cmp-sortable" data-col="deployment">Deployment <span class="cmp-arrow">↕</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Kraken ML Trading</td>
+              <td data-value="73">73%</td>
+              <td data-value="Kraken 4h candles">Kraken 4h candles</td>
+              <td data-value="5">5</td>
+              <td><span class="deploy-badge deploy-local">Local</span></td>
+            </tr>
+            <tr>
+              <td>Curstar Video Upscaler</td>
+              <td data-value="0">N/A (4x upscale)</td>
+              <td data-value="Video frames">Video frames</td>
+              <td data-value="5">5</td>
+              <td><span class="deploy-badge deploy-local">Local GPU</span></td>
+            </tr>
+            <tr>
+              <td>DeepSeek Local Inference</td>
+              <td data-value="0">N/A (42 tok/s)</td>
+              <td data-value="LLM benchmarks">LLM benchmarks</td>
+              <td data-value="5">5</td>
+              <td><span class="deploy-badge deploy-local">Local GPU</span></td>
+            </tr>
+            <tr>
+              <td>ML Trading Algorithm</td>
+              <td data-value="68">68%</td>
+              <td data-value="Equity daily bars">Equity daily bars</td>
+              <td data-value="4">4</td>
+              <td><span class="deploy-badge deploy-paper">Paper Trading</span></td>
+            </tr>
+            <tr>
+              <td>Agentic Health Navigator</td>
+              <td data-value="89">89%</td>
+              <td data-value="10K+ provider records">10K+ provider records</td>
+              <td data-value="5">5</td>
+              <td><span class="deploy-badge deploy-api">FastAPI</span></td>
+            </tr>
+            <tr>
+              <td>Signal Network Mapper</td>
+              <td data-value="0">N/A (200+ nodes)</td>
+              <td data-value="Network topology">Network topology</td>
+              <td data-value="4">4</td>
+              <td><span class="deploy-badge deploy-web">WebSocket</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+
   </section>
 
 </main>
@@ -375,6 +521,82 @@ document.querySelectorAll('.project').forEach(card => {
   });
   card.addEventListener('mouseleave', () => { card.style.background = ''; });
 });
+
+// FILTER BUTTONS
+(function() {
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const grid = document.querySelector('.project-grid');
+  const cards = Array.from(grid.querySelectorAll('.project'));
+  const sortSelect = document.getElementById('sortSelect');
+  let currentFilter = 'all';
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      applyFilterAndSort();
+    });
+  });
+
+  sortSelect.addEventListener('change', () => { applyFilterAndSort(); });
+
+  function applyFilterAndSort() {
+    const sortVal = sortSelect.value;
+    // Filter
+    cards.forEach(card => {
+      const cat = card.dataset.cat;
+      const show = currentFilter === 'all' || cat === currentFilter;
+      card.classList.toggle('filter-hidden', !show);
+    });
+    // Sort visible cards
+    const visible = cards.filter(c => !c.classList.contains('filter-hidden'));
+    if (sortVal === 'accuracy') {
+      visible.sort((a, b) => parseInt(b.dataset.accuracy) - parseInt(a.dataset.accuracy));
+    } else if (sortVal === 'complexity') {
+      visible.sort((a, b) => parseInt(b.dataset.complexity) - parseInt(a.dataset.complexity));
+    }
+    // Re-append in order (hidden ones stay but are invisible)
+    visible.forEach(card => grid.appendChild(card));
+    cards.filter(c => c.classList.contains('filter-hidden')).forEach(card => grid.appendChild(card));
+  }
+})();
+
+// COMPARISON TABLE SORT
+(function() {
+  const table = document.getElementById('cmpTable');
+  if (!table) return;
+  const headers = table.querySelectorAll('.cmp-sortable');
+  const tbody = table.querySelector('tbody');
+  let sortCol = null;
+  let sortAsc = true;
+
+  headers.forEach(th => {
+    th.addEventListener('click', () => {
+      const col = th.dataset.col;
+      if (sortCol === col) { sortAsc = !sortAsc; } else { sortCol = col; sortAsc = true; }
+      headers.forEach(h => h.classList.remove('cmp-sorted'));
+      th.classList.add('cmp-sorted');
+      th.querySelector('.cmp-arrow').textContent = sortAsc ? '↑' : '↓';
+      headers.forEach(h => { if (h !== th) h.querySelector('.cmp-arrow').textContent = '↕'; });
+
+      const rows = Array.from(tbody.querySelectorAll('tr'));
+      const colIndex = Array.from(th.parentElement.children).indexOf(th);
+
+      rows.sort((a, b) => {
+        let aVal = a.children[colIndex].dataset.value || a.children[colIndex].textContent.trim();
+        let bVal = b.children[colIndex].dataset.value || b.children[colIndex].textContent.trim();
+        const aNum = parseFloat(aVal);
+        const bNum = parseFloat(bVal);
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+          return sortAsc ? aNum - bNum : bNum - aNum;
+        }
+        return sortAsc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+      });
+      rows.forEach(row => tbody.appendChild(row));
+    });
+  });
+})();
 
 // VIEW TRANSITIONS
 (function() {

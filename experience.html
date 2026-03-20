@@ -74,6 +74,14 @@
 [data-theme="light"] .omscs-donut-num{color:var(--green)}
 @media(max-width:600px){.omscs-progress{flex-direction:column}.omscs-donut{margin:0 auto}}
 
+/* OMSCS TIME-SERIES */
+.omscs-timeline{margin:20px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border)}
+.omscs-timeline-title{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.omscs-timeline-title .otl-badge{font-size:11px;color:var(--green);font-weight:700}
+.omscs-chart-tooltip{position:absolute;background:var(--card);border:1px solid var(--cyan);border-radius:8px;padding:8px 12px;font-family:var(--mono);font-size:11px;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.2s;z-index:10;white-space:nowrap;box-shadow:0 4px 20px rgba(0,212,255,0.15)}
+.omscs-chart-tooltip.show{opacity:1}
+[data-theme="light"] .omscs-timeline{background:rgba(255,255,255,0.55)}
+
 /* COURSEWORK */
 .course-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px}
 .course-item{padding:10px 14px;background:var(--inner);border-radius:8px;border:1px solid var(--border);transition:all 0.3s cubic-bezier(0.23,1,0.32,1)}
@@ -329,6 +337,16 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
   </div>
 </div>
 
+<!-- OMSCS PROGRESSION CHART -->
+<div class="omscs-timeline reveal reveal-d4" style="position:relative">
+  <div class="omscs-timeline-title">
+    <span>GPA & Credits — Semester by Semester</span>
+    <span class="otl-badge">Projected: Spring 2027 graduation</span>
+  </div>
+  <canvas id="omscsChart" width="700" height="200" style="width:100%;height:auto"></canvas>
+  <div class="omscs-chart-tooltip" id="omscsTooltip"></div>
+</div>
+
 
   </section>
 
@@ -480,6 +498,165 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
     nav.classList.toggle('open');
     document.body.classList.toggle('nav-open', nav.classList.contains('open'));
   });
+})();
+
+// OMSCS PROGRESSION CHART
+(function() {
+  const canvas = document.getElementById('omscsChart');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const pad = {l:50, r:30, t:20, b:40};
+  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+
+  // Semester data: [label, cumCredits, gpa, courses, status]
+  const semesters = [
+    ['F23', 3, 3.0, 'CSE 6242 (A)', 'completed'],
+    ['S24', 6, 3.0, 'CS 7637 (B)', 'completed'],
+    ['U24', 9, 3.0, 'CS 7280 (B)', 'completed'],
+    ['F24', 12, 3.1, 'CS 6476', 'completed'],
+    ['S25', 15, 3.2, 'CS 7642', 'completed'],
+    ['U25', 18, 3.3, 'CS 6603', 'completed'],
+    ['F25', 21, 3.4, 'CS 7641', 'upcoming'],
+    ['S26', 24, 3.4, 'CS 6515', 'upcoming'],
+    ['U26', 27, 3.5, 'Elective', 'projected'],
+    ['F26', 30, 3.5, 'Capstone', 'projected']
+  ];
+  let animated = false, animP = 0;
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, w, h);
+    const n = semesters.length;
+    const stepX = pw / (n - 1);
+
+    // Y axis (GPA 2.0-4.0 left, Credits 0-30 right)
+    ctx.strokeStyle = 'rgba(42,63,90,0.25)';
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i <= 4; i++) {
+      const y = pad.t + ph * (1 - i/4);
+      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
+      // GPA labels (left)
+      const gpa = (2.0 + i * 0.5).toFixed(1);
+      ctx.fillStyle = '#9db5cc';
+      ctx.font = '500 9px "JetBrains Mono", monospace';
+      ctx.textAlign = 'right';
+      ctx.fillText(gpa, pad.l - 6, y + 3);
+      // Credits labels (right)
+      const cr = Math.round(i * 7.5);
+      ctx.textAlign = 'left';
+      ctx.fillText(cr + 'cr', pad.l + pw + 4, y + 3);
+    }
+
+    // X axis labels
+    ctx.textAlign = 'center';
+    semesters.forEach((s, i) => {
+      const x = pad.l + i * stepX;
+      ctx.fillStyle = s[4] === 'completed' ? '#9db5cc' : s[4] === 'upcoming' ? '#ff9500' : '#7a96b0';
+      ctx.fillText(s[0], x, h - 10);
+    });
+
+    // Credits bar chart (background)
+    const nPts = Math.ceil(n * progress);
+    for (let i = 0; i < nPts; i++) {
+      const x = pad.l + i * stepX;
+      const barH = (semesters[i][1] / 30) * ph * Math.min(1, progress * n / (i+1));
+      const y = pad.t + ph - barH;
+      const p = i < nPts - 1 ? 1 : (progress * n - i);
+      ctx.fillStyle = semesters[i][4] === 'projected' ? 'rgba(122,150,176,0.1)' :
+                      semesters[i][4] === 'upcoming' ? 'rgba(255,149,0,0.12)' : 'rgba(0,212,255,0.1)';
+      ctx.fillRect(x - 12, y, 24, barH * p);
+    }
+
+    // GPA line
+    if (nPts > 1) {
+      ctx.beginPath();
+      for (let i = 0; i < nPts; i++) {
+        const x = pad.l + i * stepX;
+        const gpaY = pad.t + ph - ((semesters[i][2] - 2.0) / 2.0) * ph;
+        const p = i < nPts - 1 ? 1 : (progress * n - i);
+        if (i === 0) ctx.moveTo(x, gpaY);
+        else {
+          const prevY = pad.t + ph - ((semesters[i-1][2] - 2.0) / 2.0) * ph;
+          const prevX = pad.l + (i-1) * stepX;
+          ctx.lineTo(prevX + (x - prevX) * p, prevY + (gpaY - prevY) * p);
+        }
+      }
+      ctx.strokeStyle = '#00ff87';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // GPA dots
+      for (let i = 0; i < Math.min(nPts, n); i++) {
+        const x = pad.l + i * stepX;
+        const gpaY = pad.t + ph - ((semesters[i][2] - 2.0) / 2.0) * ph;
+        ctx.beginPath();
+        ctx.arc(x, gpaY, 4, 0, Math.PI * 2);
+        ctx.fillStyle = semesters[i][4] === 'projected' ? '#7a96b0' :
+                        semesters[i][4] === 'upcoming' ? '#ff9500' : '#00ff87';
+        ctx.fill();
+        if (semesters[i][4] === 'completed') {
+          ctx.strokeStyle = 'rgba(0,255,135,0.3)';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        }
+      }
+    }
+
+    // Legend
+    ctx.font = '500 9px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#00ff87';
+    ctx.fillRect(pad.l, pad.t - 12, 20, 2);
+    ctx.fillText('GPA', pad.l + 24, pad.t - 8);
+    ctx.fillStyle = 'rgba(0,212,255,0.3)';
+    ctx.fillRect(pad.l + 65, pad.t - 16, 12, 8);
+    ctx.fillStyle = '#00d4ff';
+    ctx.fillText('Credits', pad.l + 81, pad.t - 8);
+  }
+
+  draw(0);
+  const tooltip = document.getElementById('omscsTooltip');
+  const container = canvas.closest('.omscs-timeline');
+
+  // Hover tooltips
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (w / rect.width);
+    const n = semesters.length;
+    const stepX = pw / (n - 1);
+    let closest = -1, minDist = stepX / 2;
+    for (let i = 0; i < n; i++) {
+      const x = pad.l + i * stepX;
+      if (Math.abs(mx - x) < minDist) { closest = i; minDist = Math.abs(mx - x); }
+    }
+    if (closest >= 0 && tooltip) {
+      const s = semesters[closest];
+      tooltip.innerHTML = '<strong style="color:var(--cyan)">' + s[0] + ' — ' + s[3] + '</strong><br>' +
+        'GPA: <span style="color:var(--green)">' + s[2].toFixed(1) + '</span> · Credits: ' + s[1] + '/30' +
+        '<br><span style="color:var(--muted)">' + s[4] + '</span>';
+      tooltip.classList.add('show');
+      const cx = (pad.l + closest * stepX) / w * rect.width;
+      tooltip.style.left = (cx - tooltip.offsetWidth / 2) + 'px';
+      tooltip.style.top = '0px';
+    } else if (tooltip) {
+      tooltip.classList.remove('show');
+    }
+  });
+  canvas.addEventListener('mouseleave', () => { if (tooltip) tooltip.classList.remove('show'); });
+
+  const chartObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        (function step() {
+          animP = Math.min(1, animP + 0.02);
+          draw(1 - Math.pow(1 - animP, 3));
+          if (animP < 1) requestAnimationFrame(step);
+        })();
+      }
+    });
+  }, { threshold: 0.3 });
+  chartObs.observe(canvas);
 })();
 
 // CARD HOVER GLOW
