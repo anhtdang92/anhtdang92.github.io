@@ -603,7 +603,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 [data-theme="light"] .impact-card{background:rgba(255,255,255,0.55)}
 @media(max-width:600px){.impact-row{grid-template-columns:1fr}.value-pills{justify-content:center}}
 .explore-card:hover{border-color:var(--cyan)!important;transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,212,255,0.12)}
-@media(max-width:600px){#explore [style*="grid-template-columns"]{grid-template-columns:1fr!important}}
+@media(max-width:600px){#explore [style*="grid-template-columns"]{grid-template-columns:1fr!important}.flip-card{height:140px}}
 
 /* AI & AUTOMATION SECTION */
 .ai-ecosystem{margin:24px 0}
@@ -650,15 +650,74 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 @keyframes arrowPulse{0%,100%{color:var(--dim);transform:translateX(0)}50%{color:var(--cyan);transform:translateX(3px);text-shadow:0 0 8px rgba(0,212,255,0.5)}}
 [data-theme="light"] .ai-workflow{background:rgba(255,255,255,0.55)}
 @media(max-width:600px){.ai-grid{grid-template-columns:repeat(2,1fr)}.ai-flow-row{gap:4px}.ai-flow-step{padding:8px 10px;font-size:11px}.ai-flow-arrow{font-size:12px;padding:0 2px}}
+
+/* === CREATIVE FLAIR ENHANCEMENTS === */
+
+/* 3D TILT on cards */
+.tilt-3d{transform-style:preserve-3d;perspective:800px}
+.tilt-3d-inner{transition:transform 0.15s ease-out}
+
+/* HERO TYPING ANIMATION */
+.hero-sub .typed-text{border-right:2px solid var(--cyan);padding-right:2px}
+.hero-sub .typed-text.done{border-color:transparent}
+@keyframes typeFlash{0%,100%{border-color:var(--cyan)}50%{border-color:transparent}}
+.hero-sub .typed-text.blink{animation:typeFlash 0.8s step-end infinite}
+
+/* EXPLORE CARD FLIP */
+.flip-card{perspective:1000px;height:160px}
+.flip-card-inner{position:relative;width:100%;height:100%;transition:transform 0.6s cubic-bezier(0.23,1,0.32,1);transform-style:preserve-3d}
+.flip-card:hover .flip-card-inner{transform:rotateY(180deg)}
+.flip-card-front,.flip-card-back{position:absolute;inset:0;backface-visibility:hidden;border-radius:14px;border:1px solid var(--border);padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
+.flip-card-back{transform:rotateY(180deg);background:linear-gradient(135deg,rgba(224,64,251,0.12),rgba(0,212,255,0.08),rgba(0,255,135,0.06));border-color:var(--cyan)}
+.flip-card-back .stat-line{font-family:var(--mono);font-size:13px;color:var(--text);margin:4px 0}
+.flip-card-back .stat-value{color:var(--green);font-weight:700}
+.flip-card-back .stat-label{color:var(--muted);font-size:11px}
+[data-theme="light"] .flip-card-front,[data-theme="light"] .flip-card-back{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .flip-card-back{background:linear-gradient(135deg,rgba(155,48,255,0.08),rgba(0,136,170,0.06),rgba(0,153,77,0.05))}
+
+/* SCROLL-SYNCED PIPELINE DATA FLOW ANIMATION */
+.pipeline-data-packet{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--cyan);opacity:0;filter:blur(1px);box-shadow:0 0 8px var(--cyan);pointer-events:none;z-index:5}
+.pipeline-data-packet.active{opacity:0.8;transition:left 1.5s linear,top 0.5s ease}
+
+/* NEURAL NETWORK CANVAS */
+#neuralNetCanvas{display:block;margin:0 auto;border-radius:10px}
+
+/* MATRIX RAIN EASTER EGG */
+#matrixCanvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999;pointer-events:none;opacity:0;transition:opacity 0.5s ease}
+#matrixCanvas.active{opacity:0.85;pointer-events:auto}
+
+/* PIPELINE SCROLL PROGRESS INDICATOR */
+.pipeline-progress{height:3px;background:var(--inner);border-radius:2px;margin-top:12px;overflow:hidden}
+.pipeline-progress-fill{height:100%;width:0;background:linear-gradient(90deg,var(--cyan),var(--green));border-radius:2px;transition:width 0.3s ease}
+
+/* SOUND TOGGLE */
+.sound-toggle{position:fixed;bottom:24px;left:24px;width:40px;height:40px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--muted);font-size:16px;cursor:pointer;z-index:100;display:flex;align-items:center;justify-content:center;transition:all 0.3s}
+.sound-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
+.sound-toggle.muted{opacity:0.4}
+
+/* PAGE LOAD OVERLAY */
+.page-loader{position:fixed;inset:0;background:var(--bg);z-index:10000;display:flex;align-items:center;justify-content:center;transition:opacity 0.5s ease,visibility 0.5s ease}
+.page-loader.done{opacity:0;visibility:hidden}
+.loader-ring{width:60px;height:60px;border-radius:50%;border:3px solid transparent;border-top-color:var(--purple);border-right-color:var(--cyan);animation:spin 0.8s linear infinite}
+.loader-ring::after{content:'';position:absolute;inset:6px;border-radius:50%;border:3px solid transparent;border-bottom-color:var(--green);animation:spin 0.5s linear infinite reverse}
+
+/* FLOATING SKILL ORBS around avatar */
+.hero-orbs{position:absolute;inset:-40px;pointer-events:none}
+.hero-orb{position:absolute;font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:12px;border:1px solid var(--border);color:var(--muted);background:rgba(11,17,32,0.7);backdrop-filter:blur(8px);white-space:nowrap;opacity:0;animation:orbFloat 8s ease-in-out infinite,orbFadeIn 0.6s ease both}
+@keyframes orbFloat{0%,100%{transform:translateY(0) rotate(var(--orbit-start))}50%{transform:translateY(-8px) rotate(var(--orbit-start))}}
+@keyframes orbFadeIn{from{opacity:0;transform:scale(0.5)}to{opacity:0.7;transform:scale(1)}}
 </style>
 
 </head>
 <body>
 
+<div class="page-loader" id="pageLoader"><div class="loader-ring" style="position:relative"></div></div>
+<canvas id="matrixCanvas" aria-hidden="true"></canvas>
 <canvas id="cursorGlow" aria-hidden="true" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:0.7"></canvas>
 <a href="#about" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="sound-toggle muted" id="soundToggle" aria-label="Toggle sound effects" title="Toggle sound effects">🔇</button>
 
 <nav role="navigation" aria-label="Main navigation">
   <span class="brand">AD</span>
@@ -693,7 +752,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 
   <canvas id="heroParticles" aria-hidden="true" style="position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:0"></canvas>
   <section class="hero" aria-label="Introduction" style="position:relative;z-index:1">
-    <div class="hero-avatar" aria-hidden="true">AD</div>
+    <div class="hero-avatar" aria-hidden="true" style="position:relative">AD
+      <div class="hero-orbs">
+        <span class="hero-orb" style="top:-10px;left:-30px;animation-delay:0.2s;--orbit-start:0deg">ML</span>
+        <span class="hero-orb" style="top:20px;right:-40px;animation-delay:0.5s;--orbit-start:72deg">Python</span>
+        <span class="hero-orb" style="bottom:-5px;left:-25px;animation-delay:0.8s;--orbit-start:144deg">PyTorch</span>
+        <span class="hero-orb" style="bottom:15px;right:-35px;animation-delay:1.1s;--orbit-start:216deg">SQL</span>
+        <span class="hero-orb" style="top:50%;left:-45px;animation-delay:1.4s;--orbit-start:288deg">AWS</span>
+      </div>
+    </div>
     <div class="hero-label">ML Engineer · Data Scientist · Army Signal Officer</div>
     <h1>Anh <span class="accent">Dang</span></h1>
     <p class="hero-sub">ML engineer building production data pipelines and predictive systems. Georgia Tech MSCS (Machine Learning). U.S. Army officer with Secret clearance. Houston, TX.</p>
@@ -967,6 +1034,15 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="reveal reveal-d1"><h2 id="ml-metrics-title" class="section-title">Model performance</h2></div>
     <div class="reveal reveal-d2"><div class="section-desc">Interactive visualizations from real project outputs — confusion matrices, feature importance, and model comparisons.</div></div>
 
+    <!-- Neural Network Visualization -->
+    <div class="ml-panel reveal reveal-d1">
+      <div class="ml-panel-header">
+        <span class="ml-panel-title">Neural Network Architecture</span>
+        <span class="ml-panel-badge" style="color:var(--purple)">Interactive — hover neurons</span>
+      </div>
+      <canvas id="neuralNetCanvas" width="700" height="220" style="width:100%;height:auto" role="img" aria-label="Interactive neural network visualization showing input, hidden, and output layers"></canvas>
+    </div>
+
     <!-- Confusion Matrix -->
     <div class="ml-panel reveal reveal-d2">
       <div class="ml-panel-header">
@@ -1110,20 +1186,50 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="reveal"><div class="section-label">Explore</div></div>
     <div class="reveal reveal-d1"><h2 class="section-title">Dive deeper</h2></div>
     <div class="reveal reveal-d2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px">
-      <a href="projects/kraken-ml-trading-strategy.html" class="explore-card reveal reveal-d1" style="padding:24px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);display:block;color:inherit">
-        <div style="font-size:28px;margin-bottom:8px">🚀</div>
-        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Kraken ML Trading</div>
-        <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">LSTM crypto strategy</div>
+      <a href="projects/kraken-ml-trading-strategy.html" class="flip-card reveal reveal-d1" style="color:inherit;display:block">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div style="font-size:28px;margin-bottom:8px">🚀</div>
+            <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Kraken ML Trading</div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">LSTM crypto strategy</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="stat-line"><span class="stat-value">&gt;1.0</span> <span class="stat-label">Sharpe Ratio</span></div>
+            <div class="stat-line"><span class="stat-value">55%+</span> <span class="stat-label">Directional Acc.</span></div>
+            <div class="stat-line"><span class="stat-value">20+</span> <span class="stat-label">Features</span></div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--cyan);margin-top:8px">View project →</div>
+          </div>
+        </div>
       </a>
-      <a href="projects/ml-trading-algorithm.html" class="explore-card reveal reveal-d2" style="padding:24px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);display:block;color:inherit">
-        <div style="font-size:28px;margin-bottom:8px">🧠</div>
-        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">ML Trading Algorithm</div>
-        <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Ensemble equity strategy</div>
+      <a href="projects/ml-trading-algorithm.html" class="flip-card reveal reveal-d2" style="color:inherit;display:block">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div style="font-size:28px;margin-bottom:8px">🧠</div>
+            <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">ML Trading Algorithm</div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Ensemble equity strategy</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="stat-line"><span class="stat-value">30+</span> <span class="stat-label">Engineered Features</span></div>
+            <div class="stat-line"><span class="stat-value">Walk-Fwd</span> <span class="stat-label">Validation</span></div>
+            <div class="stat-line"><span class="stat-value">Sharpe</span> <span class="stat-label">Optimization</span></div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--cyan);margin-top:8px">View project →</div>
+          </div>
+        </div>
       </a>
-      <a href="#ml-metrics" class="explore-card reveal reveal-d3" style="padding:24px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);display:block;color:inherit">
-        <div style="font-size:28px;margin-bottom:8px">📈</div>
-        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">ML Metrics</div>
-        <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Model performance charts</div>
+      <a href="#ml-metrics" class="flip-card reveal reveal-d3" style="color:inherit;display:block">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div style="font-size:28px;margin-bottom:8px">📈</div>
+            <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">ML Metrics</div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Model performance charts</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="stat-line"><span class="stat-value">73%</span> <span class="stat-label">Accuracy</span></div>
+            <div class="stat-line"><span class="stat-value">0.81</span> <span class="stat-label">AUC Score</span></div>
+            <div class="stat-line"><span class="stat-value">4</span> <span class="stat-label">Visualizations</span></div>
+            <div style="font-family:var(--mono);font-size:11px;color:var(--cyan);margin-top:8px">View metrics →</div>
+          </div>
+        </div>
       </a>
     </div>
   </section>
@@ -2359,6 +2465,357 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 // PERFORMANCE: Pause all RAF loops when tab is hidden
 (function() {
   window._tabHidden = () => document.hidden;
+})();
+
+// === CREATIVE FLAIR FEATURES ===
+
+// 1. PAGE LOADER — staggered cascade entrance
+(function() {
+  const loader = document.getElementById('pageLoader');
+  if (!loader) return;
+  window.addEventListener('load', () => {
+    setTimeout(() => loader.classList.add('done'), 300);
+    setTimeout(() => loader.remove(), 800);
+  });
+})();
+
+// 2. 3D TILT EFFECT on cards
+(function() {
+  if ('ontouchstart' in window || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const cards = document.querySelectorAll('.about-card,.highlight-card,.kpi-card,.ml-panel,.impact-card,.testimonial-card,.stat-ring,.pipeline-diagram');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const rect = card.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      card.style.transform = `perspective(800px) rotateY(${x * 8}deg) rotateX(${-y * 8}deg) translateY(-4px)`;
+      card.style.transition = 'transform 0.1s ease-out';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform 0.4s cubic-bezier(0.23,1,0.32,1)';
+    });
+  });
+})();
+
+// 3. TYPING ANIMATION on hero subtitle
+(function() {
+  const sub = document.querySelector('.hero-sub');
+  if (!sub || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const fullText = sub.textContent.trim();
+  sub.textContent = '';
+  const span = document.createElement('span');
+  span.className = 'typed-text blink';
+  sub.appendChild(span);
+  let i = 0;
+  const type = () => {
+    if (i < fullText.length) {
+      span.textContent += fullText[i];
+      i++;
+      setTimeout(type, 18 + Math.random() * 22);
+    } else {
+      span.classList.add('done');
+      span.classList.remove('blink');
+    }
+  };
+  setTimeout(type, 1000);
+})();
+
+// 4. INTERACTIVE NEURAL NETWORK VISUALIZATION
+(function() {
+  const canvas = document.getElementById('neuralNetCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const w = canvas.width, h = canvas.height;
+  const layers = [5, 8, 6, 4, 2];
+  const layerNames = ['Input', 'Hidden 1', 'Hidden 2', 'Hidden 3', 'Output'];
+  let hoveredNeuron = null;
+  let mouseX = -1, mouseY = -1;
+  let animProgress = 0;
+  let animated = false;
+
+  function getNeuronPositions() {
+    const positions = [];
+    const layerSpacing = w / (layers.length + 1);
+    layers.forEach((count, li) => {
+      const x = layerSpacing * (li + 1);
+      const neuronSpacing = (h - 40) / (count + 1);
+      for (let ni = 0; ni < count; ni++) {
+        const y = neuronSpacing * (ni + 1) + 20;
+        positions.push({ x, y, layer: li, index: ni });
+      }
+    });
+    return positions;
+  }
+
+  const neurons = getNeuronPositions();
+
+  function draw(progress) {
+    ctx.clearRect(0, 0, w, h);
+    const tc = themeColors();
+    const layerColors = [tc.cyan, tc.purple, tc.purple, tc.purple, tc.green];
+
+    // Draw connections
+    for (let i = 0; i < neurons.length; i++) {
+      for (let j = 0; j < neurons.length; j++) {
+        if (neurons[j].layer === neurons[i].layer + 1) {
+          const isHovered = hoveredNeuron && (
+            (hoveredNeuron.layer === neurons[i].layer && hoveredNeuron.index === neurons[i].index) ||
+            (hoveredNeuron.layer === neurons[j].layer && hoveredNeuron.index === neurons[j].index)
+          );
+          ctx.beginPath();
+          ctx.moveTo(neurons[i].x, neurons[i].y);
+          ctx.lineTo(neurons[j].x, neurons[j].y);
+          ctx.strokeStyle = isHovered ? 'rgba(0,212,255,0.4)' : 'rgba(42,63,90,' + (0.15 * progress) + ')';
+          ctx.lineWidth = isHovered ? 1.5 : 0.5;
+          ctx.stroke();
+
+          // Animated data packet on hovered connections
+          if (isHovered && progress >= 1) {
+            const t = (Date.now() % 1500) / 1500;
+            const px = neurons[i].x + (neurons[j].x - neurons[i].x) * t;
+            const py = neurons[i].y + (neurons[j].y - neurons[i].y) * t;
+            ctx.beginPath();
+            ctx.arc(px, py, 2, 0, Math.PI * 2);
+            ctx.fillStyle = tc.cyan;
+            ctx.fill();
+          }
+        }
+      }
+    }
+
+    // Draw neurons
+    neurons.forEach(n => {
+      const isHovered = hoveredNeuron && hoveredNeuron.layer === n.layer && hoveredNeuron.index === n.index;
+      const r = isHovered ? 10 : 6;
+      const color = layerColors[n.layer];
+
+      // Glow
+      if (isHovered) {
+        ctx.save();
+        ctx.globalAlpha = 0.3;
+        const grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, 20);
+        grad.addColorStop(0, color);
+        grad.addColorStop(1, 'transparent');
+        ctx.fillStyle = grad;
+        ctx.fillRect(n.x - 20, n.y - 20, 40, 40);
+        ctx.restore();
+      }
+
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r * progress, 0, Math.PI * 2);
+      ctx.globalAlpha = isHovered ? 1 : 0.7;
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.globalAlpha = 1;
+      ctx.strokeStyle = color;
+      ctx.lineWidth = isHovered ? 2 : 1;
+      ctx.stroke();
+    });
+
+    // Layer labels
+    if (progress > 0.5) {
+      ctx.font = '500 10px "JetBrains Mono", monospace';
+      ctx.textAlign = 'center';
+      const layerSpacing = w / (layers.length + 1);
+      layerNames.forEach((name, i) => {
+        ctx.fillStyle = tc.muted;
+        ctx.fillText(name, layerSpacing * (i + 1), h - 5);
+      });
+    }
+  }
+
+  // Mouse interaction
+  canvas.addEventListener('mousemove', e => {
+    const rect = canvas.getBoundingClientRect();
+    const scaleX = w / rect.width;
+    const scaleY = h / rect.height;
+    mouseX = (e.clientX - rect.left) * scaleX;
+    mouseY = (e.clientY - rect.top) * scaleY;
+    hoveredNeuron = null;
+    for (const n of neurons) {
+      const dx = mouseX - n.x, dy = mouseY - n.y;
+      if (Math.sqrt(dx*dx + dy*dy) < 15) {
+        hoveredNeuron = n;
+        canvas.style.cursor = 'pointer';
+        break;
+      }
+    }
+    if (!hoveredNeuron) canvas.style.cursor = 'default';
+  });
+  canvas.addEventListener('mouseleave', () => { hoveredNeuron = null; mouseX = -1; mouseY = -1; });
+
+  // Animate on scroll
+  draw(0);
+  const nnObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        const start = performance.now();
+        const animate = (now) => {
+          animProgress = Math.min((now - start) / 800, 1);
+          draw(1 - Math.pow(1 - animProgress, 3));
+          if (animProgress < 1) requestAnimationFrame(animate);
+        };
+        requestAnimationFrame(animate);
+        // Continuous redraw for hover interactivity
+        const loop = () => { if (animated) { draw(1); requestAnimationFrame(loop); } };
+        setTimeout(loop, 900);
+      }
+    });
+  }, { threshold: 0.3 });
+  nnObs.observe(canvas);
+  _themeRedrawFns.push(() => { if (animated) draw(1); });
+})();
+
+// 5. KONAMI CODE EASTER EGG — Matrix rain
+(function() {
+  const code = [38,38,40,40,37,39,37,39,66,65]; // up up down down left right left right B A
+  let pos = 0;
+  const canvas = document.getElementById('matrixCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let running = false;
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*アイウエオカキクケコサシスセソ';
+  let columns, drops;
+
+  function initMatrix() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const fontSize = 14;
+    columns = Math.floor(canvas.width / fontSize);
+    drops = Array(columns).fill(1);
+  }
+
+  function drawMatrix() {
+    if (!running) return;
+    ctx.fillStyle = 'rgba(0,0,0,0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#00ff87';
+    ctx.font = '14px "JetBrains Mono", monospace';
+    for (let i = 0; i < drops.length; i++) {
+      const text = chars[Math.floor(Math.random() * chars.length)];
+      ctx.fillText(text, i * 14, drops[i] * 14);
+      if (drops[i] * 14 > canvas.height && Math.random() > 0.975) drops[i] = 0;
+      drops[i]++;
+    }
+    requestAnimationFrame(drawMatrix);
+  }
+
+  document.addEventListener('keydown', e => {
+    if (e.keyCode === code[pos]) {
+      pos++;
+      if (pos === code.length) {
+        pos = 0;
+        if (!running) {
+          running = true;
+          initMatrix();
+          canvas.classList.add('active');
+          drawMatrix();
+          setTimeout(() => {
+            running = false;
+            canvas.classList.remove('active');
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+          }, 5000);
+        }
+      }
+    } else {
+      pos = 0;
+    }
+  });
+})();
+
+// 6. SOUND EFFECTS with Web Audio API
+(function() {
+  const toggle = document.getElementById('soundToggle');
+  if (!toggle) return;
+  let enabled = false;
+  let audioCtx = null;
+
+  toggle.addEventListener('click', () => {
+    enabled = !enabled;
+    toggle.textContent = enabled ? '🔊' : '🔇';
+    toggle.classList.toggle('muted', !enabled);
+    if (enabled && !audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  });
+
+  function playTone(freq, duration, type) {
+    if (!enabled || !audioCtx) return;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.frequency.value = freq;
+    osc.type = type || 'sine';
+    gain.gain.setValueAtTime(0.03, audioCtx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    osc.start();
+    osc.stop(audioCtx.currentTime + duration);
+  }
+
+  // Hover sound on interactive elements
+  document.querySelectorAll('.about-card,.highlight-card,.kpi-card,.flip-card,.impact-card,.ml-panel,.pipe-node,.testimonial-card,.hero-links a,.next-card').forEach(el => {
+    el.addEventListener('mouseenter', () => playTone(800 + Math.random() * 400, 0.08, 'sine'));
+  });
+
+  // Click sound
+  document.addEventListener('click', e => {
+    if (e.target.closest('a,button')) playTone(1200, 0.05, 'square');
+  });
+
+  // Theme toggle whoosh
+  const themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', () => playTone(400, 0.2, 'sawtooth'));
+})();
+
+// 7. SCROLL-SYNCED PIPELINE DATA FLOW
+(function() {
+  const diagram = document.getElementById('pipelineDiagram');
+  if (!diagram) return;
+  const svg = diagram.querySelector('.pipeline-svg');
+  if (!svg) return;
+
+  // Add animated data packets flowing along the pipeline
+  const pipeObs = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting && !diagram.dataset.animated) {
+        diagram.dataset.animated = 'true';
+        // Animate pipeline nodes appearing one by one
+        const nodes = svg.querySelectorAll('.pipe-node');
+        nodes.forEach((node, i) => {
+          node.style.opacity = '0';
+          node.style.transform = 'translateY(10px)';
+          node.style.transition = 'all 0.4s ease ' + (i * 0.15) + 's';
+          requestAnimationFrame(() => {
+            node.style.opacity = '1';
+            node.style.transform = 'translateY(0)';
+          });
+        });
+        // Animate arrows with dash offset
+        const arrows = svg.querySelectorAll('line[marker-end]');
+        arrows.forEach((arrow, i) => {
+          arrow.style.strokeDasharray = '30';
+          arrow.style.strokeDashoffset = '30';
+          arrow.style.transition = 'stroke-dashoffset 0.6s ease ' + (i * 0.15 + 0.3) + 's';
+          requestAnimationFrame(() => { arrow.style.strokeDashoffset = '0'; });
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+  pipeObs.observe(diagram);
+})();
+
+// 8. ANIMATED THEME TRANSITION (smooth gradient wipe)
+(function() {
+  const origToggle = window.toggleTheme;
+  if (!origToggle) return;
+  window.toggleTheme = function() {
+    const overlay = document.createElement('div');
+    overlay.style.cssText = 'position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:1;background:radial-gradient(circle at 50% 50%,var(--purple),transparent 70%);transition:opacity 0.4s ease';
+    document.body.appendChild(overlay);
+    setTimeout(() => { origToggle(); overlay.style.opacity = '0'; }, 150);
+    setTimeout(() => overlay.remove(), 600);
+  };
 })();
 </script>
 
