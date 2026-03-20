@@ -40,7 +40,23 @@
 .metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0}.metric{padding:16px;background:var(--card);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.3s}.metric:hover{border-color:var(--green);transform:translateY(-2px)}.metric .m-value{font-size:20px;font-weight:800;font-family:var(--ff)}.metric .m-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));margin:0 auto;border-radius:2px}
 [data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup p strong{color:#1a1a2e}
-@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}}
+/* CODE SNIPPETS */
+.code-section{margin-top:16px}
+.code-block{background:rgba(4,7,13,0.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;transition:border-color 0.3s}
+.code-block:hover{border-color:var(--cyan)}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.code-filename{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.5px}
+.code-lang{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.code-body{padding:16px;overflow-x:auto}
+.code-body pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--text);white-space:pre}
+.code-body .kw{color:var(--purple)}
+.code-body .fn{color:var(--cyan)}
+.code-body .str{color:var(--green)}
+.code-body .num{color:var(--gold)}
+.code-body .cm{color:var(--muted);font-style:italic}
+.code-body .op{color:var(--orange)}
+.code-body .var{color:#e0e0e0}
+@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}.code-body pre{font-size:11px}}
 </style>
 </head>
 <body>
@@ -129,6 +145,33 @@
         <div class="tech-card"><span class="tech-icon">📊</span><div class="tech-name">NumPy</div><div class="tech-cat">Computation</div></div>
         <div class="tech-card"><span class="tech-icon">📉</span><div class="tech-name">Matplotlib</div><div class="tech-cat">Visualization</div></div>
         <div class="tech-card"><span class="tech-icon">🔬</span><div class="tech-name">Backtesting</div><div class="tech-cat">Validation</div></div>
+      </div>
+    </div>
+
+    <div class="writeup-section reveal reveal-d5">
+      <h2><span class="w-icon">💻</span> Key Code</h2>
+      <p>Custom feature pipeline and walk-forward backtesting methodology.</p>
+      <div class="code-section">
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">features.py</span><span class="code-lang">Python</span></div>
+          <div class="code-body"><pre><span class="kw">def</span> <span class="fn">build_features</span>(<span class="var">df</span>):
+    <span class="cm"># Momentum &amp; volatility regime features</span>
+    <span class="var">df</span>[<span class="str">'vol_regime'</span>] = <span class="var">df</span>[<span class="str">'close'</span>].<span class="fn">pct_change</span>().<span class="fn">rolling</span>(<span class="num">20</span>).<span class="fn">std</span>()
+    <span class="var">df</span>[<span class="str">'momentum_5'</span>] = <span class="var">df</span>[<span class="str">'close'</span>] / <span class="var">df</span>[<span class="str">'close'</span>].<span class="fn">shift</span>(<span class="num">5</span>) - <span class="num">1</span>
+    <span class="var">df</span>[<span class="str">'vol_change'</span>] = <span class="var">df</span>[<span class="str">'volume'</span>] / <span class="var">df</span>[<span class="str">'volume'</span>].<span class="fn">rolling</span>(<span class="num">10</span>).<span class="fn">mean</span>()
+    <span class="var">df</span>[<span class="str">'atr_14'</span>] = <span class="fn">compute_atr</span>(<span class="var">df</span>, period=<span class="num">14</span>)
+    <span class="kw">return</span> <span class="var">df</span>.<span class="fn">dropna</span>()</pre></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">backtest.py</span><span class="code-lang">Python</span></div>
+          <div class="code-body"><pre><span class="kw">def</span> <span class="fn">walk_forward</span>(<span class="var">X</span>, <span class="var">y</span>, <span class="var">window</span>=<span class="num">252</span>, <span class="var">step</span>=<span class="num">21</span>):
+    <span class="var">results</span> = []
+    <span class="kw">for</span> <span class="var">start</span> <span class="kw">in</span> <span class="fn">range</span>(<span class="num">0</span>, <span class="fn">len</span>(<span class="var">X</span>) - <span class="var">window</span>, <span class="var">step</span>):
+        <span class="var">train</span> = <span class="fn">slice</span>(<span class="var">start</span>, <span class="var">start</span> + <span class="var">window</span>)
+        <span class="var">test</span> = <span class="fn">slice</span>(<span class="var">start</span> + <span class="var">window</span>, <span class="var">start</span> + <span class="var">window</span> + <span class="var">step</span>)
+        <span class="var">clf</span> = <span class="fn">GradientBoostingClassifier</span>().<span class="fn">fit</span>(<span class="var">X</span>[<span class="var">train</span>], <span class="var">y</span>[<span class="var">train</span>])
+        <span class="var">results</span>.<span class="fn">append</span>(<span class="fn">sharpe</span>(<span class="var">clf</span>, <span class="var">X</span>[<span class="var">test</span>], <span class="var">y</span>[<span class="var">test</span>]))</pre></div>
+        </div>
       </div>
     </div>
   </section>

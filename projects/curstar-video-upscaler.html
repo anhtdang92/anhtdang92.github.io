@@ -64,11 +64,28 @@
 .tech-card .tech-icon{font-size:24px;margin-bottom:8px;display:block}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--green),var(--cyan));margin:0 auto;border-radius:2px}
 [data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup p strong{color:#1a1a2e}
+/* CODE SNIPPETS */
+.code-section{margin-top:16px}
+.code-block{background:rgba(4,7,13,0.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;transition:border-color 0.3s}
+.code-block:hover{border-color:var(--cyan)}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.code-filename{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.5px}
+.code-lang{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.code-body{padding:16px;overflow-x:auto}
+.code-body pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--text);white-space:pre}
+.code-body .kw{color:var(--purple)}
+.code-body .fn{color:var(--cyan)}
+.code-body .str{color:var(--green)}
+.code-body .num{color:var(--gold)}
+.code-body .cm{color:var(--muted);font-style:italic}
+.code-body .op{color:var(--orange)}
+.code-body .var{color:#e0e0e0}
 @media(max-width:600px){
 .project-hero{padding:80px 0 30px}
 .project-hero h1{font-size:22px}
 .tech-grid{grid-template-columns:1fr 1fr}
 .project-links{flex-direction:column;align-items:center}
+.code-body pre{font-size:11px}
 }
 </style>
 </head>
@@ -150,6 +167,37 @@
         <div class="tech-card"><span class="tech-icon">👁️</span><div class="tech-name">OpenCV</div><div class="tech-cat">Computer Vision</div></div>
         <div class="tech-card"><span class="tech-icon">🖥️</span><div class="tech-name">RTX 4090</div><div class="tech-cat">GPU Compute</div></div>
         <div class="tech-card"><span class="tech-icon">🎬</span><div class="tech-name">FFmpeg</div><div class="tech-cat">Video I/O</div></div>
+      </div>
+    </div>
+
+    <div class="writeup-section reveal reveal-d4">
+      <h2><span class="w-icon">💻</span> Key Code</h2>
+      <p>Core pipeline logic — frame extraction, diffusion inference, and video reassembly.</p>
+      <div class="code-section">
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">upscale.py</span><span class="code-lang">Python</span></div>
+          <div class="code-body"><pre><span class="kw">def</span> <span class="fn">upscale_video</span>(<span class="var">input_path</span>, <span class="var">scale</span>=<span class="num">4</span>):
+    <span class="var">frames</span> = <span class="fn">extract_frames</span>(<span class="var">input_path</span>)
+    <span class="var">model</span> = <span class="fn">STARModel</span>.<span class="fn">from_pretrained</span>(<span class="str">"star-sr-x4"</span>)
+    <span class="var">model</span>.<span class="fn">to</span>(<span class="str">"cuda"</span>).<span class="fn">eval</span>()
+
+    <span class="var">upscaled</span> = []
+    <span class="kw">for</span> <span class="var">frame</span> <span class="kw">in</span> <span class="fn">tqdm</span>(<span class="var">frames</span>, desc=<span class="str">"Upscaling"</span>):
+        <span class="var">tensor</span> = <span class="fn">to_tensor</span>(<span class="var">frame</span>).<span class="fn">unsqueeze</span>(<span class="num">0</span>).<span class="fn">cuda</span>()
+        <span class="kw">with</span> torch.<span class="fn">no_grad</span>():
+            <span class="var">sr</span> = <span class="var">model</span>(<span class="var">tensor</span>)
+        <span class="var">upscaled</span>.<span class="fn">append</span>(<span class="fn">to_image</span>(<span class="var">sr</span>))</pre></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">pipeline.py</span><span class="code-lang">Python</span></div>
+          <div class="code-body"><pre><span class="cm"># Re-encode upscaled frames to output video</span>
+<span class="var">writer</span> = <span class="fn">cv2.VideoWriter</span>(
+    <span class="var">output_path</span>, <span class="var">cv2</span>.<span class="var">VideoWriter_fourcc</span>(*<span class="str">"mp4v"</span>),
+    <span class="var">fps</span>, (<span class="var">w</span> * <span class="var">scale</span>, <span class="var">h</span> * <span class="var">scale</span>)
+)
+<span class="kw">for</span> <span class="var">frame</span> <span class="kw">in</span> <span class="var">upscaled</span>:
+    <span class="var">writer</span>.<span class="fn">write</span>(<span class="fn">cv2.cvtColor</span>(<span class="var">frame</span>, <span class="var">cv2</span>.<span class="var">COLOR_RGB2BGR</span>))</pre></div>
+        </div>
       </div>
     </div>
   </section>

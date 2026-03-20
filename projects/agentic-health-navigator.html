@@ -39,7 +39,23 @@
 .tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}.tech-card{padding:16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}.tech-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);transition:none}.tech-card:hover::after{animation:shimmer 0.6s ease}.tech-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,212,255,0.08)}.tech-card .tech-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text)}.tech-card .tech-cat{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}.tech-card .tech-icon{font-size:24px;margin-bottom:8px;display:block}
 .divider{width:60px;height:2px;background:linear-gradient(90deg,var(--gold),var(--orange));margin:0 auto;border-radius:2px}
 [data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup p strong{color:#1a1a2e}
-@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}}
+/* CODE SNIPPETS */
+.code-section{margin-top:16px}
+.code-block{background:rgba(4,7,13,0.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;transition:border-color 0.3s}
+.code-block:hover{border-color:var(--cyan)}
+.code-header{display:flex;align-items:center;justify-content:space-between;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.code-filename{font-family:var(--mono);font-size:11px;color:var(--cyan);letter-spacing:0.5px}
+.code-lang{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.code-body{padding:16px;overflow-x:auto}
+.code-body pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--text);white-space:pre}
+.code-body .kw{color:var(--purple)}
+.code-body .fn{color:var(--cyan)}
+.code-body .str{color:var(--green)}
+.code-body .num{color:var(--gold)}
+.code-body .cm{color:var(--muted);font-style:italic}
+.code-body .op{color:var(--orange)}
+.code-body .var{color:#e0e0e0}
+@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}.code-body pre{font-size:11px}}
 </style>
 </head>
 <body>
@@ -118,6 +134,34 @@
         <div class="tech-card"><span class="tech-icon">📱</span><div class="tech-name">SwiftUI</div><div class="tech-cat">UI Framework</div></div>
         <div class="tech-card"><span class="tech-icon">⌚</span><div class="tech-name">WatchOS</div><div class="tech-cat">Wearable</div></div>
         <div class="tech-card"><span class="tech-icon">🔒</span><div class="tech-name">On-Device</div><div class="tech-cat">Privacy Model</div></div>
+      </div>
+    </div>
+
+    <div class="writeup-section reveal reveal-d4">
+      <h2><span class="w-icon">💻</span> Key Code</h2>
+      <p>HealthKit data fetching and on-device anomaly detection agent.</p>
+      <div class="code-section">
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">HealthDataManager.swift</span><span class="code-lang">Swift</span></div>
+          <div class="code-body"><pre><span class="kw">func</span> <span class="fn">fetchHeartRate</span>() <span class="kw">async throws</span> -> [<span class="var">HKSample</span>] {
+    <span class="kw">let</span> <span class="var">type</span> = <span class="fn">HKQuantityType</span>(.<span class="var">heartRate</span>)
+    <span class="kw">let</span> <span class="var">predicate</span> = <span class="fn">HKQuery.predicateForSamples</span>(
+        withStart: <span class="fn">Calendar.current.date</span>(
+            byAdding: .<span class="var">day</span>, value: <span class="num">-7</span>, to: .<span class="fn">now</span>
+        ), end: .<span class="fn">now</span>
+    )
+    <span class="kw">return try await</span> <span class="var">store</span>.<span class="fn">query</span>(<span class="var">type</span>, predicate: <span class="var">predicate</span>)
+}</pre></div>
+        </div>
+        <div class="code-block">
+          <div class="code-header"><span class="code-filename">HealthAgent.swift</span><span class="code-lang">Swift</span></div>
+          <div class="code-body"><pre><span class="kw">func</span> <span class="fn">detectAnomaly</span>(<span class="var">readings</span>: [<span class="var">BiometricReading</span>]) -> <span class="var">Insight</span>? {
+    <span class="kw">let</span> <span class="var">baseline</span> = <span class="var">readings</span>.<span class="fn">movingAverage</span>(window: <span class="num">7</span>)
+    <span class="kw">let</span> <span class="var">deviation</span> = <span class="var">readings</span>.<span class="var">last</span>!.<span class="var">value</span> - <span class="var">baseline</span>
+    <span class="kw">guard</span> <span class="fn">abs</span>(<span class="var">deviation</span>) > <span class="var">threshold</span> <span class="kw">else</span> { <span class="kw">return nil</span> }
+    <span class="kw">return</span> <span class="fn">Insight</span>(type: .<span class="var">anomaly</span>, delta: <span class="var">deviation</span>)
+}</pre></div>
+        </div>
       </div>
     </div>
   </section>
