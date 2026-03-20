@@ -843,7 +843,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 
 <div class="gh-heatmap reveal reveal-d3">
   <div class="gh-heatmap-title">
-    <span>Coding Activity — Past 12 Months</span>
+    <span>Recent Coding Activity</span>
     <span class="gh-total" id="gh-total">0 contributions</span>
   </div>
   <div class="gh-months" id="gh-months"></div>
@@ -1492,7 +1492,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       heatmapObserver.observe(grid.parentElement);
     } catch (err) {
       totalEl.textContent = 'View on GitHub';
-      totalEl.closest('.gh-heatmap-title').querySelector('span').textContent = 'Coding Activity';
+      totalEl.closest('.gh-heatmap-title').querySelector('span').textContent = 'Recent Coding Activity';
       // On error, link to GitHub profile instead
       cellEls.forEach(({ el }) => { el.title = ''; });
     }
@@ -2052,12 +2052,12 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   const canvas = document.getElementById('modelComparison');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const models = ['Kraken LSTM', 'XGBoost Ensemble', 'Random Forest', 'Health Navigator'];
+  const models = ['Kraken LSTM', 'XGBoost Ensemble'];
   const metrics = {
-    accuracy:  [0.73, 0.68, 0.64, 0.89],
-    precision: [0.71, 0.66, 0.61, 0.87],
-    recall:    [0.75, 0.70, 0.67, 0.91],
-    f1:        [0.73, 0.68, 0.64, 0.89]
+    accuracy:  [0.73, 0.68],
+    precision: [0.71, 0.66],
+    recall:    [0.75, 0.70],
+    f1:        [0.73, 0.68]
   };
   let current = 'accuracy';
   let animP = 0;
@@ -2267,50 +2267,6 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     });
     node.addEventListener('mouseleave', () => tooltip.classList.remove('show'));
   });
-})();
-
-// GITHUB API INTEGRATION (replace fake heatmap)
-(function() {
-  const grid = document.getElementById('gh-grid');
-  const totalEl = document.getElementById('gh-total');
-  if (!grid) return;
-  // Try to fetch real GitHub data
-  fetch('https://api.github.com/users/anhtdang92/events?per_page=100')
-    .then(r => r.ok ? r.json() : Promise.reject())
-    .then(events => {
-      // Count events by date
-      const counts = {};
-      events.forEach(e => {
-        const d = e.created_at.split('T')[0];
-        counts[d] = (counts[d] || 0) + 1;
-      });
-      // Update the last 100 days of cells with real data
-      const cells = grid.querySelectorAll('.gh-cell');
-      const now = new Date();
-      const weeks = 52, days = 7;
-      let realTotal = 0;
-      for (let d = 0; d < days; d++) {
-        for (let w = 0; w < weeks; w++) {
-          const idx = d * weeks + w;
-          const cell = cells[idx];
-          if (!cell) continue;
-          const cellDate = new Date(now);
-          cellDate.setDate(cellDate.getDate() - (weeks - w) * 7 + d);
-          const key = cellDate.toISOString().split('T')[0];
-          if (counts[key]) {
-            const c = counts[key];
-            realTotal += c;
-            cell.className = 'gh-cell' + (c >= 8 ? ' l4' : c >= 4 ? ' l3' : c >= 2 ? ' l2' : ' l1');
-            cell.title = c + ' events on ' + key;
-          }
-        }
-      }
-      if (realTotal > 0 && totalEl) {
-        totalEl.textContent = realTotal + ' recent events (live)';
-        totalEl.style.color = 'var(--cyan)';
-      }
-    })
-    .catch(() => { /* keep procedural data as fallback */ });
 })();
 
 // PERFORMANCE: Pause all RAF loops when tab is hidden
