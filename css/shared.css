@@ -9,7 +9,7 @@
 }
 [data-theme="light"]{
   --bg:#f4f6f9;--card:#ffffff;--inner:#eef1f5;--border:#d0d7e0;
-  --text:#151e2b;--muted:#3a5068;--dim:#566e85;
+  --text:#151e2b;--muted:#2d4155;--dim:#47606f;
   --green:#00994d;--cyan:#0088aa;--purple:#9b30ff;--gold:#cc8800;--orange:#cc6600;--red:#cc2244;--violet:#8833cc;
 }
 [data-theme="light"] nav{background:rgba(244,246,249,0.9)}
@@ -127,6 +127,16 @@ h2.section-title{font-size:28px;font-weight:800;color:#fff;margin-bottom:6px}
 [data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup p strong,[data-theme="light"] .cta-section h2{color:#1a1a2e}
 [data-theme="light"] .tech-card,[data-theme="light"] .result-card{background:rgba(255,255,255,0.55)}
 
+/* KEY METRICS */
+.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0}
+.metric{padding:16px;background:var(--card);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.3s}
+.metric:hover{border-color:var(--green);transform:translateY(-2px)}
+.metric .m-value{font-size:20px;font-weight:800;font-family:var(--ff)}
+.metric .m-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
+
+/* FOCUS VISIBLE */
+a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+
 /* FUTURISTIC ENHANCEMENTS */
 .mesh-gradient{position:fixed;top:0;left:0;right:0;bottom:0;z-index:0;pointer-events:none;opacity:0.35}
 .mesh-gradient .mg1,.mesh-gradient .mg2,.mesh-gradient .mg3{position:absolute;border-radius:50%;filter:blur(120px)}
@@ -186,6 +196,11 @@ nav.open{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(4,7,13,0.9
 nav{gap:2px;padding:10px 12px}
 nav a{font-size:11px;padding:5px 8px}
 section{padding:40px 0}
+.project-hero{padding:80px 0 30px}
+.project-hero h1{font-size:22px}
+.tech-grid{grid-template-columns:1fr 1fr}
+.metrics-row{grid-template-columns:1fr 1fr}
+.project-links{flex-direction:column;align-items:center}
 }
 @media(prefers-reduced-motion:reduce){
 .ambient,.mesh-gradient,.noise-overlay,.cursor-dot{display:none}
