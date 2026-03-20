@@ -5,19 +5,15 @@ Personal portfolio website for Anh Dang (ML & Data Engineer). Multi-page static 
 
 ## Architecture
 - Pure HTML/CSS/JS — no frameworks, no build process, no dependencies
-- Multi-page static site: `index.html` (home) + 6 individual project detail pages
+- Multi-page static site: `index.html` (home) + 2 individual project detail pages
 - Shared design system extracted to `css/shared.css`
 - Deployed automatically via GitHub Pages at `https://anhtdang92.github.io`
 
 ## File Map
 - `index.html` — Home page (HTML structure, embedded CSS, vanilla JS)
 - `css/shared.css` — Shared design system (CSS vars, nav, footer, animations, responsive)
-- `projects/kraken-ml-trading-strategy.html` — Project detail page
-- `projects/curstar-video-upscaler.html` — Project detail page
-- `projects/deepseek-local-inference.html` — Project detail page
-- `projects/ml-trading-algorithm.html` — Project detail page
-- `projects/agentic-health-navigator.html` — Project detail page
-- `projects/signal-network-mapper.html` — Project detail page
+- `projects/kraken-ml-trading-strategy.html` — Project detail page (LSTM crypto trading)
+- `projects/ml-trading-algorithm.html` — Project detail page (ensemble equity trading)
 - `README.md` — Project readme
 - `CLAUDE.md` — This file (project index for AI-assisted development)
 
@@ -37,7 +33,7 @@ Personal portfolio website for Anh Dang (ML & Data Engineer). Multi-page static 
 1. Hero — intro with CTA buttons
 2. About — role, education, military, focus + stats row
 3. Skills — 4 category rows, color-coded by proficiency (green=strong, cyan=growing, orange=learning)
-4. Projects — 6 GitHub-linked project cards
+4. Projects — 2 ML project cards
 5. Experience — vertical timeline (7 entries)
 6. Education — 2 cards (Georgia Tech OMSCS, UHD)
 7. What's Next — career goals
@@ -49,4 +45,4 @@ Personal portfolio website for Anh Dang (ML & Data Engineer). Multi-page static 
 - No build step required — push to `main` to deploy
 - All content is hardcoded (no CMS or data files)
 - Project pages use `../css/shared.css` and `../index.html` relative paths
-- External links: GitHub profile, LinkedIn, email, 6 project repos
+- External links: GitHub profile, LinkedIn, email, 2 project repos
