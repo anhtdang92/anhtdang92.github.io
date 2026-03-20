@@ -64,7 +64,7 @@
   --text:#151e2b;--muted:#3a5068;--dim:#566e85;
   --green:#00994d;--cyan:#0088aa;--purple:#9b30ff;--gold:#cc8800;--orange:#cc6600;--red:#cc2244;--violet:#8833cc;
 }
-[data-theme="light"] nav{background:rgba(244,246,249,0.9)}
+[data-theme="light"] nav{background:rgba(244,246,249,0.9);border-bottom-color:var(--border)}
 [data-theme="light"] .hero-avatar{box-shadow:0 0 30px rgba(155,48,255,0.1)}
 [data-theme="light"] .hero h1{color:#1a1a2e}
 [data-theme="light"] .about-card .value,[data-theme="light"] .tl .role,[data-theme="light"] .edu-card .degree,[data-theme="light"] .project-name,[data-theme="light"] .next-card h3,[data-theme="light"] .highlight-card h3,[data-theme="light"] .ci-name,[data-theme="light"] .ni-value,[data-theme="light"] .about-text strong,[data-theme="light"] .highlight-card p strong,[data-theme="light"] .next-card p strong,[data-theme="light"] .hero-avatar{color:#1a1a2e}
@@ -242,6 +242,10 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 @keyframes dotPop{from{transform:scale(0)}}
 [data-theme="light"] .kpi-card{background:rgba(255,255,255,0.55);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 [data-theme="light"] .kpi-num{color:#1a1a2e}
+[data-theme="light"] .kpi-sparkline polyline{opacity:0.85!important}
+[data-theme="light"] .kpi-sparkline rect{opacity:0.9!important}
+[data-theme="light"] .kpi-sparkline circle{opacity:1!important}
+[data-theme="light"] .kpi-sparkline text{opacity:0.7!important}
 @media(max-width:900px){.kpi-strip{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}}
 @media(max-width:600px){.kpi-strip{grid-template-columns:repeat(2,1fr)}}
 
@@ -372,6 +376,7 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .pipeline-tooltip .pt-title{font-weight:700;color:var(--cyan);margin-bottom:4px}
 .pipeline-tooltip .pt-detail{color:var(--muted);line-height:1.5}
 [data-theme="light"] .pipeline-diagram{background:rgba(255,255,255,0.55)}
+[data-theme="light"] .pipe-node rect{fill:rgba(255,255,255,0.85)!important}
 
 /* FOOTER */
 .footer{padding:40px 0;text-align:center;border-top:1px solid #ffffff06}
@@ -443,6 +448,14 @@ nav .brand{margin-right:auto}
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
 #highlights h2.section-title{text-shadow:0 0 20px rgba(0,255,135,0.3),0 0 60px rgba(0,255,135,0.1)}
 [data-theme="light"] h2.section-title{color:#1a1a2e;text-shadow:none}
+[data-theme="light"] .hl-psr strong{color:#1a1a2e}
+[data-theme="light"] .highlight-card .hl-metric{border-top-color:var(--border)}
+[data-theme="light"] .footer{border-top-color:var(--border)}
+[data-theme="light"] .hl-tag.problem{background:rgba(204,34,68,0.1);border-color:rgba(204,34,68,0.3)}
+[data-theme="light"] .hl-tag.solution{background:rgba(0,119,160,0.1);border-color:rgba(0,119,160,0.3)}
+[data-theme="light"] .hl-tag.result{background:rgba(0,128,74,0.1);border-color:rgba(0,128,74,0.3)}
+[data-theme="light"] .testimonial-card .ta-avatar{color:#fff}
+[data-theme="light"] .explore-card{background:rgba(255,255,255,0.55)!important}
 
 /* TYPING CURSOR */
 .type-cursor{display:inline-block;width:2px;height:1em;background:var(--cyan);margin-left:2px;animation:blink 0.8s step-end infinite;vertical-align:text-bottom}
@@ -1098,17 +1111,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="reveal reveal-d2" style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:24px">
       <a href="projects.html" class="explore-card reveal reveal-d1" style="padding:24px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);display:block;color:inherit">
         <div style="font-size:28px;margin-bottom:8px">🚀</div>
-        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">Projects</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Projects</div>
         <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">6 ML & AI builds</div>
       </a>
       <a href="skills.html" class="explore-card reveal reveal-d2" style="padding:24px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);display:block;color:inherit">
         <div style="font-size:28px;margin-bottom:8px">🧠</div>
-        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">Skills & AI</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Skills & AI</div>
         <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Full tech stack + AI tools</div>
       </a>
       <a href="experience.html" class="explore-card reveal reveal-d3" style="padding:24px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);display:block;color:inherit">
         <div style="font-size:28px;margin-bottom:8px">📈</div>
-        <div style="font-size:16px;font-weight:700;color:#fff;margin-bottom:4px">Experience</div>
+        <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Experience</div>
         <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Timeline + Education</div>
       </a>
     </div>
@@ -1241,14 +1254,37 @@ window.addEventListener('scroll', () => {
   }
 }, { passive: true });
 
+// Theme-aware color helper for canvas charts
+function isLightTheme() { return document.documentElement.getAttribute('data-theme') === 'light'; }
+function themeColors() {
+  const light = isLightTheme();
+  return {
+    text: light ? '#151e2b' : '#fff',
+    muted: light ? '#3a5068' : '#9db5cc',
+    dim: light ? '#566e85' : '#7a96b0',
+    border: light ? 'rgba(160,175,192,0.4)' : 'rgba(42,63,90,0.5)',
+    gridLine: light ? 'rgba(100,120,140,0.25)' : 'rgba(42,63,90,0.3)',
+    diagonal: light ? 'rgba(100,120,140,0.35)' : 'rgba(157,181,204,0.3)',
+    green: light ? '#00804a' : '#00ff87',
+    cyan: light ? '#0077a0' : '#00d4ff',
+    purple: light ? '#8020e0' : '#e040fb',
+    gold: light ? '#b87800' : '#ffd000',
+    greenFill: function(a) { return light ? 'rgba(0,128,74,' + a + ')' : 'rgba(0,255,135,' + a + ')'; },
+    redFill: function(a) { return light ? 'rgba(204,34,68,' + a + ')' : 'rgba(255,56,96,' + a + ')'; },
+    cyanFill: function(a) { return light ? 'rgba(0,119,160,' + a + ')' : 'rgba(0,212,255,' + a + ')'; },
+    barColors: light ? ['#8020e0', '#00804a', '#0077a0', '#b87800'] : ['#e040fb', '#00ff87', '#00d4ff', '#ffd000']
+  };
+}
+var _themeRedrawFns = [];
 // Dark/light mode toggle
 function toggleTheme() {
   const html = document.documentElement;
   const btn = document.querySelector('.theme-toggle');
-  const isLight = html.getAttribute('data-theme') === 'light';
-  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  btn.textContent = isLight ? '🌙' : '☀️';
-  localStorage.setItem('theme', isLight ? 'dark' : 'light');
+  const wasLight = html.getAttribute('data-theme') === 'light';
+  html.setAttribute('data-theme', wasLight ? 'dark' : 'light');
+  btn.textContent = wasLight ? '🌙' : '☀️';
+  localStorage.setItem('theme', wasLight ? 'dark' : 'light');
+  _themeRedrawFns.forEach(function(fn) { fn(); });
 }
 (function() {
   const saved = localStorage.getItem('theme');
@@ -1869,32 +1905,33 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
   function draw(progress) {
     ctx.clearRect(0, 0, w, h);
+    const tc = themeColors();
     const colors = [
-      [`rgba(0,255,135,${0.6*progress})`, `rgba(255,56,96,${0.25*progress})`],
-      [`rgba(255,56,96,${0.25*progress})`, `rgba(0,255,135,${0.5*progress})`]
+      [tc.greenFill(0.6*progress), tc.redFill(0.25*progress)],
+      [tc.redFill(0.25*progress), tc.greenFill(0.5*progress)]
     ];
     for (let r = 0; r < 2; r++) {
       for (let c = 0; c < 2; c++) {
         const x = pad + c * cellW, y = pad + r * cellH;
         ctx.fillStyle = colors[r][c];
         ctx.fillRect(x+1, y+1, cellW-2, cellH-2);
-        ctx.strokeStyle = 'rgba(42,63,90,0.5)';
+        ctx.strokeStyle = tc.border;
         ctx.lineWidth = 1;
         ctx.strokeRect(x, y, cellW, cellH);
         const val = Math.floor(matrix[r][c] * progress);
-        ctx.fillStyle = '#fff';
+        ctx.fillStyle = tc.text;
         ctx.font = '700 22px "Outfit", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(val, x + cellW/2, y + cellH/2 - 8);
         const pct = ((matrix[r][c] / total) * 100 * progress).toFixed(1);
-        ctx.fillStyle = 'rgba(157,181,204,0.8)';
+        ctx.fillStyle = tc.muted;
         ctx.font = '500 11px "JetBrains Mono", monospace';
         ctx.fillText(pct + '%', x + cellW/2, y + cellH/2 + 14);
       }
     }
     // Axis labels
-    ctx.fillStyle = '#9db5cc';
+    ctx.fillStyle = tc.muted;
     ctx.font = '500 11px "JetBrains Mono", monospace';
     ctx.textAlign = 'center';
     ctx.fillText('Predicted Up', pad + cellW/2, pad - 10);
@@ -1909,7 +1946,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     ctx.rotate(-Math.PI/2);
     ctx.fillText('Actual Down', 0, 0);
     ctx.restore();
-    ctx.fillStyle = 'rgba(157,181,204,0.5)';
+    ctx.fillStyle = tc.dim;
     ctx.font = '500 10px "JetBrains Mono", monospace';
     ctx.textAlign = 'center';
     ctx.fillText('PREDICTED', pad + cellW, pad - 26);
@@ -1935,6 +1972,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     });
   }, { threshold: 0.3 });
   cmObs.observe(canvas);
+  _themeRedrawFns.push(function() { draw(animated ? 1 : 0); });
   // Legend
   const legend = document.getElementById('cmLegend');
   if (legend) legend.innerHTML = '<span style="color:var(--green)">TP: 152</span> · <span style="color:var(--red)">FP: 56</span> · <span style="color:var(--red)">FN: 42</span> · <span style="color:var(--green)">TN: 150</span> · <span>n=400</span>';
@@ -1990,36 +2028,38 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     recall:    [0.75, 0.70, 0.67, 0.91],
     f1:        [0.73, 0.68, 0.64, 0.89]
   };
-  const colors = ['var(--purple)', 'var(--green)', 'var(--cyan)', 'var(--gold)'];
-  const colorVals = ['#e040fb', '#00ff87', '#00d4ff', '#ffd000'];
   let current = 'accuracy';
   let animP = 0;
 
   function draw(metric, progress) {
+    const tc = themeColors();
+    const colorVals = tc.barColors;
     const w = canvas.width, h = canvas.height;
     ctx.clearRect(0, 0, w, h);
     const vals = metrics[metric];
     const pad = {l:70, r:20, t:20, b:40};
     const barW = (w - pad.l - pad.r) / vals.length;
     // Y axis
-    ctx.strokeStyle = 'rgba(42,63,90,0.3)';
+    ctx.strokeStyle = tc.gridLine;
     ctx.lineWidth = 0.5;
     for (let i = 0; i <= 4; i++) {
       const y = pad.t + (h - pad.t - pad.b) * (1 - i * 0.25);
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(w - pad.r, y); ctx.stroke();
-      ctx.fillStyle = '#9db5cc';
+      ctx.fillStyle = tc.muted;
       ctx.font = '500 10px "JetBrains Mono", monospace';
       ctx.textAlign = 'right';
       ctx.fillText((i * 25) + '%', pad.l - 8, y + 4);
     }
     // Bars
+    var light = isLightTheme();
+    var barOpacity = light ? '44' : '33';
     for (let i = 0; i < vals.length; i++) {
       const x = pad.l + i * barW + barW * 0.15;
       const bw = barW * 0.7;
       const maxH = h - pad.t - pad.b;
       const bh = maxH * vals[i] * progress;
       const y = h - pad.b - bh;
-      ctx.fillStyle = colorVals[i] + '33';
+      ctx.fillStyle = colorVals[i] + barOpacity;
       ctx.fillRect(x, y, bw, bh);
       ctx.fillStyle = colorVals[i];
       ctx.fillRect(x, y, bw, 3);
@@ -2031,7 +2071,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         ctx.fillText((vals[i] * 100).toFixed(0) + '%', x + bw/2, y - 6);
       }
       // Model name
-      ctx.fillStyle = '#9db5cc';
+      ctx.fillStyle = tc.muted;
       ctx.font = '500 10px "JetBrains Mono", monospace';
       ctx.textAlign = 'center';
       ctx.fillText(models[i], x + bw/2, h - pad.b + 16);
@@ -2067,6 +2107,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     });
   }, { threshold: 0.3 });
   mcObs.observe(canvas);
+  _themeRedrawFns.push(function() { draw(current, canvas.dataset.animated ? 1 : 0); });
 })();
 
 // ROC CURVE (Canvas)
@@ -2087,8 +2128,9 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
   function draw(progress) {
     ctx.clearRect(0, 0, w, h);
+    const tc = themeColors();
     // Grid
-    ctx.strokeStyle = 'rgba(42,63,90,0.25)';
+    ctx.strokeStyle = tc.gridLine;
     ctx.lineWidth = 0.5;
     for (let i = 0; i <= 4; i++) {
       const x = pad + pw * i/4, y = pad + ph * i/4;
@@ -2097,7 +2139,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     }
     // Diagonal (random)
     ctx.setLineDash([4,4]);
-    ctx.strokeStyle = 'rgba(157,181,204,0.3)';
+    ctx.strokeStyle = tc.diagonal;
     ctx.lineWidth = 1;
     ctx.beginPath(); ctx.moveTo(pad, pad+ph); ctx.lineTo(pad+pw, pad); ctx.stroke();
     ctx.setLineDash([]);
@@ -2110,14 +2152,14 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         const y = pad + ph - rocPoints[i][1] * ph;
         i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
       }
-      ctx.strokeStyle = '#00d4ff';
+      ctx.strokeStyle = tc.cyan;
       ctx.lineWidth = 2.5;
       ctx.stroke();
       // Fill area under curve
       ctx.lineTo(pad + rocPoints[nPts-1][0] * pw, pad + ph);
       ctx.lineTo(pad, pad + ph);
       ctx.closePath();
-      ctx.fillStyle = 'rgba(0,212,255,0.08)';
+      ctx.fillStyle = tc.cyanFill(0.12);
       ctx.fill();
       // Dots
       for (let i = 0; i < nPts; i++) {
@@ -2125,12 +2167,12 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         const y = pad + ph - rocPoints[i][1] * ph;
         ctx.beginPath();
         ctx.arc(x, y, 3, 0, Math.PI * 2);
-        ctx.fillStyle = '#00d4ff';
+        ctx.fillStyle = tc.cyan;
         ctx.fill();
       }
     }
     // Axis labels
-    ctx.fillStyle = '#9db5cc';
+    ctx.fillStyle = tc.muted;
     ctx.font = '500 10px "JetBrains Mono", monospace';
     ctx.textAlign = 'center';
     ctx.fillText('False Positive Rate', pad + pw/2, h - 10);
@@ -2148,9 +2190,9 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     }
     // AUC badge
     if (progress > 0.5) {
-      ctx.fillStyle = 'rgba(0,212,255,0.15)';
+      ctx.fillStyle = tc.cyanFill(0.18);
       ctx.fillRect(pad + pw*0.5 - 40, pad + ph*0.4, 80, 24);
-      ctx.fillStyle = '#00d4ff';
+      ctx.fillStyle = tc.cyan;
       ctx.font = '700 12px "JetBrains Mono", monospace';
       ctx.textAlign = 'center';
       ctx.fillText('AUC = 0.81', pad + pw*0.5, pad + ph*0.4 + 16);
@@ -2172,6 +2214,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     });
   }, { threshold: 0.3 });
   rocObs.observe(canvas);
+  _themeRedrawFns.push(function() { draw(animated ? 1 : 0); });
 })();
 
 // PIPELINE DIAGRAM TOOLTIPS
