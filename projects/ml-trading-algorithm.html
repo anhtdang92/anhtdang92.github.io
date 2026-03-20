@@ -25,20 +25,13 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://anhtdang92.github.io/"},
-    {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://anhtdang92.github.io/projects.html"},
+    {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://anhtdang92.github.io/#projects"},
     {"@type": "ListItem", "position": 3, "name": "ML Trading Algorithm", "item": "https://anhtdang92.github.io/projects/ml-trading-algorithm.html"}
   ]
 }
 </script>
 <style>
-.project-hero{padding:120px 0 40px;text-align:center}.project-hero .project-badge{margin-bottom:16px;font-size:12px;padding:4px 14px}.project-hero h1{font-size:clamp(24px,5vw,36px);font-weight:800;color:#fff;font-family:var(--mono);margin-bottom:16px;animation:fadeUp 0.6s ease 0.1s both}.project-hero .project-desc{font-size:17px;max-width:620px;margin:0 auto 16px;color:var(--text);line-height:1.8;animation:fadeUp 0.6s ease 0.2s both}.project-hero .project-impact{font-family:var(--mono);font-size:13px;color:var(--green);animation:fadeUp 0.6s ease 0.25s both}.project-hero .tech-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:20px;animation:fadeUp 0.6s ease 0.15s both}.project-hero .tech-tags span{font-family:var(--mono);font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--muted)}
-.project-links{display:flex;gap:12px;justify-content:center;margin-top:24px;animation:fadeUp 0.6s ease 0.3s both}.project-links a{font-family:var(--mono);font-size:13px;padding:10px 24px;border-radius:8px;border:1px solid var(--border);color:var(--text);transition:all 0.3s}.project-links a:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,135,0.05);transform:translateY(-2px)}.project-links a.primary{background:var(--green);color:var(--bg);border-color:var(--green);font-weight:700}.project-links a.primary:hover{background:#33ff99;box-shadow:0 4px 20px rgba(0,255,135,0.3)}.project-links a.back{border-color:var(--muted);color:var(--muted)}.project-links a.back:hover{border-color:var(--cyan);color:var(--cyan)}
-.writeup{padding:48px 0}.writeup h2{font-size:20px;font-weight:800;color:#fff;margin-bottom:12px;display:flex;align-items:center;gap:10px}.writeup h2 .w-icon{font-size:22px}.writeup p{font-size:15px;line-height:1.9;color:var(--text);margin-bottom:20px;max-width:700px}.writeup p strong{color:#fff;font-weight:600}.writeup-section{padding:32px 0;border-top:1px solid var(--border)}.writeup-section:first-child{border-top:none}
-.tech-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-top:16px}.tech-card{padding:16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}.tech-card::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.04),transparent);transition:none}.tech-card:hover::after{animation:shimmer 0.6s ease}.tech-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,212,255,0.08)}.tech-card .tech-name{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--text)}.tech-card .tech-cat{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px}.tech-card .tech-icon{font-size:24px;margin-bottom:8px;display:block}
-.metrics-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;margin:24px 0}.metric{padding:16px;background:var(--card);border-radius:10px;border:1px solid var(--border);text-align:center;transition:all 0.3s}.metric:hover{border-color:var(--green);transform:translateY(-2px)}.metric .m-value{font-size:20px;font-weight:800;font-family:var(--ff)}.metric .m-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;margin-top:4px}
-.divider{width:60px;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan));margin:0 auto;border-radius:2px}
-[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup p strong{color:#1a1a2e}
-/* CODE SNIPPETS */
+/* Page-specific overrides only — base project styles in shared.css */
 .code-section{margin-top:16px}
 .code-block{background:rgba(4,7,13,0.9);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px;transition:border-color 0.3s}
 .code-block:hover{border-color:var(--cyan)}
@@ -54,7 +47,9 @@
 .code-body .cm{color:var(--muted);font-style:italic}
 .code-body .op{color:var(--orange)}
 .code-body .var{color:#e0e0e0}
-@media(max-width:600px){.project-hero{padding:80px 0 30px}.project-hero h1{font-size:22px}.tech-grid{grid-template-columns:1fr 1fr}.metrics-row{grid-template-columns:1fr 1fr}.project-links{flex-direction:column;align-items:center}.code-body pre{font-size:11px}}
+@media(max-width:600px){
+.code-body pre{font-size:11px}
+}
 </style>
 </head>
 <body>
@@ -65,9 +60,9 @@
   <a href="../index.html" class="brand">AD</a>
   <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open');document.body.classList.toggle('nav-open')" aria-label="Toggle navigation">☰</button>
   <a href="../index.html">Home</a>
-  <a href="../projects.html" class="active">Projects</a>
-  <a href="../skills.html">Skills & AI</a>
-  <a href="../experience.html">Experience</a>
+  <a href="../index.html#projects" class="active">Projects</a>
+  <a href="../index.html#skills">Skills & AI</a>
+  <a href="../index.html#experience">Experience</a>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
 </nav>
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
@@ -84,7 +79,7 @@
 <div class="breadcrumb" style="padding:80px 24px 0;max-width:780px;margin:0 auto">
   <a href="../index.html" style="font-family:var(--mono);font-size:12px;color:var(--muted)">Home</a>
   <span style="color:var(--dim);margin:0 6px">›</span>
-  <a href="../projects.html" style="font-family:var(--mono);font-size:12px;color:var(--muted)">Projects</a>
+  <a href="../index.html#projects" style="font-family:var(--mono);font-size:12px;color:var(--muted)">Projects</a>
   <span style="color:var(--dim);margin:0 6px">›</span>
   <span style="font-family:var(--mono);font-size:12px;color:var(--cyan)">ML Trading Algorithm</span>
 </div>
