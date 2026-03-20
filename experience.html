@@ -251,25 +251,25 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
   <span class="status ip">IN PROGRESS</span>
   <div class="omscs-progress">
     <div class="omscs-donut">
-      <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="OMSCS progress: 60% complete, 6 of 10 courses finished">
+      <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="OMSCS progress: 70% complete, 7 of 10 courses finished">
         <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border)" stroke-width="8"/>
         <circle id="omscs-ring" cx="70" cy="70" r="58" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="364" transform="rotate(-90 70 70)" style="transition:stroke-dashoffset 1.5s cubic-bezier(0.23,1,0.32,1)"/>
       </svg>
       <div class="omscs-donut-center">
-        <div class="omscs-donut-num">60%</div>
+        <div class="omscs-donut-num">70%</div>
         <div class="omscs-donut-label">Complete</div>
       </div>
     </div>
     <div class="omscs-details">
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Courses</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="60"></div></div>
-        <span class="omscs-bar-val">6 / 10</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="70"></div></div>
+        <span class="omscs-bar-val">7 / 10</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Credits</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="60"></div></div>
-        <span class="omscs-bar-val">18 / 30</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="70"></div></div>
+        <span class="omscs-bar-val">21 / 30</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">GPA</span>
@@ -371,12 +371,12 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
     <div class="next-item">
       <div class="ni-label">OMSCS</div>
       <div class="ni-value">Georgia Tech MSCS</div>
-      <div class="ni-date">6 courses completed · In progress</div>
+      <div class="ni-date">7 courses completed · In progress</div>
     </div>
     <div class="next-item">
       <div class="ni-label">Completed</div>
-      <div class="ni-value">CV · RL · ML4T · KBAI · NetSci · AI Ethics</div>
-      <div class="ni-date">Computer Vision · Reinforcement Learning · ML for Trading</div>
+      <div class="ni-value">DVA · CV · RL · ML4T · KBAI · NetSci · AI Ethics</div>
+      <div class="ni-date">Data & Visual Analytics · Computer Vision · Reinforcement Learning · ML for Trading</div>
     </div>
     <div class="next-item">
       <div class="ni-label">Target Roles</div>
@@ -402,7 +402,7 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
     <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
     <a href="mailto:anhtdang92@gmail.com">Email</a>
   </div>
-  <div class="footer-text">Built with HTML, caffeine, and an RTX 4090</div>
+  <div class="footer-text">Built with Python, PyTorch, and an RTX 4090.</div>
   <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
 </footer>
 
@@ -470,7 +470,7 @@ document.querySelectorAll('.tl').forEach(el => tlObserver.observe(el));
   const ring = document.getElementById('omscs-ring');
   if (!ring) return;
   const circumference = 364; // 2 * PI * 58
-  const target = 0.60; // 60% complete
+  const target = 0.70; // 70% complete
   const omscsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.dataset.animated) {
