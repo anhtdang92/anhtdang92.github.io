@@ -132,7 +132,7 @@ section+section{border-top:1px solid #ffffff06}
 .hero-tags span{font-family:var(--mono);font-size:13px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text);transition:all 0.3s;opacity:0;animation:tagPop 0.4s ease both}
 .hero-tags span:nth-child(1){animation-delay:1.1s}.hero-tags span:nth-child(2){animation-delay:1.16s}.hero-tags span:nth-child(3){animation-delay:1.22s}
 .hero-tags span:nth-child(4){animation-delay:1.28s}.hero-tags span:nth-child(5){animation-delay:1.34s}.hero-tags span:nth-child(6){animation-delay:1.4s}
-.hero-tags span:nth-child(7){animation-delay:1.46s}.hero-tags span:nth-child(8){animation-delay:1.52s}.hero-tags span:nth-child(9){animation-delay:1.58s}
+.hero-tags span:nth-child(7){animation-delay:1.46s}.hero-tags span:nth-child(8){animation-delay:1.52s}.hero-tags span:nth-child(9){animation-delay:1.58s}.hero-tags span:nth-child(10){animation-delay:1.64s}
 @keyframes tagPop{from{opacity:0;transform:scale(0.8) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .hero-tags span:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.05)}
 .hero-links{display:flex;gap:12px;justify-content:center;margin-top:20px;opacity:0;animation:fadeUp 0.6s ease 1.7s both}
@@ -699,11 +699,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <h1>Anh <span class="accent">Dang</span></h1>
     <p class="hero-sub">ML engineer building production data pipelines and predictive systems. Georgia Tech MSCS (Machine Learning). U.S. Army officer with Secret clearance. Houston, TX.</p>
     <div class="hero-tags">
-      <span>Python</span><span>SQL</span><span>scikit-learn</span><span>PyTorch</span><span>Spark</span><span>Docker</span><span>AWS</span><span>MLflow</span><span>Pandas</span>
+      <span>Python</span><span>SQL</span><span>PyTorch</span><span>scikit-learn</span><span>Transformers</span><span>Docker</span><span>AWS</span><span>MLflow</span><span>Spark</span><span>Pandas</span>
     </div>
     <div class="hero-links">
       <a href="https://github.com/anhtdang92" class="primary">GitHub</a>
       <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+      <a href="resume.pdf" target="_blank" rel="noopener">Resume</a>
       <a href="mailto:anhtdang92@gmail.com">Contact</a>
     </div>
     <div class="hero-scroll"><span>↓ SCROLL ↓</span></div>
@@ -809,7 +810,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 <div class="about-grid">
   <div class="about-card reveal reveal-d1">
     <div class="label">Current Role</div>
-    <div class="value">Data Analyst II → ML Engineer</div>
+    <div class="value">ML & Data Engineer</div>
     <div class="sub">$2.9B Financial Institution · Houston, TX</div>
   </div>
   <div class="about-card reveal reveal-d2">
@@ -1079,28 +1080,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     </div>
   </section>
 
-  <!-- TESTIMONIALS -->
+  <!-- ENDORSEMENTS -->
   <section id="endorsements" aria-labelledby="endorsements-title">
     <div class="reveal"><div class="section-label">Endorsements</div></div>
-    <div class="reveal reveal-d1"><h2 id="endorsements-title" class="section-title">What others say</h2></div>
-    <div class="testimonial-grid">
-      <div class="testimonial-card reveal reveal-d1">
-        <div class="tq">Anh consistently delivers beyond expectations. His ability to translate complex data problems into production-ready solutions — from ML integration to cross-database optimization — makes him one of the most impactful analysts I've worked with.</div>
-        <div class="ta">
-          <div class="ta-avatar">VP</div>
-          <div><div class="ta-name">VP of Data Analytics</div><div class="ta-role">$2.9B Financial Institution</div></div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-d2">
-        <div class="tq">1LT Dang brings the same discipline and thoroughness to data engineering that he brings to military operations. His work on our ETL pipelines and ML platform integration has directly improved how we make lending decisions at scale.</div>
-        <div class="ta">
-          <div class="ta-avatar">Dir</div>
-          <div><div class="ta-name">Director of Information Systems</div><div class="ta-role">Enterprise Data & Analytics</div></div>
-        </div>
-      </div>
-    </div>
-    <div class="testimonial-cta reveal reveal-d3">
-      <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">View full recommendations on LinkedIn →</a>
+    <div class="reveal reveal-d1"><h2 id="endorsements-title" class="section-title">What colleagues say</h2></div>
+    <div class="reveal reveal-d2"><div class="section-desc">Recommendations from managers and peers — verified on LinkedIn.</div></div>
+    <div class="testimonial-cta reveal reveal-d3" style="margin-top:20px">
+      <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener" style="padding:14px 28px;font-size:14px;font-weight:600">View recommendations on LinkedIn →</a>
     </div>
   </section>
 
@@ -1134,16 +1120,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="reveal reveal-d1"><h2 id="next-title" class="section-title">Building toward</h2></div>
 
 
-<div class="reveal reveal-d2"><p class="about-text" style="margin-bottom:24px">Most ML engineers come from pure CS or research backgrounds. I come from the intersection of <strong>production data systems, military operations, and applied ML</strong> — which means I understand both the models and the real-world decisions they power. I've shipped ML integrations processing millions of decisions at a $2.9B institution, managed classified communications infrastructure for the Army, and I'm building deep ML expertise through Georgia Tech's program. That combination — <strong>production experience, Secret clearance, domain knowledge, and Georgia Tech ML training</strong> — is what I bring to the table.</p></div>
+<div class="reveal reveal-d2"><p class="about-text" style="margin-bottom:24px">Most ML engineers come from pure CS or research backgrounds. I come from the intersection of <strong>production data systems, military operations, and applied ML</strong> — which means I understand both the models and the real-world decisions they power. I've shipped ML integrations processing millions of decisions at a $2.9B institution, managed classified communications infrastructure for the Army, and I'm deepening ML expertise through Georgia Tech's MSCS program. That combination — <strong>production experience, Secret clearance, domain knowledge, and Georgia Tech ML training</strong> — is rare, and it's what I bring to the table.</p></div>
 
 <div class="next-card reveal reveal-d3">
-  <h3>Building production ML systems that drive decisions</h3>
-  <p>Completing Georgia Tech's ML masters while building end-to-end ML projects — from feature engineering and model training to containerized deployment and monitoring. Looking for ML Engineer, Data Scientist, or MLE roles where I can build predictive systems at scale.</p>
+  <h3>Let's build production ML systems together</h3>
+  <p>I ship ML systems that drive real business decisions — from feature engineering and model training to containerized deployment and monitoring. Currently advancing through Georgia Tech's ML masters while building end-to-end projects. Available for ML Engineer, Data Scientist, and MLE roles.</p>
   <div class="next-items">
     <div class="next-item">
       <div class="ni-label">OMSCS</div>
       <div class="ni-value">Georgia Tech MSCS</div>
-      <div class="ni-date">In progress</div>
+      <div class="ni-date">Machine Learning · In progress</div>
     </div>
     <div class="next-item">
       <div class="ni-label">Next Course</div>
@@ -1151,12 +1137,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       <div class="ni-date">Upcoming</div>
     </div>
     <div class="next-item">
-      <div class="ni-label">Target Roles</div>
+      <div class="ni-label">Roles</div>
       <div class="ni-value">ML Engineer · MLE · Data Scientist</div>
       <div class="ni-date">IC or Tech Lead · Remote/Hybrid/Onsite</div>
     </div>
     <div class="next-item">
-      <div class="ni-label">Top Sectors</div>
+      <div class="ni-label">Sectors</div>
       <div class="ni-value">FAANG · Defense · FinTech · Energy</div>
       <div class="ni-date">Secret Clearance · Open to relocation</div>
     </div>
@@ -1394,40 +1380,18 @@ const ringObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(ring));
 
 
-// 8. GITHUB CONTRIBUTION HEATMAP
+// 8. GITHUB CONTRIBUTION HEATMAP — Live data from GitHub API
 (function() {
   const grid = document.getElementById('gh-grid');
   const monthsRow = document.getElementById('gh-months');
   const totalEl = document.getElementById('gh-total');
   if (!grid) return;
-  // Generate realistic contribution data for 52 weeks x 7 days
-  const seed = 42;
-  function seededRandom(s) { s = Math.sin(s) * 10000; return s - Math.floor(s); }
-  const weeks = 52;
-  const days = 7;
-  let total = 0;
-  const cells = [];
-  for (let w = 0; w < weeks; w++) {
-    for (let d = 0; d < days; d++) {
-      const idx = w * days + d;
-      const r = seededRandom(seed + idx);
-      // Higher activity in recent months, lower early
-      const recency = w / weeks;
-      const threshold = 0.3 + recency * 0.25;
-      let level = 0;
-      if (r > threshold) {
-        const intensity = seededRandom(seed + idx + 1000);
-        if (intensity > 0.8) level = 4;
-        else if (intensity > 0.55) level = 3;
-        else if (intensity > 0.3) level = 2;
-        else level = 1;
-        total += level;
-      }
-      cells.push(level);
-    }
-  }
-  // Render month labels
+
+  const USERNAME = 'anhtdang92';
+  const weeks = 52, days = 7;
   const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  // Render month labels
   const now = new Date();
   for (let w = 0; w < weeks; w++) {
     const weekDate = new Date(now);
@@ -1438,37 +1402,107 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     }
     monthsRow.appendChild(span);
   }
-  // Render grid cells (column-major: each column = 1 week)
-  // CSS grid flows row-major, so we need to reorder for 7 rows x 52 cols
+
+  // Build empty grid first
   grid.style.gridTemplateRows = 'repeat(7, 1fr)';
   grid.style.gridAutoFlow = 'column';
+  const cellEls = [];
   for (let d = 0; d < days; d++) {
     for (let w = 0; w < weeks; w++) {
-      const level = cells[w * days + d];
       const cell = document.createElement('div');
-      cell.className = 'gh-cell' + (level > 0 ? ' l' + level : '');
-      cell.title = level > 0 ? level + ' contributions' : 'No contributions';
+      cell.className = 'gh-cell';
+      cell.title = 'Loading...';
       grid.appendChild(cell);
+      cellEls.push({ el: cell, week: w, day: d });
     }
   }
-  // Animate total count
-  const heatmapObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.counted) {
-        entry.target.dataset.counted = 'true';
-        const duration = 1200;
-        const start = performance.now();
-        const step = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          const eased = 1 - Math.pow(1 - progress, 3);
-          totalEl.textContent = Math.floor(eased * total) + ' contributions';
-          if (progress < 1) requestAnimationFrame(step);
-        };
-        requestAnimationFrame(step);
+  totalEl.textContent = 'Loading...';
+
+  // Fetch real contribution data from GitHub Events API
+  async function fetchContributions() {
+    try {
+      // Fetch recent events (up to 300 via pagination)
+      const events = [];
+      for (let page = 1; page <= 3; page++) {
+        const res = await fetch('https://api.github.com/users/' + USERNAME + '/events/public?per_page=100&page=' + page);
+        if (!res.ok) break;
+        const data = await res.json();
+        if (!data.length) break;
+        events.push(...data);
       }
-    });
-  }, { threshold: 0.2 });
-  heatmapObserver.observe(grid.parentElement);
+
+      // Count contributions per day from events
+      const contribMap = {};
+      const contributionTypes = ['PushEvent','CreateEvent','PullRequestEvent','IssuesEvent','PullRequestReviewEvent','ReleaseEvent'];
+      events.forEach(evt => {
+        if (!contributionTypes.includes(evt.type)) return;
+        const date = evt.created_at.slice(0, 10);
+        contribMap[date] = (contribMap[date] || 0) + (evt.type === 'PushEvent' ? (evt.payload.commits ? evt.payload.commits.length : 1) : 1);
+      });
+
+      // Map to grid (52 weeks x 7 days ending today)
+      let total = 0;
+      const startDate = new Date(now);
+      startDate.setDate(startDate.getDate() - (weeks * 7 - 1));
+
+      // Find max for level scaling
+      const counts = [];
+      for (let w = 0; w < weeks; w++) {
+        for (let d = 0; d < days; d++) {
+          const cellDate = new Date(startDate);
+          cellDate.setDate(cellDate.getDate() + w * 7 + d);
+          const key = cellDate.toISOString().slice(0, 10);
+          const count = contribMap[key] || 0;
+          counts.push(count);
+          total += count;
+        }
+      }
+
+      const maxCount = Math.max(...counts, 1);
+      const q1 = Math.ceil(maxCount * 0.25);
+      const q2 = Math.ceil(maxCount * 0.5);
+      const q3 = Math.ceil(maxCount * 0.75);
+
+      // Update cells
+      cellEls.forEach(({ el, week, day }) => {
+        const idx = week * days + day;
+        const count = counts[idx] || 0;
+        let level = 0;
+        if (count >= q3) level = 4;
+        else if (count >= q2) level = 3;
+        else if (count >= q1) level = 2;
+        else if (count > 0) level = 1;
+        el.className = 'gh-cell' + (level > 0 ? ' l' + level : '');
+        el.title = count > 0 ? count + ' contribution' + (count !== 1 ? 's' : '') : 'No contributions';
+      });
+
+      // Animate total
+      const heatmapObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !entry.target.dataset.counted) {
+            entry.target.dataset.counted = 'true';
+            const duration = 1200;
+            const start = performance.now();
+            const step = (ts) => {
+              const progress = Math.min((ts - start) / duration, 1);
+              const eased = 1 - Math.pow(1 - progress, 3);
+              totalEl.textContent = Math.floor(eased * total) + ' contributions';
+              if (progress < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+        });
+      }, { threshold: 0.2 });
+      heatmapObserver.observe(grid.parentElement);
+    } catch (err) {
+      totalEl.textContent = 'View on GitHub';
+      totalEl.closest('.gh-heatmap-title').querySelector('span').textContent = 'Coding Activity';
+      // On error, link to GitHub profile instead
+      cellEls.forEach(({ el }) => { el.title = ''; });
+    }
+  }
+
+  fetchContributions();
 })();
 
 
@@ -1740,8 +1774,8 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     {cx:60,cy:110,title:'IT Intern',detail:'Help Desk → Data exposure · 2020'},
     {cx:200,cy:95,title:'IT Data Analyst',detail:'SQL + reporting foundations · 2021'},
     {cx:340,cy:70,title:'Data Analyst I',detail:'ETL pipelines + BI dashboards · 2022'},
-    {cx:480,cy:50,title:'Data Analyst II',detail:'ML integration + 3M decisions/mo · 2023'},
-    {cx:620,cy:30,title:'ML Engineer (Target)',detail:'Georgia Tech MSCS · Production ML · 2025+'}
+    {cx:480,cy:50,title:'ML & Data Engineer',detail:'ML integration + 3M decisions/mo · 2023'},
+    {cx:620,cy:30,title:'ML Engineer',detail:'Georgia Tech MSCS · Production ML · 2025+'}
   ];
   const dots = svg.querySelectorAll('.traj-dot');
   dots.forEach((dot, i) => {
