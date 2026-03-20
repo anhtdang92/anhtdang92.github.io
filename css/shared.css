@@ -22,7 +22,9 @@ a:hover{color:var(--green)}
 ::selection{background:var(--purple);color:#fff}
 
 /* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 24px;background:rgba(4,7,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff06;display:flex;justify-content:center;gap:6px;transition:all 0.3s}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:12px 24px;background:rgba(4,7,13,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #ffffff06;display:flex;justify-content:center;gap:6px;transition:padding 0.3s,background 0.3s,box-shadow 0.3s}
+nav.scrolled{padding:6px 24px;background:rgba(4,7,13,0.95);box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+[data-theme="light"] nav.scrolled{background:rgba(244,246,249,0.97);box-shadow:0 2px 20px rgba(0,0,0,0.08)}
 nav a{font-family:var(--mono);font-size:12px;padding:6px 14px;border-radius:6px;color:var(--muted);transition:all 0.2s;letter-spacing:0.5px;position:relative}
 nav a:hover{color:var(--cyan);background:rgba(0,212,255,0.06)}
 nav a.active{color:var(--cyan);background:rgba(0,212,255,0.08);box-shadow:0 0 12px rgba(0,212,255,0.15)}
