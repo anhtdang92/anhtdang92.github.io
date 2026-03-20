@@ -843,11 +843,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 
 <div class="gh-heatmap reveal reveal-d3">
   <div class="gh-heatmap-title">
-    <span>Recent Coding Activity</span>
+    <span>Coding Activity — Past Year</span>
     <span class="gh-total" id="gh-total">0 contributions</span>
   </div>
   <div class="gh-months" id="gh-months"></div>
-  <div class="gh-grid" id="gh-grid" role="img" aria-label="GitHub-style contribution heatmap showing coding activity over the past 12 months"></div>
+  <div class="gh-grid" id="gh-grid" role="img" aria-label="GitHub contribution heatmap showing coding activity over the past year"></div>
   <div class="gh-legend">
     <span>Less</span>
     <div class="gh-legend-cell" style="background:var(--inner)"></div>
@@ -1376,7 +1376,7 @@ const ringObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(ring));
 
 
-// 8. GITHUB CONTRIBUTION HEATMAP — Live data from GitHub API
+// 8. GITHUB CONTRIBUTION HEATMAP — Live data from GitHub contribution graph
 (function() {
   const grid = document.getElementById('gh-grid');
   const monthsRow = document.getElementById('gh-months');
@@ -1414,26 +1414,35 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   }
   totalEl.textContent = 'Loading...';
 
-  // Fetch real contribution data from GitHub Events API
+  // Fetch real contribution data from GitHub's contribution page
   async function fetchContributions() {
     try {
-      // Fetch recent events (up to 300 via pagination)
-      const events = [];
-      for (let page = 1; page <= 3; page++) {
-        const res = await fetch('https://api.github.com/users/' + USERNAME + '/events/public?per_page=100&page=' + page);
-        if (!res.ok) break;
-        const data = await res.json();
-        if (!data.length) break;
-        events.push(...data);
-      }
+      const res = await fetch('https://github.com/users/' + USERNAME + '/contributions');
+      if (!res.ok) throw new Error('Failed to fetch');
+      const html = await res.text();
 
-      // Count contributions per day from events
+      // Parse contribution data from the HTML
       const contribMap = {};
-      const contributionTypes = ['PushEvent','CreateEvent','PullRequestEvent','IssuesEvent','PullRequestReviewEvent','ReleaseEvent'];
-      events.forEach(evt => {
-        if (!contributionTypes.includes(evt.type)) return;
-        const date = evt.created_at.slice(0, 10);
-        contribMap[date] = (contribMap[date] || 0) + (evt.type === 'PushEvent' ? (evt.payload.commits ? evt.payload.commits.length : 1) : 1);
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(html, 'text/html');
+      const cells = doc.querySelectorAll('td.ContributionCalendar-day, tool-tip');
+
+      // Extract data from td elements with data-date and data-level attributes
+      const tds = doc.querySelectorAll('td[data-date]');
+      tds.forEach(td => {
+        const date = td.getAttribute('data-date');
+        const level = parseInt(td.getAttribute('data-level') || '0', 10);
+        if (date && level > 0) {
+          // Find the tooltip text to get exact count
+          const id = td.getAttribute('id');
+          const tooltip = id ? doc.querySelector('tool-tip[for="' + id + '"]') : null;
+          let count = level; // fallback to level
+          if (tooltip) {
+            const match = tooltip.textContent.match(/(\d+)\s+contribution/);
+            if (match) count = parseInt(match[1], 10);
+          }
+          contribMap[date] = count;
+        }
       });
 
       // Map to grid (52 weeks x 7 days ending today)
@@ -1441,7 +1450,6 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       const startDate = new Date(now);
       startDate.setDate(startDate.getDate() - (weeks * 7 - 1));
 
-      // Find max for level scaling
       const counts = [];
       for (let w = 0; w < weeks; w++) {
         for (let d = 0; d < days; d++) {
@@ -1482,7 +1490,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
             const step = (ts) => {
               const progress = Math.min((ts - start) / duration, 1);
               const eased = 1 - Math.pow(1 - progress, 3);
-              totalEl.textContent = Math.floor(eased * total) + ' contributions';
+              totalEl.textContent = Math.floor(eased * total) + ' contributions in the last year';
               if (progress < 1) requestAnimationFrame(step);
             };
             requestAnimationFrame(step);
@@ -1491,10 +1499,56 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       }, { threshold: 0.2 });
       heatmapObserver.observe(grid.parentElement);
     } catch (err) {
-      totalEl.textContent = 'View on GitHub';
-      totalEl.closest('.gh-heatmap-title').querySelector('span').textContent = 'Recent Coding Activity';
-      // On error, link to GitHub profile instead
-      cellEls.forEach(({ el }) => { el.title = ''; });
+      // Fallback: use GitHub Events API
+      try {
+        const events = [];
+        for (let page = 1; page <= 3; page++) {
+          const res = await fetch('https://api.github.com/users/' + USERNAME + '/events/public?per_page=100&page=' + page);
+          if (!res.ok) break;
+          const data = await res.json();
+          if (!data.length) break;
+          events.push(...data);
+        }
+        const contribMap = {};
+        events.forEach(evt => {
+          if (!['PushEvent','CreateEvent','PullRequestEvent','IssuesEvent','PullRequestReviewEvent'].includes(evt.type)) return;
+          const date = evt.created_at.slice(0, 10);
+          contribMap[date] = (contribMap[date] || 0) + (evt.type === 'PushEvent' ? (evt.payload.commits ? evt.payload.commits.length : 1) : 1);
+        });
+        let total = 0;
+        const startDate = new Date(now);
+        startDate.setDate(startDate.getDate() - (weeks * 7 - 1));
+        const counts = [];
+        for (let w = 0; w < weeks; w++) {
+          for (let d = 0; d < days; d++) {
+            const cellDate = new Date(startDate);
+            cellDate.setDate(cellDate.getDate() + w * 7 + d);
+            const key = cellDate.toISOString().slice(0, 10);
+            const count = contribMap[key] || 0;
+            counts.push(count);
+            total += count;
+          }
+        }
+        const maxCount = Math.max(...counts, 1);
+        const q1 = Math.ceil(maxCount * 0.25);
+        const q2 = Math.ceil(maxCount * 0.5);
+        const q3 = Math.ceil(maxCount * 0.75);
+        cellEls.forEach(({ el, week, day }) => {
+          const idx = week * days + day;
+          const count = counts[idx] || 0;
+          let level = 0;
+          if (count >= q3) level = 4;
+          else if (count >= q2) level = 3;
+          else if (count >= q1) level = 2;
+          else if (count > 0) level = 1;
+          el.className = 'gh-cell' + (level > 0 ? ' l' + level : '');
+          el.title = count > 0 ? count + ' contribution' + (count !== 1 ? 's' : '') : 'No contributions';
+        });
+        totalEl.textContent = total + ' contributions';
+      } catch (e) {
+        totalEl.textContent = 'View on GitHub';
+        cellEls.forEach(({ el }) => { el.title = ''; });
+      }
     }
   }
 
