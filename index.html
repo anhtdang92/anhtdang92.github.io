@@ -1905,6 +1905,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
   function draw(progress) {
     ctx.clearRect(0, 0, w, h);
+    const light = isLightTheme();
     const tc = themeColors();
     const colors = [
       [tc.greenFill(0.6*progress), tc.redFill(0.25*progress)],
@@ -1919,13 +1920,13 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         ctx.lineWidth = 1;
         ctx.strokeRect(x, y, cellW, cellH);
         const val = Math.floor(matrix[r][c] * progress);
-        ctx.fillStyle = tc.text;
+        ctx.fillStyle = light ? '#111' : '#fff';
         ctx.font = '700 22px "Outfit", sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         ctx.fillText(val, x + cellW/2, y + cellH/2 - 8);
         const pct = ((matrix[r][c] / total) * 100 * progress).toFixed(1);
-        ctx.fillStyle = tc.muted;
+        ctx.fillStyle = light ? '#333' : 'rgba(157,181,204,0.8)';
         ctx.font = '500 11px "JetBrains Mono", monospace';
         ctx.fillText(pct + '%', x + cellW/2, y + cellH/2 + 14);
       }
