@@ -1,7 +1,7 @@
 # CLAUDE.md — Project Index
 
 ## Overview
-Personal portfolio website for Anh Dang (Data Analyst II). Single-page static site deployed via GitHub Pages.
+Personal portfolio website for Anh Dang (ML & Data Engineer). Multi-page static site deployed via GitHub Pages.
 
 ## Architecture
 - Pure HTML/CSS/JS — no frameworks, no build process, no dependencies
