@@ -57,3 +57,14 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
     document.body.classList.remove('nav-open');
   });
 });
+
+// ESC key to close mobile nav
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const n = document.querySelector('nav');
+    if (n && n.classList.contains('open')) {
+      n.classList.remove('open');
+      document.body.classList.remove('nav-open');
+    }
+  }
+});

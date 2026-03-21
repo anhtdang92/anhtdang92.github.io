@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Anh Dang — Data Analyst II · ML Engineer (In Transition) · Georgia Tech MSCS Candidate</title>
 <meta name="description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS Candidate (Machine Learning). U.S. Army Signal Officer. Secret Clearance. Houston, TX.">
 <meta property="og:title" content="Anh Dang — Data Analyst II · ML Engineer (In Transition) · Georgia Tech MSCS Candidate">
@@ -62,7 +62,7 @@
 }
 [data-theme="light"]{
   --bg:#f4f6f9;--card:#ffffff;--inner:#eef1f5;--border:rgba(0,0,0,0.09);
-  --text:#151e2b;--muted:#2d4155;--dim:#47606f;
+  --text:#151e2b;--muted:#1a3a52;--dim:#3a5568;
   --green:#00994d;--cyan:#0088aa;--purple:#9b30ff;--gold:#cc8800;--orange:#cc6600;--red:#cc2244;--violet:#8833cc;
 }
 [data-theme="light"] nav{background:rgba(244,246,249,0.9);border-bottom-color:var(--border)}
@@ -163,7 +163,7 @@ h2.section-title{font-size:32px;font-weight:800;margin-bottom:8px;background:lin
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
 .about-card{padding:16px;background:var(--card);border-radius:12px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
 .about-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,212,255,0.05),transparent 70%);opacity:0;transition:opacity 0.3s}
-.about-card:hover{border-color:rgba(0,212,255,0.15);transform:translateY(-4px) scale(1.02);box-shadow:0 12px 35px rgba(0,212,255,0.08)}
+.about-card:hover{border-color:rgba(0,212,255,0.15);transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,212,255,0.08)}
 .about-card:hover::after{opacity:1}
 .about-card .label{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
 .about-card .value{font-size:18px;font-weight:700;color:#fff}
@@ -425,6 +425,10 @@ h2.section-title{font-size:26px}
 .ml-panel{overflow-x:auto}
 .hero-orbs{display:none}
 .ambient span:nth-child(n+5){display:none}
+section+section::before{height:2px}
+.footer-text{font-size:clamp(12px,3vw,13px)}
+.back-to-top{bottom:90px}
+.mesh-gradient{display:none}
 }
 @media(prefers-reduced-motion:reduce){
 .hero-avatar::before,.hero-avatar::after{animation:none}
@@ -509,7 +513,7 @@ nav .brand{margin-right:auto}
 /* SVG PROGRESS RINGS */
 .stats-ring-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
 .stat-ring{text-align:center;padding:16px 8px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1)}
-.stat-ring:hover{border-color:rgba(0,212,255,0.12);transform:translateY(-4px);box-shadow:0 12px 35px rgba(0,212,255,0.08)}
+.stat-ring:hover{border-color:rgba(0,212,255,0.12);transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,212,255,0.08)}
 .stat-ring svg{width:72px;height:72px;transform:rotate(-90deg);margin-bottom:4px}
 .stat-ring circle{fill:none;stroke-width:4}
 .stat-ring .ring-bg{stroke:var(--border)}
@@ -743,6 +747,44 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .hero-orb{position:absolute;font-family:var(--mono);font-size:10px;padding:3px 8px;border-radius:12px;border:1px solid var(--border);color:var(--muted);background:rgba(11,17,32,0.7);backdrop-filter:blur(8px);white-space:nowrap;opacity:0;animation:orbFloat 8s ease-in-out infinite,orbFadeIn 0.6s ease both}
 @keyframes orbFloat{0%,100%{transform:translateY(0) rotate(var(--orbit-start))}50%{transform:translateY(-8px) rotate(var(--orbit-start))}}
 @keyframes orbFadeIn{from{opacity:0;transform:scale(0.5)}to{opacity:0.7;transform:scale(1)}}
+
+/* IMPROVED FOCUS INDICATORS */
+a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;border-radius:4px;box-shadow:0 0 0 5px rgba(0,212,255,0.3)}
+[data-theme="light"] a:focus-visible,[data-theme="light"] button:focus-visible{outline-color:var(--cyan);box-shadow:0 0 0 5px rgba(0,136,170,0.2)}
+
+/* ML PANEL ACTIVE BORDER */
+.ml-carousel-panel.active .ml-panel{border-color:rgba(0,212,255,0.12)}
+
+/* MOBILE TAP FEEDBACK */
+@media(hover:none){
+.about-card:active,.highlight-card:active,.project:active,.edu-card:active,.kpi-card:active,.ml-panel:active,.next-card:active,.testimonial-card:active{transform:scale(0.98);transition-duration:0.1s}
+.hero-links a:active,.footer-links a:active,.ml-carousel-btn:active{opacity:0.7;transition-duration:0.1s}
+}
+
+/* HERO ORBS TABLET CLAMP */
+@media(min-width:601px) and (max-width:920px){
+.hero-orbs{left:-40px;right:-40px}
+}
+
+/* HEATMAP SKELETON */
+.gh-skeleton{display:grid;grid-template-columns:repeat(52,1fr);gap:2px}
+.gh-skeleton-cell{aspect-ratio:1;border-radius:2px;background:var(--inner);animation:skeletonPulse 1.5s ease-in-out infinite}
+@keyframes skeletonPulse{0%,100%{opacity:0.4}50%{opacity:0.8}}
+
+/* PRINT STYLESHEET */
+@media print{
+nav,.scroll-progress,.back-to-top,.ambient,.mesh-gradient,.noise-overlay,.hero-scroll,.sound-toggle,#cursorGlow,canvas,.gh-heatmap,.theme-toggle,.nav-toggle{display:none!important}
+body{background:#fff!important;color:#000!important;font-size:12pt}
+.container{max-width:100%}
+section{padding:20px 0!important;page-break-inside:avoid}
+a{color:#000!important;text-decoration:underline}
+.about-card,.highlight-card,.project,.edu-card,.next-card,.kpi-card,.ml-panel,.testimonial-card,.stat-ring{background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+h2.section-title{-webkit-text-fill-color:#000!important;background:none!important;text-shadow:none!important}
+.hero h1{color:#000!important}
+.hero h1 .accent{-webkit-text-fill-color:#333!important;background:none!important}
+.reveal{opacity:1!important;transform:none!important}
+.footer{padding:20px 0!important}
+}
 </style>
 
 </head>
@@ -761,9 +803,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
   <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
   <a href="#about">About</a>
   <a href="#highlights">Highlights</a>
-  <a href="projects.html">Projects</a>
-  <a href="skills.html">Skills & AI</a>
-  <a href="experience.html">Experience</a>
+  <a href="#explore">Projects</a>
+  <a href="#ml-metrics">Skills & AI</a>
+  <a href="#pipeline">Experience</a>
   <a href="#next">Next</a>
   <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
@@ -1615,20 +1657,34 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     monthsRow.appendChild(span);
   }
 
-  // Build empty grid first
+  // Show skeleton loader while fetching
   grid.style.gridTemplateRows = 'repeat(7, 1fr)';
   grid.style.gridAutoFlow = 'column';
-  const cellEls = [];
-  for (let d = 0; d < days; d++) {
-    for (let w = 0; w < weeks; w++) {
-      const cell = document.createElement('div');
-      cell.className = 'gh-cell';
-      cell.title = 'Loading...';
-      grid.appendChild(cell);
-      cellEls.push({ el: cell, week: w, day: d });
-    }
+  grid.classList.add('gh-skeleton');
+  for (let i = 0; i < days * weeks; i++) {
+    const sk = document.createElement('div');
+    sk.className = 'gh-skeleton-cell';
+    sk.style.animationDelay = (Math.random() * 0.5) + 's';
+    grid.appendChild(sk);
   }
-  totalEl.textContent = 'Loading...';
+  totalEl.textContent = 'Loading contributions...';
+
+  // Build actual grid (replaces skeleton when data arrives)
+  function buildGrid() {
+    grid.innerHTML = '';
+    grid.classList.remove('gh-skeleton');
+    const cellEls = [];
+    for (let d = 0; d < days; d++) {
+      for (let w = 0; w < weeks; w++) {
+        const cell = document.createElement('div');
+        cell.className = 'gh-cell';
+        grid.appendChild(cell);
+        cellEls.push({ el: cell, week: w, day: d });
+      }
+    }
+    return cellEls;
+  }
+  let cellEls = [];
 
   // Parse GitHub contributions HTML and return { contribMap, total }
   function parseContributionsHTML(html) {
@@ -1679,6 +1735,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
   // Apply contribution data to the grid and display total
   function applyContribData(contribMap, officialTotal) {
+    cellEls = buildGrid();
     const startDate = new Date(now);
     startDate.setDate(startDate.getDate() - (weeks * 7 - 1));
 
@@ -1737,6 +1794,17 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
   // Fetch contribution data with parallel strategies using Promise.any
   async function fetchContributions() {
+    // Check localStorage cache (24h TTL)
+    const CACHE_KEY = 'gh_contrib_cache';
+    const CACHE_TTL = 24 * 60 * 60 * 1000;
+    try {
+      const cached = JSON.parse(localStorage.getItem(CACHE_KEY));
+      if (cached && Date.now() - cached.ts < CACHE_TTL) {
+        applyContribData(cached.contribMap, cached.officialTotal);
+        return;
+      }
+    } catch(e) {}
+
     const ghURL = 'https://github.com/users/' + USERNAME + '/contributions';
 
     const urls = [
@@ -1752,6 +1820,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         return result;
       }));
       const { contribMap, officialTotal } = parseContributionsHTML(html);
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ contribMap, officialTotal, ts: Date.now() })); } catch(e) {}
       applyContribData(contribMap, officialTotal);
       return;
     } catch (e) {
@@ -1808,7 +1877,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 (function() {
   const canvas = document.getElementById('heroParticles');
   const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
-  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!canvas || isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
   let W, H, particles = [];
@@ -1905,12 +1974,18 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       ctx.fillStyle = grad;
       ctx.fillRect(mouseX - 60, mouseY - 60, 120, 120);
     }
-    if (!document.hidden) requestAnimationFrame(draw);
+    if (!document.hidden && heroVisible) requestAnimationFrame(draw);
   }
 
+  let heroVisible = true;
   init();
   draw();
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) requestAnimationFrame(draw); });
+  const heroObs = new IntersectionObserver(([e]) => {
+    heroVisible = e.isIntersecting;
+    if (heroVisible && !document.hidden) requestAnimationFrame(draw);
+  }, { threshold: 0 });
+  heroObs.observe(canvas.parentElement);
+  document.addEventListener('visibilitychange', () => { if (!document.hidden && heroVisible) requestAnimationFrame(draw); });
   window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
 })();
 
@@ -1975,7 +2050,9 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
 // 13. UNIVERSAL NUMBER COUNTER — animate ALL numbers on page
 (function() {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function countUp(el, finalText) {
+    if (prefersReducedMotion) { el.textContent = finalText; return; }
     const nums = finalText.match(/[\d.]+/);
     if (!nums) return;
     const target = parseFloat(nums[0]);
