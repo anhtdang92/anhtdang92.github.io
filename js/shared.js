@@ -6,16 +6,22 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Scroll progress bar, back-to-top, nav scroll state
+// Scroll progress bar, back-to-top, nav scroll state — RAF-throttled
 const progressBar = document.querySelector('.scroll-progress');
 const backToTop = document.querySelector('.back-to-top');
+const navEl = document.querySelector('nav');
+let _scrollTick = false;
 window.addEventListener('scroll', () => {
-  const s = window.scrollY;
-  const d = document.documentElement.scrollHeight - window.innerHeight;
-  if (progressBar) progressBar.style.width = (s / d * 100) + '%';
-  if (backToTop) backToTop.classList.toggle('visible', s > window.innerHeight);
-  const nav = document.querySelector('nav');
-  if (nav) nav.classList.toggle('scrolled', s > 60);
+  if (_scrollTick) return;
+  _scrollTick = true;
+  requestAnimationFrame(() => {
+    const s = window.scrollY;
+    const d = document.documentElement.scrollHeight - window.innerHeight;
+    if (progressBar) progressBar.style.width = (s / d * 100) + '%';
+    if (backToTop) backToTop.classList.toggle('visible', s > window.innerHeight);
+    if (navEl) navEl.classList.toggle('scrolled', s > 60);
+    _scrollTick = false;
+  });
 }, { passive: true });
 
 // Theme toggle with prefers-color-scheme auto-detection
@@ -56,4 +62,15 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
     if (n) n.classList.remove('open');
     document.body.classList.remove('nav-open');
   });
+});
+
+// ESC key to close mobile nav
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const n = document.querySelector('nav');
+    if (n && n.classList.contains('open')) {
+      n.classList.remove('open');
+      document.body.classList.remove('nav-open');
+    }
+  }
 });
