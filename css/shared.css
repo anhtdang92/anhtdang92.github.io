@@ -2,13 +2,13 @@
 
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --bg:#04070d;--card:#0b1120;--inner:#070c17;--border:rgba(255,255,255,0.04);
+  --bg:#04070d;--card:#0b1120;--inner:#070c17;--border:rgba(255,255,255,0.08);
   --text:#eef3f9;--muted:#9db5cc;--dim:#7a96b0;
   --green:#00ff87;--cyan:#00d4ff;--purple:#e040fb;--gold:#ffd000;--orange:#ff9500;--red:#ff3860;--violet:#bf5fff;
   --ff:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace;
 }
 [data-theme="light"]{
-  --bg:#f4f6f9;--card:#ffffff;--inner:#eef1f5;--border:rgba(0,0,0,0.06);
+  --bg:#f4f6f9;--card:#ffffff;--inner:#eef1f5;--border:rgba(0,0,0,0.09);
   --text:#151e2b;--muted:#2d4155;--dim:#47606f;
   --green:#00994d;--cyan:#0088aa;--purple:#9b30ff;--gold:#cc8800;--orange:#cc6600;--red:#cc2244;--violet:#8833cc;
 }
@@ -43,9 +43,10 @@ nav .brand img{height:24px;width:auto;display:block}
 .ambient .drift{animation:drift 12s ease-in-out infinite}
 
 /* LAYOUT */
-.container{max-width:780px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
+.container{max-width:920px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
 section{padding:60px 0}
-section+section{border-top:1px solid #ffffff06}
+section+section{position:relative}
+section+section::before{content:'';display:block;width:100%;max-width:920px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent 0%,rgba(224,64,251,0.2) 20%,rgba(0,212,255,0.25) 50%,rgba(0,255,135,0.2) 80%,transparent 100%)}
 
 /* REVEAL ANIMATION */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.6s ease,transform 0.6s ease}
@@ -56,7 +57,7 @@ section+section{border-top:1px solid #ffffff06}
 /* SECTIONS */
 .section-label{font-family:var(--mono);font-size:12px;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
 .section-label::after{content:'_';animation:blink 1s step-end infinite;color:var(--cyan)}
-h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
+h2.section-title{font-size:32px;font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#fff 0%,rgba(0,212,255,0.9) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .section-desc{font-size:15px;color:var(--muted);margin-bottom:32px;max-width:560px}
 
 /* SCROLL PROGRESS */
@@ -80,9 +81,10 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 .badge-work{background:rgba(255,149,0,0.1);color:var(--orange);border:1px solid rgba(255,149,0,0.3)}
 
 /* FOOTER */
-.footer{padding:64px 0 48px;text-align:center;border-top:1px solid #ffffff06}
+.footer{padding:80px 0 60px;text-align:center;border-top:none;position:relative}
+.footer::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:100%;max-width:920px;height:1px;background:linear-gradient(90deg,transparent,rgba(224,64,251,0.2),rgba(0,212,255,0.25),rgba(0,255,135,0.2),transparent)}
 .footer-text{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:1px}
-.footer-links{display:flex;gap:16px;justify-content:center;margin-bottom:16px}
+.footer-links{display:flex;gap:24px;justify-content:center;margin-bottom:20px}
 .footer-links a{font-family:var(--mono);font-size:13px;color:var(--muted);transition:color 0.2s}
 .footer-links a:hover{color:var(--cyan);text-shadow:0 0 12px rgba(0,212,255,0.4)}
 
@@ -151,7 +153,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
 .noise-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9997;pointer-events:none;opacity:0.035;mix-blend-mode:overlay}
 [data-theme="light"] .noise-overlay{opacity:0.02}
 h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,255,0.08)}
-[data-theme="light"] h2.section-title,[data-theme="light"] h3.section-title{color:#1a1a2e;text-shadow:none}
+[data-theme="light"] h2.section-title,[data-theme="light"] h3.section-title{background:linear-gradient(135deg,#1a1a2e 0%,#0088aa 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;text-shadow:none}
 @view-transition{navigation:auto}
 ::view-transition-old(root){animation:vtFadeOut 0.2s ease both}
 ::view-transition-new(root){animation:vtFadeIn 0.3s ease both}
@@ -170,7 +172,6 @@ h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,25
 @keyframes shimmer{to{left:100%}}
 
 /* SECTION DIVIDER ANIMATION */
-section+section{border-image:linear-gradient(90deg,transparent,rgba(224,64,251,0.15),rgba(0,212,255,0.15),rgba(0,255,135,0.15),transparent) 1;border-top-width:1px;border-top-style:solid;opacity:1}
 .section-divider-glow{position:relative}
 .section-divider-glow::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--green),transparent);background-size:200% 100%;animation:dividerShift 4s ease-in-out infinite;opacity:0;transition:opacity 0.6s ease}
 .section-divider-glow.visible::before{opacity:1}
