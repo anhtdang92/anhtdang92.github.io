@@ -160,7 +160,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="brand">AD</a>
+  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang"></a>
   <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
   <a href="index.html">Home</a>
   <a href="projects.html">Projects</a>
@@ -591,7 +591,7 @@ document.querySelectorAll('.ai-card,.gpu-card,.wf-step').forEach(card => {
     0: [['ETL Pipelines',92],['SQL Server',95],['Pandas',90],['PySpark',70]],
     1: [['scikit-learn',88],['PyTorch',78],['TensorFlow',72],['XGBoost',85],['LangChain',75],['Hugging Face',70]],
     2: [['Core Python',92],['NumPy',88],['Data Structures',85],['OOP',82]],
-    3: [['T-SQL',95],['Power BI',90],['Tableau',85],['SQL Server',95]],
+    3: [['T-SQL',95],['SQL Server',95],['Query Optimization',88],['ETL / SSIS',85]],
     4: [['Azure',72],['Docker',68],['Git/GitHub',88],['MLflow',65]],
     5: [['Power BI',90],['Tableau',85],['matplotlib',80],['D3.js',60]]
   };
@@ -617,7 +617,7 @@ document.querySelectorAll('.ai-card,.gpu-card,.wf-step').forEach(card => {
     skills.forEach((s, i) => {
       const pct = s[1];
       let fillClass = 'fill-s';
-      if (pct < 75) fillClass = 'fill-l';
+      if (pct < 65) fillClass = 'fill-l';
       else if (pct < 85) fillClass = 'fill-g';
       const item = document.createElement('div');
       item.className = 'dd-bar-item';

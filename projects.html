@@ -152,7 +152,7 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
 <button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="brand">AD</a>
+  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang"></a>
   <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
   <a href="index.html">Home</a>
   <a href="projects.html" class="active">Projects</a>
@@ -188,11 +188,11 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
     <div class="project-grid">
 
       <!-- PROJECT 1: Kraken ML Trading -->
-      <div class="project reveal reveal-d1" data-cat="ml" data-accuracy="73" data-complexity="9">
+      <div class="project reveal reveal-d1" data-cat="ml" data-accuracy="55" data-complexity="9">
         <span class="project-badge badge-ml">ML</span>
         <div class="project-name">Kraken ML Trading Strategy</div>
-        <div class="project-desc">Deep learning trading system using LSTM networks for cryptocurrency price prediction on Kraken exchange. Features real-time data ingestion, feature engineering, and backtesting framework.</div>
-        <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">73% directional accuracy · 50+ engineered features · Walk-forward validated</div>
+        <div class="project-desc">ML-powered cryptocurrency trading strategy using scikit-learn gradient boosted classifiers on Kraken exchange data. Features automated feature engineering, walk-forward validation, and cloud deployment on GCP.</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">55%+ directional accuracy · 20+ engineered features · Walk-forward validated</div>
         <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Equity curve showing profit growth over time">
           <defs><linearGradient id="kraken-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
           <polygon points="0,38 0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6 120,38" fill="url(#kraken-fill)"/>
@@ -200,24 +200,24 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
           <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Equity Curve</text>
         </svg>
         <div class="project-tech">
-          <span>Python</span><span>PyTorch</span><span>LSTM</span><span>Kraken API</span><span>Pandas</span>
+          <span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span><span>Pandas</span>
         </div>
         <button class="project-toggle" onclick="toggleExpand(this)">▸ Details</button>
         <div class="project-expand">
-          <p>Built LSTM-based prediction model with 73% directional accuracy on 4h candles. Includes automated feature engineering pipeline processing 50+ technical indicators, walk-forward validation, and risk-adjusted position sizing.</p>
+          <p>Built gradient boosted prediction model with 55%+ directional accuracy on 4h candles. Includes automated feature engineering pipeline processing 20+ technical indicators, walk-forward validation, and serverless deployment on GCP Cloud Functions.</p>
         </div>
         <div class="project-links">
-          <a href="https://github.com/anhtdang92/Kraken-ML-Trading-Strategy" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" target="_blank" rel="noopener">GitHub →</a>
           <a href="projects/kraken-ml-trading-strategy.html">Details →</a>
         </div>
       </div>
 
       <!-- PROJECT 2: ML Trading Algorithm -->
-      <div class="project reveal reveal-d2" data-cat="ml" data-accuracy="68" data-complexity="8">
+      <div class="project reveal reveal-d2" data-cat="ml" data-accuracy="0" data-complexity="8">
         <span class="project-badge badge-ml">ML</span>
         <div class="project-name">ML Trading Algorithm</div>
-        <div class="project-desc">Ensemble machine learning trading system combining Random Forest, XGBoost, and neural networks for equity market prediction with automated risk management.</div>
-        <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">68% signal accuracy · Ensemble of 3 models · Automated paper trading</div>
+        <div class="project-desc">Machine learning trading algorithm with custom feature engineering pipeline, walk-forward backtesting, and systematic signal generation using scikit-learn gradient boosted classifiers.</div>
+        <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">30+ engineered features · Walk-forward validated · Sharpe-optimized</div>
         <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Portfolio value growth over time">
           <defs><linearGradient id="mltrade-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
           <polygon points="0,38 0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8 120,38" fill="url(#mltrade-fill)"/>
@@ -226,14 +226,14 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
           <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Portfolio Value</text>
         </svg>
         <div class="project-tech">
-          <span>Python</span><span>XGBoost</span><span>scikit-learn</span><span>Alpaca API</span>
+          <span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Backtesting</span>
         </div>
         <button class="project-toggle" onclick="toggleExpand(this)">▸ Details</button>
         <div class="project-expand">
-          <p>Ensemble of 3 models with weighted voting achieves 68% accuracy on daily signals. Features automated walk-forward optimization, drawdown-based position sizing, and real-time paper trading via Alpaca Markets API.</p>
+          <p>Gradient boosted classifier with 30+ engineered features for daily signal generation. Features walk-forward backtesting with sliding window validation, feature importance pruning, and Sharpe ratio optimization.</p>
         </div>
         <div class="project-links">
-          <a href="https://github.com/anhtdang92/ML-Trading-Algorithm" target="_blank" rel="noopener">GitHub →</a>
+          <a href="https://github.com/anhtdang92/ml-trading-algorithm" target="_blank" rel="noopener">GitHub →</a>
           <a href="projects/ml-trading-algorithm.html">Details →</a>
         </div>
       </div>
@@ -258,17 +258,17 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
           <tbody>
             <tr>
               <td>Kraken ML Trading</td>
-              <td data-value="73">73%</td>
+              <td data-value="55">55%+</td>
               <td data-value="Kraken 4h candles">Kraken 4h candles</td>
               <td data-value="5">5</td>
-              <td><span class="deploy-badge deploy-local">Local</span></td>
+              <td><span class="deploy-badge deploy-local">GCP Cloud Functions</span></td>
             </tr>
             <tr>
               <td>ML Trading Algorithm</td>
-              <td data-value="68">68%</td>
+              <td data-value="0">—</td>
               <td data-value="Equity daily bars">Equity daily bars</td>
               <td data-value="4">4</td>
-              <td><span class="deploy-badge deploy-paper">Paper Trading</span></td>
+              <td><span class="deploy-badge deploy-local">Local</span></td>
             </tr>
           </tbody>
         </table>
