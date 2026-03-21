@@ -16,7 +16,7 @@
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/ml-trading-algorithm.html">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="icon" href="../logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -202,8 +202,6 @@ function toggleTheme() { const h = document.documentElement; const b = document.
 document.querySelectorAll('nav a:not(.brand)').forEach(link => {
   link.addEventListener('click', () => { const n = document.querySelector('nav'); if (n) n.classList.remove('open'); document.body.classList.remove('nav-open'); });
 });
-// Cursor particle trail
-(function(){if(window.matchMedia('(prefers-reduced-motion:reduce)').matches||'ontouchstart' in window)return;const c=['var(--purple)','var(--cyan)','var(--green)'];let p=[];document.addEventListener('mousemove',e=>{const d=document.createElement('div');d.className='cursor-dot';const s=3+Math.random()*4;d.style.cssText=`width:${s}px;height:${s}px;left:${e.clientX}px;top:${e.clientY}px;background:${c[Math.floor(Math.random()*c.length)]};opacity:0.6`;document.body.appendChild(d);p.push(d);setTimeout(()=>{d.style.opacity='0';d.style.transform=`translate(${(Math.random()-.5)*20}px,${(Math.random()-.5)*20}px) scale(0)`;},50);setTimeout(()=>{d.remove();p=p.filter(x=>x!==d);},500);while(p.length>6){const o=p.shift();o.remove();}});})();
 </script>
 </body>
 </html>
