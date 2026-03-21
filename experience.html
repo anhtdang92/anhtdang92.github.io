@@ -89,9 +89,10 @@
 .course-item .ci-name{font-size:14px;font-weight:600;color:#fff}
 .course-item .ci-code{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .course-item .ci-grade{font-family:var(--mono);font-size:12px;font-weight:700;margin-top:2px}
-.ci-grade.a{color:var(--green)}.ci-grade.b{color:var(--cyan)}.ci-grade.upcoming{color:var(--orange)}
+.ci-grade.a{color:var(--green)}.ci-grade.b{color:var(--cyan)}.ci-grade.ip{color:var(--green)}.ci-grade.upcoming{color:var(--orange)}
 .course-item:hover .ci-grade.a{text-shadow:0 0 8px rgba(0,255,135,0.6)}
 .course-item:hover .ci-grade.b{text-shadow:0 0 8px rgba(0,212,255,0.6)}
+.course-item:hover .ci-grade.ip{text-shadow:0 0 8px rgba(0,255,135,0.6)}
 .course-item:hover .ci-grade.upcoming{text-shadow:0 0 8px rgba(255,149,0,0.6)}
 @media(max-width:600px){.course-grid{grid-template-columns:1fr}}
 
@@ -251,25 +252,25 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
   <span class="status ip">IN PROGRESS</span>
   <div class="omscs-progress">
     <div class="omscs-donut">
-      <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="OMSCS progress: 70% complete, 7 of 10 courses finished">
+      <svg viewBox="0 0 140 140" width="140" height="140" role="img" aria-label="OMSCS progress: 60% complete, 6 of 10 courses finished">
         <circle cx="70" cy="70" r="58" fill="none" stroke="var(--border)" stroke-width="8"/>
         <circle id="omscs-ring" cx="70" cy="70" r="58" fill="none" stroke="var(--green)" stroke-width="8" stroke-linecap="round" stroke-dasharray="364" stroke-dashoffset="364" transform="rotate(-90 70 70)" style="transition:stroke-dashoffset 1.5s cubic-bezier(0.23,1,0.32,1)"/>
       </svg>
       <div class="omscs-donut-center">
-        <div class="omscs-donut-num">70%</div>
+        <div class="omscs-donut-num">60%</div>
         <div class="omscs-donut-label">Complete</div>
       </div>
     </div>
     <div class="omscs-details">
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Courses</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="70"></div></div>
-        <span class="omscs-bar-val">7 / 10</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="60"></div></div>
+        <span class="omscs-bar-val">6 / 10</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Credits</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="70"></div></div>
-        <span class="omscs-bar-val">21 / 30</span>
+        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="60"></div></div>
+        <span class="omscs-bar-val">18 / 30</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">GPA</span>
@@ -300,6 +301,11 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
       <div class="ci-grade a">Grade: A</div>
     </div>
     <div class="course-item">
+      <div class="ci-code">CS 7646</div>
+      <div class="ci-name">ML for Trading</div>
+      <div class="ci-grade b">Grade: C</div>
+    </div>
+    <div class="course-item">
       <div class="ci-code">CS 7637</div>
       <div class="ci-name">Knowledge-Based AI</div>
       <div class="ci-grade b">Grade: B</div>
@@ -310,24 +316,14 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
       <div class="ci-grade b">Grade: B</div>
     </div>
     <div class="course-item">
-      <div class="ci-code">CS 6476</div>
-      <div class="ci-name">Computer Vision</div>
-      <div class="ci-grade b">Completed</div>
-    </div>
-    <div class="course-item">
-      <div class="ci-code">CS 7642</div>
-      <div class="ci-name">Reinforcement Learning</div>
-      <div class="ci-grade b">Completed</div>
-    </div>
-    <div class="course-item">
       <div class="ci-code">CS 6603</div>
-      <div class="ci-name">AI, Ethics, and Society</div>
-      <div class="ci-grade b">Completed</div>
+      <div class="ci-name">AI, Ethics & Society</div>
+      <div class="ci-grade ip">In Progress</div>
     </div>
     <div class="course-item">
-      <div class="ci-code">CS 7646</div>
-      <div class="ci-name">ML for Trading</div>
-      <div class="ci-grade b">Completed</div>
+      <div class="ci-code">CS 8803</div>
+      <div class="ci-name">Computer Graphics & AI</div>
+      <div class="ci-grade ip">In Progress</div>
     </div>
     <div class="course-item">
       <div class="ci-code">CS 7641</div>
@@ -371,12 +367,12 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
     <div class="next-item">
       <div class="ni-label">OMSCS</div>
       <div class="ni-value">Georgia Tech MSCS (In Progress)</div>
-      <div class="ni-date">7 of 10 courses completed</div>
+      <div class="ni-date">6 of 10 courses completed</div>
     </div>
     <div class="next-item">
       <div class="ni-label">Completed</div>
-      <div class="ni-value">DVA · CV · RL · ML4T · KBAI · NetSci · AI Ethics</div>
-      <div class="ni-date">Data & Visual Analytics · Computer Vision · Reinforcement Learning · ML for Trading</div>
+      <div class="ni-value">DVA · ML4T · KBAI · NetSci · AIES · CG&AI</div>
+      <div class="ni-date">Data & Visual Analytics · ML for Trading · Knowledge-Based AI · Network Science · AI Ethics & Society · Computer Graphics & AI</div>
     </div>
     <div class="next-item">
       <div class="ni-label">Target Roles</div>
@@ -470,7 +466,7 @@ document.querySelectorAll('.tl').forEach(el => tlObserver.observe(el));
   const ring = document.getElementById('omscs-ring');
   if (!ring) return;
   const circumference = 364; // 2 * PI * 58
-  const target = 0.70; // 70% complete
+  const target = 0.60; // 60% complete
   const omscsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting && !entry.target.dataset.animated) {
@@ -517,16 +513,15 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
 
   // Semester data: [label, cumCredits, gpa, courses, status]
   const semesters = [
-    ['F23', 3, 3.0, 'CSE 6242 (A)', 'completed'],
-    ['S24', 6, 3.0, 'CS 7637 (B)', 'completed'],
-    ['U24', 9, 3.0, 'CS 7280 (B)', 'completed'],
-    ['F24', 12, 3.1, 'CS 6476', 'completed'],
-    ['S25', 15, 3.2, 'CS 7642', 'completed'],
-    ['U25', 18, 3.3, 'CS 6603', 'completed'],
-    ['F25', 21, 3.4, 'CS 7641', 'upcoming'],
-    ['S26', 24, 3.4, 'CS 6515', 'upcoming'],
-    ['U26', 27, 3.5, 'Elective', 'projected'],
-    ['F26', 30, 3.5, 'Capstone', 'projected']
+    ['F23', 3, 4.0, 'CSE 6242 (A)', 'completed'],
+    ['S24', 6, 3.5, 'CS 7637 (B)', 'completed'],
+    ['U24', 9, 3.3, 'CS 7280 (B)', 'completed'],
+    ['F24', 12, 3.0, 'CS 7646 (C)', 'completed'],
+    ['S25', 18, 3.0, 'CS 6603 + CS 8803', 'current'],
+    ['U25', 21, 3.1, 'CS 7641', 'upcoming'],
+    ['F25', 24, 3.2, 'CS 6515', 'upcoming'],
+    ['S26', 27, 3.2, 'Elective', 'projected'],
+    ['U26', 30, 3.3, 'Capstone', 'projected']
   ];
   let animated = false, animP = 0;
 
@@ -557,7 +552,7 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
     ctx.textAlign = 'center';
     semesters.forEach((s, i) => {
       const x = pad.l + i * stepX;
-      ctx.fillStyle = s[4] === 'completed' ? '#9db5cc' : s[4] === 'upcoming' ? '#ff9500' : '#7a96b0';
+      ctx.fillStyle = s[4] === 'completed' ? '#9db5cc' : s[4] === 'current' ? '#00ff87' : s[4] === 'upcoming' ? '#ff9500' : '#7a96b0';
       ctx.fillText(s[0], x, h - 10);
     });
 
@@ -569,7 +564,8 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
       const y = pad.t + ph - barH;
       const p = i < nPts - 1 ? 1 : (progress * n - i);
       ctx.fillStyle = semesters[i][4] === 'projected' ? 'rgba(122,150,176,0.1)' :
-                      semesters[i][4] === 'upcoming' ? 'rgba(255,149,0,0.12)' : 'rgba(0,212,255,0.1)';
+                      semesters[i][4] === 'upcoming' ? 'rgba(255,149,0,0.12)' :
+                      semesters[i][4] === 'current' ? 'rgba(0,255,135,0.15)' : 'rgba(0,212,255,0.1)';
       ctx.fillRect(x - 12, y, 24, barH * p);
     }
 
