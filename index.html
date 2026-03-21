@@ -1051,10 +1051,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="ml-panel reveal reveal-d2">
       <div class="ml-panel-header">
         <span class="ml-panel-title">Confusion Matrix — Kraken ML Trading</span>
-        <span class="ml-panel-badge" style="color:var(--green)">73% Accuracy</span>
+        <span class="ml-panel-badge" style="color:var(--green)">55% Accuracy</span>
       </div>
-      <canvas id="confusionMatrix" width="280" height="280" style="display:block;margin:0 auto" role="img" aria-label="Confusion matrix: True Positives 152, False Positives 56, False Negatives 42, True Negatives 150, 73% accuracy"></canvas>
-      <div class="sr-only">Confusion Matrix — Predicted Up vs Down. Actual Up predicted Up: 152 (TP). Actual Up predicted Down: 56 (FP). Actual Down predicted Up: 42 (FN). Actual Down predicted Down: 150 (TN). Total: 400 samples, 73% accuracy.</div>
+      <canvas id="confusionMatrix" width="280" height="280" style="display:block;margin:0 auto" role="img" aria-label="Confusion matrix: True Positives 115, False Positives 85, False Negatives 95, True Negatives 105, 55% accuracy"></canvas>
+      <div class="sr-only">Confusion Matrix — Predicted Up vs Down. Actual Up predicted Up: 115 (TP). Actual Up predicted Down: 85 (FP). Actual Down predicted Up: 95 (FN). Actual Down predicted Down: 105 (TN). Total: 400 samples, 55% accuracy.</div>
       <div class="ml-panel-legend" id="cmLegend"></div>
     </div>
 
@@ -1062,7 +1062,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
     <div class="ml-panel reveal reveal-d3">
       <div class="ml-panel-header">
         <span class="ml-panel-title">Feature Importance — Top 10</span>
-        <span class="ml-panel-badge" style="color:var(--cyan)">XGBoost · SHAP Values</span>
+        <span class="ml-panel-badge" style="color:var(--cyan)">Gradient Boosting · Feature Importance</span>
       </div>
       <div id="featureImportance" class="fi-chart"></div>
     </div>
@@ -1078,18 +1078,18 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
           <button class="ml-tab" data-metric="f1">F1 Score</button>
         </div>
       </div>
-      <canvas id="modelComparison" width="700" height="200" style="width:100%;height:auto" role="img" aria-label="Model comparison bar chart: Kraken LSTM vs XGBoost Ensemble across accuracy, precision, recall, and F1 metrics"></canvas>
-      <div class="sr-only">Model Comparison: Kraken LSTM — Accuracy 73%, Precision 71%, Recall 75%, F1 73%. XGBoost Ensemble — Accuracy 68%, Precision 66%, Recall 70%, F1 68%.</div>
+      <canvas id="modelComparison" width="700" height="200" style="width:100%;height:auto" role="img" aria-label="Model comparison bar chart: Kraken GBM vs ML Trading GBM across accuracy, precision, recall, and F1 metrics"></canvas>
+      <div class="sr-only">Model Comparison: Kraken GBM — Accuracy 55%, Precision 53%, Recall 57%, F1 55%. ML Trading GBM — Accuracy 52%, Precision 50%, Recall 54%, F1 52%.</div>
     </div>
 
     <!-- ROC Curve -->
     <div class="ml-panel reveal reveal-d5">
       <div class="ml-panel-header">
         <span class="ml-panel-title">ROC Curve — Binary Classification</span>
-        <span class="ml-panel-badge" style="color:var(--purple)">AUC = 0.81</span>
+        <span class="ml-panel-badge" style="color:var(--purple)">AUC = 0.58</span>
       </div>
-      <canvas id="rocCurve" width="320" height="320" style="display:block;margin:0 auto" role="img" aria-label="ROC curve for binary classification with AUC of 0.81"></canvas>
-      <div class="sr-only">ROC Curve — Binary Classification. Area Under Curve (AUC) = 0.81. The curve shows strong separation from the random baseline diagonal, indicating good model discrimination.</div>
+      <canvas id="rocCurve" width="320" height="320" style="display:block;margin:0 auto" role="img" aria-label="ROC curve for binary classification with AUC of 0.58"></canvas>
+      <div class="sr-only">ROC Curve — Binary Classification. Area Under Curve (AUC) = 0.58. The curve shows modest separation from the random baseline diagonal, consistent with 55% directional accuracy on financial data.</div>
     </div>
   </section>
 
@@ -1195,7 +1195,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
           <div class="flip-card-front">
             <div style="font-size:28px;margin-bottom:8px">🚀</div>
             <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Kraken ML Trading</div>
-            <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">LSTM crypto · Kraken API · GCP</div>
+            <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">scikit-learn · Kraken API · GCP</div>
           </div>
           <div class="flip-card-back">
             <div class="stat-line"><span class="stat-value">&gt;1.0</span> <span class="stat-label">Sharpe Ratio</span></div>
@@ -2139,9 +2139,9 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const w = canvas.width, h = canvas.height;
-  const matrix = [[152, 56], [42, 150]]; // TP, FP, FN, TN
+  const matrix = [[115, 85], [95, 105]]; // TP, FP, FN, TN
   const labels = ['Up', 'Down'];
-  const total = 152+56+42+150;
+  const total = 115+85+95+105;
   const pad = 60, cellW = (w - pad) / 2, cellH = (h - pad) / 2;
   let animated = false;
 
@@ -2218,7 +2218,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   _themeRedrawFns.push(function() { draw(animated ? 1 : 0); });
   // Legend
   const legend = document.getElementById('cmLegend');
-  if (legend) legend.innerHTML = '<span style="color:var(--green)">TP: 152</span> · <span style="color:var(--red)">FP: 56</span> · <span style="color:var(--red)">FN: 42</span> · <span style="color:var(--green)">TN: 150</span> · <span>n=400</span>';
+  if (legend) legend.innerHTML = '<span style="color:var(--green)">TP: 115</span> · <span style="color:var(--red)">FP: 85</span> · <span style="color:var(--red)">FN: 95</span> · <span style="color:var(--green)">TN: 105</span> · <span>n=400</span>';
 })();
 
 // FEATURE IMPORTANCE (Horizontal Bars)
@@ -2264,12 +2264,12 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   const canvas = document.getElementById('modelComparison');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const models = ['Kraken LSTM', 'XGBoost Ensemble'];
+  const models = ['Kraken GBM', 'ML Trading GBM'];
   const metrics = {
-    accuracy:  [0.73, 0.68],
-    precision: [0.71, 0.66],
-    recall:    [0.75, 0.70],
-    f1:        [0.73, 0.68]
+    accuracy:  [0.55, 0.52],
+    precision: [0.53, 0.50],
+    recall:    [0.57, 0.54],
+    f1:        [0.55, 0.52]
   };
   let current = 'accuracy';
   let animP = 0;
@@ -2361,11 +2361,11 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   const w = canvas.width, h = canvas.height;
   const pad = 50;
   const pw = w - 2*pad, ph = h - 2*pad;
-  // Simulated ROC data points (FPR, TPR)
+  // Simulated ROC data points (FPR, TPR) — AUC ≈ 0.58
   const rocPoints = [
-    [0,0],[0.02,0.15],[0.05,0.35],[0.08,0.48],[0.12,0.58],[0.18,0.67],
-    [0.25,0.74],[0.32,0.80],[0.40,0.84],[0.50,0.88],[0.60,0.91],
-    [0.70,0.94],[0.80,0.96],[0.90,0.98],[1,1]
+    [0,0],[0.05,0.08],[0.10,0.16],[0.15,0.22],[0.20,0.28],[0.30,0.38],
+    [0.40,0.48],[0.50,0.57],[0.60,0.66],[0.70,0.75],[0.80,0.84],
+    [0.90,0.92],[1,1]
   ];
   let animated = false;
 
