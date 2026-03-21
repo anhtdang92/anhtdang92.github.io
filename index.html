@@ -18,10 +18,11 @@
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+<link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -102,7 +103,9 @@ nav .brand img{height:24px;width:auto;display:block}
 
 /* LAYOUT */
 .container{max-width:780px;margin:0 auto;padding:0 24px;position:relative;z-index:1}
-section{padding:60px 0}
+section{padding:64px 0}
+section:nth-child(even){background:rgba(11,17,32,0.25)}
+[data-theme="light"] section:nth-child(even){background:rgba(0,0,0,0.02)}
 section+section{border-top:1px solid #ffffff06}
 [data-theme="light"] section+section{border-top:1px solid var(--border)}
 
@@ -124,12 +127,12 @@ section+section{border-top:1px solid #ffffff06}
 .hero-avatar::before{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--purple),var(--cyan),var(--green),var(--gold),var(--purple));animation:spin 4s linear infinite;z-index:-1}
 .hero-avatar::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--purple),var(--cyan),var(--green),var(--gold),var(--purple));animation:spin 4s linear infinite;filter:blur(12px);opacity:0.4;z-index:-2}
 @keyframes spin{to{transform:rotate(360deg)}}
-.hero-label{font-family:var(--mono);font-size:14px;letter-spacing:4px;color:var(--purple);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp 0.6s ease 0.4s both}
-.hero h1{font-size:clamp(36px,7vw,56px);font-weight:900;letter-spacing:-1px;color:#fff;margin-bottom:8px;opacity:0;animation:heroNameIn 0.7s cubic-bezier(0.23,1,0.32,1) 0.6s both}
+.hero-label{font-family:var(--mono);font-size:14px;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:16px;opacity:0;animation:fadeUp 0.6s ease 0.4s both}
+.hero h1{font-size:clamp(42px,8vw,64px);font-weight:900;letter-spacing:-2px;color:#fff;margin-bottom:8px;opacity:0;animation:heroNameIn 0.7s cubic-bezier(0.23,1,0.32,1) 0.6s both}
 @keyframes heroNameIn{from{opacity:0;transform:translateY(30px) scale(0.95);filter:blur(8px)}to{opacity:1;transform:translateY(0) scale(1);filter:blur(0)}}
 .hero h1 .accent{background:linear-gradient(135deg,var(--purple),var(--cyan),var(--green),var(--purple));background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;color:transparent;animation:gradientShift 6s ease infinite}
 @keyframes gradientShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
-.hero-sub{font-size:20px;color:var(--text);font-weight:400;max-width:540px;margin:0 auto 24px;opacity:0;animation:fadeUp 0.6s ease 0.9s both}
+.hero-sub{font-size:18px;color:var(--muted);font-weight:400;max-width:540px;margin:0 auto 24px;opacity:0;animation:fadeUp 0.6s ease 0.9s both}
 .hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .hero-tags span{font-family:var(--mono);font-size:13px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text);transition:all 0.3s;opacity:0;animation:tagPop 0.4s ease both}
 .hero-tags span:nth-child(1){animation-delay:1.1s}.hero-tags span:nth-child(2){animation-delay:1.16s}.hero-tags span:nth-child(3){animation-delay:1.22s}
@@ -150,7 +153,7 @@ section+section{border-top:1px solid #ffffff06}
 @keyframes bounce{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(6px);opacity:0.9}}
 
 /* SECTIONS */
-.section-label{font-family:var(--mono);font-size:13px;letter-spacing:4px;color:var(--purple);text-transform:uppercase;margin-bottom:8px}
+.section-label{font-family:var(--mono);font-size:12px;letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
 .section-label::after{content:'_';animation:blink 1s step-end infinite;color:var(--purple)}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
 h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
@@ -158,7 +161,7 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 
 /* ABOUT */
 .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px}
-.about-card{padding:16px;background:var(--card);border-radius:12px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.about-card{padding:16px;background:var(--card);border-radius:12px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
 .about-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(0,212,255,0.05),transparent 70%);opacity:0;transition:opacity 0.3s}
 .about-card:hover{border-color:var(--cyan);transform:translateY(-4px) scale(1.02);box-shadow:0 12px 35px rgba(0,212,255,0.1)}
 .about-card:hover::after{opacity:1}
@@ -170,7 +173,7 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 
 /* WORK HIGHLIGHTS */
 .highlight-grid{display:grid;gap:12px}
-.highlight-card{padding:20px;background:var(--card);border-radius:14px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.highlight-card{padding:24px;background:var(--card);border-radius:14px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
 .highlight-card::before{content:'';position:absolute;top:0;left:-100%;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--green),var(--cyan),transparent);opacity:0;transition:opacity 0.3s}
 .highlight-card:hover{border-color:var(--green);transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,255,135,0.08)}
 .highlight-card:hover::before{opacity:1;animation:borderSlide 1.5s ease infinite}
@@ -228,11 +231,11 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 
 /* METRICS KPI STRIP */
 .kpi-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:32px}
-.kpi-card{padding:16px 12px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:12px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden}
+.kpi-card{padding:16px 12px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:12px;border:1px solid var(--border);text-align:center;transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
 .kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--cyan),transparent);opacity:0;transition:opacity 0.3s}
 .kpi-card:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,212,255,0.1)}
 .kpi-card:hover::before{opacity:1}
-.kpi-num{font-size:28px;font-weight:800;font-family:var(--ff);margin-bottom:2px}
+.kpi-num{font-size:36px;font-weight:900;font-family:var(--ff);margin-bottom:2px;letter-spacing:-1px}
 .kpi-label{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
 .kpi-sparkline{margin:8px auto 0;display:block;overflow:visible}
 .kpi-sparkline polyline,.kpi-sparkline rect,.kpi-sparkline circle{opacity:0;transition:opacity 0.6s ease}
@@ -381,7 +384,7 @@ h2.section-title{font-size:32px;font-weight:800;color:#fff;margin-bottom:8px}
 [data-theme="light"] .pipe-node rect{fill:rgba(255,255,255,0.85)!important}
 
 /* FOOTER */
-.footer{padding:40px 0;text-align:center;border-top:1px solid #ffffff06}
+.footer{padding:64px 0 48px;text-align:center;border-top:1px solid #ffffff06}
 .footer-text{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:1px}
 .footer-links{display:flex;gap:16px;justify-content:center;margin-bottom:12px}
 .footer-links a{font-family:var(--mono);font-size:14px;color:var(--muted);transition:color 0.2s}
@@ -400,8 +403,15 @@ nav{gap:2px;padding:10px 12px}
 nav a{font-size:12px;padding:5px 8px}
 .about-grid,.next-items{grid-template-columns:1fr}
 .hero{padding:80px 0 40px}
-section{padding:40px 0}
+section{padding:32px 0}
+section:nth-child(even){background:rgba(11,17,32,0.15)}
 .hero-links{flex-direction:column;align-items:center}
+.hero-links a{min-height:44px;display:flex;align-items:center;justify-content:center}
+h2.section-title{font-size:26px}
+.kpi-num{font-size:28px}
+.stat-ring .ring-value{font-size:22px}
+.highlight-card{padding:16px}
+.ml-panel{overflow-x:auto}
 }
 @media(prefers-reduced-motion:reduce){
 .hero-avatar::before,.hero-avatar::after{animation:none}
@@ -447,8 +457,8 @@ nav .brand{margin-right:auto}
 [data-theme="light"] .mesh-gradient{opacity:0.2}
 
 /* NEON GLOW SECTION TITLES */
-h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
-#highlights h2.section-title{text-shadow:0 0 20px rgba(0,255,135,0.3),0 0 60px rgba(0,255,135,0.1)}
+h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,255,0.08)}
+#highlights h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,255,0.08)}
 [data-theme="light"] h2.section-title{color:#1a1a2e;text-shadow:none}
 [data-theme="light"] .hl-psr strong{color:#1a1a2e}
 [data-theme="light"] .highlight-card .hl-metric{border-top-color:var(--border)}
@@ -490,7 +500,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 .stat-ring .ring-bg{stroke:var(--border)}
 .stat-ring .ring-fill{stroke-dasharray:226;stroke-dashoffset:226;stroke-linecap:round;transition:stroke-dashoffset 1.5s cubic-bezier(0.23,1,0.32,1)}
 .stat-ring .ring-label{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:1px;display:block}
-.stat-ring .ring-value{font-size:20px;font-weight:800;display:block;margin-top:2px}
+.stat-ring .ring-value{font-size:28px;font-weight:900;display:block;margin-top:2px;letter-spacing:-1px}
 [data-theme="light"] .stat-ring{background:rgba(255,255,255,0.55)}
 @media(max-width:900px){.stats-ring-row{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.stats-ring-row{grid-template-columns:1fr 1fr}}
@@ -820,7 +830,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       </svg>
     </div>
     <div class="kpi-card">
-      <div class="kpi-num" style="color:var(--gold)" data-kpi="21">21</div>
+      <div class="kpi-num" style="color:var(--gold)" data-kpi="18">18</div>
       <div class="kpi-label">GT Credits</div>
       <svg class="kpi-sparkline" aria-hidden="true" width="100" height="36" viewBox="0 0 100 36">
         <line x1="0" y1="34" x2="100" y2="34" stroke="var(--border)" stroke-width="0.5" opacity="0.4"/>
@@ -1170,7 +1180,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       <a href="projects/kraken-ml-trading-strategy.html" class="flip-card reveal reveal-d1" style="color:inherit;display:block">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div style="font-size:28px;margin-bottom:8px">🚀</div>
+            <svg width="100%" height="48" viewBox="0 0 160 48" preserveAspectRatio="none" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
+              <defs><linearGradient id="fc-kraken" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity="0.4"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/></linearGradient></defs>
+              <polygon points="0,46 0,38 16,36 32,30 48,33 64,24 80,28 96,18 112,14 128,20 144,10 160,6 160,46" fill="url(#fc-kraken)"/>
+              <polyline points="0,38 16,36 32,30 48,33 64,24 80,28 96,18 112,14 128,20 144,10 160,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/>
+            </svg>
             <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">Kraken ML Trading</div>
             <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">scikit-learn · Kraken API · GCP</div>
           </div>
@@ -1185,7 +1199,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       <a href="projects/ml-trading-algorithm.html" class="flip-card reveal reveal-d2" style="color:inherit;display:block">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div style="font-size:28px;margin-bottom:8px">🧠</div>
+            <svg width="100%" height="48" viewBox="0 0 160 48" preserveAspectRatio="none" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
+              <defs><linearGradient id="fc-mltrade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--green)" stop-opacity="0.4"/><stop offset="100%" stop-color="var(--green)" stop-opacity="0"/></linearGradient></defs>
+              <polygon points="0,46 0,40 20,38 40,34 60,30 80,26 100,20 120,16 140,18 160,10 160,46" fill="url(#fc-mltrade)"/>
+              <polyline points="0,40 20,38 40,34 60,30 80,26 100,20 120,16 140,18 160,10" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+            </svg>
             <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">ML Trading Algorithm</div>
             <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">Ensemble · Walk-forward · scikit-learn</div>
           </div>
@@ -1200,7 +1218,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener" class="flip-card reveal reveal-d3" style="color:inherit;display:block">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div style="font-size:28px;margin-bottom:8px">🎬</div>
+            <svg width="100%" height="48" viewBox="0 0 160 48" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
+              <rect x="10" y="8" width="60" height="32" rx="3" fill="none" stroke="var(--purple)" stroke-width="1" opacity="0.5"/>
+              <text x="40" y="28" fill="var(--dim)" font-family="var(--mono)" font-size="8" text-anchor="middle">480p</text>
+              <line x1="78" y1="24" x2="92" y2="24" stroke="var(--purple)" stroke-width="1.5" marker-end="url(#arrow)"/>
+              <rect x="98" y="4" width="52" height="40" rx="3" fill="none" stroke="var(--purple)" stroke-width="1.5"/>
+              <text x="124" y="28" fill="var(--purple)" font-family="var(--mono)" font-size="8" text-anchor="middle" font-weight="700">4K</text>
+            </svg>
             <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">CurStar Video Upscaler</div>
             <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">STAR diffusion · GPU-accelerated</div>
           </div>
@@ -1215,7 +1239,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--cyan);outline-offse
       <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener" class="flip-card reveal reveal-d4" style="color:inherit;display:block">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div style="font-size:28px;margin-bottom:8px">🔬</div>
+            <svg width="100%" height="48" viewBox="0 0 160 48" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
+              <text x="4" y="14" fill="var(--green)" font-family="var(--mono)" font-size="9" opacity="0.8">$ ollama run deepseek</text>
+              <text x="4" y="26" fill="var(--dim)" font-family="var(--mono)" font-size="8">Loading 32B Q4_K_M...</text>
+              <rect x="4" y="32" width="100" height="6" rx="3" fill="var(--inner)" stroke="var(--border)" stroke-width="0.5"/>
+              <rect x="4" y="32" width="72" height="6" rx="3" fill="var(--green)" opacity="0.6"/>
+              <text x="110" y="37" fill="var(--green)" font-family="var(--mono)" font-size="7">72%</text>
+            </svg>
             <div style="font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px">DeepSeek Local Inference</div>
             <div style="font-family:var(--mono);font-size:12px;color:var(--muted)">LLM benchmarking · RTX 4090</div>
           </div>
