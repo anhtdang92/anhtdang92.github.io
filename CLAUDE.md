@@ -10,7 +10,9 @@ Personal portfolio website for Anh Dang (ML & Data Engineer). Multi-page static 
 - Deployed automatically via GitHub Pages at `https://anhtdang92.github.io`
 
 ## File Map
-- `index.html` — Home page (HTML structure, embedded CSS, vanilla JS)
+- `index.html` — Home page (HTML structure, embedded CSS)
+- `js/index.js` — Home page JavaScript (deferred, extracted from index.html)
+- `js/shared.js` — Shared JS for project detail pages
 - `css/shared.css` — Shared design system (CSS vars, nav, footer, animations, responsive)
 - `projects/kraken-ml-trading-strategy.html` — Project detail page (LSTM crypto trading)
 - `projects/ml-trading-algorithm.html` — Project detail page (ensemble equity trading)
@@ -24,9 +26,11 @@ Personal portfolio website for Anh Dang (ML & Data Engineer). Multi-page static 
 - Single responsive breakpoint at 600px
 - Animation classes: `.reveal`, `.reveal-d1` through `.reveal-d6`
 
-## JavaScript (embedded in index.html)
+## JavaScript (js/index.js, deferred)
 - Intersection Observer for scroll-triggered reveal animations
 - Smooth scrolling navigation
+- Canvas visualizations (hero particles, neural net, charts)
+- Theme toggle, KPI animations, GitHub heatmap
 - No external JS libraries
 
 ## Sections
