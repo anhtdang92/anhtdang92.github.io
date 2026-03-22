@@ -1,5 +1,9 @@
 /* Shared JS — used by project detail pages and index.html */
 
+// Force scroll to top on page load/refresh
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+window.scrollTo(0, 0);
+
 // Scroll-triggered reveal animations
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
