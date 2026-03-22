@@ -1249,10 +1249,15 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 (function() {
   const loader = document.getElementById('pageLoader');
   if (!loader) return;
-  window.addEventListener('load', () => {
+  function dismissLoader() {
     setTimeout(() => loader.classList.add('done'), 300);
     setTimeout(() => loader.remove(), 800);
-  });
+  }
+  if (document.readyState === 'complete') {
+    dismissLoader();
+  } else {
+    window.addEventListener('load', dismissLoader);
+  }
 })();
 
 // 2. 3D TILT EFFECT on cards
