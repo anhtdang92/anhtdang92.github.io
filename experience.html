@@ -15,11 +15,14 @@
 <meta name="twitter:description" content="Professional experience timeline, Georgia Tech OMSCS progress, and career goals.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
 <meta name="theme-color" content="#04070d">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://anhtdang92.github.io/experience.html">
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/shared.css">
 <style>
 /* TIMELINE */
@@ -150,16 +153,16 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
 
 <a href="#content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top">↑</button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang"></a>
-  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
+  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang" width="24" height="24"></a>
+  <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
   <a href="index.html">Home</a>
   <a href="projects.html">Projects</a>
   <a href="skills.html">Skills & AI</a>
   <a href="experience.html" class="active">Experience</a>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+  <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
@@ -176,6 +179,7 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
   <!-- EXPERIENCE -->
 
   <section id="experience" aria-labelledby="experience-title" style="padding-top:120px">
+    <h1 class="sr-only">Experience & Education</h1>
     <div class="reveal"><div class="section-label">Experience</div></div>
     <div class="reveal reveal-d1"><h2 id="experience-title" class="section-title">Where I've worked</h2></div>
 
@@ -344,7 +348,7 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
     <span>GPA & Credits — Semester by Semester</span>
     <span class="otl-badge">Projected: Spring 2027 graduation</span>
   </div>
-  <canvas id="omscsChart" width="700" height="200" style="width:100%;height:auto"></canvas>
+  <canvas id="omscsChart" width="700" height="200" style="width:100%;height:auto" role="img" aria-label="OMSCS GPA and credits progression chart showing semester-by-semester academic performance"></canvas>
   <div class="omscs-chart-tooltip" id="omscsTooltip"></div>
 </div>
 
@@ -402,42 +406,11 @@ nav,nav a,.edu-card,.course-item,.next-item,.next-card,.tl{transition-property:b
   <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
 </footer>
 
+<script src="js/shared.js"></script>
 <script>
-// 1. REVEAL OBSERVER
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+// Page-specific JS (shared functionality handled by shared.js)
 
-// 2. SCROLL PROGRESS + BACK-TO-TOP
-const progressBar = document.querySelector('.scroll-progress');
-const backToTop = document.querySelector('.back-to-top');
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  progressBar.style.width = (scrollTop / docHeight * 100) + '%';
-  backToTop.classList.toggle('visible', scrollTop > window.innerHeight);
-  document.querySelector('nav').classList.toggle('scrolled', scrollTop > 60);
-}, { passive: true });
-
-// 3. THEME TOGGLE
-function toggleTheme() {
-  const html = document.documentElement;
-  const btn = document.querySelector('.theme-toggle');
-  const isLight = html.getAttribute('data-theme') === 'light';
-  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  btn.textContent = isLight ? '🌙' : '☀️';
-  localStorage.setItem('theme', isLight ? 'dark' : 'light');
-}
-(function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('.theme-toggle').textContent = '☀️';
-  }
-})();
-
-// 4. SCROLL-SYNCED TIMELINE GLOW
+// SCROLL-SYNCED TIMELINE GLOW
 (function() {
   const timeline = document.querySelector('.timeline');
   const glow = document.querySelector('.tl-glow');

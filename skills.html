@@ -15,11 +15,14 @@
 <meta name="twitter:description" content="Full tech stack, AI model expertise, and automation tools.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
 <meta name="theme-color" content="#04070d">
+<meta name="robots" content="index, follow">
 <link rel="canonical" href="https://anhtdang92.github.io/skills.html">
 <link rel="icon" href="logo.png" type="image/png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/shared.css">
 <style>
 /* RADAR CHART */
@@ -157,16 +160,16 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
 
 <a href="#content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top">↑</button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang"></a>
-  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
+  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang" width="24" height="24"></a>
+  <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
   <a href="index.html">Home</a>
   <a href="projects.html">Projects</a>
   <a href="skills.html" class="active">Skills & AI</a>
   <a href="experience.html">Experience</a>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+  <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
@@ -182,6 +185,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
 
   <!-- SKILLS -->
   <section id="skills" aria-labelledby="skills-title" style="padding-top:120px">
+    <h1 class="sr-only">Skills & AI</h1>
     <div class="reveal"><div class="section-label">Skills</div></div>
     <div class="reveal reveal-d1"><h2 id="skills-title" class="section-title">Tech stack</h2></div>
     <div class="reveal reveal-d2"><p class="section-desc" style="font-size:15px;color:var(--muted);margin-bottom:24px">Proficiency breakdown across core domains. <span style="color:var(--green)">Green = strong</span> · <span style="color:var(--cyan)">Cyan = growing</span> · <span style="color:var(--orange)">Orange = learning</span></p></div>
@@ -189,7 +193,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
     <!-- RADAR + LABELS -->
     <div class="radar-wrap reveal reveal-d2">
       <div class="radar-chart">
-        <canvas id="radarCanvas" width="280" height="280"></canvas>
+        <canvas id="radarCanvas" width="280" height="280" role="img" aria-label="Radar chart showing proficiency levels across Data Engineering, ML/AI, Python, SQL/Data, and Cloud/MLOps"></canvas>
       </div>
       <div class="radar-labels" id="radarLabels">
         <div class="radar-label-item"><span class="radar-label-dot" style="background:var(--green)"></span><span>Data Engineering</span><div class="radar-label-bar"><div class="radar-label-fill" style="background:var(--green)" data-w="92"></div></div><span class="radar-label-pct">92%</span></div>
@@ -324,7 +328,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
     <div class="reveal reveal-d1"><h2 id="treemap-title" class="section-title">Tech treemap</h2></div>
     <div class="reveal reveal-d2"><p class="section-desc" style="font-size:15px;color:var(--muted);margin-bottom:24px">Technology proficiency visualized by category weight and individual tool mastery. Hover for details.</p></div>
     <div class="treemap-wrap reveal reveal-d3">
-      <canvas id="treemapCanvas" class="treemap-canvas" height="380"></canvas>
+      <canvas id="treemapCanvas" class="treemap-canvas" height="380" role="img" aria-label="Treemap visualization of technology usage by category weight and individual tool mastery"></canvas>
     </div>
   </section>
 
@@ -340,40 +344,9 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
   <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
 </footer>
 
+<script src="js/shared.js"></script>
 <script>
-// REVEAL OBSERVER
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// SCROLL PROGRESS + BACK-TO-TOP
-const progressBar = document.querySelector('.scroll-progress');
-const backToTop = document.querySelector('.back-to-top');
-window.addEventListener('scroll', () => {
-  const scrollTop = window.scrollY;
-  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-  if (docHeight > 0) progressBar.style.width = (scrollTop / docHeight * 100) + '%';
-  backToTop.classList.toggle('visible', scrollTop > window.innerHeight);
-  document.querySelector('nav').classList.toggle('scrolled', scrollTop > 60);
-}, { passive: true });
-
-// THEME TOGGLE
-function toggleTheme() {
-  const html = document.documentElement;
-  const btn = document.querySelector('.theme-toggle');
-  const isLight = html.getAttribute('data-theme') === 'light';
-  html.setAttribute('data-theme', isLight ? 'dark' : 'light');
-  btn.textContent = isLight ? '🌙' : '☀️';
-  localStorage.setItem('theme', isLight ? 'dark' : 'light');
-}
-(function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('.theme-toggle').textContent = '☀️';
-  }
-})();
+// Page-specific JS (shared functionality handled by shared.js)
 
 // RADAR CHART CANVAS
 (function() {

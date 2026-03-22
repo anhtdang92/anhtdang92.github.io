@@ -29,18 +29,7 @@
   if (footerYear) footerYear.textContent = 'Anh Dang · Houston, TX · ' + now.getFullYear();
 })();
 
-// Scroll-triggered reveal animations
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// Active nav link highlighting on scroll
+// Active nav link highlighting on scroll (reveal observer is in shared.js)
 const navLinks = document.querySelectorAll('nav a[href^="#"]');
 const sections = document.querySelectorAll('section[id]');
 
@@ -56,27 +45,13 @@ const navObserver = new IntersectionObserver((entries) => {
 
 sections.forEach(section => navObserver.observe(section));
 
-// Scroll progress bar, back-to-top, hero parallax, and nav shrink — single throttled handler
-const progressBar = document.querySelector('.scroll-progress');
-const backToTop = document.querySelector('.back-to-top');
+// Hero parallax (scroll progress, back-to-top, nav shrink handled by shared.js)
 const heroSection = document.querySelector('.hero');
-const mainNav = document.querySelector('nav');
-let scrollTicking = false;
 window.addEventListener('scroll', () => {
-  if (scrollTicking) return;
-  scrollTicking = true;
-  requestAnimationFrame(() => {
-    const scrollTop = window.scrollY;
-    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    progressBar.style.width = (scrollTop / docHeight * 100) + '%';
-    backToTop.classList.toggle('visible', scrollTop > window.innerHeight);
-    if (mainNav) mainNav.classList.toggle('scrolled', scrollTop > 60);
-    if (scrollTop < window.innerHeight) {
-      heroSection.style.transform = `translateY(${scrollTop * 0.15}px)`;
-      heroSection.style.opacity = 1 - (scrollTop / window.innerHeight * 0.6);
-    }
-    scrollTicking = false;
-  });
+  if (heroSection && window.scrollY < window.innerHeight) {
+    heroSection.style.transform = `translateY(${window.scrollY * 0.15}px)`;
+    heroSection.style.opacity = 1 - (window.scrollY / window.innerHeight * 0.6);
+  }
 }, { passive: true });
 
 // Theme-aware color helper for canvas charts
@@ -100,45 +75,9 @@ function themeColors() {
     barColors: light ? ['#8020e0', '#00804a', '#0077a0', '#b87800'] : ['#e040fb', '#00ff87', '#00d4ff', '#ffd000']
   };
 }
+// Theme, back-to-top, and nav toggle wiring handled by shared.js
+// _themeRedrawFns is used by shared.js toggleTheme() to redraw canvases on theme switch
 var _themeRedrawFns = [];
-// Dark/light mode toggle with canvas fade
-function toggleTheme() {
-  const html = document.documentElement;
-  const btn = document.querySelector('.theme-toggle');
-  const wasLight = html.getAttribute('data-theme') === 'light';
-  html.setAttribute('data-theme', wasLight ? 'dark' : 'light');
-  btn.textContent = wasLight ? '🌙' : '☀️';
-  localStorage.setItem('theme', wasLight ? 'dark' : 'light');
-  // Fade canvas elements during redraw for smooth transition
-  document.querySelectorAll('.ml-panel canvas').forEach(c => { c.style.opacity = '0'; });
-  _themeRedrawFns.forEach(function(fn) { fn(); });
-  setTimeout(() => {
-    document.querySelectorAll('.ml-panel canvas').forEach(c => { c.style.opacity = ''; });
-  }, 50);
-}
-(function() {
-  const saved = localStorage.getItem('theme');
-  if (saved === 'light') {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('.theme-toggle').textContent = '☀️';
-  } else if (!saved && window.matchMedia('(prefers-color-scheme: light)').matches) {
-    document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('.theme-toggle').textContent = '☀️';
-  }
-})();
-
-// Wire up theme toggle button (no inline onclick)
-document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
-
-// Wire up back-to-top button (no inline onclick)
-document.getElementById('backToTopBtn').addEventListener('click', function() {
-  window.scrollTo({top:0,behavior:'smooth'});
-});
-
-// Close mobile nav on link click
-document.querySelectorAll('nav a').forEach(link => {
-  link.addEventListener('click', () => document.querySelector('nav').classList.remove('open'));
-});
 
 
 // KPI COUNT-UP ANIMATION on scroll
@@ -405,7 +344,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         applyContribData(cached.contribMap, cached.officialTotal);
         return;
       }
-    } catch(e) {}
+    } catch(e) { /* localStorage unavailable */ }
 
     const ghURL = 'https://github.com/users/' + USERNAME + '/contributions';
 
@@ -422,7 +361,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
         return result;
       }));
       const { contribMap, officialTotal } = parseContributionsHTML(html);
-      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ contribMap, officialTotal, ts: Date.now() })); } catch(e) {}
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ contribMap, officialTotal, ts: Date.now() })); } catch(e) { /* localStorage full or unavailable */ }
       applyContribData(contribMap, officialTotal);
       return;
     } catch (e) {
@@ -717,8 +656,9 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   const btns = document.querySelectorAll('.ml-carousel-btn');
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
-      btns.forEach(b => b.classList.remove('active'));
+      btns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected', 'false'); });
       btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
       document.querySelectorAll('.ml-carousel-panel').forEach(p => p.classList.remove('active'));
       const panel = document.getElementById(btn.dataset.panel);
       if (panel) {
