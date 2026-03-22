@@ -499,6 +499,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   const canvas = document.getElementById('heroParticles');
   const isMobile = window.innerWidth <= 768 || 'ontouchstart' in window;
   if (!canvas || isMobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  canvas.style.display = 'block';
   const ctx = canvas.getContext('2d');
   const dpr = window.devicePixelRatio || 1;
   let W, H, particles = [];
@@ -639,6 +640,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     my = e.clientY;
     trail.push({ x: mx, y: my, age: 0 });
     if (trail.length > MAX_TRAIL) trail.shift();
+    canvas.style.opacity = '0.7';
     if (!glowRunning) { glowRunning = true; requestAnimationFrame(draw); }
   });
 
