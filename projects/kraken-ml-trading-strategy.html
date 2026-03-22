@@ -14,9 +14,11 @@
 <meta name="twitter:title" content="Kraken ML Trading Strategy — Anh Dang">
 <meta name="twitter:description" content="ML-powered cryptocurrency trading strategy. Feature engineering on live market data, model training with scikit-learn, and cloud deployment on GCP.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
+<meta name="robots" content="index, follow">
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/kraken-ml-trading-strategy.html">
 <link rel="icon" href="../logo.png" type="image/png">
+<link rel="apple-touch-icon" href="../logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style">
@@ -59,16 +61,16 @@
 
 <a href="#content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top">↑</button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="../index.html" class="brand"><img src="../logo.png" alt="Anh Dang"></a>
-  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open');document.body.classList.toggle('nav-open')" aria-label="Toggle navigation">☰</button>
+  <a href="../index.html" class="brand"><img src="../logo.png" alt="Anh Dang" width="24" height="24"></a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <a href="../index.html">Home</a>
   <a href="../index.html#explore" class="active">Projects</a>
   <a href="../index.html#about">About</a>
   <a href="../index.html#highlights">Highlights</a>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
+  <button class="theme-toggle" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
@@ -100,7 +102,7 @@
     <div class="project-impact">Cloud-deployed &middot; Real-time API integration &middot; End-to-end ML pipeline</div>
     <div class="project-links">
       <a href="../index.html#explore" class="back">&larr; All Projects</a>
-      <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="primary">View on GitHub &rarr;</a>
+      <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
     </div>
   </section>
 
@@ -108,26 +110,26 @@
 
   <section class="writeup" aria-label="Project details">
     <div class="writeup-section reveal">
-      <h2><span class="w-icon">🎯</span> Problem</h2>
+      <h2><span class="w-icon" aria-hidden="true">🎯</span> Problem</h2>
       <p>Cryptocurrency markets generate massive amounts of OHLCV data but most retail trading strategies are based on lagging indicators or gut feel. I wanted to build a systematic, ML-driven approach that could identify short-term momentum signals from raw market data — tested on real Kraken exchange data.</p>
       <p>The goal wasn't to build a get-rich-quick bot. It was to prove that a <strong>rigorous, end-to-end ML pipeline</strong> — from data ingestion through feature engineering, model training, and cloud deployment — could be built by one person using open-source tools, producing measurably better-than-random directional predictions.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d1">
-      <h2><span class="w-icon">🔧</span> Approach</h2>
+      <h2><span class="w-icon" aria-hidden="true">🔧</span> Approach</h2>
       <p>Built a feature engineering pipeline that transforms raw candlestick data into <strong>20+ technical features</strong> (RSI, MACD, Bollinger Band width, volume momentum, etc.). Trained gradient boosted classifiers using scikit-learn with walk-forward validation to avoid lookahead bias.</p>
       <p>Deployed the model on <strong>Google Cloud Functions</strong> to generate signals on a schedule via the Kraken REST API. The pipeline runs serverless — no VM to maintain, automatic scaling, and cost-efficient execution for periodic inference.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d2">
-      <h2><span class="w-icon">🧠</span> Key Decisions</h2>
+      <h2><span class="w-icon" aria-hidden="true">🧠</span> Key Decisions</h2>
       <p>Chose <strong>scikit-learn over deep learning</strong> because tabular features + gradient boosting consistently outperform neural nets on structured financial data at this scale. The research literature backs this up — XGBoost/LightGBM dominate Kaggle tabular competitions for a reason.</p>
       <p>Used <strong>walk-forward validation</strong> instead of random splits to respect the time-series nature of the data. Random cross-validation on time-series data creates lookahead bias and produces artificially inflated metrics that collapse in live deployment.</p>
       <p>Deployed on <strong>GCP Cloud Functions</strong> for serverless execution rather than maintaining a VM. This keeps costs near-zero during development while providing a production-ready deployment path.</p>
     </div>
 
     <div class="writeup-section reveal reveal-d3">
-      <h2><span class="w-icon">📊</span> Results</h2>
+      <h2><span class="w-icon" aria-hidden="true">📊</span> Results</h2>
       <div class="metrics-row">
         <div class="metric"><div class="m-value" style="color:var(--green)">&gt;1.0</div><div class="m-label">Sharpe Ratio</div></div>
         <div class="metric"><div class="m-value" style="color:var(--cyan)">55%+</div><div class="m-label">Directional Accuracy</div></div>
@@ -137,7 +139,7 @@
     </div>
 
     <div class="writeup-section reveal reveal-d4">
-      <h2><span class="w-icon">🛠️</span> Tech Stack</h2>
+      <h2><span class="w-icon" aria-hidden="true">🛠️</span> Tech Stack</h2>
       <div class="tech-grid">
         <div class="tech-card"><span class="tech-icon">🐍</span><div class="tech-name">Python</div><div class="tech-cat">Language</div></div>
         <div class="tech-card"><span class="tech-icon">🤖</span><div class="tech-name">scikit-learn</div><div class="tech-cat">ML Framework</div></div>
@@ -148,7 +150,7 @@
       </div>
     </div>
     <div class="writeup-section reveal reveal-d5">
-      <h2><span class="w-icon">💻</span> Key Code</h2>
+      <h2><span class="w-icon" aria-hidden="true">💻</span> Key Code</h2>
       <p>Representative snippets from the actual codebase — feature engineering and model training pipeline.</p>
       <div class="code-section">
         <div class="code-block">
@@ -181,7 +183,7 @@
     <div class="section-label">Source Code</div>
     <h3 class="section-title" style="margin-bottom:16px">Explore the full codebase</h3>
     <div class="project-links" style="animation:none">
-      <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="primary">View on GitHub &rarr;</a>
+      <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" class="primary" target="_blank" rel="noopener">View on GitHub &rarr;</a>
       <a href="../index.html#projects" class="back">&larr; Back to Portfolio</a>
     </div>
   </section>
@@ -190,8 +192,8 @@
 
 <footer class="footer" role="contentinfo">
   <div class="footer-links">
-    <a href="https://github.com/anhtdang92">GitHub</a>
-    <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+    <a href="https://github.com/anhtdang92" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">LinkedIn</a>
     <a href="mailto:anhtdang92@gmail.com">Email</a>
   </div>
   <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>

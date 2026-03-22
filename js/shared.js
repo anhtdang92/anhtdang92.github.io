@@ -55,6 +55,26 @@ function toggleTheme() {
   }
 })();
 
+// Wire up theme toggle, back-to-top, and nav-toggle via event listeners (no inline onclick)
+(function() {
+  const themeBtn = document.querySelector('.theme-toggle');
+  if (themeBtn) themeBtn.addEventListener('click', toggleTheme);
+
+  const btt = document.querySelector('.back-to-top');
+  if (btt) btt.addEventListener('click', function() { window.scrollTo({top:0,behavior:'smooth'}); });
+
+  const navToggle = document.querySelector('.nav-toggle');
+  if (navToggle) {
+    navToggle.addEventListener('click', function() {
+      const nav = document.querySelector('nav');
+      nav.classList.toggle('open');
+      const isOpen = nav.classList.contains('open');
+      document.body.classList.toggle('nav-open', isOpen);
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+  }
+})();
+
 // Mobile nav close on link click
 document.querySelectorAll('nav a:not(.brand)').forEach(link => {
   link.addEventListener('click', () => {

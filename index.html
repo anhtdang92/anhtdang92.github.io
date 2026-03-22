@@ -19,10 +19,12 @@
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io">
 <link rel="icon" href="logo.png" type="image/png">
+<link rel="apple-touch-icon" href="logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style">
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -89,7 +91,7 @@ nav a:hover{color:var(--cyan);background:rgba(0,212,255,0.06)}
 nav a.active{color:var(--cyan);background:rgba(0,212,255,0.08)}
 nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:2px;background:var(--cyan);border-radius:2px;box-shadow:0 0 8px rgba(0,212,255,0.4);animation:navGlowIn 0.2s ease both}
 @keyframes navGlowIn{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
-nav .brand{margin-right:auto;padding:4px 0;display:flex;align-items:center}
+nav .brand{margin-right:auto;padding:4px 0;display:flex;align-items:center;text-decoration:none}
 nav .brand img{height:24px;width:auto;display:block}
 .theme-toggle{background:none;border:1px solid var(--border);border-radius:var(--radius-md);padding:5px 10px;cursor:pointer;font-size:14px;line-height:1;transition:all 0.2s;color:var(--muted)}
 .theme-toggle:hover{border-color:var(--cyan);background:rgba(0,212,255,0.06)}
@@ -796,21 +798,21 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
 <div class="page-loader" id="pageLoader"><div class="loader-ring" style="position:relative"></div></div>
 <canvas id="matrixCanvas" aria-hidden="true"></canvas>
 <canvas id="cursorGlow" aria-hidden="true" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:0.7"></canvas>
-<a href="#about" class="skip-link">Skip to content</a>
+<a href="#main-content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Back to top">↑</button>
+<button class="back-to-top" id="backToTopBtn" aria-label="Back to top">↑</button>
 <button class="sound-toggle muted" id="soundToggle" aria-label="Toggle sound effects" title="Toggle sound effects">🔇</button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <span class="brand"><img src="logo.png" alt="Anh Dang"></span>
-  <button class="nav-toggle" onclick="document.querySelector('nav').classList.toggle('open')" aria-label="Toggle navigation">☰</button>
+  <a href="/" class="brand"><img src="logo.png" alt="Anh Dang" width="24" height="24"></a>
+  <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
   <a href="#about">About</a>
   <a href="#highlights">Highlights</a>
   <a href="#explore">Projects</a>
   <a href="#ml-metrics">Skills & AI</a>
   <a href="#pipeline">Experience</a>
   <a href="#next">Next</a>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
+  <button class="theme-toggle" id="themeToggleBtn" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
@@ -828,7 +830,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
   <span class="drift" style="width:2px;height:2px;background:var(--gold);opacity:0.05;left:60%;top:70%;animation-duration:15s;animation-delay:3.5s"></span>
 </div>
 
-<main class="container" role="main">
+<main class="container" role="main" id="main-content">
 
   <!-- HERO -->
 
@@ -848,8 +850,8 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
       <span>Python</span><span>SQL</span><span>PyTorch</span><span>scikit-learn</span><span>Pandas</span>
     </div>
     <div class="hero-links">
-      <a href="https://github.com/anhtdang92" class="primary">GitHub</a>
-      <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+      <a href="https://github.com/anhtdang92" class="primary" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">LinkedIn</a>
       <a href="resume_portfolio_final.pdf" target="_blank" rel="noopener">Resume</a>
       <a href="mailto:anhtdang92@gmail.com">Contact</a>
     </div>
@@ -1077,7 +1079,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
 
     <div class="highlight-grid">
       <div class="highlight-card reveal reveal-d1">
-        <h3><span class="hl-icon">🤖</span>ML Credit Decisioning Integration</h3>
+        <h3><span class="hl-icon" aria-hidden="true">🤖</span>ML Credit Decisioning Integration</h3>
         <div class="hl-psr"><span class="hl-tag problem">Problem</span> Manual underwriting couldn't scale — inconsistent decisions across 176K members, slow turnaround, no ML in the loop.</div>
         <div class="hl-psr"><span class="hl-tag solution">Solution</span> Integrated Scienaptic AI's ML credit decisioning engine into the lending workflow. Built data extraction, validation, and reporting pipelines to align model outputs with underwriting criteria.</div>
         <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>3M+ ML-powered credit decisions per month</strong> across 176K members. Faster, more consistent lending decisions at institutional scale.</div>
@@ -1085,7 +1087,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
       </div>
 
       <div class="highlight-card reveal reveal-d2">
-        <h3><span class="hl-icon">🔄</span>Visa DPS Risk Pipeline</h3>
+        <h3><span class="hl-icon" aria-hidden="true">🔄</span>Visa DPS Risk Pipeline</h3>
         <div class="hl-psr"><span class="hl-tag problem">Problem</span> Fraud risk signals from Visa's DPS network were siloed — risk management team had no automated way to ingest, transform, or act on payment network alerts.</div>
         <div class="hl-psr"><span class="hl-tag solution">Solution</span> Designed enterprise ETL pipeline with staging tables, stored procedures, and automated workflows to transform raw risk factors into actionable alerts.</div>
         <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>Real-time fraud risk factor ingestion</strong> from Visa's payment network into the credit union's monitoring framework. First automated risk pipeline at the institution.</div>
@@ -1093,7 +1095,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
       </div>
 
       <div class="highlight-card reveal reveal-d3">
-        <h3><span class="hl-icon">⚡</span>Cross-Database Optimization</h3>
+        <h3><span class="hl-icon" aria-hidden="true">⚡</span>Cross-Database Optimization</h3>
         <div class="hl-psr"><span class="hl-tag problem">Problem</span> Daily reporting required expensive cross-server joins between the DNA core banking system and XP2 lending platform — queries took minutes, blocking downstream analytics.</div>
         <div class="hl-psr"><span class="hl-tag solution">Solution</span> Engineered a staging table architecture with incremental sync to eliminate linked server bottlenecks. Local staging tables replaced cross-server joins entirely.</div>
         <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>90%+ query time reduction</strong>. Eliminated the single biggest performance bottleneck in daily reporting. Queries that took minutes now run in seconds.</div>
@@ -1101,7 +1103,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
       </div>
 
       <div class="highlight-card reveal reveal-d4">
-        <h3><span class="hl-icon">📋</span>Compliance Automation</h3>
+        <h3><span class="hl-icon" aria-hidden="true">📋</span>Compliance Automation</h3>
         <div class="hl-psr"><span class="hl-tag problem">Problem</span> Rapid expansion across 41 Texas counties meant audit preparation was manual, inconsistent across branches, and eating analyst hours.</div>
         <div class="hl-psr"><span class="hl-tag solution">Solution</span> Built reusable SQL templates and Power BI dashboards that standardize compliance reporting across all branches with automated data validation.</div>
         <div class="hl-psr"><span class="hl-tag result">Result</span> <strong>Standardized compliance reporting across 41 counties</strong>. Reduced manual audit prep time significantly. Consistent regulatory data across all branches.</div>
@@ -1275,9 +1277,9 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
   <!-- ENDORSEMENTS -->
 
   <!-- EXPLORE MORE -->
-  <section id="explore" style="padding:40px 0">
+  <section id="explore" style="padding:40px 0" aria-labelledby="explore-title">
     <div class="reveal"><div class="section-label">Explore</div></div>
-    <div class="reveal reveal-d1"><h2 class="section-title">Dive deeper</h2></div>
+    <div class="reveal reveal-d1"><h2 id="explore-title" class="section-title">Dive deeper</h2></div>
     <div class="reveal reveal-d2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px">
       <a href="projects/kraken-ml-trading-strategy.html" class="flip-card reveal reveal-d1" style="color:inherit;display:block">
         <div class="flip-card-inner">
@@ -1406,8 +1408,8 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
 
   <footer class="footer" role="contentinfo">
     <div class="footer-links">
-      <a href="https://github.com/anhtdang92">GitHub</a>
-      <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+      <a href="https://github.com/anhtdang92" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">LinkedIn</a>
       <a href="mailto:anhtdang92@gmail.com">Email</a>
     </div>
     <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>
@@ -1545,6 +1547,13 @@ function toggleTheme() {
   }
 })();
 
+// Wire up theme toggle button (no inline onclick)
+document.getElementById('themeToggleBtn').addEventListener('click', toggleTheme);
+
+// Wire up back-to-top button (no inline onclick)
+document.getElementById('backToTopBtn').addEventListener('click', function() {
+  window.scrollTo({top:0,behavior:'smooth'});
+});
 
 // Close mobile nav on link click
 document.querySelectorAll('nav a').forEach(link => {
@@ -2250,12 +2259,12 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 (function() {
   const navToggle = document.querySelector('.nav-toggle');
   if (!navToggle) return;
-  const origHandler = navToggle.getAttribute('onclick');
-  navToggle.removeAttribute('onclick');
   navToggle.addEventListener('click', () => {
     const nav = document.querySelector('nav');
     nav.classList.toggle('open');
-    document.body.classList.toggle('nav-open', nav.classList.contains('open'));
+    const isOpen = nav.classList.contains('open');
+    document.body.classList.toggle('nav-open', isOpen);
+    navToggle.setAttribute('aria-expanded', String(isOpen));
   });
 })();
 
@@ -2834,7 +2843,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
 // 5. KONAMI CODE EASTER EGG — Matrix rain
 (function() {
-  const code = [38,38,40,40,37,39,37,39,66,65]; // up up down down left right left right B A
+  const code = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
   let pos = 0;
   const canvas = document.getElementById('matrixCanvas');
   if (!canvas) return;
@@ -2867,7 +2876,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   }
 
   document.addEventListener('keydown', e => {
-    if (e.keyCode === code[pos]) {
+    if (e.key === code[pos]) {
       pos++;
       if (pos === code.length) {
         pos = 0;
