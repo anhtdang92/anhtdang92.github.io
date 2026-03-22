@@ -498,20 +498,24 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
   ];
   let animated = false, animP = 0;
 
+  function isLight() { return document.documentElement.getAttribute('data-theme') === 'light'; }
+
   function draw(progress) {
     ctx.clearRect(0, 0, w, h);
     const n = semesters.length;
     const stepX = pw / (n - 1);
+    const gridColor = isLight() ? 'rgba(100,120,140,0.25)' : 'rgba(42,63,90,0.25)';
+    const labelColor = isLight() ? '#3d6078' : '#9db5cc';
 
     // Y axis (GPA 2.0-4.0 left, Credits 0-30 right)
-    ctx.strokeStyle = 'rgba(42,63,90,0.25)';
+    ctx.strokeStyle = gridColor;
     ctx.lineWidth = 0.5;
     for (let i = 0; i <= 4; i++) {
       const y = pad.t + ph * (1 - i/4);
       ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
       // GPA labels (left)
       const gpa = (2.0 + i * 0.5).toFixed(1);
-      ctx.fillStyle = '#9db5cc';
+      ctx.fillStyle = labelColor;
       ctx.font = '500 9px "JetBrains Mono", monospace';
       ctx.textAlign = 'right';
       ctx.fillText(gpa, pad.l - 6, y + 3);
@@ -525,7 +529,7 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
     ctx.textAlign = 'center';
     semesters.forEach((s, i) => {
       const x = pad.l + i * stepX;
-      ctx.fillStyle = s[4] === 'completed' ? '#9db5cc' : s[4] === 'current' ? '#00ff87' : s[4] === 'upcoming' ? '#ff9500' : '#7a96b0';
+      ctx.fillStyle = s[4] === 'completed' ? labelColor : s[4] === 'current' ? (isLight() ? '#00804a' : '#00ff87') : s[4] === 'upcoming' ? (isLight() ? '#cc6600' : '#ff9500') : (isLight() ? '#566e85' : '#7a96b0');
       ctx.fillText(s[0], x, h - 10);
     });
 
@@ -556,7 +560,7 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
           ctx.lineTo(prevX + (x - prevX) * p, prevY + (gpaY - prevY) * p);
         }
       }
-      ctx.strokeStyle = '#00ff87';
+      ctx.strokeStyle = isLight() ? '#00804a' : '#00ff87';
       ctx.lineWidth = 2.5;
       ctx.stroke();
 
@@ -566,11 +570,11 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
         const gpaY = pad.t + ph - ((semesters[i][2] - 2.0) / 2.0) * ph;
         ctx.beginPath();
         ctx.arc(x, gpaY, 4, 0, Math.PI * 2);
-        ctx.fillStyle = semesters[i][4] === 'projected' ? '#7a96b0' :
-                        semesters[i][4] === 'upcoming' ? '#ff9500' : '#00ff87';
+        ctx.fillStyle = semesters[i][4] === 'projected' ? (isLight() ? '#566e85' : '#7a96b0') :
+                        semesters[i][4] === 'upcoming' ? (isLight() ? '#cc6600' : '#ff9500') : (isLight() ? '#00804a' : '#00ff87');
         ctx.fill();
         if (semesters[i][4] === 'completed') {
-          ctx.strokeStyle = 'rgba(0,255,135,0.3)';
+          ctx.strokeStyle = isLight() ? 'rgba(0,128,74,0.3)' : 'rgba(0,255,135,0.3)';
           ctx.lineWidth = 2;
           ctx.stroke();
         }
@@ -580,12 +584,12 @@ document.querySelectorAll('nav a:not(.brand)').forEach(link => {
     // Legend
     ctx.font = '500 9px "JetBrains Mono", monospace';
     ctx.textAlign = 'left';
-    ctx.fillStyle = '#00ff87';
+    ctx.fillStyle = isLight() ? '#00804a' : '#00ff87';
     ctx.fillRect(pad.l, pad.t - 12, 20, 2);
     ctx.fillText('GPA', pad.l + 24, pad.t - 8);
-    ctx.fillStyle = 'rgba(0,212,255,0.3)';
+    ctx.fillStyle = isLight() ? 'rgba(0,119,160,0.3)' : 'rgba(0,212,255,0.3)';
     ctx.fillRect(pad.l + 65, pad.t - 16, 12, 8);
-    ctx.fillStyle = '#00d4ff';
+    ctx.fillStyle = isLight() ? '#0077a0' : '#00d4ff';
     ctx.fillText('Credits', pad.l + 81, pad.t - 8);
   }
 

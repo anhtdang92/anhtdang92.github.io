@@ -21,7 +21,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#04070d;--card:#0b1120;--border:rgba(255,255,255,0.04);--text:#eef3f9;--muted:#9db5cc;--green:#00ff87;--cyan:#00d4ff;--purple:#e040fb;--ff:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace}
+:root{--bg:#04070d;--text:#eef3f9;--muted:#9db5cc;--green:#00ff87;--cyan:#00d4ff;--purple:#e040fb;--ff:'Outfit',sans-serif;--mono:'JetBrains Mono',monospace}
+[data-theme="light"]{--bg:#f4f6f9;--text:#151e2b;--muted:#2a4a62;--green:#00bb66;--cyan:#0099cc;--purple:#a944ff}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);display:flex;align-items:center;justify-content:center;min-height:100vh;text-align:center;padding:24px}
 .container{max-width:480px}
@@ -29,7 +30,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--ff);display:flex;a
 h1{font-size:24px;font-weight:600;margin-bottom:8px}
 p{font-size:16px;color:var(--muted);margin-bottom:32px;line-height:1.6}
 a{font-family:var(--mono);font-size:14px;padding:12px 28px;border-radius:8px;background:var(--green);color:var(--bg);font-weight:700;text-decoration:none;display:inline-block;transition:all 0.3s}
-a:hover{background:#33ff99;transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,255,135,0.3)}
+a:hover{background:var(--green);filter:brightness(1.2);transform:translateY(-2px);box-shadow:0 4px 20px rgba(0,255,135,0.3)}
+[data-theme="light"] a:hover{box-shadow:0 4px 20px rgba(0,187,102,0.25)}
 </style>
 </head>
 <body>
@@ -39,5 +41,13 @@ a:hover{background:#33ff99;transform:translateY(-2px);box-shadow:0 4px 20px rgba
   <p>The page you're looking for doesn't exist or has been moved.</p>
   <a href="/">Back to Portfolio</a>
 </div>
+<script>
+(function(){
+  var saved = localStorage.getItem('theme');
+  if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+    document.documentElement.setAttribute('data-theme', 'light');
+  }
+})();
+</script>
 </body>
 </html>

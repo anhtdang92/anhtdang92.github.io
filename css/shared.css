@@ -160,6 +160,7 @@ a:focus-visible,button:focus-visible{outline:2px solid #fff;outline-offset:3px;b
 @keyframes meshB{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-60px,-40px) scale(1.2)}}
 @keyframes meshC{0%{transform:translate(0,0) scale(0.8)}100%{transform:translate(40px,-50px) scale(1.1)}}
 [data-theme="light"] .mesh-gradient{opacity:0.2}
+[data-theme="light"] .ambient span{opacity:0.04 !important}
 .noise-overlay{position:fixed;top:0;left:0;right:0;bottom:0;z-index:9997;pointer-events:none;opacity:0.03}
 [data-theme="light"] .noise-overlay{opacity:0.02}
 h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,255,0.08)}
