@@ -31,12 +31,15 @@ window.addEventListener('scroll', () => {
 // Theme toggle with prefers-color-scheme auto-detection
 function isLightTheme() { return document.documentElement.getAttribute('data-theme') === 'light'; }
 
+var _moonSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg>';
+var _sunSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32l1.41 1.41M2 12h2m16 0h2M4.93 19.07l1.41-1.41m11.32-11.32l1.41-1.41"/></svg>';
+
 function toggleTheme() {
   const html = document.documentElement;
   const btn = document.querySelector('.theme-toggle');
   const wasLight = html.getAttribute('data-theme') === 'light';
   html.setAttribute('data-theme', wasLight ? 'dark' : 'light');
-  btn.textContent = wasLight ? '\u{1F319}' : '\u{2600}\u{FE0F}';
+  btn.innerHTML = wasLight ? _moonSVG : _sunSVG;
   localStorage.setItem('theme', wasLight ? 'dark' : 'light');
   if (typeof _themeRedrawFns !== 'undefined') {
     // Fade canvas elements during redraw
@@ -52,10 +55,10 @@ function toggleTheme() {
   const saved = localStorage.getItem('theme');
   if (saved === 'light') {
     document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('.theme-toggle').textContent = '\u{2600}\u{FE0F}';
+    document.querySelector('.theme-toggle').innerHTML = _sunSVG;
   } else if (!saved && window.matchMedia('(prefers-color-scheme: light)').matches) {
     document.documentElement.setAttribute('data-theme', 'light');
-    document.querySelector('.theme-toggle').textContent = '\u{2600}\u{FE0F}';
+    document.querySelector('.theme-toggle').innerHTML = _sunSVG;
   }
 })();
 

@@ -152,16 +152,16 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
 
 <a href="#content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" aria-label="Back to top">↑</button>
+<button class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg></button>
 
 <nav role="navigation" aria-label="Main navigation">
   <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang" width="24" height="24"></a>
-  <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+  <button class="nav-toggle" aria-label="Toggle navigation"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
   <a href="index.html">Home</a>
   <a href="projects.html" class="active">Projects</a>
   <a href="skills.html">Skills & AI</a>
   <a href="experience.html">Experience</a>
-  <button class="theme-toggle" aria-label="Toggle theme">🌙</button>
+  <button class="theme-toggle" aria-label="Toggle theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
@@ -185,8 +185,8 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
       <label for="sortSelect" class="sr-only">Sort projects</label>
       <select class="sort-select" id="sortSelect">
         <option value="default">Sort: Default</option>
-        <option value="accuracy">Accuracy ↓</option>
-        <option value="complexity">Complexity ↓</option>
+        <option value="accuracy">Accuracy &#9662;</option>
+        <option value="complexity">Complexity &#9662;</option>
       </select>
     </div>
 
@@ -207,7 +207,7 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
         <div class="project-tech">
           <span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span><span>Pandas</span>
         </div>
-        <button class="project-toggle" aria-expanded="false" onclick="toggleExpand(this)">▸ Details</button>
+        <button class="project-toggle" aria-expanded="false" onclick="toggleExpand(this)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg> Details</button>
         <div class="project-expand">
           <p>Built gradient boosted prediction model with 55%+ directional accuracy on 4h candles. Includes automated feature engineering pipeline processing 20+ technical indicators, walk-forward validation, and serverless deployment on GCP Cloud Functions.</p>
         </div>
@@ -233,7 +233,7 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
         <div class="project-tech">
           <span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Backtesting</span>
         </div>
-        <button class="project-toggle" aria-expanded="false" onclick="toggleExpand(this)">▸ Details</button>
+        <button class="project-toggle" aria-expanded="false" onclick="toggleExpand(this)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg> Details</button>
         <div class="project-expand">
           <p>Gradient boosted classifier with 30+ engineered features for daily signal generation. Features walk-forward backtesting with sliding window validation, feature importance pruning, and Sharpe ratio optimization.</p>
         </div>
@@ -253,11 +253,11 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
         <table class="cmp-table" id="cmpTable">
           <thead>
             <tr>
-              <th class="cmp-sortable" data-col="name">Project <span class="cmp-arrow">↕</span></th>
-              <th class="cmp-sortable" data-col="accuracy">Accuracy <span class="cmp-arrow">↕</span></th>
-              <th class="cmp-sortable" data-col="dataset">Dataset <span class="cmp-arrow">↕</span></th>
-              <th class="cmp-sortable" data-col="techcount">Tech Count <span class="cmp-arrow">↕</span></th>
-              <th class="cmp-sortable" data-col="deployment">Deployment <span class="cmp-arrow">↕</span></th>
+              <th class="cmp-sortable" data-col="name">Project <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
+              <th class="cmp-sortable" data-col="accuracy">Accuracy <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
+              <th class="cmp-sortable" data-col="dataset">Dataset <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
+              <th class="cmp-sortable" data-col="techcount">Tech Count <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
+              <th class="cmp-sortable" data-col="deployment">Deployment <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
             </tr>
           </thead>
           <tbody>
@@ -305,7 +305,7 @@ function toggleExpand(btn) {
   const panel = btn.nextElementSibling;
   panel.classList.toggle('open');
   const isOpen = panel.classList.contains('open');
-  btn.textContent = isOpen ? '▾ Less' : '▸ Details';
+  btn.innerHTML = isOpen ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg> Less' : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg> Details';
   btn.setAttribute('aria-expanded', String(isOpen));
 }
 
@@ -365,8 +365,8 @@ document.querySelectorAll('.project').forEach(card => {
       if (sortCol === col) { sortAsc = !sortAsc; } else { sortCol = col; sortAsc = true; }
       headers.forEach(h => h.classList.remove('cmp-sorted'));
       th.classList.add('cmp-sorted');
-      th.querySelector('.cmp-arrow').textContent = sortAsc ? '↑' : '↓';
-      headers.forEach(h => { if (h !== th) h.querySelector('.cmp-arrow').textContent = '↕'; });
+      th.querySelector('.cmp-arrow').innerHTML = sortAsc ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>' : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>';
+      headers.forEach(h => { if (h !== th) h.querySelector('.cmp-arrow').innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg>'; });
 
       const rows = Array.from(tbody.querySelectorAll('tr'));
       const colIndex = Array.from(th.parentElement.children).indexOf(th);
