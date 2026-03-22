@@ -1245,20 +1245,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
 
 // === CREATIVE FLAIR FEATURES ===
 
-// 1. PAGE LOADER — staggered cascade entrance
-(function() {
-  const loader = document.getElementById('pageLoader');
-  if (!loader) return;
-  function dismissLoader() {
-    setTimeout(() => loader.classList.add('done'), 300);
-    setTimeout(() => loader.remove(), 800);
-  }
-  if (document.readyState === 'complete') {
-    dismissLoader();
-  } else {
-    window.addEventListener('load', dismissLoader);
-  }
-})();
+// 1. PAGE LOADER — moved to inline script in index.html for reliability
 
 // 2. 3D TILT EFFECT on cards
 (function() {
