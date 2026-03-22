@@ -357,7 +357,11 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
   const cx = w / 2, cy = h / 2, r = 110;
   const labels = ['Data Eng', 'ML / AI', 'Python', 'SQL', 'Cloud', 'Viz'];
   const values = [0.92, 0.85, 0.90, 0.95, 0.72, 0.88];
-  const colors = ['#00ff87', '#00d4ff', '#e040fb', '#ffd000', '#ff9500', '#ff3860'];
+  function getColors() {
+    return isLight()
+      ? ['#00804a', '#0077a0', '#8020e0', '#b87800', '#cc6600', '#cc2244']
+      : ['#00ff87', '#00d4ff', '#e040fb', '#ffd000', '#ff9500', '#ff3860'];
+  }
   const n = labels.length;
   const angleStep = (Math.PI * 2) / n;
   let animProgress = 0;
@@ -368,8 +372,15 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
     return { x: cx + Math.cos(angle) * r * scale, y: cy + Math.sin(angle) * r * scale };
   }
 
+  function isLight() { return document.documentElement.getAttribute('data-theme') === 'light'; }
+
   function draw(progress) {
     ctx.clearRect(0, 0, w, h);
+    var gridColor = isLight() ? 'rgba(100,120,140,0.3)' : 'rgba(42,63,90,0.4)';
+    var axisColor = isLight() ? 'rgba(100,120,140,0.25)' : 'rgba(42,63,90,0.3)';
+    var fillColor = isLight() ? 'rgba(0,119,160,0.12)' : 'rgba(0,212,255,0.12)';
+    var strokeColor = isLight() ? 'rgba(0,119,160,0.6)' : 'rgba(0,212,255,0.6)';
+    var pointStroke = isLight() ? 'rgba(0,0,0,0.15)' : 'rgba(0,0,0,0.3)';
     // Grid rings
     for (let ring = 0.25; ring <= 1; ring += 0.25) {
       ctx.beginPath();
@@ -378,7 +389,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
         i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
       }
       ctx.closePath();
-      ctx.strokeStyle = 'rgba(42,63,90,0.4)';
+      ctx.strokeStyle = gridColor;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -388,7 +399,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
       ctx.beginPath();
       ctx.moveTo(cx, cy);
       ctx.lineTo(p.x, p.y);
-      ctx.strokeStyle = 'rgba(42,63,90,0.3)';
+      ctx.strokeStyle = axisColor;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -400,9 +411,9 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
       i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
     }
     ctx.closePath();
-    ctx.fillStyle = 'rgba(0,212,255,0.12)';
+    ctx.fillStyle = fillColor;
     ctx.fill();
-    ctx.strokeStyle = 'rgba(0,212,255,0.6)';
+    ctx.strokeStyle = strokeColor;
     ctx.lineWidth = 2;
     ctx.stroke();
     // Data points
@@ -411,9 +422,9 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
       const p = getPoint(i, val);
       ctx.beginPath();
       ctx.arc(p.x, p.y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = colors[i];
+      ctx.fillStyle = getColors()[i];
       ctx.fill();
-      ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+      ctx.strokeStyle = pointStroke;
       ctx.lineWidth = 1;
       ctx.stroke();
     }
@@ -423,7 +434,7 @@ nav,nav a,.ai-card,.wf-step,.gpu-card{transition-property:background,background-
     ctx.textBaseline = 'middle';
     for (let i = 0; i < n; i++) {
       const p = getPoint(i, 1.18);
-      ctx.fillStyle = colors[i];
+      ctx.fillStyle = getColors()[i];
       ctx.fillText(labels[i], p.x, p.y);
     }
   }
@@ -651,13 +662,18 @@ document.querySelectorAll('.ai-card,.gpu-card,.wf-step').forEach(card => {
 (function() {
   const canvas = document.getElementById('treemapCanvas');
   if (!canvas) return;
+  function isLight() { return document.documentElement.getAttribute('data-theme') === 'light'; }
 
-  const categories = [
-    { name: 'Languages', weight: 35, color: '#00ff87', items: [['Python',92],['T-SQL',95],['JavaScript',68],['R',55]] },
-    { name: 'ML Frameworks', weight: 25, color: '#00d4ff', items: [['scikit-learn',88],['PyTorch',78],['XGBoost',85],['TensorFlow',72]] },
-    { name: 'Data & Cloud', weight: 25, color: '#e040fb', items: [['SQL Server',95],['Power BI',90],['Azure',72],['Docker',68]] },
-    { name: 'AI & LLMs', weight: 15, color: '#ffd000', items: [['LangChain',75],['Hugging Face',70],['llama.cpp',65],['vLLM',60]] }
-  ];
+  function getCategories() {
+    var lt = isLight();
+    return [
+      { name: 'Languages', weight: 35, color: lt ? '#00804a' : '#00ff87', items: [['Python',92],['T-SQL',95],['JavaScript',68],['R',55]] },
+      { name: 'ML Frameworks', weight: 25, color: lt ? '#0077a0' : '#00d4ff', items: [['scikit-learn',88],['PyTorch',78],['XGBoost',85],['TensorFlow',72]] },
+      { name: 'Data & Cloud', weight: 25, color: lt ? '#8020e0' : '#e040fb', items: [['SQL Server',95],['Power BI',90],['Azure',72],['Docker',68]] },
+      { name: 'AI & LLMs', weight: 15, color: lt ? '#b87800' : '#ffd000', items: [['LangChain',75],['Hugging Face',70],['llama.cpp',65],['vLLM',60]] }
+    ];
+  }
+  var categories = getCategories();
 
   let rects = []; // store all drawn rects for hover detection
   let hoveredRect = null;
@@ -711,6 +727,7 @@ document.querySelectorAll('.ai-card,.gpu-card,.wf-step').forEach(card => {
   }
 
   function draw() {
+    categories = getCategories();
     const container = canvas.parentElement;
     const dpr = window.devicePixelRatio || 1;
     const displayW = container.clientWidth;
@@ -763,7 +780,7 @@ document.querySelectorAll('.ai-card,.gpu-card,.wf-step').forEach(card => {
       if (r.w > 40 && r.h > 30) {
         const fontSize = Math.min(13, Math.max(10, r.w / 8));
         ctx.font = '500 ' + fontSize + 'px "JetBrains Mono", monospace';
-        ctx.fillStyle = isHovered ? '#fff' : 'rgba(238,243,249,0.85)';
+        ctx.fillStyle = isHovered ? (isLight() ? '#151e2b' : '#fff') : (isLight() ? 'rgba(21,30,43,0.75)' : 'rgba(238,243,249,0.85)');
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         const centerX = r.x + r.w / 2;
