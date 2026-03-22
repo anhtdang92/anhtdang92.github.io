@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" as="style">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 <script type="application/ld+json">
 {
@@ -795,7 +795,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
 </head>
 <body>
 
-<div class="page-loader" id="pageLoader"><div class="loader-ring" style="position:relative"></div></div>
+<div class="page-loader" id="pageLoader" aria-hidden="true"><div class="loader-ring" style="position:relative"></div></div>
 <canvas id="matrixCanvas" aria-hidden="true"></canvas>
 <canvas id="cursorGlow" aria-hidden="true" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9998;opacity:0.7"></canvas>
 <a href="#main-content" class="skip-link">Skip to content</a>
@@ -846,8 +846,8 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
     <div class="hero-label">DA II → ML Engineer · Army Signal Officer</div>
     <h1>Anh <span class="accent">Dang</span></h1>
     <p class="hero-sub">Data Analyst II building toward ML Engineering. Georgia Tech MSCS Candidate (Machine Learning). U.S. Army officer with Secret clearance. Houston, TX.</p>
-    <div class="hero-tags">
-      <span>Python</span><span>SQL</span><span>PyTorch</span><span>scikit-learn</span><span>Pandas</span>
+    <div class="hero-tags" role="list" aria-label="Key skills">
+      <span role="listitem">Python</span><span role="listitem">SQL</span><span role="listitem">PyTorch</span><span role="listitem">scikit-learn</span><span role="listitem">Pandas</span>
     </div>
     <div class="hero-links">
       <a href="https://github.com/anhtdang92" class="primary" target="_blank" rel="noopener">GitHub</a>
@@ -1281,7 +1281,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
     <div class="reveal"><div class="section-label">Explore</div></div>
     <div class="reveal reveal-d1"><h2 id="explore-title" class="section-title">Dive deeper</h2></div>
     <div class="reveal reveal-d2" style="display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px">
-      <a href="projects/kraken-ml-trading-strategy.html" class="flip-card reveal reveal-d1" style="color:inherit;display:block">
+      <a href="projects/kraken-ml-trading-strategy.html" class="flip-card reveal reveal-d1" style="color:inherit;display:block" aria-label="Kraken ML Trading — scikit-learn, Kraken API, GCP">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <svg width="100%" height="48" viewBox="0 0 160 48" preserveAspectRatio="none" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
@@ -1300,7 +1300,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
           </div>
         </div>
       </a>
-      <a href="projects/ml-trading-algorithm.html" class="flip-card reveal reveal-d2" style="color:inherit;display:block">
+      <a href="projects/ml-trading-algorithm.html" class="flip-card reveal reveal-d2" style="color:inherit;display:block" aria-label="ML Trading Algorithm — Ensemble, Walk-forward, scikit-learn">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <svg width="100%" height="48" viewBox="0 0 160 48" preserveAspectRatio="none" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
@@ -1319,7 +1319,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
           </div>
         </div>
       </a>
-      <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener" class="flip-card reveal reveal-d3" style="color:inherit;display:block">
+      <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener" class="flip-card reveal reveal-d3" style="color:inherit;display:block" aria-label="CurStar Video Upscaler — STAR diffusion, GPU-accelerated (opens GitHub)">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <svg width="100%" height="48" viewBox="0 0 160 48" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
@@ -1340,7 +1340,7 @@ h2.section-title{-webkit-text-fill-color:#000!important;background:none!importan
           </div>
         </div>
       </a>
-      <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener" class="flip-card reveal reveal-d4" style="color:inherit;display:block">
+      <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener" class="flip-card reveal reveal-d4" style="color:inherit;display:block" aria-label="DeepSeek Local Inference — LLM benchmarking, RTX 4090 (opens GitHub)">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <svg width="100%" height="48" viewBox="0 0 160 48" style="margin-bottom:8px;opacity:0.7" aria-hidden="true">
@@ -1609,6 +1609,8 @@ if (trajChart) {
 }
 
 // === FUTURISTIC ENHANCEMENTS ===
+// Deferred to reduce Total Blocking Time — runs after page is interactive
+(typeof requestIdleCallback === 'function' ? requestIdleCallback : function(cb) { setTimeout(cb, 1); })(function() {
 
 // 1. BLINKING CURSOR on hero subtitle (text shown immediately)
 (function() {
@@ -2009,7 +2011,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   window.addEventListener('resize', () => { ctx.setTransform(1,0,0,1,0,0); resize(); });
 })();
 
-// 12. CURSOR GLOW TRAIL (full page)
+// 12. CURSOR GLOW TRAIL (full page) — only runs while mouse is active
 (function() {
   const canvas = document.getElementById('cursorGlow');
   if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches || 'ontouchstart' in window) return;
@@ -2019,6 +2021,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   let trail = [];
   const MAX_TRAIL = 20;
   let mx = -100, my = -100;
+  let glowRunning = false;
 
   function resize() {
     W = window.innerWidth;
@@ -2037,11 +2040,11 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     my = e.clientY;
     trail.push({ x: mx, y: my, age: 0 });
     if (trail.length > MAX_TRAIL) trail.shift();
+    if (!glowRunning) { glowRunning = true; requestAnimationFrame(draw); }
   });
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-    // Draw trail
     for (let i = 0; i < trail.length; i++) {
       const t = trail[i];
       t.age++;
@@ -2055,17 +2058,18 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
       ctx.fillStyle = grad;
       ctx.fillRect(t.x - r, t.y - r, r * 2, r * 2);
     }
-    // Main glow orb
     const g = ctx.createRadialGradient(mx, my, 0, mx, my, 35);
     g.addColorStop(0, 'rgba(0,212,255,0.1)');
     g.addColorStop(0.4, 'rgba(224,64,251,0.04)');
     g.addColorStop(1, 'transparent');
     ctx.fillStyle = g;
     ctx.fillRect(mx - 35, my - 35, 70, 70);
-    if (!document.hidden) requestAnimationFrame(draw);
+    if (trail.length > 0 && !document.hidden) {
+      requestAnimationFrame(draw);
+    } else {
+      glowRunning = false;
+    }
   }
-  draw();
-  document.addEventListener('visibilitychange', () => { if (!document.hidden) requestAnimationFrame(draw); });
 })();
 
 // 13. UNIVERSAL NUMBER COUNTER — animate ALL numbers on page
@@ -2816,7 +2820,18 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     }
     if (!hoveredNeuron) canvas.style.cursor = 'default';
   });
-  canvas.addEventListener('mouseleave', () => { hoveredNeuron = null; mouseX = -1; mouseY = -1; });
+  let nnHoverActive = false;
+  canvas.addEventListener('mouseenter', () => {
+    nnHoverActive = true;
+    if (animated) nnLoop();
+  });
+  canvas.addEventListener('mouseleave', () => { hoveredNeuron = null; mouseX = -1; mouseY = -1; nnHoverActive = false; if (animated) draw(1); });
+
+  function nnLoop() {
+    if (!nnHoverActive || !animated) return;
+    draw(1);
+    requestAnimationFrame(nnLoop);
+  }
 
   // Animate on scroll
   draw(0);
@@ -2831,9 +2846,6 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
           if (animProgress < 1) requestAnimationFrame(animate);
         };
         requestAnimationFrame(animate);
-        // Continuous redraw for hover interactivity
-        const loop = () => { if (animated) { draw(1); requestAnimationFrame(loop); } };
-        setTimeout(loop, 900);
       }
     });
   }, { threshold: 0.3 });
@@ -2990,6 +3002,8 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
     setTimeout(() => overlay.remove(), 600);
   };
 })();
+
+}); // end requestIdleCallback deferred block
 </script>
 
 </body>
