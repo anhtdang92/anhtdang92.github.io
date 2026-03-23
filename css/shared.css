@@ -40,6 +40,7 @@ nav .brand img{height:24px;width:auto;display:block}
 .theme-toggle:hover{border-color:var(--cyan);background:rgba(0,212,255,0.06)}
 .nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:var(--radius-md);padding:5px 10px;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);transition:all 0.2s}
 .nav-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
+.nav-toggle svg,.theme-toggle svg,.back-to-top svg,.sound-toggle svg,.project-toggle svg{pointer-events:none}
 
 /* AMBIENT */
 .ambient{position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;overflow:hidden}
