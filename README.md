@@ -1,6 +1,6 @@
 # anhtdang92.github.io
 
-Personal portfolio of **Anh Dang**: Data Analyst II building toward ML Engineering, Georgia Tech OMSCS (Machine Learning) student, and U.S. Army Reserve Signal officer.
+Personal portfolio of **Anh Dang**: Data Analyst II at First Community Credit Union, Georgia Tech OMSCS (Machine Learning) student, and U.S. Army Reserve Signal officer.
 
 **Live site:** https://anhtdang92.github.io
 

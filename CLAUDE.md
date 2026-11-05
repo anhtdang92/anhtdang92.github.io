@@ -1,6 +1,6 @@
 # CLAUDE.md — Project Guide
 
-Personal portfolio for **Anh Dang** (Data Analyst II building toward ML Engineering; Georgia Tech OMSCS, Machine Learning; U.S. Army Reserve Signal officer). Static site on GitHub Pages: `https://anhtdang92.github.io`.
+Personal portfolio for **Anh Dang** (Data Analyst II at First Community Credit Union; Georgia Tech OMSCS, Machine Learning; U.S. Army Reserve Signal officer). Static site on GitHub Pages: `https://anhtdang92.github.io`.
 
 ## Stack and deploy
 
@@ -51,6 +51,7 @@ Personal portfolio for **Anh Dang** (Data Analyst II building toward ML Engineer
 - OMSCS: no GPA. Progress and course list live on `experience.html` and the home "Building toward" card; keep them in sync.
 - Years of experience are computed in `js/index.js` from start dates; keep the static fallback text in sync.
 - Certification: CompTIA Security+ (Sep 2026), linked to its Credly badge.
+- Title: list only the current position (Data Analyst II). Don't present the owner as an ML Engineer or "building toward" one in titles, headlines, meta tags or the OG image.
 
 ## Verify before pushing
 
