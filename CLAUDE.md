@@ -51,7 +51,7 @@ Personal portfolio for **Anh Dang** (Data Analyst II at First Community Credit U
 - OMSCS: no GPA. Progress and course list live on `experience.html` and the home "Building toward" card; keep them in sync.
 - Years of experience are computed in `js/index.js` from start dates; keep the static fallback text in sync.
 - Certification: CompTIA Security+ (Sep 2026), linked to its Credly badge.
-- Title: list only the current position (Data Analyst II). Don't present the owner as an ML Engineer or "building toward" one in titles, headlines, meta tags or the OG image.
+- Title: list only the current position (Data Analyst II) in titles, headlines, meta tags and the OG image. Career goals (Data Scientist, Machine Learning Engineer, Data Engineer) may appear only as clearly labelled goals, e.g. the "Career goals" item in "Learning and building".
 
 ## Verify before pushing
 
