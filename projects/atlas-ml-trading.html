@@ -147,11 +147,14 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .code-body .str{color:var(--green)}
 .code-body .num{color:var(--gold)}
 .code-body .cm{color:var(--muted);font-style:italic}
-.code-note{font-family:var(--mono);font-size:12px;color:var(--dim);margin:0 0 24px}
+.writeup p.code-note{font-size:13px;line-height:1.6;color:var(--muted);margin:0 0 24px}
 
 /* Tech stack cards (no icons) */
 .tech-grid{list-style:none;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
 .tech-card{padding:14px}
+
+/* Buttons: keep a gap between label and arrow when the shared styles make them flex */
+.project-links a{display:inline-flex;align-items:center;justify-content:center;gap:8px}
 
 /* CTA */
 .cta-section{padding:48px 0 56px}
