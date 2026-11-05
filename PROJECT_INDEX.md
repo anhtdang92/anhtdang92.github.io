@@ -17,5 +17,5 @@ Updated **November 5, 2026**. See `CLAUDE.md` for the full guide.
 ## Assets and SEO
 - `favicon-32.png`, `apple-touch-icon.png`, `logo-nav.png`, `logo.png`
 - `og-image.svg` / `og-image.png`
-- `resume_portfolio_final.pdf`
+- `Anh_Dang_Resume.pdf` (public resume, no phone number)
 - `sitemap.xml`, `robots.txt`, `_config.yml`
