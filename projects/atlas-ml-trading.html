@@ -70,7 +70,7 @@
 /* Hero */
 .project-hero{padding:28px 0 40px}
 .hero-badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;animation:fadeIn 0.6s ease both}
-.project-hero .hero-badges .project-badge{margin:0;font-size:11px;text-transform:uppercase}
+.project-hero .hero-badges .project-badge{margin:0;font-size:12px;text-transform:uppercase}
 .project-hero h1{font-family:var(--ff);font-size:clamp(26px,5.4vw,42px);line-height:1.2;color:var(--text);letter-spacing:-0.5px;margin-bottom:8px}
 .repo-slug{font-family:var(--mono);font-size:13px;color:var(--dim);margin-bottom:20px;animation:fadeUp 0.6s ease 0.12s both}
 .project-hero .project-impact{line-height:1.7}
@@ -94,16 +94,16 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .flow{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;margin:20px 0 28px;counter-reset:step}
 .flow li{position:relative;padding:14px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--card-glass)}
 .flow li:not(:last-child)::after{content:'→';position:absolute;right:-18px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:14px;color:var(--cyan)}
-.flow .f-label{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px}
+.flow .f-label{display:block;font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px}
 .flow .f-text{display:block;font-size:13px;line-height:1.55;color:var(--text)}
 
 /* Decision cards */
 .decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:18px 0 8px}
 .decision{display:flex;flex-direction:column;padding:18px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--card-glass)}
-.decision .adr{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1px;color:var(--purple);margin-bottom:6px}
+.decision .adr{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:1px;color:var(--purple);margin-bottom:6px}
 .decision h3{margin-bottom:10px}
 .decision p{font-size:14px;line-height:1.7;margin-bottom:10px;max-width:none}
-.decision .tag{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:2px}
+.decision .tag{font-family:var(--mono);font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:2px}
 .decision .adr-link{margin-top:auto;font-family:var(--mono);font-size:12px;display:inline-flex;align-items:center;min-height:36px}
 
 /* Results table */
@@ -118,7 +118,7 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .results-table tbody tr:last-child th,.results-table tbody tr:last-child td{border-bottom:none}
 .results-table .col-lstm{color:var(--green);font-weight:700;background:rgba(0,255,135,0.05)}
 .results-table thead .col-lstm{color:var(--green)}
-.results-table .hint{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--dim)}
+.results-table .hint{display:block;font-family:var(--mono);font-size:12px;font-weight:400;color:var(--dim)}
 
 /* Learned: k-fold vs walk-forward */
 .compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 22px;max-width:640px}
@@ -139,7 +139,7 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .code-block{background:var(--inner);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0 8px;max-width:760px}
 .code-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
 .code-filename{font-family:var(--mono);font-size:12px;color:var(--cyan);overflow-wrap:anywhere}
-.code-lang{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;flex-shrink:0}
+.code-lang{font-family:var(--mono);font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;flex-shrink:0}
 .code-body{padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .code-body:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
 .code-body pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.75;color:var(--text);white-space:pre}
@@ -179,7 +179,7 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .writeup ul.plain li{font-size:14px}
 .compare{grid-template-columns:1fr 1fr}
 .compare .m-value{font-size:24px}
-.code-body pre{font-size:11.5px}
+.code-body pre{font-size:12px}
 .tech-grid{grid-template-columns:1fr 1fr}
 /* Results table: one card per metric on phones */
 .table-wrap{overflow:visible}
@@ -193,7 +193,7 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .results-table .hint{display:inline;margin-left:6px}
 .results-table td{padding:8px 10px;border:1px solid var(--border);border-radius:8px;white-space:normal;font-size:15px}
 .results-table tbody tr:last-child td{border-bottom:1px solid var(--border)}
-.results-table td::before{content:attr(data-label);display:block;font-size:11px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+.results-table td::before{content:attr(data-label);display:block;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
 .results-table td.col-lstm{border-color:rgba(0,255,135,0.35)}
 .results-table caption{border-top:1px solid var(--border)}
 }
@@ -212,9 +212,10 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
   <a href="../index.html" class="brand"><img src="../logo-nav.png" alt="Anh Dang — home" width="42" height="24"></a>
   <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
   <a href="../index.html">Home</a>
-  <a href="../projects.html" class="active">Projects</a>
+  <a href="../projects.html" class="active" aria-current="true">Projects</a>
   <a href="../skills.html">Skills &amp; AI</a>
   <a href="../experience.html">Experience</a>
+  <a href="../index.html#contact">Contact</a>
   <button type="button" class="theme-toggle" aria-label="Switch to light mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
 </nav>
 
@@ -421,8 +422,8 @@ std_predictions = all_predictions.std(axis=<span class="num">0</span>)</pre></di
 
 <footer class="footer" role="contentinfo">
   <div class="footer-links">
-    <a href="https://github.com/anhtdang92" rel="noopener">GitHub</a>
-    <a href="https://linkedin.com/in/anh-dang92" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/anhtdang92" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">LinkedIn</a>
     <a href="mailto:anhtdang92@gmail.com">Email</a>
   </div>
   <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>

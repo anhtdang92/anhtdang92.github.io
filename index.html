@@ -11,7 +11,7 @@
 <meta property="og:title" content="Anh Dang — Data Analyst II · Building toward ML Engineering">
 <meta property="og:description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS candidate (Machine Learning). Secret clearance (DoD). Houston, TX.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://anhtdang92.github.io">
+<meta property="og:url" content="https://anhtdang92.github.io/">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
 <meta name="twitter:description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS candidate (Machine Learning). Secret clearance (DoD). Houston, TX.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#04070d">
-<link rel="canonical" href="https://anhtdang92.github.io">
+<link rel="canonical" href="https://anhtdang92.github.io/">
 <link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -40,7 +40,7 @@
   "@type": "Person",
   "name": "Anh Dang",
   "jobTitle": "Data Analyst II",
-  "url": "https://anhtdang92.github.io",
+  "url": "https://anhtdang92.github.io/",
   "sameAs": [
     "https://github.com/anhtdang92",
     "https://linkedin.com/in/anh-dang92"
@@ -497,9 +497,8 @@ section,.explore-section{padding:32px 0}
 <nav role="navigation" aria-label="Main navigation">
   <a href="/" class="brand"><img src="logo-nav.png" alt="Anh Dang — home" width="42" height="24"></a>
   <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
-  <a href="#about">About</a>
-  <a href="#highlights">Highlights</a>
-  <a href="projects.html">Projects</a>
+  <a href="index.html" class="active" aria-current="page">Home</a>
+    <a href="projects.html">Projects</a>
   <a href="skills.html">Skills &amp; AI</a>
   <a href="experience.html">Experience</a>
   <a href="#contact">Contact</a>
@@ -802,7 +801,7 @@ section,.explore-section{padding:32px 0}
         <li style="--c:var(--purple)"><span class="pipe-step-name">Models</span><span class="pipe-step-detail">A 2-layer LSTM (Huber loss, MC Dropout uncertainty) in a 7-architecture ablation: LSTM, BiLSTM+Attention, Transformer, CNN-LSTM, Multi-Horizon, XGBoost, Ridge.</span><span class="pipe-step-tech"><span>TensorFlow/Keras ·</span> <span>XGBoost ·</span> <span>scikit-learn</span></span></li>
         <li style="--c:var(--gold)"><span class="pipe-step-name">Evaluation</span><span class="pipe-step-detail">Walk-forward cross-validation, Bayesian tuning, bootstrap confidence intervals (10K resamples) and Diebold-Mariano tests against baselines.</span><span class="pipe-step-tech"><span>Optuna ·</span> <span>SHAP ·</span> <span>MLflow</span></span></li>
         <li style="--c:var(--orange)"><span class="pipe-step-name">Serving</span><span class="pipe-step-detail">A REST endpoint at /api/v1/predict. Vertex AI first, then the local model, then an explicit failure — no silent mock fallback.</span><span class="pipe-step-tech"><span>FastAPI ·</span> <span>Vertex AI ·</span> <span>Docker Compose</span></span></li>
-        <li style="--c:var(--red)"><span class="pipe-step-name">Portfolio</span><span class="pipe-step-detail">21-day forecasts feed a rebalancer with risk controls (15% max position, 8% stop-loss, 12% drawdown circuit breaker) in paper-trading mode.</span><span class="pipe-step-tech"><span>Streamlit dashboard ·</span> <span>Paper trading</span></span></li>
+        <li style="--c:var(--red)"><span class="pipe-step-name">Portfolio</span><span class="pipe-step-detail">21-day forecasts feed a rebalancer with risk controls (10% max position, 8% stop-loss, 12% drawdown circuit breaker) in paper-trading mode.</span><span class="pipe-step-tech"><span>Streamlit dashboard ·</span> <span>Paper trading</span></span></li>
       </ol>
       <div class="pipe-foot">
         <a href="projects/atlas-ml-trading.html">Read the ATLAS write-up →</a>
@@ -908,7 +907,7 @@ section,.explore-section{padding:32px 0}
           <div class="flip-card-front">
             <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" aria-hidden="true">
               <text x="4" y="14" fill="var(--green)" font-family="var(--mono)" font-size="9" opacity="0.8">$ python src/main.py</text>
-              <text x="4" y="26" fill="var(--dim)" font-family="var(--mono)" font-size="8">Loading DeepSeek-R1-Distill 7B...</text>
+              <text x="4" y="26" fill="var(--dim)" font-family="var(--mono)" font-size="8">Loading DeepSeek-R1-Distill...</text>
               <rect x="4" y="32" width="100" height="6" rx="3" fill="var(--inner)" stroke="var(--border)" stroke-width="0.5"/>
               <rect x="4" y="32" width="72" height="6" rx="3" fill="var(--green)" opacity="0.6"/>
               <text x="110" y="37" fill="var(--green)" font-family="var(--mono)" font-size="7">72%</text>
@@ -917,9 +916,9 @@ section,.explore-section{padding:32px 0}
             <div class="fc-sub">LLM benchmarking · RTX 4090</div>
           </div>
           <div class="flip-card-back">
-            <div class="stat-line"><span class="stat-value">7B</span> <span class="stat-label">DeepSeek-R1 Distill</span></div>
+            <div class="stat-line"><span class="stat-value">R1</span> <span class="stat-label">Distilled DeepSeek</span></div>
             <div class="stat-line"><span class="stat-value">HF</span> <span class="stat-label">Transformers</span></div>
-            <div class="stat-line"><span class="stat-value">tok/s</span> <span class="stat-label">Benchmarks</span></div>
+            <div class="stat-line"><span class="stat-value">Timing</span> <span class="stat-label">Generation speed</span></div>
             <div class="fc-cta">View on GitHub →<span class="sr-only"> (opens in a new tab)</span></div>
           </div>
         </div>
@@ -946,7 +945,7 @@ section,.explore-section{padding:32px 0}
         </div>
         <div class="next-item">
           <div class="ni-label">Completed</div>
-          <div class="ni-value">DVA · AIES · NetSci · KBAI · CG in the AI Era · ML4T</div>
+          <div class="ni-value"><span class="nw">DVA&nbsp;·</span> <span class="nw">AIES&nbsp;·</span> <span class="nw">NetSci&nbsp;·</span> <span class="nw">KBAI&nbsp;·</span> <span class="nw">CG in the AI Era&nbsp;·</span> <span class="nw">ML4T</span></div>
           <div class="ni-date">Data &amp; Visual Analytics · AI, Ethics &amp; Society · Network Science · Knowledge-Based AI · Computer Graphics in the AI Era · Machine Learning for Trading</div>
         </div>
         <div class="next-item">
@@ -976,9 +975,8 @@ section,.explore-section{padding:32px 0}
     <a href="mailto:anhtdang92@gmail.com"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg> Email</a>
   </div>
   <nav class="footer-nav" aria-label="Footer navigation">
-    <a href="#about">About</a>
-    <a href="#highlights">Highlights</a>
-    <a href="projects.html">Projects</a>
+    <a href="index.html" class="active" aria-current="page">Home</a>
+        <a href="projects.html">Projects</a>
     <a href="skills.html">Skills &amp; AI</a>
     <a href="experience.html">Experience</a>
   </nav>

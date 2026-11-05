@@ -8,11 +8,11 @@ Personal portfolio of **Anh Dang**: Data Analyst II building toward ML Engineeri
 
 | Page | What's on it |
 |---|---|
-| `index.html` | Home: intro, key metrics, work highlights, ML visuals, pipeline, projects, contact |
+| `index.html` | Home: intro, key numbers, work highlights, "How ATLAS works", featured projects, contact |
 | `experience.html` | Work and Army timeline, education, OMSCS progress |
 | `skills.html` | Skills, AI tools, local GPU setup |
-| `projects.html` | Project cards and comparison |
-| `projects/*.html` | Project write-ups |
+| `projects.html` | Featured repos: ATLAS, ARGUS, Signal Network Mapper, CurStar, DeepSeek |
+| `projects/atlas-ml-trading.html` | ATLAS case study |
 
 ## Stack
 

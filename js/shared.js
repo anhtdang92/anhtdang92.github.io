@@ -121,10 +121,16 @@ document.querySelectorAll('[data-current-year]').forEach(function (el) { el.text
       if (on) el.setAttribute('inert', ''); else el.removeAttribute('inert');
     });
   }
+  // Swap the hamburger for an X while the menu is open
+  var _menuSVG = navToggle.innerHTML;
+  var _closeSVG = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>';
+  var _openLabel = navToggle.getAttribute('aria-label') || 'Open menu';
   function openNav() {
     nav.classList.add('open');
     document.body.classList.add('nav-open');
     navToggle.setAttribute('aria-expanded', 'true');
+    navToggle.innerHTML = _closeSVG;
+    navToggle.setAttribute('aria-label', 'Close menu');
     setPageInert(true);
   }
   function closeNav(returnFocus) {
@@ -132,6 +138,8 @@ document.querySelectorAll('[data-current-year]').forEach(function (el) { el.text
     nav.classList.remove('open');
     document.body.classList.remove('nav-open');
     navToggle.setAttribute('aria-expanded', 'false');
+    navToggle.innerHTML = _menuSVG;
+    navToggle.setAttribute('aria-label', _openLabel);
     setPageInert(false);
     if (returnFocus) navToggle.focus();
   }
