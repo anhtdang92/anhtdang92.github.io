@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="author" content="Anh Dang">
+<script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
+<title>ATLAS: Stock ML Intelligence System — Anh Dang</title>
+<meta name="description" content="ATLAS case study: an LSTM stock-return forecaster tested with walk-forward CV, a 7-architecture ablation and simple baselines, served with FastAPI, Vertex AI and Docker.">
+<meta property="og:title" content="ATLAS: Stock ML Intelligence System — Anh Dang">
+<meta property="og:description" content="Case study: LSTM stock-return forecasting on 34 indicators, a 7-architecture ablation, walk-forward evaluation against baselines, FastAPI + Vertex AI serving and 150+ tests.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://anhtdang92.github.io/projects/atlas-ml-trading.html">
+<meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta property="og:site_name" content="Anh Dang">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ATLAS: Stock ML Intelligence System — Anh Dang">
+<meta name="twitter:description" content="Case study: LSTM stock-return forecasting on 34 indicators, a 7-architecture ablation, walk-forward evaluation against baselines, FastAPI + Vertex AI serving and 150+ tests.">
+<meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
+<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#04070d">
+<link rel="canonical" href="https://anhtdang92.github.io/projects/atlas-ml-trading.html">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
+<link rel="stylesheet" href="../css/shared.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://anhtdang92.github.io/"},
+    {"@type": "ListItem", "position": 2, "name": "Projects", "item": "https://anhtdang92.github.io/projects.html"},
+    {"@type": "ListItem", "position": 3, "name": "ATLAS", "item": "https://anhtdang92.github.io/projects/atlas-ml-trading.html"}
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareSourceCode",
+  "name": "ATLAS — Stock ML Intelligence System",
+  "codeRepository": "https://github.com/anhtdang92/atlas-ml-trading",
+  "programmingLanguage": "Python",
+  "license": "https://opensource.org/licenses/MIT",
+  "author": {"@type": "Person", "name": "Anh Dang", "url": "https://anhtdang92.github.io/"}
+}
+</script>
+<style>
+/* Page-specific styles — base project-detail styles live in shared.css */
+
+/* Breadcrumb (an id selector so the site's global nav rules never apply to it) */
+#breadcrumb{position:static;display:block;padding:104px 0 0;background:none;border:none;z-index:auto}
+#breadcrumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:4px 0;font-family:var(--mono);font-size:12px}
+#breadcrumb li{display:flex;align-items:center;color:var(--muted)}
+#breadcrumb li+li::before{content:'›';color:var(--dim);margin:0 8px}
+#breadcrumb a{display:inline-flex;align-items:center;min-height:32px;padding:0;font-size:12px;letter-spacing:0;color:var(--muted);background:none;border-radius:4px}
+#breadcrumb a:hover{color:var(--cyan);background:none}
+#breadcrumb [aria-current="page"]{color:var(--cyan)}
+
+/* Hero */
+.project-hero{padding:28px 0 40px}
+.hero-badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:16px;animation:fadeIn 0.6s ease both}
+.project-hero .hero-badges .project-badge{margin:0;font-size:11px;text-transform:uppercase}
+.project-hero h1{font-family:var(--ff);font-size:clamp(26px,5.4vw,42px);line-height:1.2;color:var(--text);letter-spacing:-0.5px;margin-bottom:8px}
+.repo-slug{font-family:var(--mono);font-size:13px;color:var(--dim);margin-bottom:20px;animation:fadeUp 0.6s ease 0.12s both}
+.project-hero .project-impact{line-height:1.7}
+.project-hero .tech-tags{list-style:none}
+.project-hero .tech-tags li{font-family:var(--mono);font-size:12px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--muted)}
+
+/* Section headings + intro text */
+.writeup{padding:24px 0 40px}
+.writeup h2{color:var(--text)}
+.writeup p strong{color:var(--text)}
+.writeup h3{font-size:16px;font-weight:700;color:var(--text);line-height:1.35}
+.sec-num{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--cyan);letter-spacing:1px;padding:2px 8px;border:1px solid rgba(0,212,255,0.3);border-radius:4px}
+.writeup ul.plain{list-style:none;max-width:700px;margin:0 0 20px}
+.writeup ul.plain li{position:relative;padding-left:20px;font-size:15px;line-height:1.8;color:var(--text);margin-bottom:10px}
+.writeup ul.plain li::before{content:'';position:absolute;left:2px;top:0.72em;width:7px;height:7px;border-radius:2px;background:linear-gradient(135deg,var(--purple),var(--cyan))}
+.writeup a{text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.writeup a.no-underline{text-decoration:none}
+code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radius:4px;background:var(--inner);border:1px solid var(--border);color:var(--text);overflow-wrap:anywhere}
+
+/* Pipeline flow */
+.flow{list-style:none;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:22px;margin:20px 0 28px;counter-reset:step}
+.flow li{position:relative;padding:14px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--card-glass)}
+.flow li:not(:last-child)::after{content:'→';position:absolute;right:-18px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:14px;color:var(--cyan)}
+.flow .f-label{display:block;font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--cyan);margin-bottom:6px}
+.flow .f-text{display:block;font-size:13px;line-height:1.55;color:var(--text)}
+
+/* Decision cards */
+.decision-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:18px 0 8px}
+.decision{display:flex;flex-direction:column;padding:18px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--card-glass)}
+.decision .adr{font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:1px;color:var(--purple);margin-bottom:6px}
+.decision h3{margin-bottom:10px}
+.decision p{font-size:14px;line-height:1.7;margin-bottom:10px;max-width:none}
+.decision .tag{font-family:var(--mono);font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:2px}
+.decision .adr-link{margin-top:auto;font-family:var(--mono);font-size:12px;display:inline-flex;align-items:center;min-height:36px}
+
+/* Results table */
+.table-wrap{margin:18px 0 12px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--card-glass);overflow-x:auto;-webkit-overflow-scrolling:touch}
+.table-wrap:focus-visible{outline:2px solid var(--cyan);outline-offset:2px}
+.results-table{width:100%;border-collapse:collapse;font-size:14px}
+.results-table caption{caption-side:bottom;text-align:left;padding:12px 16px 14px;font-size:13px;line-height:1.6;color:var(--muted);border-top:1px solid var(--border)}
+.results-table th,.results-table td{padding:12px 16px;text-align:left;border-bottom:1px solid var(--border);white-space:nowrap}
+.results-table thead th{font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.results-table tbody th{font-weight:600;color:var(--text)}
+.results-table td{font-family:var(--mono);font-size:14px;color:var(--text)}
+.results-table tbody tr:last-child th,.results-table tbody tr:last-child td{border-bottom:none}
+.results-table .col-lstm{color:var(--green);font-weight:700;background:rgba(0,255,135,0.05)}
+.results-table thead .col-lstm{color:var(--green)}
+.results-table .hint{display:block;font-family:var(--mono);font-size:11px;font-weight:400;color:var(--dim)}
+
+/* Learned: k-fold vs walk-forward */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0 22px;max-width:640px}
+.compare .metric{text-align:left}
+.compare .m-value{font-size:28px}
+.compare .m-label{letter-spacing:0.5px;line-height:1.5}
+.m-kfold .m-value{color:var(--orange)}
+.m-wf .m-value{color:var(--green)}
+
+/* Engineering grid */
+.eng-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px;margin:18px 0 24px}
+.eng{padding:18px;border-radius:var(--radius-lg);border:1px solid var(--border);background:var(--card-glass)}
+.eng h3{margin-bottom:8px;display:flex;align-items:center;gap:8px}
+.eng h3::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px rgba(0,212,255,0.5);flex-shrink:0}
+.eng p{font-size:14px;line-height:1.7;margin:0;max-width:none}
+
+/* Code */
+.code-block{background:var(--inner);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:16px 0 8px;max-width:760px}
+.code-header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:rgba(255,255,255,0.03);border-bottom:1px solid var(--border)}
+.code-filename{font-family:var(--mono);font-size:12px;color:var(--cyan);overflow-wrap:anywhere}
+.code-lang{font-family:var(--mono);font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;flex-shrink:0}
+.code-body{padding:16px;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.code-body:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.code-body pre{margin:0;font-family:var(--mono);font-size:12.5px;line-height:1.75;color:var(--text);white-space:pre}
+.code-body .kw{color:var(--purple)}
+.code-body .str{color:var(--green)}
+.code-body .num{color:var(--gold)}
+.code-body .cm{color:var(--muted);font-style:italic}
+.code-note{font-family:var(--mono);font-size:12px;color:var(--dim);margin:0 0 24px}
+
+/* Tech stack cards (no icons) */
+.tech-grid{list-style:none;grid-template-columns:repeat(auto-fill,minmax(160px,1fr))}
+.tech-card{padding:14px}
+
+/* CTA */
+.cta-section{padding:48px 0 56px}
+.cta-section .project-links{animation:none;flex-wrap:wrap}
+
+[data-theme="light"] .project-hero h1,[data-theme="light"] .writeup h2,[data-theme="light"] .writeup h3,[data-theme="light"] .writeup p strong,[data-theme="light"] .cta-section h2{color:var(--text)}
+[data-theme="light"] .code-header{background:rgba(0,0,0,0.03)}
+[data-theme="light"] .results-table .col-lstm{background:rgba(0,122,69,0.06)}
+[data-theme="light"] .sec-num{border-color:rgba(0,111,153,0.35)}
+
+@media(max-width:900px){
+.flow{grid-template-columns:1fr;gap:20px}
+.flow li:not(:last-child)::after{content:'↓';right:auto;left:22px;top:auto;bottom:-20px;transform:none}
+.flow li{padding:12px 14px}
+}
+@media(max-width:600px){
+#breadcrumb{padding-top:80px}
+.project-hero{padding:20px 0 28px}
+.project-hero .project-desc{font-size:16px}
+.writeup{padding:8px 0 24px}
+.writeup h2{font-size:19px}
+.writeup ul.plain li{font-size:14px}
+.compare{grid-template-columns:1fr 1fr}
+.compare .m-value{font-size:24px}
+.code-body pre{font-size:11.5px}
+.tech-grid{grid-template-columns:1fr 1fr}
+/* Results table: one card per metric on phones */
+.table-wrap{overflow:visible}
+.results-table{display:flex!important;flex-direction:column}
+.results-table caption{order:2}
+.results-table caption,.results-table tbody,.results-table tr,.results-table th,.results-table td{display:block;width:100%}
+.results-table thead{display:none}
+.results-table tbody tr{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:14px 16px;border-bottom:1px solid var(--border)}
+.results-table tbody tr:last-child{border-bottom:none}
+.results-table tbody th{grid-column:1/-1;padding:0 0 2px;border:none;white-space:normal;font-size:15px}
+.results-table .hint{display:inline;margin-left:6px}
+.results-table td{padding:8px 10px;border:1px solid var(--border);border-radius:8px;white-space:normal;font-size:15px}
+.results-table tbody tr:last-child td{border-bottom:1px solid var(--border)}
+.results-table td::before{content:attr(data-label);display:block;font-size:11px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+.results-table td.col-lstm{border-color:rgba(0,255,135,0.35)}
+.results-table caption{border-top:1px solid var(--border)}
+}
+@media(prefers-reduced-motion:reduce){
+.hero-badges,.repo-slug{animation:none}
+}
+</style>
+</head>
+<body>
+
+<a href="#content" class="skip-link">Skip to content</a>
+<div class="scroll-progress" aria-hidden="true"></div>
+<button type="button" class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18 15l-6-6-6 6"/></svg></button>
+
+<nav role="navigation" aria-label="Main navigation">
+  <a href="../index.html" class="brand"><img src="../logo-nav.png" alt="Anh Dang — home" width="42" height="24"></a>
+  <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
+  <a href="../index.html">Home</a>
+  <a href="../projects.html" class="active">Projects</a>
+  <a href="../skills.html">Skills &amp; AI</a>
+  <a href="../experience.html">Experience</a>
+  <button type="button" class="theme-toggle" aria-label="Switch to light mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
+</nav>
+
+<div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
+<svg class="noise-overlay" aria-hidden="true"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
+<div class="ambient" aria-hidden="true">
+  <span style="width:3px;height:3px;background:var(--purple);opacity:0.1;left:15%;top:25%;animation-duration:7s"></span>
+  <span class="drift" style="width:2px;height:2px;background:var(--green);opacity:0.08;left:75%;top:30%;animation-duration:11s"></span>
+  <span style="width:3px;height:3px;background:var(--cyan);opacity:0.06;left:45%;top:55%;animation-duration:9s;animation-delay:2s"></span>
+  <span class="drift" style="width:2px;height:2px;background:var(--gold);opacity:0.08;left:88%;top:70%;animation-duration:13s;animation-delay:1s"></span>
+</div>
+
+<main class="container" role="main" id="content">
+
+  <nav id="breadcrumb" aria-label="Breadcrumb">
+    <ol>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><span aria-current="page">ATLAS</span></li>
+    </ol>
+  </nav>
+
+  <section class="project-hero" aria-labelledby="atlas-title">
+    <div class="hero-badges"><span class="project-badge badge-ml">ML</span><span class="project-badge badge-web">Case study</span></div>
+    <h1 id="atlas-title">ATLAS — Stock ML Intelligence System</h1>
+    <p class="repo-slug">anhtdang92/atlas-ml-trading</p>
+    <ul class="tech-tags" aria-label="Tech stack">
+      <li>Python</li><li>TensorFlow / Keras</li><li>Optuna</li><li>FastAPI</li><li>Vertex AI</li><li>Docker</li>
+    </ul>
+    <p class="project-desc">An LSTM that forecasts 21-day stock returns from 34 technical indicators, and the evaluation work to find out whether it actually beats simple baselines when it is tested the way it would be used: forward in time, on data it has never seen.</p>
+    <p class="project-impact">Walk-forward CV · 7-architecture ablation · 150+ tests · model card</p>
+    <div class="project-links">
+      <a href="https://github.com/anhtdang92/atlas-ml-trading" class="primary" target="_blank" rel="noopener">View on GitHub<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">&rarr;</span></a>
+      <a href="../projects.html" class="back"><span aria-hidden="true">&larr;</span> All projects</a>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="writeup" aria-label="Case study">
+
+    <div class="writeup-section reveal" id="problem">
+      <h2><span class="sec-num" aria-hidden="true">01</span> Problem</h2>
+      <p>Most stock-prediction demos report accuracy from a random train/test split. On time-series data that leaks the future into training, so the numbers look strong and then fall apart as soon as the model is used forward in time.</p>
+      <p>ATLAS asks a narrower question: using two years of daily price and volume data, can a model call the <strong>direction of a stock's next 21-day return</strong> better than simple baselines when it is scored only on later data it never trained on? And can it be packaged so someone else can run it, test it and query it?</p>
+    </div>
+
+    <div class="writeup-section reveal" id="approach">
+      <h2><span class="sec-num" aria-hidden="true">02</span> Approach</h2>
+      <ol class="flow" aria-label="ATLAS pipeline">
+        <li><span class="f-label">Data</span><span class="f-text">yfinance: 2 years of daily OHLCV for 33 US stocks and ETFs</span></li>
+        <li><span class="f-label">Features</span><span class="f-text">34 indicators in 30-day lookback windows</span></li>
+        <li><span class="f-label">Model</span><span class="f-text">2-layer LSTM, Huber loss, MC Dropout</span></li>
+        <li><span class="f-label">Evaluate</span><span class="f-text">Walk-forward CV, Optuna, bootstrap CIs, Diebold-Mariano</span></li>
+        <li><span class="f-label">Serve</span><span class="f-text">FastAPI, Vertex AI, Streamlit dashboard</span></li>
+      </ol>
+      <ul class="plain">
+        <li><strong>Features.</strong> 34 technical indicators: moving averages and price-to-MA ratios, RSI, MACD, Bollinger Bands, volume, momentum, volatility and ATR, market-regime signals (volatility regime, distance to 52-week high, z-score, trend strength), sin/cos calendar encodings and relative strength. The scaler is fit on training windows only.</li>
+        <li><strong>Model.</strong> A 2-layer LSTM (64 units per layer, 0.2 dropout, L2 regularization) trained with Huber loss to predict the 21-day return. Dropout stays on at inference to estimate uncertainty with Monte Carlo passes.</li>
+        <li><strong>Ablation.</strong> Seven architectures under the same walk-forward evaluation: LSTM, BiLSTM + attention, Transformer, CNN-LSTM, a multi-horizon LSTM, XGBoost and Ridge regression.</li>
+        <li><strong>Tuning and statistics.</strong> Optuna searches LSTM units, dropout, L2, learning rate and batch size, scoring each trial by mean directional accuracy across walk-forward folds. Bootstrap confidence intervals (10,000 resamples) and Diebold-Mariano tests compare models with the baselines.</li>
+      </ul>
+      <div class="code-block">
+        <div class="code-header"><span class="code-filename">ml/hyperparameter_tuning.py</span><span class="code-lang">Python</span></div>
+        <div class="code-body" role="region" aria-label="Code excerpt: Optuna search space and walk-forward folds, from ml/hyperparameter_tuning.py" tabindex="0"><pre>params = {
+    <span class="str">'lstm_units'</span>: trial.suggest_int(<span class="str">'lstm_units'</span>, <span class="num">32</span>, <span class="num">256</span>, step=<span class="num">32</span>),
+    <span class="str">'dropout_rate'</span>: trial.suggest_float(<span class="str">'dropout_rate'</span>, <span class="num">0.1</span>, <span class="num">0.5</span>, step=<span class="num">0.05</span>),
+    <span class="str">'l2_reg'</span>: trial.suggest_float(<span class="str">'l2_reg'</span>, <span class="num">1e-5</span>, <span class="num">1e-2</span>, log=<span class="kw">True</span>),
+    <span class="str">'learning_rate'</span>: trial.suggest_float(<span class="str">'learning_rate'</span>, <span class="num">1e-4</span>, <span class="num">1e-2</span>, log=<span class="kw">True</span>),
+    <span class="str">'batch_size'</span>: trial.suggest_categorical(<span class="str">'batch_size'</span>, [<span class="num">16</span>, <span class="num">32</span>, <span class="num">64</span>]),
+}
+
+fold_scores: List[float] = []
+<span class="kw">for</span> fold_idx, (train_idx, val_idx) <span class="kw">in</span> enumerate(folds):
+    score = _build_and_evaluate(X, y, train_idx, val_idx, params, epochs=epochs)
+    fold_scores.append(score)</pre></div>
+      </div>
+      <p class="code-note">Excerpt from <code class="inline">_optuna_objective()</code>: each trial is scored across the walk-forward folds.</p>
+    </div>
+
+    <div class="writeup-section reveal" id="decisions">
+      <h2><span class="sec-num" aria-hidden="true">03</span> Key decisions</h2>
+      <p>The repo records three architecture decisions (ADRs), each with the trade-off it accepts.</p>
+      <div class="decision-grid">
+        <article class="decision" aria-labelledby="adr1">
+          <span class="adr">ADR-001</span>
+          <h3 id="adr1">Huber loss over MSE</h3>
+          <p><span class="tag">Why</span>Returns are fat-tailed. With MSE, a single earnings gap can dominate a training batch; Huber is quadratic for small errors and linear for large ones.</p>
+          <p><span class="tag">Trade-off</span>Slightly less sensitive to sub-1% moves, and the delta threshold has to be tuned.</p>
+          <a class="adr-link no-underline" href="https://github.com/anhtdang92/atlas-ml-trading/blob/main/docs/decisions/001-huber-loss-over-mse.md" target="_blank" rel="noopener">Read ADR-001<span class="sr-only"> on GitHub (opens in a new tab)</span>&nbsp;<span aria-hidden="true">→</span></a>
+        </article>
+        <article class="decision" aria-labelledby="adr2">
+          <span class="adr">ADR-002</span>
+          <h3 id="adr2">Walk-forward CV over k-fold</h3>
+          <p><span class="tag">Why</span>Random k-fold trains on the future and tests on the past. Walk-forward trains on data up to a point in time and scores only the window after it.</p>
+          <p><span class="tag">Trade-off</span>Fewer training samples in early folds and a full retrain per fold, so evaluation costs more.</p>
+          <a class="adr-link no-underline" href="https://github.com/anhtdang92/atlas-ml-trading/blob/main/docs/decisions/002-walk-forward-over-kfold.md" target="_blank" rel="noopener">Read ADR-002<span class="sr-only"> on GitHub (opens in a new tab)</span>&nbsp;<span aria-hidden="true">→</span></a>
+        </article>
+        <article class="decision" aria-labelledby="adr3">
+          <span class="adr">ADR-003</span>
+          <h3 id="adr3">MC Dropout over model ensembles</h3>
+          <p><span class="tag">Why</span>Position sizing needs a confidence score. 50 forward passes with dropout active give a mean and a spread from one model; predictions with confidence below 0.6 are excluded from trade signals.</p>
+          <p><span class="tag">Trade-off</span>About 50× slower inference, and it doesn't capture uncertainty about the architecture itself.</p>
+          <a class="adr-link no-underline" href="https://github.com/anhtdang92/atlas-ml-trading/blob/main/docs/decisions/003-mc-dropout-over-ensemble.md" target="_blank" rel="noopener">Read ADR-003<span class="sr-only"> on GitHub (opens in a new tab)</span>&nbsp;<span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+      <div class="code-block">
+        <div class="code-header"><span class="code-filename">ml/lstm_model.py</span><span class="code-lang">Python</span></div>
+        <div class="code-body" role="region" aria-label="Code excerpt: Monte Carlo Dropout passes, from ml/lstm_model.py" tabindex="0"><pre><span class="cm"># Run multiple forward passes with dropout active (training=True)</span>
+all_predictions = []
+<span class="kw">for</span> _ <span class="kw">in</span> range(n_forward_passes):
+    pred = self.model(X, training=<span class="kw">True</span>)  <span class="cm"># training=True keeps dropout active</span>
+    all_predictions.append(pred.numpy().flatten())
+
+all_predictions = np.array(all_predictions)
+mean_predictions = all_predictions.mean(axis=<span class="num">0</span>)
+std_predictions = all_predictions.std(axis=<span class="num">0</span>)</pre></div>
+      </div>
+      <p class="code-note">Excerpt from <code class="inline">predict_with_uncertainty()</code>: ADR-003 in code.</p>
+    </div>
+
+    <div class="writeup-section reveal" id="results">
+      <h2><span class="sec-num" aria-hidden="true">04</span> Results</h2>
+      <p>The LSTM against three baselines, scored walk-forward on out-of-sample data. Ranges reflect variation across symbols and time periods.</p>
+      <div class="table-wrap" role="region" aria-labelledby="results-caption" tabindex="0">
+        <table class="results-table" role="table">
+          <caption id="results-caption">Ranges reported in the repo README, walk-forward out-of-sample; see notebooks/model_evaluation.ipynb.</caption>
+          <thead role="rowgroup">
+            <tr role="row"><th scope="col" role="columnheader">Metric</th><th scope="col" role="columnheader" class="col-lstm">LSTM</th><th scope="col" role="columnheader">Ridge</th><th scope="col" role="columnheader">Momentum</th><th scope="col" role="columnheader">Buy &amp; Hold</th></tr>
+          </thead>
+          <tbody role="rowgroup">
+            <tr role="row"><th scope="row" role="rowheader">Directional accuracy</th><td role="cell" class="col-lstm" data-label="LSTM">55–62%</td><td role="cell" data-label="Ridge">50–54%</td><td role="cell" data-label="Momentum">48–52%</td><td role="cell" data-label="Buy &amp; Hold">50%</td></tr>
+            <tr role="row"><th scope="row" role="rowheader">Sharpe ratio</th><td role="cell" class="col-lstm" data-label="LSTM">0.8–1.2</td><td role="cell" data-label="Ridge">0.4–0.7</td><td role="cell" data-label="Momentum">0.3–0.5</td><td role="cell" data-label="Buy &amp; Hold">0.6–0.9</td></tr>
+            <tr role="row"><th scope="row" role="rowheader">Max drawdown <span class="hint">lower is better</span></th><td role="cell" class="col-lstm" data-label="LSTM">8–15%</td><td role="cell" data-label="Ridge">12–20%</td><td role="cell" data-label="Momentum">15–25%</td><td role="cell" data-label="Buy &amp; Hold">15–25%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="code-note">Sources: <a href="https://github.com/anhtdang92/atlas-ml-trading#ml-model-performance" target="_blank" rel="noopener">README<span class="sr-only"> results table (opens in a new tab)</span></a> · <a href="https://github.com/anhtdang92/atlas-ml-trading/blob/main/notebooks/model_evaluation.ipynb" target="_blank" rel="noopener">notebooks/model_evaluation.ipynb<span class="sr-only"> (opens in a new tab)</span></a></p>
+      <p>Read plainly: 55–62% directional accuracy is a modest edge over a 50% coin flip, and the Sharpe ranges overlap with buy-and-hold. The clearer gap is drawdown, 8–15% against 15–25%.</p>
+      <p><strong>Limits</strong> (from the <a href="https://github.com/anhtdang92/atlas-ml-trading/blob/main/MODEL_CARD.md" target="_blank" rel="noopener">model card<span class="sr-only"> (opens in a new tab)</span></a>): one data source (Yahoo Finance price and volume), no fundamentals or macro data, a fixed 21-day horizon, a fixed 33-symbol universe with survivorship bias, and a two-year window that may not cover every market regime. It is an educational and paper-trading project, not financial advice.</p>
+    </div>
+
+    <div class="writeup-section reveal" id="learned">
+      <h2><span class="sec-num" aria-hidden="true">05</span> What I learned</h2>
+      <div class="compare">
+        <div class="metric m-kfold"><div class="m-value">~68%</div><div class="m-label">Random k-fold accuracy (future leaks into training)</div></div>
+        <div class="metric m-wf"><div class="m-value">55–62%</div><div class="m-label">Walk-forward accuracy (scored only on later data)</div></div>
+      </div>
+      <ul class="plain">
+        <li><strong>Walk-forward CV is non-negotiable for time series.</strong> Early experiments with random k-fold showed about 68% directional accuracy. Walk-forward dropped it to 55–62%. Lower, but that is the number that reflects real use.</li>
+        <li><strong>Features mattered more than architecture.</strong> In the ablation, a simple 2-layer LSTM with good features beat a Transformer with weaker ones, and the market-regime indicators contributed the most.</li>
+        <li><strong>Uncertainty is a filter.</strong> Predictions where the MC Dropout passes disagreed were the ones not to trade, which led to confidence-weighted position sizing.</li>
+        <li><strong>Fail loudly.</strong> Early versions quietly fell back to mock predictions when no model was trained. That path is gone: the app and the API now return an explicit status instead.</li>
+        <li><strong>Risk controls are part of the product.</strong> The 8% stop-loss and 12% drawdown circuit breaker apply regardless of what the model says.</li>
+      </ul>
+    </div>
+
+    <div class="writeup-section reveal" id="engineering">
+      <h2><span class="sec-num" aria-hidden="true">06</span> Engineering</h2>
+      <div class="eng-grid">
+        <div class="eng"><h3>FastAPI service</h3><p><code class="inline">POST /api/v1/predict</code> returns a predicted return and confidence per symbol, with an explicit status when no model is available. Also <code class="inline">/health</code>, <code class="inline">/models</code>, <code class="inline">/features</code> and <code class="inline">/backtest</code>.</p></div>
+        <div class="eng"><h3>Vertex AI</h3><p>Training containers and a prediction endpoint on Google Cloud. Serving tries Vertex AI, then the local model, then fails explicitly.</p></div>
+        <div class="eng"><h3>Docker</h3><p><code class="inline">docker compose up</code> runs the dashboard; an optional profile adds an MLflow tracking server.</p></div>
+        <div class="eng"><h3>Streamlit dashboard</h3><p>Portfolio, live prices, ML predictions, rebalancing in paper-trading mode, and cloud training progress.</p></div>
+        <div class="eng"><h3>CI and 150+ tests</h3><p>GitHub Actions runs Black, Flake8, pytest with a coverage gate on Python 3.10 and 3.11, schema checks and a Docker build. Unit and integration tests include a walk-forward backtest.</p></div>
+        <div class="eng"><h3>Model card</h3><p>Intended use, training data, evaluation method, limitations and ethical considerations, alongside the three ADRs.</p></div>
+      </div>
+    </div>
+
+    <div class="writeup-section reveal" id="stack">
+      <h2><span class="sec-num" aria-hidden="true">07</span> Tech stack</h2>
+      <ul class="tech-grid" aria-label="Tech stack">
+        <li class="tech-card"><div class="tech-name">Python</div><div class="tech-cat">Language</div></li>
+        <li class="tech-card"><div class="tech-name">TensorFlow / Keras</div><div class="tech-cat">Deep learning</div></li>
+        <li class="tech-card"><div class="tech-name">scikit-learn</div><div class="tech-cat">Baselines</div></li>
+        <li class="tech-card"><div class="tech-name">XGBoost</div><div class="tech-cat">Baselines</div></li>
+        <li class="tech-card"><div class="tech-name">Optuna</div><div class="tech-cat">Tuning</div></li>
+        <li class="tech-card"><div class="tech-name">SHAP</div><div class="tech-cat">Explainability</div></li>
+        <li class="tech-card"><div class="tech-name">pandas</div><div class="tech-cat">Data</div></li>
+        <li class="tech-card"><div class="tech-name">yfinance</div><div class="tech-cat">Market data</div></li>
+        <li class="tech-card"><div class="tech-name">FastAPI</div><div class="tech-cat">Model serving</div></li>
+        <li class="tech-card"><div class="tech-name">Streamlit</div><div class="tech-cat">Dashboard</div></li>
+        <li class="tech-card"><div class="tech-name">Vertex AI</div><div class="tech-cat">Cloud training</div></li>
+        <li class="tech-card"><div class="tech-name">Docker</div><div class="tech-cat">Packaging</div></li>
+        <li class="tech-card"><div class="tech-name">GitHub Actions</div><div class="tech-cat">CI</div></li>
+        <li class="tech-card"><div class="tech-name">MLflow</div><div class="tech-cat">Experiment tracking</div></li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="divider" aria-hidden="true"></div>
+
+  <section class="cta-section reveal" aria-labelledby="cta-title">
+    <div class="section-label">Source code</div>
+    <h2 id="cta-title">Explore the full codebase</h2>
+    <p>README, model card, ADRs, notebooks and tests are all in the repo.</p>
+    <div class="project-links">
+      <a href="https://github.com/anhtdang92/atlas-ml-trading" class="primary" target="_blank" rel="noopener">View on GitHub<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">&rarr;</span></a>
+      <a href="../projects.html" class="back"><span aria-hidden="true">&larr;</span> All projects</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-links">
+    <a href="https://github.com/anhtdang92" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92" rel="noopener">LinkedIn</a>
+    <a href="mailto:anhtdang92@gmail.com">Email</a>
+  </div>
+  <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>
+  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; <span data-current-year>2026</span></div>
+</footer>
+
+<script src="../js/shared.js"></script>
+
+</body>
+</html>

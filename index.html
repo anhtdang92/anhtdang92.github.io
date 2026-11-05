@@ -115,13 +115,15 @@ body{line-height:1.7}
 @keyframes heroAvatarIn{from{opacity:0;transform:scale(0.5) rotate(-10deg)}to{opacity:1;transform:scale(1) rotate(0)}}
 .hero-avatar::before,.hero-avatar::after{content:'';position:absolute;inset:-4px;border-radius:50%;background:conic-gradient(var(--purple),var(--cyan),var(--green),var(--gold),var(--purple));animation:spin 4s linear infinite;z-index:-1}
 .hero-avatar::after{opacity:0.25;z-index:-2}
-.hero-label{font-family:var(--mono);font-size:14px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;margin-bottom:16px;animation:heroRise 0.5s var(--ease-smooth) both}
+.hero-label{font-family:var(--mono);font-size:14px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;margin-bottom:16px;animation:heroRise 0.5s var(--ease-smooth) both;text-wrap:balance}
+.hero-label>span{white-space:nowrap}
 .hero h1{font-size:clamp(42px,8vw,64px);font-weight:900;letter-spacing:-2px;line-height:1.15;color:#fff;margin-bottom:12px;animation:heroRise 0.6s var(--ease-smooth) both}
 @keyframes heroRise{from{transform:translateY(10px)}to{transform:none}}
 .hero h1 .accent{background:linear-gradient(135deg,var(--purple) 0%,var(--cyan) 55%,var(--green) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
 .hero-sub{font-size:18px;color:var(--muted);font-weight:400;max-width:580px;margin:0 auto 12px}
-.hero-creds{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:0.3px;line-height:1.6;max-width:620px;margin:0 auto 24px}
-.hero-creds .sep{color:var(--dim);margin:0 6px}
+.hero-creds{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:0.3px;line-height:1.7;max-width:820px;margin:0 auto 24px;text-wrap:balance}
+.hero-creds>span{white-space:nowrap}
+.hero-creds .sep{color:var(--dim);margin-left:8px}
 .hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .hero-tags span{font-family:var(--mono);font-size:13px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text);transition:border-color 0.15s ease,color 0.15s ease;animation:tagPop 0.4s ease both}
 .hero-tags span:nth-child(1){animation-delay:0.15s}.hero-tags span:nth-child(2){animation-delay:0.19s}.hero-tags span:nth-child(3){animation-delay:0.23s}
@@ -303,7 +305,7 @@ body{line-height:1.7}
 .pipe-step-name{display:block;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--c);letter-spacing:0.3px;text-transform:uppercase}
 .pipe-step-name::before{content:counter(pstep,decimal-leading-zero) '  ';color:var(--dim);font-weight:500}
 .pipe-step-detail{display:block;font-size:14px;color:var(--text);line-height:1.55;margin-top:6px;flex:1}
-.pipe-step-tech{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+.pipe-step-tech{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px;padding-top:8px;border-top:1px solid var(--border);text-wrap:balance}
 /* flow arrows in the gaps between cards on the same row */
 .pipe-steps li::after{content:'';display:none;position:absolute;top:50%;right:-10px;width:7px;height:7px;border-top:2px solid var(--dim);border-right:2px solid var(--dim);transform:translateY(-50%) rotate(45deg);opacity:0.7}
 .pipe-steps li:not(:nth-child(3n))::after{display:block}
@@ -323,7 +325,7 @@ body{line-height:1.7}
 .flip-card:hover .flip-card-front,.flip-card:focus-visible .flip-card-front{transform:translateY(-10px);opacity:0.3}
 .flip-card:hover .flip-card-back,.flip-card:focus-visible .flip-card-back{transform:translateY(0);opacity:1}
 .fc-title{font-size:16px;font-weight:700;color:var(--text);margin-bottom:4px}
-.fc-sub{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.fc-sub{font-family:var(--mono);font-size:12px;color:var(--muted);text-wrap:balance}
 .fc-svg{margin-bottom:8px;opacity:0.7}
 .fc-cta{font-family:var(--mono);font-size:12px;color:var(--cyan);margin-top:8px}
 .fc-status{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.5px;line-height:1.4;padding:1px 8px;margin-bottom:6px;border-radius:10px;border:1px solid currentColor;color:var(--gold)}
@@ -354,7 +356,7 @@ body{line-height:1.7}
 .next-items{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
 .next-item{padding:12px;border-radius:var(--radius-md);border:1px solid var(--border)}
 .next-item .ni-label{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
-.next-item .ni-value{font-size:15px;font-weight:600;color:#fff;margin-top:2px}
+.next-item .ni-value{font-size:15px;font-weight:600;color:#fff;margin-top:2px;text-wrap:balance}
 .next-item .ni-date{font-family:var(--mono);font-size:12px;color:var(--muted);margin-top:2px}
 
 /* FOOTER (base styles in shared.css) */
@@ -409,7 +411,7 @@ body{line-height:1.7}
 .hero h1{margin-bottom:10px}
 .hero-sub{font-size:16px;margin-bottom:10px}
 .hero-creds{font-size:12px;margin-bottom:20px}
-.hero-creds .sep{margin:0 4px}
+.hero-creds .sep{margin-left:6px}
 .hero-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:360px;margin:24px auto 0}
 .hero-links a,.hero-links a.primary{padding:12px 8px;min-height:48px;font-size:15px;width:100%}
 section,.explore-section{padding:32px 0}
@@ -525,10 +527,10 @@ section,.explore-section{padding:32px 0}
         <span class="hero-orb" style="top:70px;left:-70px;animation-delay:0.6s">Data</span>
       </div>
     </div>
-    <div class="hero-label">DA II → ML Engineer · Army Signal Officer</div>
+    <div class="hero-label"><span>DA II → ML Engineer ·</span> <span>Army Signal Officer</span></div>
     <h1>Anh <span class="accent">Dang</span></h1>
     <p class="hero-sub">Data Analyst II building toward ML Engineering. Georgia Tech M.S. CS (Machine Learning) candidate, expected Summer 2027.</p>
-    <p class="hero-creds">U.S. Army Reserve Signal officer<span class="sep" aria-hidden="true">·</span>Secret clearance (DoD)<span class="sep" aria-hidden="true">·</span>CompTIA Security+<span class="sep" aria-hidden="true">·</span>Houston, TX</p>
+    <p class="hero-creds"><span>U.S. Army Reserve Signal officer<span class="sep" aria-hidden="true">·</span></span> <span>Secret clearance (DoD)<span class="sep" aria-hidden="true">·</span></span> <span>CompTIA Security+<span class="sep" aria-hidden="true">·</span></span> <span>Houston, TX</span></p>
     <div class="hero-tags" role="list" aria-label="Key skills">
       <span role="listitem">Python</span><span role="listitem">SQL</span><span role="listitem">PyTorch</span><span role="listitem">scikit-learn</span><span role="listitem">Pandas</span>
     </div>

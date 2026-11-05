@@ -85,7 +85,7 @@
 .cert-list{list-style:none;margin-top:10px;display:grid;gap:8px}
 .cert-item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2px 16px;min-height:48px;padding:6px 12px;border-radius:8px;border:1px solid var(--border);background:var(--inner)}
 .cert-name{font-size:16px;font-weight:600;color:var(--text);line-height:1.4}
-.cert-date{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap}
+.cert-date{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap;margin-left:4px}
 .cert-link{display:inline-flex;align-items:center;min-height:44px;padding:0 2px;font-family:var(--mono);font-size:13px;color:var(--cyan);white-space:nowrap}
 .cert-link:hover{color:var(--green)}
 .cert-link:focus-visible{outline:2px solid var(--cyan);outline-offset:2px;border-radius:4px}
@@ -101,7 +101,7 @@
 .omscs-details{flex:1;min-width:0}
 .omscs-bar-row{display:grid;grid-template-columns:84px minmax(0,1fr) auto;align-items:center;gap:10px;margin-bottom:8px}
 .omscs-bar-label{font-family:var(--mono);font-size:13px;color:var(--muted)}
-.omscs-bar-track{height:6px;background:var(--inner);border-radius:3px;overflow:hidden}
+.omscs-bar-track{height:6px;background:var(--border);border-radius:3px;overflow:hidden}
 .omscs-bar-fill{height:100%;width:0;border-radius:3px;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
 .omscs-bar-row + .omscs-bar-row .omscs-bar-fill{transition-delay:0.1s}
 .edu-card.visible .omscs-bar-fill{width:calc(var(--v) / var(--max) * 100%)}
@@ -124,7 +124,7 @@
 .omscs-plan-title{font-family:var(--mono);font-size:13px;font-weight:500;letter-spacing:1px;color:var(--muted);text-transform:uppercase}
 .otl-badge{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--green)}
 .plan-rows{list-style:none;display:grid;gap:14px}
-.plan-row{display:grid;grid-template-columns:150px minmax(0,1fr) 128px;grid-template-areas:"term track val" "sub track val";column-gap:16px;row-gap:2px;align-items:center}
+.plan-row{display:grid;grid-template-columns:232px minmax(0,1fr) 128px;grid-template-areas:"term track val" "sub track val";column-gap:16px;row-gap:2px;align-items:center}
 .pr-term{grid-area:term;font-size:15px;font-weight:600;color:var(--text);line-height:1.3}
 .pr-sub{grid-area:sub;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.45}
 .pr-sub .st{font-weight:700}
@@ -170,6 +170,9 @@
 .hover-glow:hover{background-image:radial-gradient(circle 120px at var(--mx,50%) var(--my,50%),rgba(0,212,255,0.06),transparent 70%)}
 }
 
+/* FOOTER LINKS: 24px minimum tap height (belongs in shared.css; kept here until it moves) */
+.footer-links a{min-height:24px}
+
 /* NEON GLOW ON SECTION TITLES */
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
 [data-theme="light"] h2.section-title{text-shadow:none}
@@ -194,6 +197,11 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 .omscs-progress{flex-direction:column;align-items:stretch;gap:16px}
 .omscs-donut{margin:0 auto}
 .course-grid{grid-template-columns:1fr}
+/* compact card: code + grade on one line, name below (DOM/reading order unchanged) */
+.course-item{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"code grade" "name name";column-gap:10px;align-items:baseline}
+.course-item .ci-code{grid-area:code}
+.course-item .ci-name{grid-area:name}
+.course-item .ci-grade{grid-area:grade;margin-top:0;text-align:right}
 .omscs-plan{padding:16px 14px}
 .plan-row{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"term val" "track track" "sub sub";row-gap:6px;column-gap:12px}
 .cert-item{padding:6px 12px}
