@@ -114,7 +114,7 @@
 .course-item .ci-name{font-size:14px;font-weight:600;color:#fff;line-height:1.35;margin:2px 0}
 .course-item .ci-code{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .course-item .ci-grade{font-family:var(--mono);font-size:12px;font-weight:700;margin-top:2px}
-.ci-grade.a{color:var(--green)}.ci-grade.b{color:var(--cyan)}.ci-grade.c{color:var(--gold)}.ci-grade.ip{color:var(--purple)}.ci-grade.upcoming{color:var(--orange)}
+.ci-grade.done{color:var(--green)}.ci-grade.ip{color:var(--purple)}.ci-grade.upcoming{color:var(--orange)}
 .course-item.is-ip{border-color:rgba(224,64,251,0.35)}
 
 /* OMSCS CREDITS PLAN (credits only; no grades or projections) */
@@ -196,7 +196,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 .omscs-progress{flex-direction:column;align-items:stretch;gap:16px}
 .omscs-donut{margin:0 auto}
 .course-grid{grid-template-columns:1fr}
-/* compact card: code + grade on one line, name below (DOM/reading order unchanged) */
+/* compact card: code + status on one line, name below (DOM/reading order unchanged) */
 .course-item{display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"code grade" "name name";column-gap:10px;align-items:baseline}
 .course-item .ci-code{grid-area:code}
 .course-item .ci-name{grid-area:name}
@@ -301,17 +301,6 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="highlights"><span>Python</span><span>Pandas</span><span>Segmentation</span></div>
   </div>
 
-  <div class="tl hover-glow reveal reveal-d5">
-    <h4 class="role">Web Developer Intern</h4>
-    <div class="org">Elle Investments (remote, NY)</div>
-    <div class="date">Jun – Aug 2020</div>
-    <ul class="desc">
-      <li>Built SQL-backed web applications.</li>
-      <li>Developed Python web scraping pipelines with Beautiful Soup.</li>
-      <li>Automated data export workflows.</li>
-    </ul>
-    <div class="highlights"><span>SQL</span><span>Python</span><span>Beautiful Soup</span></div>
-  </div>
 </div>
 
 <h3 class="tl-group reveal">U.S. Army Reserve</h3>
@@ -400,32 +389,32 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <li class="course-item hover-glow">
       <div class="ci-code">CSE 6242</div>
       <div class="ci-name">Data &amp; Visual Analytics</div>
-      <div class="ci-grade a">Grade: A</div>
+      <div class="ci-grade done">Completed</div>
     </li>
     <li class="course-item hover-glow">
       <div class="ci-code">CS 6603</div>
       <div class="ci-name">AI, Ethics &amp; Society</div>
-      <div class="ci-grade a">Grade: A</div>
+      <div class="ci-grade done">Completed</div>
     </li>
     <li class="course-item hover-glow">
       <div class="ci-code">CS 7280</div>
       <div class="ci-name">Network Science</div>
-      <div class="ci-grade b">Grade: B</div>
+      <div class="ci-grade done">Completed</div>
     </li>
     <li class="course-item hover-glow">
       <div class="ci-code">CS 7637</div>
       <div class="ci-name">Knowledge-Based AI</div>
-      <div class="ci-grade b">Grade: B</div>
+      <div class="ci-grade done">Completed</div>
     </li>
     <li class="course-item hover-glow">
       <div class="ci-code">CS 8803</div>
       <div class="ci-name">Computer Graphics in the AI Era</div>
-      <div class="ci-grade b">Grade: B</div>
+      <div class="ci-grade done">Completed</div>
     </li>
     <li class="course-item hover-glow">
       <div class="ci-code">CS 7646</div>
       <div class="ci-name">Machine Learning for Trading</div>
-      <div class="ci-grade c">Grade: C</div>
+      <div class="ci-grade done">Completed</div>
     </li>
     <li class="course-item hover-glow is-ip">
       <div class="ci-code">CS 7641</div>
