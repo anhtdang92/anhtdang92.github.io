@@ -800,18 +800,7 @@ document.querySelectorAll('.stat-ring').forEach(ring => ringObserver.observe(rin
   document.querySelectorAll('.section-divider-glow').forEach(el => divObs.observe(el));
 })();
 
-// MOBILE NAV SCROLL LOCK
-(function() {
-  const navToggle = document.querySelector('.nav-toggle');
-  if (!navToggle) return;
-  navToggle.addEventListener('click', () => {
-    const nav = document.querySelector('nav');
-    nav.classList.toggle('open');
-    const isOpen = nav.classList.contains('open');
-    document.body.classList.toggle('nav-open', isOpen);
-    navToggle.setAttribute('aria-expanded', String(isOpen));
-  });
-})();
+// Mobile nav open/close is handled only by js/shared.js
 
 // NAV SHRINK ON SCROLL — merged into main scroll handler above (line 1478)
 

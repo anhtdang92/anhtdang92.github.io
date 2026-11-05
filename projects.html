@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Anh Dang">
+<script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <title>Projects — Anh Dang</title>
 <meta name="description" content="ML projects by Anh Dang — deep learning trading systems with LSTM networks and ensemble methods for market prediction.">
 <meta property="og:title" content="Projects — Anh Dang">
@@ -10,14 +12,21 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io/projects.html">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta property="og:site_name" content="Anh Dang">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Projects — Anh Dang">
 <meta name="twitter:description" content="ML projects — deep learning trading systems and ensemble methods.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
+<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
 <meta name="theme-color" content="#04070d">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://anhtdang92.github.io/projects.html">
-<link rel="icon" href="logo.png" type="image/png">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style">
@@ -155,7 +164,7 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
 <button class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg></button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang" width="24" height="24"></a>
+  <a href="index.html" class="brand"><img src="logo-nav.png" alt="Anh Dang — home" width="42" height="24"></a>
   <button class="nav-toggle" aria-label="Toggle navigation"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
   <a href="index.html">Home</a>
   <a href="projects.html" class="active">Projects</a>
@@ -291,14 +300,13 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
     <a href="mailto:anhtdang92@gmail.com">Email</a>
   </div>
   <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>
-  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
+  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; <span data-current-year>2026</span></div>
 </footer>
 
 <script src="js/shared.js"></script>
 <script>
 // Reveal, scroll progress, back-to-top, theme toggle, and nav wiring handled by shared.js
-// Also observe .project elements for staggered entrance
-document.querySelectorAll('.project').forEach(el => observer.observe(el));
+// .project cards carry the .reveal class, so shared.js already animates them in
 
 // EXPAND TOGGLE
 function toggleExpand(btn) {

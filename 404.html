@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Anh Dang">
+<script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <title>404 — Anh Dang</title>
 <meta name="description" content="Page not found. Return to Anh Dang's portfolio.">
 <meta name="robots" content="noindex, follow">
@@ -11,12 +13,19 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io/404.html">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta property="og:site_name" content="Anh Dang">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="404 — Anh Dang">
 <meta name="twitter:description" content="Page not found. Return to Anh Dang's portfolio.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
+<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
 <meta name="theme-color" content="#04070d">
-<link rel="icon" href="logo.png" type="image/png">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -43,10 +52,7 @@ a:hover{background:var(--green);filter:brightness(1.2);transform:translateY(-2px
 </div>
 <script>
 (function(){
-  var saved = localStorage.getItem('theme');
-  if (saved === 'light' || (!saved && window.matchMedia('(prefers-color-scheme: light)').matches)) {
-    document.documentElement.setAttribute('data-theme', 'light');
-  }
+  // Dark is the default; the <head> script applies a saved light choice.
 })();
 </script>
 </body>
