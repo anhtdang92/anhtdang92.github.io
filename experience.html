@@ -35,7 +35,6 @@
 <link rel="stylesheet" href="css/shared.css">
 <style>
 /* PAGE OFFSET (fixed nav) */
-html{scroll-padding-top:80px}
 .page-top{padding-top:120px}
 
 /* TIMELINE */
@@ -368,7 +367,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
   <canvas id="omscsChart" class="omscs-chart" role="img" aria-label="Chart of OMSCS GPA and cumulative credits by semester. The same data is listed in the table that follows."></canvas>
   <div class="omscs-chart-tooltip" id="omscsTooltip" aria-hidden="true"></div>
   <p class="omscs-chart-hint" aria-hidden="true">Tap or hover a semester for details.</p>
-  <table class="sr-only" id="omscsTable"><caption>OMSCS GPA and cumulative credits by semester</caption></table>
+  <div class="sr-only"><table id="omscsTable"><caption>OMSCS GPA and cumulative credits by semester</caption></table></div>
 </div>
 
 
@@ -427,241 +426,279 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
 <script src="js/shared.js"></script>
 <script>
-// Page-specific JS (shared functionality handled by shared.js)
+// Page-specific JS (theme, nav, reveal, scroll UI live in js/shared.js)
+(function () {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function withAlpha(hex, a) {
+    var h = hex.replace('#', '');
+    if (h.length === 3) h = h.replace(/./g, function (c) { return c + c; });
+    var n = parseInt(h, 16);
+    return 'rgba(' + (n >> 16 & 255) + ',' + (n >> 8 & 255) + ',' + (n & 255) + ',' + a + ')';
+  }
 
-// SCROLL-SYNCED TIMELINE GLOW
-(function() {
-  const timeline = document.querySelector('.timeline');
-  const glow = document.querySelector('.tl-glow');
-  if (!timeline || !glow) return;
-  window.addEventListener('scroll', () => {
-    const rect = timeline.getBoundingClientRect();
-    const viewH = window.innerHeight;
-    if (rect.top > viewH || rect.bottom < 0) { glow.style.height = '0px'; return; }
-    const totalH = rect.height - 16;
-    const scrolled = Math.max(0, viewH * 0.6 - rect.top);
-    const pct = Math.min(1, scrolled / totalH);
-    glow.style.height = (pct * totalH) + 'px';
-  }, { passive: true });
-})();
-
-// 5. TIMELINE ENTRY REVEAL VIA INTERSECTIONOBSERVER
-const tlObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -30px 0px' });
-document.querySelectorAll('.tl').forEach(el => tlObserver.observe(el));
-
-// 6. OMSCS DONUT ANIMATION
-(function() {
-  const ring = document.getElementById('omscs-ring');
-  if (!ring) return;
-  const circumference = 364; // 2 * PI * 58
-  const target = 0.60; // 60% complete
-  const omscsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !entry.target.dataset.animated) {
-        entry.target.dataset.animated = 'true';
-        const offset = circumference * (1 - target);
-        ring.style.strokeDashoffset = offset;
-        // Animate the progress bars
-        entry.target.querySelectorAll('.omscs-bar-fill').forEach((bar, i) => {
-          setTimeout(() => { bar.style.width = bar.dataset.ow + '%'; }, i * 100);
-        });
+  // SCROLL-SYNCED TIMELINE GLOW (rAF-throttled, transform only)
+  (function () {
+    var timeline = document.querySelector('.timeline');
+    var glow = document.querySelector('.tl-glow');
+    if (!timeline || !glow || reduceMotion) return;
+    var ticking = false;
+    function update() {
+      ticking = false;
+      var rect = timeline.getBoundingClientRect();
+      var viewH = window.innerHeight;
+      var pct = 0;
+      if (rect.top < viewH && rect.bottom > 0) {
+        pct = Math.max(0, Math.min(1, (viewH * 0.6 - rect.top) / Math.max(1, rect.height - 16)));
       }
-    });
-  }, { threshold: 0.3 });
-  omscsObserver.observe(ring.closest('.omscs-progress'));
-})();
+      glow.style.transform = 'scaleY(' + pct.toFixed(4) + ')';
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+  })();
 
-// Mobile nav open/close is handled only by js/shared.js
+  // OMSCS DONUT + PROGRESS BARS
+  (function () {
+    var ring = document.getElementById('omscs-ring');
+    if (!ring) return;
+    var wrap = ring.closest('.omscs-progress');
+    var circumference = 364; // 2 * PI * 58
+    var target = 0.60;       // 60% complete
+    function fill() {
+      ring.style.strokeDashoffset = circumference * (1 - target);
+      wrap.querySelectorAll('.omscs-bar-fill').forEach(function (bar, i) {
+        setTimeout(function () { bar.style.width = bar.dataset.ow + '%'; }, reduceMotion ? 0 : i * 100);
+      });
+    }
+    if (reduceMotion || !('IntersectionObserver' in window)) { fill(); return; }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { fill(); obs.disconnect(); }
+      });
+    }, { threshold: 0.3 });
+    obs.observe(wrap);
+  })();
 
-// OMSCS PROGRESSION CHART
-(function() {
-  const canvas = document.getElementById('omscsChart');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const w = canvas.width, h = canvas.height;
-  const pad = {l:50, r:30, t:20, b:40};
-  const pw = w - pad.l - pad.r, ph = h - pad.t - pad.b;
+  // OMSCS PROGRESSION CHART (DPR-aware, redraws on resize and theme change)
+  (function () {
+    var canvas = document.getElementById('omscsChart');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var container = canvas.closest('.omscs-timeline');
+    var tooltip = document.getElementById('omscsTooltip');
 
-  // Semester data: [label, cumCredits, gpa, courses, status]
-  const semesters = [
-    ['F23', 3, 4.0, 'CSE 6242 (A)', 'completed'],
-    ['S24', 6, 3.5, 'CS 7637 (B)', 'completed'],
-    ['U24', 9, 3.3, 'CS 7280 (B)', 'completed'],
-    ['F24', 12, 3.0, 'CS 7646 (C)', 'completed'],
-    ['S25', 18, 3.0, 'CS 6603 + CS 8803', 'current'],
-    ['U25', 21, 3.1, 'CS 7641', 'upcoming'],
-    ['F25', 24, 3.2, 'CS 6515', 'upcoming'],
-    ['S26', 27, 3.2, 'Elective', 'projected'],
-    ['U26', 30, 3.3, 'Capstone', 'projected']
-  ];
-  let animated = false, animP = 0;
+    // Semester data: [label, cumCredits, gpa, courses, status]
+    var semesters = [
+      ['F23', 3, 4.0, 'CSE 6242 (A)', 'completed'],
+      ['S24', 6, 3.5, 'CS 7637 (B)', 'completed'],
+      ['U24', 9, 3.3, 'CS 7280 (B)', 'completed'],
+      ['F24', 12, 3.0, 'CS 7646 (C)', 'completed'],
+      ['S25', 18, 3.0, 'CS 6603 + CS 8803', 'current'],
+      ['U25', 21, 3.1, 'CS 7641', 'upcoming'],
+      ['F25', 24, 3.2, 'CS 6515', 'upcoming'],
+      ['S26', 27, 3.2, 'Elective', 'projected'],
+      ['U26', 30, 3.3, 'Capstone', 'projected']
+    ];
+    var n = semesters.length;
+    var term = { F: 'Fall', S: 'Spring', U: 'Summer' };
+    function longLabel(s) { return (term[s[0][0]] || s[0][0]) + ' 20' + s[0].slice(1); }
 
-  function isLight() { return document.documentElement.getAttribute('data-theme') === 'light'; }
-
-  function draw(progress) {
-    ctx.clearRect(0, 0, w, h);
-    const n = semesters.length;
-    const stepX = pw / (n - 1);
-    const gridColor = isLight() ? 'rgba(100,120,140,0.25)' : 'rgba(42,63,90,0.25)';
-    const labelColor = isLight() ? '#3d6078' : '#9db5cc';
-
-    // Y axis (GPA 2.0-4.0 left, Credits 0-30 right)
-    ctx.strokeStyle = gridColor;
-    ctx.lineWidth = 0.5;
-    for (let i = 0; i <= 4; i++) {
-      const y = pad.t + ph * (1 - i/4);
-      ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(pad.l + pw, y); ctx.stroke();
-      // GPA labels (left)
-      const gpa = (2.0 + i * 0.5).toFixed(1);
-      ctx.fillStyle = labelColor;
-      ctx.font = '500 9px "JetBrains Mono", monospace';
-      ctx.textAlign = 'right';
-      ctx.fillText(gpa, pad.l - 6, y + 3);
-      // Credits labels (right)
-      const cr = Math.round(i * 7.5);
-      ctx.textAlign = 'left';
-      ctx.fillText(cr + 'cr', pad.l + pw + 4, y + 3);
+    // Text alternative: the same data as a table for screen readers
+    var table = document.getElementById('omscsTable');
+    if (table) {
+      var html = '<caption>OMSCS GPA and cumulative credits by semester</caption><thead><tr><th scope="col">Semester</th><th scope="col">Courses</th><th scope="col">GPA</th><th scope="col">Cumulative credits</th><th scope="col">Status</th></tr></thead><tbody>';
+      semesters.forEach(function (s) {
+        html += '<tr><th scope="row">' + longLabel(s) + '</th><td>' + s[3] + '</td><td>' + s[2].toFixed(1) + '</td><td>' + s[1] + ' of 30</td><td>' + s[4] + '</td></tr>';
+      });
+      table.innerHTML = html + '</tbody>';
     }
 
-    // X axis labels
-    ctx.textAlign = 'center';
-    semesters.forEach((s, i) => {
-      const x = pad.l + i * stepX;
-      ctx.fillStyle = s[4] === 'completed' ? labelColor : s[4] === 'current' ? (isLight() ? '#00804a' : '#00ff87') : s[4] === 'upcoming' ? (isLight() ? '#cc6600' : '#ff9500') : (isLight() ? '#566e85' : '#7a96b0');
-      ctx.fillText(s[0], x, h - 10);
-    });
+    var W = 0, H = 0, pad = null, pw = 0, ph = 0, stepX = 0, progress = 0, active = -1;
 
-    // Credits bar chart (background)
-    const nPts = Math.ceil(n * progress);
-    for (let i = 0; i < nPts; i++) {
-      const x = pad.l + i * stepX;
-      const barH = (semesters[i][1] / 30) * ph * Math.min(1, progress * n / (i+1));
-      const y = pad.t + ph - barH;
-      const p = i < nPts - 1 ? 1 : (progress * n - i);
-      ctx.fillStyle = semesters[i][4] === 'projected' ? 'rgba(122,150,176,0.1)' :
-                      semesters[i][4] === 'upcoming' ? 'rgba(255,149,0,0.12)' :
-                      semesters[i][4] === 'current' ? 'rgba(0,255,135,0.15)' : 'rgba(0,212,255,0.1)';
-      ctx.fillRect(x - 12, y, 24, barH * p);
+    function palette() {
+      return {
+        grid: isLightTheme() ? 'rgba(61,96,120,0.22)' : 'rgba(143,168,190,0.14)',
+        label: cssVar('--muted'), dim: cssVar('--dim'),
+        green: cssVar('--green'), cyan: cssVar('--cyan'), orange: cssVar('--orange')
+      };
+    }
+    function statusColor(c, st) {
+      return st === 'projected' ? c.dim : st === 'upcoming' ? c.orange : c.green;
+    }
+    function xAt(i) { return pad.l + i * stepX; }
+    function gpaY(g) { return pad.t + ph - ((g - 2.0) / 2.0) * ph; }
+
+    function size() {
+      var w = canvas.clientWidth;
+      var h = canvas.clientHeight;
+      if (!w || !h) return false;
+      var dpr = Math.min(window.devicePixelRatio || 1, 3);
+      if (w === W && h === H && canvas.width === Math.round(w * dpr)) return true;
+      W = w; H = h;
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var narrow = W < 480;
+      pad = narrow ? { l: 34, r: 26, t: 30, b: 28 } : { l: 48, r: 44, t: 32, b: 30 };
+      pw = W - pad.l - pad.r; ph = H - pad.t - pad.b; stepX = pw / (n - 1);
+      return true;
     }
 
-    // GPA line
-    if (nPts > 1) {
+    function draw() {
+      if (!size()) return;
+      var c = palette();
+      var narrow = W < 480;
+      var font = '500 12px "JetBrains Mono", monospace';
+      ctx.clearRect(0, 0, W, H);
+
+      // Grid + axis labels (GPA 2.0-4.0 left, credits 0-30 right)
+      ctx.font = font;
+      ctx.textBaseline = 'middle';
+      for (var i = 0; i <= 4; i++) {
+        var y = pad.t + ph * (1 - i / 4);
+        ctx.strokeStyle = c.grid; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(pad.l, y + 0.5); ctx.lineTo(pad.l + pw, y + 0.5); ctx.stroke();
+        ctx.fillStyle = c.label;
+        ctx.textAlign = 'right';
+        ctx.fillText((2.0 + i * 0.5).toFixed(1), pad.l - 6, y);
+        ctx.textAlign = 'left';
+        ctx.fillText(String(Math.round(i * 7.5)) + (narrow ? '' : 'cr'), pad.l + pw + 6, y);
+      }
+
+      // X labels
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'alphabetic';
+      semesters.forEach(function (s, i) {
+        ctx.fillStyle = s[4] === 'completed' ? c.label : s[4] === 'current' ? c.green : s[4] === 'upcoming' ? c.orange : c.dim;
+        ctx.font = (i === active ? '700 ' : '500 ') + '12px "JetBrains Mono", monospace';
+        ctx.fillText(s[0], xAt(i), H - 8);
+      });
+
+      // Credits bars
+      var barW = Math.min(24, stepX * 0.55);
+      var shown = progress * n;
+      for (var b = 0; b < n; b++) {
+        var p = Math.max(0, Math.min(1, shown - b));
+        if (!p) continue;
+        var s2 = semesters[b];
+        var barH = (s2[1] / 30) * ph * p;
+        var col = s2[4] === 'projected' ? c.dim : s2[4] === 'upcoming' ? c.orange : s2[4] === 'current' ? c.green : c.cyan;
+        ctx.fillStyle = withAlpha(col, b === active ? 0.32 : (isLightTheme() ? 0.2 : 0.16));
+        ctx.fillRect(xAt(b) - barW / 2, pad.t + ph - barH, barW, barH);
+      }
+
+      // GPA line
+      var last = Math.min(n - 1, Math.floor(shown));
+      var frac = Math.min(1, shown - last);
       ctx.beginPath();
-      for (let i = 0; i < nPts; i++) {
-        const x = pad.l + i * stepX;
-        const gpaY = pad.t + ph - ((semesters[i][2] - 2.0) / 2.0) * ph;
-        const p = i < nPts - 1 ? 1 : (progress * n - i);
-        if (i === 0) ctx.moveTo(x, gpaY);
-        else {
-          const prevY = pad.t + ph - ((semesters[i-1][2] - 2.0) / 2.0) * ph;
-          const prevX = pad.l + (i-1) * stepX;
-          ctx.lineTo(prevX + (x - prevX) * p, prevY + (gpaY - prevY) * p);
-        }
+      for (var k = 0; k <= last; k++) {
+        if (k === 0) { ctx.moveTo(xAt(0), gpaY(semesters[0][2])); continue; }
+        var pr = k < last || last === n - 1 ? 1 : frac;
+        var px = xAt(k - 1), py = gpaY(semesters[k - 1][2]);
+        ctx.lineTo(px + (xAt(k) - px) * pr, py + (gpaY(semesters[k][2]) - py) * pr);
       }
-      ctx.strokeStyle = isLight() ? '#00804a' : '#00ff87';
-      ctx.lineWidth = 2.5;
+      ctx.strokeStyle = c.green; ctx.lineWidth = 2.5; ctx.lineJoin = 'round';
       ctx.stroke();
 
       // GPA dots
-      for (let i = 0; i < Math.min(nPts, n); i++) {
-        const x = pad.l + i * stepX;
-        const gpaY = pad.t + ph - ((semesters[i][2] - 2.0) / 2.0) * ph;
+      for (var d = 0; d <= last; d++) {
+        var r = d === active ? 6 : 4;
         ctx.beginPath();
-        ctx.arc(x, gpaY, 4, 0, Math.PI * 2);
-        ctx.fillStyle = semesters[i][4] === 'projected' ? (isLight() ? '#566e85' : '#7a96b0') :
-                        semesters[i][4] === 'upcoming' ? (isLight() ? '#cc6600' : '#ff9500') : (isLight() ? '#00804a' : '#00ff87');
+        ctx.arc(xAt(d), gpaY(semesters[d][2]), r, 0, Math.PI * 2);
+        ctx.fillStyle = statusColor(c, semesters[d][4]);
         ctx.fill();
-        if (semesters[i][4] === 'completed') {
-          ctx.strokeStyle = isLight() ? 'rgba(0,128,74,0.3)' : 'rgba(0,255,135,0.3)';
-          ctx.lineWidth = 2;
-          ctx.stroke();
-        }
       }
+
+      // Legend
+      ctx.font = font;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      var ly = 10;
+      ctx.fillStyle = c.green; ctx.fillRect(pad.l, ly - 1, 18, 3);
+      ctx.fillStyle = c.label; ctx.fillText('GPA', pad.l + 24, ly);
+      var lx = pad.l + 24 + ctx.measureText('GPA').width + 18;
+      ctx.fillStyle = withAlpha(c.cyan, 0.45); ctx.fillRect(lx, ly - 5, 12, 10);
+      ctx.fillStyle = c.label; ctx.fillText('Credits', lx + 18, ly);
     }
 
-    // Legend
-    ctx.font = '500 9px "JetBrains Mono", monospace';
-    ctx.textAlign = 'left';
-    ctx.fillStyle = isLight() ? '#00804a' : '#00ff87';
-    ctx.fillRect(pad.l, pad.t - 12, 20, 2);
-    ctx.fillText('GPA', pad.l + 24, pad.t - 8);
-    ctx.fillStyle = isLight() ? 'rgba(0,119,160,0.3)' : 'rgba(0,212,255,0.3)';
-    ctx.fillRect(pad.l + 65, pad.t - 16, 12, 8);
-    ctx.fillStyle = isLight() ? '#0077a0' : '#00d4ff';
-    ctx.fillText('Credits', pad.l + 81, pad.t - 8);
-  }
-
-  draw(0);
-  const tooltip = document.getElementById('omscsTooltip');
-  const container = canvas.closest('.omscs-timeline');
-
-  // Hover tooltips
-  canvas.addEventListener('mousemove', (e) => {
-    const rect = canvas.getBoundingClientRect();
-    const mx = (e.clientX - rect.left) * (w / rect.width);
-    const n = semesters.length;
-    const stepX = pw / (n - 1);
-    let closest = -1, minDist = stepX / 2;
-    for (let i = 0; i < n; i++) {
-      const x = pad.l + i * stepX;
-      if (Math.abs(mx - x) < minDist) { closest = i; minDist = Math.abs(mx - x); }
-    }
-    if (closest >= 0 && tooltip) {
-      const s = semesters[closest];
-      tooltip.innerHTML = '<strong style="color:var(--cyan)">' + s[0] + ' — ' + s[3] + '</strong><br>' +
-        'GPA: <span style="color:var(--green)">' + s[2].toFixed(1) + '</span> · Credits: ' + s[1] + '/30' +
-        '<br><span style="color:var(--muted)">' + s[4] + '</span>';
+    function showTip(i) {
+      active = i;
+      draw();
+      if (!tooltip) return;
+      if (i < 0) { tooltip.classList.remove('show'); return; }
+      var s = semesters[i];
+      tooltip.innerHTML = '<strong>' + longLabel(s) + ' — ' + s[3] + '</strong><br>GPA: <span class="tt-gpa">' +
+        s[2].toFixed(1) + '</span> · Credits: ' + s[1] + '/30<br><span class="tt-status">' + s[4] + '</span>';
       tooltip.classList.add('show');
-      const cx = (pad.l + closest * stepX) / w * rect.width;
-      tooltip.style.left = (cx - tooltip.offsetWidth / 2) + 'px';
-      tooltip.style.top = '0px';
-    } else if (tooltip) {
-      tooltip.classList.remove('show');
+      var cRect = container.getBoundingClientRect();
+      var kRect = canvas.getBoundingClientRect();
+      var x = kRect.left - cRect.left + xAt(i);
+      var left = Math.max(8, Math.min(cRect.width - tooltip.offsetWidth - 8, x - tooltip.offsetWidth / 2));
+      tooltip.style.left = left + 'px';
+      tooltip.style.top = Math.max(8, kRect.top - cRect.top - tooltip.offsetHeight - 6) + 'px';
     }
-  });
-  canvas.addEventListener('mouseleave', () => { if (tooltip) tooltip.classList.remove('show'); });
-
-  const chartObs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-        (function step() {
-          animP = Math.min(1, animP + 0.02);
-          draw(1 - Math.pow(1 - animP, 3));
-          if (animP < 1) requestAnimationFrame(step);
-        })();
+    function nearest(clientX) {
+      var rect = canvas.getBoundingClientRect();
+      var mx = clientX - rect.left;
+      var best = -1, dist = stepX / 2 + 1;
+      for (var i = 0; i < n; i++) {
+        var dx = Math.abs(mx - xAt(i));
+        if (dx < dist) { dist = dx; best = i; }
       }
+      return best;
+    }
+    canvas.addEventListener('mousemove', function (e) { if (pad) showTip(nearest(e.clientX)); });
+    canvas.addEventListener('mouseleave', function () { showTip(-1); });
+    // Tap: show the nearest semester; tap the same one again to hide it
+    var lastPointer = 'mouse';
+    canvas.addEventListener('pointerdown', function (e) { lastPointer = e.pointerType || 'mouse'; });
+    canvas.addEventListener('click', function (e) {
+      if (!pad) return;
+      var i = nearest(e.clientX);
+      showTip(i === active && lastPointer !== 'mouse' ? -1 : i);
     });
-  }, { threshold: 0.3 });
-  chartObs.observe(canvas);
-})();
 
-// CARD HOVER GLOW
-document.querySelectorAll('.tl,.edu-card,.course-item,.next-item').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.background = `radial-gradient(circle 120px at ${x}px ${y}px, rgba(0,212,255,0.05), transparent), var(--card)`;
-  });
-  card.addEventListener('mouseleave', () => { card.style.background = ''; });
-});
+    var resizeTimer;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () { W = 0; showTip(-1); }, 120);
+    }, { passive: true });
+    window._themeRedrawFns.push(draw);
 
-// VIEW TRANSITIONS
-(function() {
-  if (!document.startViewTransition) return;
-  document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('#')) return;
-      e.preventDefault();
-      document.startViewTransition(() => { window.location.href = href; });
+    function run() {
+      if (reduceMotion) { progress = 1; draw(); return; }
+      var start = null;
+      (function step(ts) {
+        if (start === null) start = ts;
+        var t = Math.min(1, Math.max(0, (ts - start) / 900));
+        progress = 1 - Math.pow(1 - t, 3);
+        draw();
+        if (t < 1) requestAnimationFrame(step);
+      })(performance.now());
+    }
+    draw();
+    if (!('IntersectionObserver' in window)) { run(); return; }
+    var chartObs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { chartObs.disconnect(); run(); }
+      });
+    }, { threshold: 0.3 });
+    chartObs.observe(canvas);
+  })();
+
+  // CARD HOVER GLOW — only moves the glow centre; the colours come from CSS so both themes work
+  if (window.matchMedia && window.matchMedia('(hover: hover)').matches) {
+    document.querySelectorAll('.hover-glow').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
+      });
     });
-  });
+  }
 })();
 </script>
 
