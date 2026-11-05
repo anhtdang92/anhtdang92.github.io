@@ -17,15 +17,15 @@
   <!-- Name -->
   <text x="100" y="200" font-family="'Outfit', 'Segoe UI', sans-serif" font-size="72" font-weight="900" fill="#ffffff">Anh Dang</text>
   <!-- Title -->
-  <text x="100" y="270" font-family="'JetBrains Mono', monospace" font-size="28" fill="#00d4ff" letter-spacing="2">ML ENGINEER · DATA SCIENTIST</text>
+  <text x="100" y="270" font-family="'JetBrains Mono', monospace" font-size="28" fill="#00d4ff" letter-spacing="2">DATA ANALYST II → ML ENGINEERING</text>
   <!-- Divider -->
   <rect x="100" y="300" width="200" height="3" rx="2" fill="url(#accent)"/>
   <!-- Stats -->
-  <text x="100" y="370" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">Georgia Tech MSCS (Machine Learning)</text>
-  <text x="100" y="410" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">U.S. Army Signal Officer · Secret Clearance</text>
-  <text x="100" y="450" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">3M+ ML Decisions/Mo · 90%+ Query Optimization</text>
+  <text x="100" y="370" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">Georgia Tech M.S. CS (Machine Learning) · in progress</text>
+  <text x="100" y="410" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">U.S. Army Reserve Signal Officer · Secret clearance (DoD)</text>
+  <text x="100" y="450" font-family="'JetBrains Mono', monospace" font-size="20" fill="#9db5cc">CompTIA Security+ · 5+ years in data · Houston, TX</text>
   <!-- Tags -->
-  <text x="100" y="530" font-family="'JetBrains Mono', monospace" font-size="16" fill="#00ff87">Python · PyTorch · SQL · MLOps · LangChain · Docker</text>
+  <text x="100" y="530" font-family="'JetBrains Mono', monospace" font-size="16" fill="#00ff87">Python · SQL · scikit-learn · PyTorch · TensorFlow · Power BI</text>
   <!-- URL -->
   <text x="100" y="580" font-family="'JetBrains Mono', monospace" font-size="16" fill="#7a96b0">anhtdang92.github.io</text>
   <!-- Decorative circles -->

@@ -3,21 +3,30 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Anh Dang">
+<script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <title>Projects — Anh Dang</title>
-<meta name="description" content="ML projects by Anh Dang — deep learning trading systems with LSTM networks and ensemble methods for market prediction.">
+<meta name="description" content="Anh Dang's projects: ATLAS (LSTM stock forecasting with walk-forward evaluation), ARGUS (threat detection, in progress), Signal Network Mapper, and local GPU AI experiments.">
 <meta property="og:title" content="Projects — Anh Dang">
-<meta property="og:description" content="ML projects — deep learning trading systems and ensemble methods.">
+<meta property="og:description" content="ATLAS LSTM forecasting case study, ARGUS threat detection (in progress), Signal Network Mapper, and local GPU AI experiments.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io/projects.html">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta property="og:site_name" content="Anh Dang">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Projects — Anh Dang">
-<meta name="twitter:description" content="ML projects — deep learning trading systems and ensemble methods.">
+<meta name="twitter:description" content="ATLAS LSTM forecasting case study, ARGUS threat detection (in progress), Signal Network Mapper, and local GPU AI experiments.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
+<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
 <meta name="theme-color" content="#04070d">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://anhtdang92.github.io/projects.html">
-<link rel="icon" href="logo.png" type="image/png">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" as="style">
@@ -25,148 +34,89 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/shared.css">
 <style>
+.page-top{padding-top:120px}
+
 /* PROJECT GRID */
-.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 
 /* PROJECT CARDS */
-.project{padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:all 0.4s cubic-bezier(0.23,1,0.32,1);position:relative;overflow:hidden;cursor:pointer;transform-style:preserve-3d;perspective:800px}
-.project::before{content:'';position:absolute;top:0;left:-100%;width:200%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.03),transparent);pointer-events:none;transition:none}
-.project:hover{border-color:var(--cyan);transform:translateY(-4px);box-shadow:0 16px 50px rgba(0,212,255,0.12)}
-.project:hover::before{animation:holoShimmer 1.5s ease}
-@keyframes holoShimmer{from{left:-100%}to{left:100%}}
-.project-name{font-size:17px;font-weight:700;color:#fff;margin-bottom:4px}
-.project-desc{font-size:14px;color:var(--muted);line-height:1.6}
-.project-tech{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
-.project-tech span{font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;background:var(--inner);color:var(--dim);border:1px solid var(--border);transition:all 0.3s}
-.project:hover .project-tech span{border-color:rgba(0,212,255,0.2);color:var(--text)}
-.project-links{display:flex;gap:8px;margin-top:10px}
-.project-links a{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:6px;border:1px solid var(--border);color:var(--cyan);transition:all 0.2s}
-.project-links a:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,135,0.05)}
+.project{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:22px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.23,1,0.32,1),border-color 0.4s ease,box-shadow 0.4s ease}
+.project-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:12px}
+.project-meta .project-badge{font-size:12px;padding:3px 9px;text-transform:uppercase}
+.badge-featured{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.35)}
+.badge-status{display:inline-flex!important;align-items:center;gap:6px;background:rgba(255,208,0,0.08);color:var(--gold);border:1px solid rgba(255,208,0,0.4)}
+.badge-status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.project-name{font-size:19px;font-weight:700;color:var(--text);line-height:1.3}
+.project-repo{font-family:var(--mono);font-size:12px;color:var(--dim);margin:2px 0 10px;overflow-wrap:anywhere}
+.project-desc{font-size:15px;color:var(--muted);line-height:1.65}
+.project-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.project-facts li{font-family:var(--mono);font-size:12px;color:var(--green);padding:4px 10px;border-radius:999px;border:1px solid rgba(0,255,135,0.25);background:rgba(0,255,135,0.05)}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.project-tech li{list-style:none;font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:4px;background:var(--inner);color:var(--muted);border:1px solid var(--border);transition:border-color 0.3s,color 0.3s}
+.card-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:auto;padding-top:16px}
+.card-links a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);font-family:var(--mono);font-size:13px;color:var(--cyan);text-align:center;transition:border-color 0.2s,color 0.2s,background-color 0.2s}
+.card-links a:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,135,0.05)}
+.card-links a.primary-link{border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);font-weight:600}
 
-/* PROJECT BADGES */
-.project-badge{position:absolute;top:12px;right:12px;font-family:var(--mono);font-size:11px;padding:2px 8px;border-radius:4px;font-weight:700;letter-spacing:1px}
-.badge-ml{background:rgba(224,64,251,0.15);color:var(--purple);border:1px solid rgba(224,64,251,0.3)}
-.badge-ai{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.3)}
-.badge-web{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.3)}
-.badge-ios{background:rgba(255,213,0,0.1);color:var(--gold);border:1px solid rgba(255,213,0,0.3)}
-.badge-work{background:rgba(255,149,0,0.1);color:var(--orange);border:1px solid rgba(255,149,0,0.3)}
-.project:hover .badge-ml{background:rgba(224,64,251,0.3);box-shadow:0 0 12px rgba(224,64,251,0.4)}
-.project:hover .badge-ai{background:rgba(0,255,135,0.2);box-shadow:0 0 12px rgba(0,255,135,0.4)}
-.project:hover .badge-web{background:rgba(0,212,255,0.2);box-shadow:0 0 12px rgba(0,212,255,0.4)}
+/* FEATURED (ATLAS) */
+.project.featured{grid-column:1/-1;padding:26px;border-color:rgba(0,212,255,0.3);background-image:linear-gradient(135deg,rgba(224,64,251,0.07) 0%,rgba(0,212,255,0.05) 50%,rgba(0,255,135,0.04) 100%)}
+.project.featured .project-name{font-size:clamp(20px,3.4vw,24px)}
+.project.featured .project-desc{color:var(--text);max-width:720px}
+.project.featured .card-links{max-width:440px}
 
-/* EXPAND PANEL */
-.project-expand{max-height:0;overflow:hidden;transition:max-height 0.5s cubic-bezier(0.23,1,0.32,1);margin-top:0}
-.project-expand.open{max-height:300px;margin-top:10px}
-.project-expand p{font-size:14px;color:var(--text);line-height:1.7;margin-bottom:4px}
-.project-toggle{font-family:var(--mono);font-size:12px;color:var(--cyan);cursor:pointer;padding:4px 0;display:inline-block;transition:color 0.2s;background:none;border:none}
-.project-toggle:hover{color:var(--green)}
+.more-link{margin-top:24px;font-family:var(--mono);font-size:13px;text-align:center}
+.more-link a{display:inline-flex;align-items:center;min-height:44px;padding:8px 4px}
 
-/* PROJECT SPARKLINE */
-.project-sparkline{margin-top:10px;overflow:visible}
-.project-sparkline polyline{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s cubic-bezier(0.23,1,0.32,1)}
-.project.visible .project-sparkline polyline{stroke-dashoffset:0}
+[data-theme="light"] .project{background-color:rgba(255,255,255,0.7)}
+[data-theme="light"] .badge-status{background:rgba(138,90,0,0.07);border-color:rgba(138,90,0,0.35)}
+[data-theme="light"] .badge-featured{border-color:rgba(0,111,153,0.35)}
+[data-theme="light"] .project-facts li{border-color:rgba(0,122,69,0.3);background:rgba(0,122,69,0.05)}
 
-/* STAGGERED WATERFALL ENTRANCE */
-.project{opacity:0;transform:translateY(40px) scale(0.97);transition:opacity 0.6s cubic-bezier(0.23,1,0.32,1),transform 0.6s cubic-bezier(0.23,1,0.32,1),border-color 0.4s,box-shadow 0.4s}
-.project.visible{opacity:1;transform:translateY(0) scale(1)}
-.project:nth-child(1){transition-delay:0s}
-.project:nth-child(2){transition-delay:0.1s}
-
-/* LIGHT THEME */
-[data-theme="light"] .project{background:rgba(255,255,255,0.55)}
-[data-theme="light"] .project-name{color:#1a1a2e}
-
-/* NAV-TOGGLE (mobile) */
-.nav-toggle{display:none;background:none;border:1px solid var(--border);border-radius:6px;padding:5px 10px;cursor:pointer;font-size:16px;line-height:1;color:var(--muted);transition:all 0.2s}
-.nav-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-.nav-toggle{display:block}
-nav{flex-wrap:wrap}
-nav a{display:none}
-nav.open a{display:inline-block;width:100%;text-align:center;padding:10px 14px;font-size:14px}
-nav .brand{margin-right:auto}
-.theme-toggle{order:2}
-.nav-toggle{order:1;margin-right:8px}
+/* HOVER (pointer devices only) */
+@media(hover:hover){
+.project:hover{border-color:var(--cyan);box-shadow:0 16px 50px rgba(0,212,255,0.12)}
+.project:hover .project-tech li{border-color:rgba(0,212,255,0.25);color:var(--text)}
+.hover-glow:hover{background-image:radial-gradient(circle 180px at var(--mx,50%) var(--my,50%),rgba(0,212,255,0.08),transparent 70%)}
+.project.featured.hover-glow:hover{background-image:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%),rgba(0,212,255,0.08),transparent 70%),linear-gradient(135deg,rgba(224,64,251,0.07) 0%,rgba(0,212,255,0.05) 50%,rgba(0,255,135,0.04) 100%)}
 }
-@media(max-width:600px){
-.project-grid{grid-template-columns:1fr}
-}
-@media(prefers-reduced-motion:reduce){
-.project::before{animation:none}
-.ambient,.mesh-gradient,.noise-overlay{display:none}
-.reveal{opacity:1;transform:none;transition:none}
-h2.section-title{text-shadow:none}
-}
-
-/* FILTER BAR */
-.filter-bar{display:flex;align-items:center;gap:8px;margin-top:20px;flex-wrap:wrap}
-.filter-btn{font-family:var(--mono);font-size:12px;padding:6px 16px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all 0.25s}
-.filter-btn:hover{border-color:var(--cyan);color:var(--cyan)}
-.filter-btn.active{background:rgba(0,212,255,0.12);border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.15)}
-.sort-select{font-family:var(--mono);font-size:12px;padding:6px 12px;border-radius:6px;border:1px solid var(--border);background:var(--card);color:var(--muted);cursor:pointer;margin-left:auto;transition:all 0.25s;appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%236b7280'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
-.sort-select:hover,.sort-select:focus{border-color:var(--cyan);color:var(--cyan);outline:none}
-[data-theme="light"] .sort-select{background-color:rgba(255,255,255,0.7)}
-
-/* COMPARISON MATRIX */
-.comparison-matrix{margin-top:40px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);overflow:hidden}
-.ml-panel-header{padding:14px 20px;border-bottom:1px solid var(--border);background:rgba(224,64,251,0.04)}
-.ml-panel-title{font-family:var(--mono);font-size:13px;font-weight:600;color:var(--purple);letter-spacing:0.5px}
-.cmp-table-wrap{overflow-x:auto}
-.cmp-table{width:100%;border-collapse:collapse;font-size:13px}
-.cmp-table thead{background:rgba(255,255,255,0.02)}
-.cmp-table th{padding:10px 16px;text-align:left;font-family:var(--mono);font-size:11px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);white-space:nowrap}
-.cmp-table th.cmp-sortable{cursor:pointer;user-select:none;transition:color 0.2s}
-.cmp-table th.cmp-sortable:hover{color:var(--cyan)}
-.cmp-table th.cmp-sorted{color:var(--cyan)}
-.cmp-arrow{font-size:10px;opacity:0.4;margin-left:4px;transition:opacity 0.2s}
-.cmp-sorted .cmp-arrow{opacity:1}
-.cmp-table td{padding:10px 16px;color:var(--text);border-bottom:1px solid rgba(255,255,255,0.03);font-family:var(--mono);font-size:12px}
-.cmp-table tbody tr{transition:background 0.2s}
-.cmp-table tbody tr:hover{background:rgba(0,212,255,0.04)}
-.deploy-badge{font-size:10px;padding:2px 8px;border-radius:4px;font-weight:600;letter-spacing:0.5px}
-.deploy-local{background:rgba(224,64,251,0.12);color:var(--purple);border:1px solid rgba(224,64,251,0.25)}
-.deploy-paper{background:rgba(255,213,0,0.1);color:var(--gold);border:1px solid rgba(255,213,0,0.25)}
-.deploy-api{background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.25)}
-.deploy-web{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.25)}
-[data-theme="light"] .comparison-matrix{background:rgba(255,255,255,0.55)}
-[data-theme="light"] .cmp-table th{color:var(--dim)}
-[data-theme="light"] .cmp-table td{color:var(--text)}
-
-/* FILTER TRANSITION */
-.project.filter-hidden{opacity:0;transform:scale(0.92);pointer-events:none;position:absolute;visibility:hidden}
-.project-grid{position:relative}
 
 /* NEON GLOW ON SECTION TITLES */
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
 [data-theme="light"] h2.section-title{text-shadow:none}
 
-/* NAV UNDERLINE */
-nav a{position:relative}
-nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;height:2px;background:var(--cyan);border-radius:2px;box-shadow:0 0 8px rgba(0,212,255,0.6),0 0 16px rgba(0,212,255,0.3);animation:navGlowIn 0.3s ease both}
-@keyframes navGlowIn{from{opacity:0;transform:scaleX(0)}to{opacity:1;transform:scaleX(1)}}
+/* PHONES: cards stack */
+@media(max-width:600px){
+.page-top{padding-top:88px}
+.project-grid{grid-template-columns:1fr}
+.project,.project.featured{padding:18px 16px}
+.project-name{font-size:18px}
+.project.featured .card-links{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+.project{transition:none}
+}
 </style>
 </head>
 <body>
 
 <a href="#content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg></button>
+<button type="button" class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18 15l-6-6-6 6"/></svg></button>
 
 <nav role="navigation" aria-label="Main navigation">
-  <a href="index.html" class="brand"><img src="logo.png" alt="Anh Dang" width="24" height="24"></a>
-  <button class="nav-toggle" aria-label="Toggle navigation"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
+  <a href="index.html" class="brand"><img src="logo-nav.png" alt="Anh Dang — home" width="42" height="24"></a>
+  <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
   <a href="index.html">Home</a>
-  <a href="projects.html" class="active">Projects</a>
-  <a href="skills.html">Skills & AI</a>
+  <a href="projects.html" class="active" aria-current="page">Projects</a>
+  <a href="skills.html">Skills &amp; AI</a>
   <a href="experience.html">Experience</a>
-  <button class="theme-toggle" aria-label="Toggle theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
+  <a href="index.html#contact">Contact</a>
+  <button type="button" class="theme-toggle" aria-label="Switch to light mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
 <svg class="noise-overlay" aria-hidden="true"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
-<div class="ambient">
+<div class="ambient" aria-hidden="true">
   <span style="width:3px;height:3px;background:var(--purple);opacity:0.1;left:15%;top:25%;animation-duration:7s"></span>
   <span class="drift" style="width:2px;height:2px;background:var(--green);opacity:0.08;left:75%;top:30%;animation-duration:11s"></span>
   <span style="width:3px;height:3px;background:var(--cyan);opacity:0.06;left:45%;top:55%;animation-duration:9s;animation-delay:2s"></span>
@@ -175,110 +125,103 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
 
 <main class="container" role="main" id="content">
 
-  <section id="projects" aria-labelledby="projects-title" style="padding-top:120px">
+  <section id="projects" class="page-top" aria-labelledby="projects-title">
     <h1 class="sr-only">Projects</h1>
     <div class="reveal"><div class="section-label">Projects</div></div>
     <div class="reveal reveal-d1"><h2 id="projects-title" class="section-title">What I've built</h2></div>
-    <div class="reveal reveal-d2"><p class="section-desc">ML trading systems — from feature engineering and model training to backtesting and deployment. Each repo includes full documentation and reproducible results.</p></div>
-
-    <div class="filter-bar reveal reveal-d2">
-      <label for="sortSelect" class="sr-only">Sort projects</label>
-      <select class="sort-select" id="sortSelect">
-        <option value="default">Sort: Default</option>
-        <option value="accuracy">Accuracy &#9662;</option>
-        <option value="complexity">Complexity &#9662;</option>
-      </select>
-    </div>
+    <div class="reveal reveal-d2"><p class="section-desc">Five public repos. ATLAS has a full case study with walk-forward results and baselines; work that is still in progress is labeled that way.</p></div>
 
     <div class="project-grid">
 
-      <!-- PROJECT 1: Kraken ML Trading -->
-      <div class="project reveal reveal-d1" data-cat="ml" data-accuracy="55" data-complexity="9">
-        <span class="project-badge badge-ml">ML</span>
-        <div class="project-name">Kraken ML Trading Strategy</div>
-        <div class="project-desc">ML-powered cryptocurrency trading strategy using scikit-learn gradient boosted classifiers on Kraken exchange data. Features automated feature engineering, walk-forward validation, and cloud deployment on GCP.</div>
-        <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">55%+ directional accuracy · 20+ engineered features · Walk-forward validated</div>
-        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Equity curve showing profit growth over time">
-          <defs><linearGradient id="kraken-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
-          <polygon points="0,38 0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6 120,38" fill="url(#kraken-fill)"/>
-          <polyline points="0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Equity Curve</text>
-        </svg>
-        <div class="project-tech">
-          <span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span><span>Pandas</span>
+      <!-- 1. ATLAS (featured) -->
+      <article class="project featured hover-glow reveal reveal-d1" aria-labelledby="p-atlas">
+        <div class="project-meta">
+          <span class="project-badge badge-featured">Featured</span>
+          <span class="project-badge badge-ml">ML</span>
         </div>
-        <button class="project-toggle" aria-expanded="false" onclick="toggleExpand(this)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg> Details</button>
-        <div class="project-expand">
-          <p>Built gradient boosted prediction model with 55%+ directional accuracy on 4h candles. Includes automated feature engineering pipeline processing 20+ technical indicators, walk-forward validation, and serverless deployment on GCP Cloud Functions.</p>
+        <h3 class="project-name" id="p-atlas">ATLAS — Stock ML Intelligence System</h3>
+        <p class="project-repo">atlas-ml-trading</p>
+        <p class="project-desc">An LSTM that forecasts 21-day stock returns from 34 technical indicators, tested against six other architectures and simple baselines with Optuna tuning and walk-forward cross-validation. Served through FastAPI and Vertex AI, packaged with Docker, with a Streamlit dashboard.</p>
+        <ul class="project-facts" aria-label="Highlights">
+          <li>7-architecture ablation</li><li>Walk-forward CV</li><li>Bootstrap CIs + Diebold-Mariano</li><li>150+ tests · model card</li>
+        </ul>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>Python</li><li>TensorFlow / Keras</li><li>XGBoost</li><li>Optuna</li><li>FastAPI</li><li>Vertex AI</li><li>Docker</li><li>Streamlit</li>
+        </ul>
+        <div class="card-links">
+          <a href="projects/atlas-ml-trading.html" class="primary-link">Case study<span class="sr-only">: ATLAS</span> <span aria-hidden="true">→</span></a>
+          <a href="https://github.com/anhtdang92/atlas-ml-trading" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for ATLAS (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" target="_blank" rel="noopener">GitHub →</a>
-          <a href="projects/kraken-ml-trading-strategy.html">Details →</a>
-        </div>
-      </div>
+      </article>
 
-      <!-- PROJECT 2: ML Trading Algorithm -->
-      <div class="project reveal reveal-d2" data-cat="ml" data-accuracy="0" data-complexity="8">
-        <span class="project-badge badge-ml">ML</span>
-        <div class="project-name">ML Trading Algorithm</div>
-        <div class="project-desc">Machine learning trading algorithm with custom feature engineering pipeline, walk-forward backtesting, and systematic signal generation using scikit-learn gradient boosted classifiers.</div>
-        <div style="font-family:var(--mono);font-size:13px;color:var(--green);margin-top:6px">30+ engineered features · Walk-forward validated · Sharpe-optimized</div>
-        <svg class="project-sparkline" width="100%" height="40" viewBox="0 0 120 40" preserveAspectRatio="none" aria-label="Portfolio value growth over time">
-          <defs><linearGradient id="mltrade-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
-          <polygon points="0,38 0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8 120,38" fill="url(#mltrade-fill)"/>
-          <polyline points="0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <line x1="96" y1="16" x2="96" y2="38" stroke="var(--orange)" stroke-width="0.8" stroke-dasharray="2"/>
-          <text x="2" y="8" fill="var(--dim)" font-size="5" font-family="var(--mono)">Portfolio Value</text>
-        </svg>
-        <div class="project-tech">
-          <span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Backtesting</span>
+      <!-- 2. ARGUS (in progress) -->
+      <article class="project hover-glow reveal reveal-d1" aria-labelledby="p-argus">
+        <div class="project-meta">
+          <span class="project-badge badge-ml">ML</span>
+          <span class="project-badge badge-status">In progress</span>
         </div>
-        <button class="project-toggle" aria-expanded="false" onclick="toggleExpand(this)"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg> Details</button>
-        <div class="project-expand">
-          <p>Gradient boosted classifier with 30+ engineered features for daily signal generation. Features walk-forward backtesting with sliding window validation, feature importance pruning, and Sharpe ratio optimization.</p>
+        <h3 class="project-name" id="p-argus">ARGUS</h3>
+        <p class="project-repo">argus</p>
+        <p class="project-desc">Open-source cyber threat detection platform. The architecture and model code are written: an LSTM-autoencoder → Isolation Forest → XGBoost anomaly ensemble for CICIDS2017 and UNSW-NB15, a GNN for lateral movement on LANL auth logs, SHAP explanations, and NER for IOCs. The roadmap phases aren't finished and no trained models are committed yet.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>PyTorch</li><li>PyTorch Geometric</li><li>XGBoost</li><li>SHAP</li><li>FastAPI</li><li>Neo4j</li><li>Next.js</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/argus" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for ARGUS (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
         </div>
-        <div class="project-links">
-          <a href="https://github.com/anhtdang92/ml-trading-algorithm" target="_blank" rel="noopener">GitHub →</a>
-          <a href="projects/ml-trading-algorithm.html">Details →</a>
+      </article>
+
+      <!-- 3. Signal Network Mapper -->
+      <article class="project hover-glow reveal reveal-d2" aria-labelledby="p-snm">
+        <div class="project-meta">
+          <span class="project-badge badge-web">WEB</span>
         </div>
-      </div>
+        <h3 class="project-name" id="p-snm">Signal Network Mapper</h3>
+        <p class="project-repo">signal-network-mapper</p>
+        <p class="project-desc">Interactive tool for S6 officers and signal planners to design and visualize tactical network architectures, with MIL-STD-2525 symbols generated on the fly by milsymbol.js.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>React</li><li>Vite</li><li>ReactFlow</li><li>Tailwind CSS</li><li>milsymbol.js</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/signal-network-mapper" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for Signal Network Mapper (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- 4. CurStar Video Upscaler -->
+      <article class="project hover-glow reveal reveal-d1" aria-labelledby="p-curstar">
+        <div class="project-meta">
+          <span class="project-badge badge-ai">AI</span>
+        </div>
+        <h3 class="project-name" id="p-curstar">CurStar Video Upscaler</h3>
+        <p class="project-repo">curstar-video-upscaler</p>
+        <p class="project-desc">GPU-accelerated video super-resolution built on the open-source STAR diffusion model (spatial-temporal augmentation with text-to-video models), with a FastAPI + Next.js web front end in progress.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>Python</li><li>PyTorch</li><li>Diffusion models</li><li>CUDA</li><li>FastAPI</li><li>Next.js</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for CurStar Video Upscaler (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- 5. DeepSeek Local Inference -->
+      <article class="project hover-glow reveal reveal-d2" aria-labelledby="p-deepseek">
+        <div class="project-meta">
+          <span class="project-badge badge-ai">AI</span>
+        </div>
+        <h3 class="project-name" id="p-deepseek">DeepSeek Local Inference</h3>
+        <p class="project-repo">deepseek-local-inference</p>
+        <p class="project-desc">LLM benchmarking on an RTX 4090: runs distilled DeepSeek-R1 models (7B/8B) locally with Hugging Face Transformers on reasoning, math and coding prompts and times each generation.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>Python</li><li>PyTorch</li><li>Transformers</li><li>CUDA</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for DeepSeek Local Inference (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
 
     </div><!-- project-grid -->
 
-    <div class="comparison-matrix reveal">
-      <div class="ml-panel-header">
-        <span class="ml-panel-title">Project Comparison Matrix</span>
-      </div>
-      <div class="cmp-table-wrap">
-        <table class="cmp-table" id="cmpTable">
-          <thead>
-            <tr>
-              <th class="cmp-sortable" data-col="name">Project <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
-              <th class="cmp-sortable" data-col="accuracy">Accuracy <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
-              <th class="cmp-sortable" data-col="dataset">Dataset <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
-              <th class="cmp-sortable" data-col="techcount">Tech Count <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
-              <th class="cmp-sortable" data-col="deployment">Deployment <span class="cmp-arrow"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></span></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Kraken ML Trading</td>
-              <td data-value="55">55%+</td>
-              <td data-value="Kraken 4h candles">Kraken 4h candles</td>
-              <td data-value="5">5</td>
-              <td><span class="deploy-badge deploy-local">GCP Cloud Functions</span></td>
-            </tr>
-            <tr>
-              <td>ML Trading Algorithm</td>
-              <td data-value="0">—</td>
-              <td data-value="Equity daily bars">Equity daily bars</td>
-              <td data-value="4">4</td>
-              <td><span class="deploy-badge deploy-local">Local</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <p class="more-link reveal"><a href="https://github.com/anhtdang92?tab=repositories" target="_blank" rel="noopener">All repositories on GitHub<span class="sr-only"> (opens in a new tab)</span>&nbsp;<span aria-hidden="true">→</span></a></p>
 
   </section>
 
@@ -286,116 +229,36 @@ nav a.active::after{content:'';position:absolute;bottom:-2px;left:20%;right:20%;
 
 <footer class="footer" role="contentinfo">
   <div class="footer-links">
-    <a href="https://github.com/anhtdang92">GitHub</a>
-    <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+    <a href="https://github.com/anhtdang92" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92" target="_blank" rel="noopener">LinkedIn</a>
     <a href="mailto:anhtdang92@gmail.com">Email</a>
+    <a href="Anh_Dang_Resume.pdf" target="_blank" rel="noopener">Resume</a>
   </div>
   <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>
-  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; 2026</div>
+  <div class="footer-text" style="margin-top:4px">Anh Dang &middot; Houston, TX &middot; <span data-current-year>2026</span></div>
 </footer>
 
 <script src="js/shared.js"></script>
 <script>
-// Reveal, scroll progress, back-to-top, theme toggle, and nav wiring handled by shared.js
-// Also observe .project elements for staggered entrance
-document.querySelectorAll('.project').forEach(el => observer.observe(el));
+// Page-specific JS (theme, nav, reveal, scroll UI live in js/shared.js)
+(function () {
+  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+  if (!canHover) return;
 
-// EXPAND TOGGLE
-function toggleExpand(btn) {
-  const panel = btn.nextElementSibling;
-  panel.classList.toggle('open');
-  const isOpen = panel.classList.contains('open');
-  btn.innerHTML = isOpen ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg> Less' : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg> Details';
-  btn.setAttribute('aria-expanded', String(isOpen));
-}
-
-// 3D TILT ON PROJECT CARDS
-document.querySelectorAll('.project').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width - 0.5;
-    const y = (e.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `translateY(-4px) perspective(800px) rotateX(${-y * 6}deg) rotateY(${x * 6}deg)`;
-  });
-  card.addEventListener('mouseleave', () => {
-    card.style.transform = '';
-  });
-});
-
-// CARD HOVER GLOW
-document.querySelectorAll('.project').forEach(card => {
-  card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    card.style.background = `radial-gradient(circle 180px at ${x}px ${y}px, rgba(0,212,255,0.08), transparent), rgba(11,17,32,0.6)`;
-  });
-  card.addEventListener('mouseleave', () => { card.style.background = ''; });
-});
-
-// SORT SELECT
-(function() {
-  const grid = document.querySelector('.project-grid');
-  const cards = Array.from(grid.querySelectorAll('.project'));
-  const sortSelect = document.getElementById('sortSelect');
-
-  sortSelect.addEventListener('change', () => {
-    const sortVal = sortSelect.value;
-    if (sortVal === 'accuracy') {
-      cards.sort((a, b) => parseInt(b.dataset.accuracy) - parseInt(a.dataset.accuracy));
-    } else if (sortVal === 'complexity') {
-      cards.sort((a, b) => parseInt(b.dataset.complexity) - parseInt(a.dataset.complexity));
-    }
-    cards.forEach(card => grid.appendChild(card));
-  });
-})();
-
-// COMPARISON TABLE SORT
-(function() {
-  const table = document.getElementById('cmpTable');
-  if (!table) return;
-  const headers = table.querySelectorAll('.cmp-sortable');
-  const tbody = table.querySelector('tbody');
-  let sortCol = null;
-  let sortAsc = true;
-
-  headers.forEach(th => {
-    th.addEventListener('click', () => {
-      const col = th.dataset.col;
-      if (sortCol === col) { sortAsc = !sortAsc; } else { sortCol = col; sortAsc = true; }
-      headers.forEach(h => h.classList.remove('cmp-sorted'));
-      th.classList.add('cmp-sorted');
-      th.querySelector('.cmp-arrow').innerHTML = sortAsc ? '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg>' : '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>';
-      headers.forEach(h => { if (h !== th) h.querySelector('.cmp-arrow').innerHTML = '<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg>'; });
-
-      const rows = Array.from(tbody.querySelectorAll('tr'));
-      const colIndex = Array.from(th.parentElement.children).indexOf(th);
-
-      rows.sort((a, b) => {
-        let aVal = a.children[colIndex].dataset.value || a.children[colIndex].textContent.trim();
-        let bVal = b.children[colIndex].dataset.value || b.children[colIndex].textContent.trim();
-        const aNum = parseFloat(aVal);
-        const bNum = parseFloat(bVal);
-        if (!isNaN(aNum) && !isNaN(bNum)) {
-          return sortAsc ? aNum - bNum : bNum - aNum;
-        }
-        return sortAsc ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-      });
-      rows.forEach(row => tbody.appendChild(row));
+  // CARD HOVER: glow follows the pointer (colours in CSS) + subtle 3D tilt
+  document.querySelectorAll('.project').forEach(function (card) {
+    var maxTilt = card.classList.contains('featured') ? 2 : 6;
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left, y = e.clientY - rect.top;
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+      if (!reduceMotion && card.classList.contains('visible')) {
+        card.style.transform = 'translateY(-4px) perspective(800px) rotateX(' + ((0.5 - y / rect.height) * maxTilt).toFixed(2) + 'deg) rotateY(' + ((x / rect.width - 0.5) * maxTilt).toFixed(2) + 'deg)';
+      }
     });
-  });
-})();
-
-// VIEW TRANSITIONS
-(function() {
-  if (!document.startViewTransition) return;
-  document.querySelectorAll('a[href$=".html"]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const href = link.getAttribute('href');
-      if (!href || href.startsWith('http') || href.startsWith('#')) return;
-      e.preventDefault();
-      document.startViewTransition(() => { window.location.href = href; });
-    });
+    card.addEventListener('mouseleave', function () { card.style.transform = ''; });
   });
 })();
 </script>
