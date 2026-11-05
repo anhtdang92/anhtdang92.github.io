@@ -170,21 +170,21 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
 <a href="#content" class="skip-link">Skip to content</a>
 <div class="scroll-progress" aria-hidden="true"></div>
-<button class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 15l-6-6-6 6"/></svg></button>
+<button type="button" class="back-to-top" aria-label="Back to top"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M18 15l-6-6-6 6"/></svg></button>
 
 <nav role="navigation" aria-label="Main navigation">
   <a href="index.html" class="brand"><img src="logo-nav.png" alt="Anh Dang — home" width="42" height="24"></a>
-  <button class="nav-toggle" aria-label="Toggle navigation"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
+  <button type="button" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" focusable="false"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg></button>
   <a href="index.html">Home</a>
   <a href="projects.html">Projects</a>
   <a href="skills.html">Skills & AI</a>
-  <a href="experience.html" class="active">Experience</a>
-  <button class="theme-toggle" aria-label="Toggle theme"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
+  <a href="experience.html" class="active" aria-current="page">Experience</a>
+  <button type="button" class="theme-toggle" aria-label="Switch to light mode"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" focusable="false"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/></svg></button>
 </nav>
 
 <div class="mesh-gradient" aria-hidden="true"><div class="mg1"></div><div class="mg2"></div><div class="mg3"></div></div>
 <svg class="noise-overlay" aria-hidden="true"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(#noiseFilter)"/></svg>
-<div class="ambient">
+<div class="ambient" aria-hidden="true">
   <span style="width:3px;height:3px;background:var(--purple);opacity:0.1;left:15%;top:25%;animation-duration:7s"></span>
   <span class="drift" style="width:2px;height:2px;background:var(--green);opacity:0.08;left:75%;top:30%;animation-duration:11s"></span>
   <span style="width:3px;height:3px;background:var(--cyan);opacity:0.06;left:45%;top:55%;animation-duration:9s;animation-delay:2s"></span>
@@ -195,7 +195,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
   <!-- EXPERIENCE -->
 
-  <section id="experience" aria-labelledby="experience-title" style="padding-top:120px">
+  <section id="experience" class="page-top" aria-labelledby="experience-title">
     <h1 class="sr-only">Experience & Education</h1>
     <div class="reveal"><div class="section-label">Experience</div></div>
     <div class="reveal reveal-d1"><h2 id="experience-title" class="section-title">Where I've worked</h2></div>
@@ -203,54 +203,54 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
 <div class="timeline">
   <div class="tl-glow" aria-hidden="true"></div>
-  <div class="tl now reveal">
-    <div class="role">Data Analyst II</div>
+  <div class="tl hover-glow now reveal">
+    <h3 class="role">Data Analyst II</h3>
     <div class="org">$2.9B Financial Institution &middot; 176K members &middot; Houston, TX</div>
     <div class="date">Apr 2026 – Present</div>
     <div class="desc">Promoted to lead advanced analytics initiatives. Continuing ML platform integration, enterprise ETL development, and cross-database architecture work at expanded scope.</div>
     <div class="highlights"><span>Python</span><span>T-SQL</span><span>ML Integration</span><span>ETL Pipelines</span><span>Power BI</span><span>Risk Analytics</span></div>
   </div>
 
-  <div class="tl reveal reveal-d2">
-    <div class="role">Data Analyst I</div>
+  <div class="tl hover-glow reveal reveal-d2">
+    <h3 class="role">Data Analyst I</h3>
     <div class="org">$2.9B Financial Institution &middot; Houston, TX</div>
     <div class="date">Apr 2023 – Apr 2026</div>
     <div class="desc">Integrated ML credit decisioning platform processing 3M+ decisions/month. Built enterprise ETL pipeline for Visa DPS fraud risk factor ingestion. Designed cross-database staging architecture reducing query times by 90%+. Built executive dashboards driving data-informed strategy across 41-county operation.</div>
     <div class="highlights"><span>Python</span><span>T-SQL</span><span>ML Integration</span><span>ETL Pipelines</span><span>Power BI</span><span>Risk Analytics</span></div>
   </div>
 
-  <div class="tl reveal reveal-d3">
-    <div class="role">IT Data Analyst</div>
+  <div class="tl hover-glow reveal reveal-d3">
+    <h3 class="role">IT Data Analyst</h3>
     <div class="org">$2.9B Financial Institution</div>
     <div class="date">Aug 2021 – Apr 2023</div>
     <div class="desc">Administered SQL Server infrastructure across 19 branches. Built automated eligibility engine for financial products. Created Tableau dashboards for business stakeholder decision-making.</div>
     <div class="highlights"><span>SQL Server</span><span>Tableau</span><span>Azure Data Studio</span></div>
   </div>
 
-  <div class="tl reveal reveal-d4">
-    <div class="role">Data Analyst Intern</div>
+  <div class="tl hover-glow reveal reveal-d4">
+    <h3 class="role">Data Analyst Intern</h3>
     <div class="org">$2.9B Financial Institution</div>
     <div class="date">Jun – Aug 2021</div>
     <div class="desc">Built Python/Pandas data pipelines for marketing campaign analytics. Created member segmentation dashboards that informed acquisition targeting strategy.</div>
   </div>
 
-  <div class="tl reveal reveal-d5">
-    <div class="role">Web Developer Intern</div>
+  <div class="tl hover-glow reveal reveal-d5">
+    <h3 class="role">Web Developer Intern</h3>
     <div class="org">Elle Investments Inc &middot; New York, NY</div>
     <div class="date">Jun – Aug 2020</div>
     <div class="desc">Built SQL-backed web applications. Developed Python web scraping pipelines with Beautiful Soup. Automated data export workflows.</div>
   </div>
 
-  <div class="tl now reveal reveal-d6">
-    <div class="role">S6 OIC — Signal Operations Officer (1LT)</div>
+  <div class="tl hover-glow now reveal reveal-d6">
+    <h3 class="role">S6 OIC — Signal Operations Officer (1LT)</h3>
     <div class="org">U.S. Army Reserve &middot; 1181st DDSB</div>
     <div class="date">May 2025 – Present &middot; Houston, TX</div>
     <div class="desc">Lead all communications, cybersecurity, and IT operations for 60+ soldier unit. Manage COMSEC, classified network infrastructure, and signal architecture. Active Secret clearance.</div>
     <div class="highlights"><span>Secret Clearance</span><span>Cybersecurity</span><span>Network Ops</span><span>60+ Soldiers</span></div>
   </div>
 
-  <div class="tl reveal">
-    <div class="role">Signal Officer (2LT)</div>
+  <div class="tl hover-glow reveal">
+    <h3 class="role">Signal Officer (2LT)</h3>
     <div class="org">U.S. Army Reserve</div>
     <div class="date">Jul 2022 – May 2025</div>
     <div class="desc">Led 60+ soldiers in communications operations. OIC for live-fire qualifications — planned, resourced, and executed with zero safety incidents across multiple exercises.</div>
@@ -267,8 +267,8 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="reveal reveal-d1"><h2 id="education-title" class="section-title">Credentials</h2></div>
 
 
-<div class="edu-card reveal reveal-d1">
-  <div class="degree">M.S. Computer Science — Machine Learning</div>
+<div class="edu-card hover-glow reveal reveal-d1">
+  <h3 class="degree">M.S. Computer Science — Machine Learning</h3>
   <div class="school">Georgia Institute of Technology (OMSCS)</div>
   <span class="status ip">IN PROGRESS</span>
   <div class="omscs-progress">
@@ -285,29 +285,29 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="omscs-details">
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Courses</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="60"></div></div>
+        <div class="omscs-bar-track" aria-hidden="true"><div class="omscs-bar-fill" style="background:var(--green)" data-ow="60"></div></div>
         <span class="omscs-bar-val">6 / 10</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Credits</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="60"></div></div>
+        <div class="omscs-bar-track" aria-hidden="true"><div class="omscs-bar-fill" style="background:var(--cyan)" data-ow="60"></div></div>
         <span class="omscs-bar-val">18 / 30</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">GPA</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--purple)" data-ow="82"></div></div>
+        <div class="omscs-bar-track" aria-hidden="true"><div class="omscs-bar-fill" style="background:var(--purple)" data-ow="82"></div></div>
         <span class="omscs-bar-val">3.3 / 4.0</span>
       </div>
       <div class="omscs-bar-row">
         <span class="omscs-bar-label">Semesters</span>
-        <div class="omscs-bar-track"><div class="omscs-bar-fill" style="background:var(--gold)" data-ow="75"></div></div>
+        <div class="omscs-bar-track" aria-hidden="true"><div class="omscs-bar-fill" style="background:var(--gold)" data-ow="75"></div></div>
         <span class="omscs-bar-val">6 / 8</span>
       </div>
     </div>
   </div>
 </div>
-<div class="edu-card reveal reveal-d2">
-  <div class="degree">B.S. Computer Science</div>
+<div class="edu-card hover-glow reveal reveal-d2">
+  <h3 class="degree">B.S. Computer Science</h3>
   <div class="school">University of Houston-Downtown</div>
   <div class="detail">Focus: Artificial Intelligence, Data Structures, Algorithms, Cryptography</div>
   <span class="status done">COMPLETED</span>
@@ -316,42 +316,42 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 <div class="reveal reveal-d3" style="margin-top:24px">
   <div class="section-label">OMSCS Coursework</div>
   <div class="course-grid">
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CSE 6242</div>
       <div class="ci-name">Data & Visual Analytics</div>
       <div class="ci-grade a">Grade: A</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 7646</div>
       <div class="ci-name">ML for Trading</div>
-      <div class="ci-grade b">Grade: C</div>
+      <div class="ci-grade c">Grade: C</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 7637</div>
       <div class="ci-name">Knowledge-Based AI</div>
       <div class="ci-grade b">Grade: B</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 7280</div>
       <div class="ci-name">Network Science</div>
       <div class="ci-grade b">Grade: B</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 6603</div>
       <div class="ci-name">AI, Ethics & Society</div>
       <div class="ci-grade ip">In Progress</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 8803</div>
       <div class="ci-name">Computer Graphics & AI</div>
       <div class="ci-grade ip">In Progress</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 7641</div>
       <div class="ci-name">Machine Learning</div>
       <div class="ci-grade upcoming">Upcoming</div>
     </div>
-    <div class="course-item">
+    <div class="course-item hover-glow">
       <div class="ci-code">CS 6515</div>
       <div class="ci-name">Graduate Algorithms</div>
       <div class="ci-grade upcoming">Upcoming</div>
@@ -360,13 +360,15 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 </div>
 
 <!-- OMSCS PROGRESSION CHART -->
-<div class="omscs-timeline reveal reveal-d4" style="position:relative">
+<div class="omscs-timeline reveal reveal-d4">
   <div class="omscs-timeline-title">
     <span>GPA & Credits — Semester by Semester</span>
     <span class="otl-badge">Projected: Spring 2027 graduation</span>
   </div>
-  <canvas id="omscsChart" width="700" height="200" style="width:100%;height:auto" role="img" aria-label="OMSCS GPA and credits progression chart showing semester-by-semester academic performance"></canvas>
-  <div class="omscs-chart-tooltip" id="omscsTooltip"></div>
+  <canvas id="omscsChart" class="omscs-chart" role="img" aria-label="Chart of OMSCS GPA and cumulative credits by semester. The same data is listed in the table that follows."></canvas>
+  <div class="omscs-chart-tooltip" id="omscsTooltip" aria-hidden="true"></div>
+  <p class="omscs-chart-hint" aria-hidden="true">Tap or hover a semester for details.</p>
+  <table class="sr-only" id="omscsTable"><caption>OMSCS GPA and cumulative credits by semester</caption></table>
 </div>
 
 
@@ -385,22 +387,22 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
   <h3>Building production ML systems that drive decisions</h3>
   <p>Currently a Data Analyst II building toward ML Engineering — advancing through Georgia Tech's OMSCS program while building end-to-end ML projects. Targeting ML Engineer, Data Scientist, or MLE roles.</p>
   <div class="next-items">
-    <div class="next-item">
+    <div class="next-item hover-glow">
       <div class="ni-label">OMSCS</div>
       <div class="ni-value">Georgia Tech MSCS (In Progress)</div>
       <div class="ni-date">6 of 10 courses completed</div>
     </div>
-    <div class="next-item">
+    <div class="next-item hover-glow">
       <div class="ni-label">Completed</div>
       <div class="ni-value">DVA · ML4T · KBAI · NetSci · AIES · CG&AI</div>
       <div class="ni-date">Data & Visual Analytics · ML for Trading · Knowledge-Based AI · Network Science · AI Ethics & Society · Computer Graphics & AI</div>
     </div>
-    <div class="next-item">
+    <div class="next-item hover-glow">
       <div class="ni-label">Target Roles</div>
       <div class="ni-value">ML Engineer &middot; MLE &middot; Data Scientist</div>
       <div class="ni-date">IC or Tech Lead &middot; Remote/Hybrid/Onsite</div>
     </div>
-    <div class="next-item">
+    <div class="next-item hover-glow">
       <div class="ni-label">Top Sectors</div>
       <div class="ni-value">Defense &middot; Energy &middot; Financial Services</div>
       <div class="ni-date">Secret Clearance &middot; Houston, TX</div>
@@ -415,8 +417,8 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
 <footer class="footer" role="contentinfo">
   <div class="footer-links">
-    <a href="https://github.com/anhtdang92">GitHub</a>
-    <a href="https://linkedin.com/in/anh-dang92">LinkedIn</a>
+    <a href="https://github.com/anhtdang92" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/anh-dang92" rel="noopener">LinkedIn</a>
     <a href="mailto:anhtdang92@gmail.com">Email</a>
   </div>
   <div class="footer-text">Built with HTML, CSS, and too much caffeine.</div>
