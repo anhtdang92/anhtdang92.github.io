@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="author" content="Anh Dang">
 <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
-<title>Skills & AI — Anh Dang</title>
-<meta name="description" content="Technical skills, AI tools, and automation expertise of Anh Dang — from Python and ML frameworks to local LLM inference on RTX 4090.">
+<title>Skills &amp; AI — Anh Dang</title>
+<meta name="description" content="Anh Dang's tech stack (Python, T-SQL, scikit-learn, PyTorch, SQL Server, Power BI) and the AI tools he uses day to day, including local models on an RTX 4090.">
 <meta property="og:title" content="Skills & AI — Anh Dang">
-<meta property="og:description" content="Full tech stack, AI model expertise, and automation tools.">
+<meta property="og:description" content="Tech stack and day-to-day AI tools: languages, ML libraries, data tools, AI coding assistants, and local model inference on an RTX 4090.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io/skills.html">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Skills & AI — Anh Dang">
-<meta name="twitter:description" content="Full tech stack, AI model expertise, and automation tools.">
+<meta name="twitter:description" content="Tech stack and day-to-day AI tools: languages, ML libraries, data tools, AI coding assistants, and local model inference on an RTX 4090.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
 <meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
 <meta name="theme-color" content="#04070d">
@@ -34,108 +34,46 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/shared.css">
 <style>
-[hidden]{display:none!important}
 .page-top{padding-top:120px}
 .section-desc{margin-bottom:24px}
+.section-desc a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 
-/* LEVEL LEGEND */
-.lvl-legend{list-style:none;display:flex;flex-wrap:wrap;gap:6px 18px;margin:-12px 0 8px;font-family:var(--mono);font-size:13px;color:var(--muted)}
-.lvl-legend li{display:flex;align-items:center;gap:8px}
-.lvl-swatch{width:18px;height:6px;border-radius:3px;display:inline-block}
-.lvl-swatch.s{background:var(--green)}.lvl-swatch.g{background:var(--cyan)}.lvl-swatch.l{background:var(--orange)}
+/* SKILL CARDS (tech stack + AI tools share one card style) */
+.sk-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.sk-card{position:relative;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);overflow:hidden;transition:border-color 0.3s ease,box-shadow 0.3s ease,opacity 0.6s ease,transform 0.6s ease}
+.sk-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--green));opacity:0.55}
+.sk-card.ai::before{background:linear-gradient(90deg,var(--purple),var(--cyan))}
+.sk-title{font-size:17px;font-weight:700;color:var(--text);line-height:1.35}
+.sk-idx{display:inline-block;margin-right:10px;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:1px;color:var(--cyan);vertical-align:1px}
+.sk-card.ai .sk-idx{color:var(--purple)}
+.sk-hw{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);white-space:nowrap}
+.sk-note{font-size:14px;line-height:1.5;color:var(--muted);margin-top:4px}
+.chips{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.chips li{font-family:var(--mono);font-size:13px;line-height:1.4;padding:5px 11px;border-radius:6px;background:var(--inner);border:1px solid var(--border);color:var(--text)}
 
-/* RADAR CHART */
-.radar-wrap{display:flex;gap:24px;align-items:center;margin:24px 0}
-.radar-chart{flex:0 0 280px;width:280px;height:280px;position:relative}
-.radar-chart canvas{display:block;width:100%;height:100%;cursor:pointer;touch-action:manipulation}
-.radar-labels{flex:1;min-width:0;display:grid;gap:2px;list-style:none}
-.radar-label-item{display:grid;grid-template-columns:10px 10.5em minmax(32px,1fr) 3.2em;align-items:center;gap:10px;width:100%;min-height:40px;padding:6px 8px;border:1px solid transparent;border-radius:8px;background:none;font-family:var(--mono);font-size:13px;color:var(--text);text-align:left;cursor:pointer;transition:background-color 0.2s ease,border-color 0.2s ease}
-.radar-label-item:hover{background:rgba(0,212,255,0.06)}
-.radar-label-item[aria-expanded="true"]{background:rgba(0,212,255,0.1);border-color:rgba(0,212,255,0.3)}
-.radar-label-dot{width:8px;height:8px;border-radius:50%}
-.radar-label-bar{height:4px;background:var(--inner);border-radius:2px;overflow:hidden;position:relative}
-.radar-label-fill{display:block;height:100%;border-radius:2px;width:0;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
-.radar-label-pct{font-size:13px;color:var(--muted);text-align:right}
-.radar-hint{font-family:var(--mono);font-size:12px;color:var(--dim);margin:-8px 0 16px}
-.radar-tooltip{position:absolute;background:var(--card);border:1px solid var(--cyan);border-radius:8px;padding:8px 12px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.2s ease;z-index:10;white-space:normal;width:max-content;max-width:240px;box-shadow:0 4px 20px rgba(0,212,255,0.15)}
-.radar-tooltip.show{opacity:1}
-.radar-tooltip strong{color:var(--cyan)}
-.radar-tooltip span{color:var(--muted)}
-
-/* RADAR DRILLDOWN */
-.radar-drilldown{margin:8px 0 28px;animation:ddIn 0.35s cubic-bezier(0.23,1,0.32,1) both}
-@keyframes ddIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
-.radar-drilldown-inner{padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:border-color 0.3s}
-.dd-title{font-family:var(--mono);font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.dd-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.dd-bars{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;list-style:none}
-.dd-bar-item{display:grid;grid-template-columns:minmax(0,9.5em) minmax(40px,1fr) 3em;align-items:center;gap:10px}
-.dd-bar-label{font-family:var(--mono);font-size:13px;color:var(--text)}
-.dd-bar-track{height:8px;background:var(--inner);border-radius:4px;overflow:hidden;border:1px solid var(--border);position:relative}
-.dd-bar-pct{font-family:var(--mono);font-size:13px;color:var(--muted);text-align:right}
-[data-theme="light"] .radar-drilldown-inner{background:rgba(255,255,255,0.55)}
-
-/* SKILL BARS */
-.skill-bar-row{margin-bottom:24px}
-.skill-bar-row .cat{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:10px}
-.skill-bars-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 28px;list-style:none}
-.skill-bar-item{display:grid;grid-template-columns:minmax(0,9.6em) minmax(40px,1fr) 4.9em;align-items:center;gap:10px}
-.skill-bar-label{font-family:var(--mono);font-size:13px;color:var(--text)}
-.skill-bar-track{display:block;height:6px;background:var(--inner);border-radius:3px;overflow:hidden;border:1px solid var(--border)}
-.skill-bar-level{font-family:var(--mono);font-size:12px;font-weight:600;text-align:right}
-.skill-bar-level.s{color:var(--green)}.skill-bar-level.g{color:var(--cyan)}.skill-bar-level.l{color:var(--orange)}
-.skill-bar-fill,.dd-bar-fill{display:block;height:100%;width:0;border-radius:3px;position:relative;overflow:hidden;transition:width 1.2s cubic-bezier(0.23,1,0.32,1)}
-.dd-bar-fill{transition-duration:0.8s}
-/* shimmer: transform only, two passes after the bar fills, then stops */
-.skill-bar-fill::after,.dd-bar-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transform:translateX(-100%);animation:barShimmer 1.6s ease 1.2s 2 both}
-@keyframes barShimmer{from{transform:translateX(-100%)}to{transform:translateX(100%)}}
-.fill-s{background:linear-gradient(90deg,var(--green),#33ff99)}
-.fill-g{background:linear-gradient(90deg,var(--cyan),#66e0ff)}
-.fill-l{background:linear-gradient(90deg,var(--orange),#ffaa33)}
-[data-theme="light"] .fill-s{background:var(--green)}
-[data-theme="light"] .fill-g{background:var(--cyan)}
-[data-theme="light"] .fill-l{background:var(--orange)}
-
-/* AI & AUTOMATION */
-.ai-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
-.ai-card{padding:16px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:12px;border:1px solid var(--border);transition:border-color 0.4s ease,transform 0.4s cubic-bezier(0.23,1,0.32,1),box-shadow 0.4s ease,opacity 0.6s ease}
-.ai-card .ai-tier{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;color:var(--purple);text-transform:uppercase;margin-bottom:6px}
-.ai-card .ai-title{font-size:17px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.35}
-.ai-card .ai-list{display:flex;flex-wrap:wrap;gap:6px}
-.ai-card .ai-list span{font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:4px;background:var(--inner);color:var(--text);border:1px solid var(--border);transition:border-color 0.3s}
+/* CERTIFICATION */
+.cert{display:flex;align-items:center;gap:14px;margin-top:14px;padding:16px 20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border)}
+.cert-icon{flex:0 0 auto;width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--green);background:rgba(0,255,135,0.08);border:1px solid rgba(0,255,135,0.25)}
+.cert-body{min-width:0}
+.cert-label{font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:2px}
+.cert-link{display:inline-flex;align-items:center;gap:6px;min-height:32px;font-size:16px;font-weight:700;color:var(--text);text-decoration:underline;text-decoration-color:rgba(0,212,255,0.5);text-decoration-thickness:1px;text-underline-offset:4px}
+.cert-link svg{flex-shrink:0;color:var(--cyan)}
+.cert-link:hover{color:var(--cyan)}
 
 /* GPU CARD */
-.gpu-card{margin:20px 0;padding:18px 20px;background:linear-gradient(135deg,rgba(224,64,251,0.08),rgba(0,212,255,0.06),rgba(0,255,135,0.04));border-radius:14px;border:1px solid var(--purple);position:relative;overflow:hidden}
+.gpu-card{margin-top:14px;padding:20px;background:linear-gradient(135deg,rgba(224,64,251,0.07),rgba(0,212,255,0.05),rgba(0,255,135,0.03));border-radius:14px;border:1px solid rgba(224,64,251,0.4);position:relative;overflow:hidden}
 .gpu-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--cyan),var(--green));background-size:200% 100%;animation:gpuBorder 3s ease 2}
 @keyframes gpuBorder{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
-.gpu-card .gpu-title{font-size:18px;font-weight:800;color:#fff;margin-bottom:4px;line-height:1.35}
-.gpu-card .gpu-specs{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.gpu-card .gpu-specs span{font-family:var(--mono);font-size:12px;padding:3px 10px;border-radius:6px;background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.2)}
-.gpu-card .gpu-desc{font-size:15px;color:var(--muted);margin-top:6px}
+.gpu-kicker{font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--purple);margin-bottom:4px}
+.gpu-title{font-size:18px;font-weight:800;color:var(--text);line-height:1.35}
+.gpu-desc{font-size:15px;color:var(--muted);margin-top:6px;max-width:620px}
+.gpu-specs{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.gpu-specs li{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:6px;background:rgba(0,255,135,0.1);color:var(--green);border:1px solid rgba(0,255,135,0.2)}
 
-/* AI WORKFLOW (ordered steps: one row with arrows on wide screens, numbered grid below) */
-.ai-workflow{margin:24px 0;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border)}
-.ai-workflow .wf-title{font-family:var(--mono);font-size:13px;font-weight:500;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
-.wf-flow{list-style:none;display:flex;align-items:center;justify-content:center;flex-wrap:nowrap;gap:0}
-.wf-flow li{display:flex;align-items:center}
-.wf-flow li+li::before{content:'\2192';content:'\2192' / '';color:var(--green);font-size:16px;padding:0 8px}
-.wf-step{display:flex;align-items:center;gap:8px;padding:8px 12px;background:var(--inner);border-radius:8px;border:1px solid var(--border);font-family:var(--mono);font-size:13px;color:var(--text);white-space:nowrap;transition:border-color 0.3s ease,color 0.3s ease,transform 0.3s ease,box-shadow 0.3s ease}
-.wf-num{font-size:12px;font-weight:700;color:var(--green)}
-
-/* TREEMAP */
-.treemap-wrap{position:relative;margin:24px 0 8px;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.treemap-canvas{display:block;width:100%;height:380px;cursor:pointer;touch-action:manipulation}
-.treemap-tooltip{position:absolute;background:var(--card);border:1px solid var(--cyan);border-radius:8px;padding:10px 14px;font-family:var(--mono);font-size:12px;line-height:1.5;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.2s ease;z-index:10;white-space:nowrap;box-shadow:0 4px 20px rgba(0,212,255,0.15)}
-.treemap-tooltip.show{opacity:1}
-.treemap-tooltip .tt-cat{color:var(--muted)}
-.treemap-tooltip .tt-val{color:var(--text);font-weight:700}
-
-/* HOVER (pointer devices only; the glow centre comes from --mx/--my set in JS) */
+/* HOVER (pointer devices only) */
 @media(hover:hover){
-.ai-card:hover{border-color:var(--purple);transform:translateY(-3px);box-shadow:0 12px 35px rgba(224,64,251,0.1)}
-.ai-card:hover .ai-list span{border-color:rgba(224,64,251,0.25)}
-.wf-step:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px);box-shadow:0 4px 15px rgba(0,212,255,0.1)}
-.hover-glow:hover{background-image:radial-gradient(circle 120px at var(--mx,50%) var(--my,50%),rgba(0,212,255,0.07),transparent 70%)}
+.sk-card:hover{border-color:rgba(0,212,255,0.35);box-shadow:0 10px 30px rgba(0,212,255,0.06)}
+.sk-card.ai:hover{border-color:rgba(224,64,251,0.4);box-shadow:0 10px 30px rgba(224,64,251,0.07)}
 }
 
 /* NEON GLOW ON SECTION TITLES */
@@ -143,40 +81,19 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 [data-theme="light"] h2.section-title{text-shadow:none}
 
 /* LIGHT THEME */
-[data-theme="light"] .ai-card,[data-theme="light"] .ai-workflow,[data-theme="light"] .treemap-wrap{background-color:rgba(255,255,255,0.55)}
-[data-theme="light"] .ai-card .ai-title,[data-theme="light"] .gpu-card .gpu-title{color:#1a1a2e}
-[data-theme="light"] .gpu-card{background:linear-gradient(135deg,rgba(155,48,255,0.06),rgba(0,136,170,0.05),rgba(0,153,77,0.04))}
+[data-theme="light"] .sk-card,[data-theme="light"] .cert{background-color:rgba(255,255,255,0.7)}
+[data-theme="light"] .cert-icon{background:rgba(0,122,69,0.08);border-color:rgba(0,122,69,0.3)}
+[data-theme="light"] .cert-link{text-decoration-color:rgba(0,111,153,0.5)}
+[data-theme="light"] .gpu-card{background:linear-gradient(135deg,rgba(126,43,208,0.06),rgba(0,111,153,0.05),rgba(0,122,69,0.04));border-color:rgba(126,43,208,0.35)}
+[data-theme="light"] .gpu-specs li{background:rgba(0,122,69,0.08);border-color:rgba(0,122,69,0.25)}
 
-/* TABLET */
-@media(max-width:860px){
-.wf-flow{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.wf-flow li+li::before{content:none}
-.wf-step{width:100%}
-}
 /* PHONES */
 @media(max-width:600px){
 .page-top{padding-top:88px}
-.lvl-legend{margin-top:-8px}
-.radar-wrap{flex-direction:column;align-items:stretch;gap:12px}
-.radar-chart{flex:none;width:min(100%,300px);height:auto;aspect-ratio:1/1;margin:0 auto}
-.radar-label-item{grid-template-columns:10px minmax(0,9.6em) minmax(32px,1fr) 3em;min-height:44px}
-.dd-bars{grid-template-columns:1fr}
-.radar-drilldown-inner{padding:16px}
-.skill-bars-grid{grid-template-columns:1fr;gap:10px}
-.ai-grid{grid-template-columns:1fr}
-.ai-workflow{padding:16px}
-.wf-flow{grid-template-columns:repeat(2,minmax(0,1fr))}
-.wf-step{padding:10px 12px;min-height:44px}
-.gpu-card{padding:16px}
-}
-@media(max-width:360px){
-.skill-bar-item{grid-template-columns:minmax(0,8.6em) minmax(32px,1fr) 4.6em;gap:8px}
-}
-
-/* REDUCED MOTION */
-@media(prefers-reduced-motion:reduce){
-.skill-bar-fill::after,.dd-bar-fill::after,.gpu-card::before,.radar-drilldown{animation:none}
-.skill-bar-fill,.dd-bar-fill,.radar-label-fill{transition:none}
+.sk-grid{grid-template-columns:1fr;gap:12px}
+.sk-card,.gpu-card{padding:16px}
+.cert{padding:14px 16px;gap:12px}
+.cert-link{font-size:15px;min-height:44px}
 }
 </style>
 </head>
@@ -207,163 +124,96 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
 <main class="container" role="main" id="content">
 
-  <!-- SKILLS -->
+  <!-- TECH STACK -->
   <section id="skills" class="page-top" aria-labelledby="skills-title">
-    <h1 class="sr-only">Skills & AI</h1>
+    <h1 class="sr-only">Skills &amp; AI</h1>
     <div class="reveal"><div class="section-label">Skills</div></div>
     <div class="reveal reveal-d1"><h2 id="skills-title" class="section-title">Tech stack</h2></div>
-    <div class="reveal reveal-d2">
-      <p class="section-desc">Proficiency breakdown across core domains.</p>
-      <ul class="lvl-legend" aria-label="Proficiency levels">
-        <li><span class="lvl-swatch s" aria-hidden="true"></span>Strong</li>
-        <li><span class="lvl-swatch g" aria-hidden="true"></span>Growing</li>
-        <li><span class="lvl-swatch l" aria-hidden="true"></span>Learning</li>
-      </ul>
-    </div>
+    <div class="reveal reveal-d2"><p class="section-desc">The languages, libraries, and tools I work with, at work and in my <a href="projects.html">projects</a>.</p></div>
 
-    <!-- RADAR + LABELS -->
-    <div class="radar-wrap reveal reveal-d2">
-      <div class="radar-chart">
-        <canvas id="radarCanvas" role="img" aria-label="Radar chart of proficiency: Data Engineering 92%, ML / AI 85%, Python 90%, SQL / Data 95%, Cloud / MLOps 72%, Visualization 88%"></canvas>
+    <div class="sk-grid">
+      <div class="sk-card reveal reveal-d1">
+        <h3 class="sk-title" id="stack-lang"><span class="sk-idx" aria-hidden="true">01</span>Languages</h3>
+        <ul class="chips" aria-labelledby="stack-lang">
+          <li>Python</li><li>T-SQL</li><li>R</li><li>JavaScript</li>
+        </ul>
       </div>
-      <ul class="radar-labels" id="radarLabels">
-        <li><button type="button" class="radar-label-item" data-idx="0" aria-expanded="false" aria-controls="radarDrilldown"><span class="radar-label-dot" style="background:var(--green)" aria-hidden="true"></span><span class="radar-label-name">Data Engineering</span><span class="radar-label-bar" aria-hidden="true"><span class="radar-label-fill" style="background:var(--green)" data-w="92"></span></span><span class="radar-label-pct">92%</span></button></li>
-        <li><button type="button" class="radar-label-item" data-idx="1" aria-expanded="false" aria-controls="radarDrilldown"><span class="radar-label-dot" style="background:var(--cyan)" aria-hidden="true"></span><span class="radar-label-name">ML / AI</span><span class="radar-label-bar" aria-hidden="true"><span class="radar-label-fill" style="background:var(--cyan)" data-w="85"></span></span><span class="radar-label-pct">85%</span></button></li>
-        <li><button type="button" class="radar-label-item" data-idx="2" aria-expanded="false" aria-controls="radarDrilldown"><span class="radar-label-dot" style="background:var(--purple)" aria-hidden="true"></span><span class="radar-label-name">Python</span><span class="radar-label-bar" aria-hidden="true"><span class="radar-label-fill" style="background:var(--purple)" data-w="90"></span></span><span class="radar-label-pct">90%</span></button></li>
-        <li><button type="button" class="radar-label-item" data-idx="3" aria-expanded="false" aria-controls="radarDrilldown"><span class="radar-label-dot" style="background:var(--gold)" aria-hidden="true"></span><span class="radar-label-name">SQL / Data</span><span class="radar-label-bar" aria-hidden="true"><span class="radar-label-fill" style="background:var(--gold)" data-w="95"></span></span><span class="radar-label-pct">95%</span></button></li>
-        <li><button type="button" class="radar-label-item" data-idx="4" aria-expanded="false" aria-controls="radarDrilldown"><span class="radar-label-dot" style="background:var(--orange)" aria-hidden="true"></span><span class="radar-label-name">Cloud / MLOps</span><span class="radar-label-bar" aria-hidden="true"><span class="radar-label-fill" style="background:var(--orange)" data-w="72"></span></span><span class="radar-label-pct">72%</span></button></li>
-        <li><button type="button" class="radar-label-item" data-idx="5" aria-expanded="false" aria-controls="radarDrilldown"><span class="radar-label-dot" style="background:var(--red)" aria-hidden="true"></span><span class="radar-label-name">Visualization</span><span class="radar-label-bar" aria-hidden="true"><span class="radar-label-fill" style="background:var(--red)" data-w="88"></span></span><span class="radar-label-pct">88%</span></button></li>
-      </ul>
-    </div>
-
-    <p class="radar-hint">Select a domain to see the tools behind it.</p>
-
-    <!-- RADAR DRILLDOWN (opened by the domain buttons above) -->
-    <div class="radar-drilldown" id="radarDrilldown" role="region" aria-labelledby="ddName" hidden>
-      <div class="radar-drilldown-inner">
-        <h3 class="dd-title"><span class="dd-dot" aria-hidden="true"></span><span class="dd-name" id="ddName">Select a category</span></h3>
-        <ul class="dd-bars" id="ddBars"></ul>
+      <div class="sk-card reveal reveal-d2">
+        <h3 class="sk-title" id="stack-ml"><span class="sk-idx" aria-hidden="true">02</span>ML</h3>
+        <ul class="chips" aria-labelledby="stack-ml">
+          <li>scikit-learn</li><li>PyTorch</li><li>TensorFlow</li><li>XGBoost</li>
+        </ul>
+      </div>
+      <div class="sk-card reveal reveal-d3">
+        <h3 class="sk-title" id="stack-data"><span class="sk-idx" aria-hidden="true">03</span>Data</h3>
+        <ul class="chips" aria-labelledby="stack-data">
+          <li>SQL Server</li><li>Power BI</li><li>Tableau</li><li>Pandas</li><li>ETL</li>
+        </ul>
+      </div>
+      <div class="sk-card reveal reveal-d4">
+        <h3 class="sk-title" id="stack-tools"><span class="sk-idx" aria-hidden="true">04</span>Tools</h3>
+        <ul class="chips" aria-labelledby="stack-tools">
+          <li>Git</li><li>Docker</li><li>Azure</li>
+        </ul>
       </div>
     </div>
 
-    <!-- DETAILED SKILL BARS -->
-    <div class="reveal reveal-d3" id="skillBars">
-      <div class="skill-bar-row">
-        <h3 class="cat">Languages & Data</h3>
-        <ul class="skill-bars-grid">
-          <li class="skill-bar-item"><span class="skill-bar-label">Python</span><span class="skill-bar-track" role="meter" aria-label="Python" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92" aria-valuetext="92 out of 100"><span class="skill-bar-fill fill-s" data-w="92"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">T-SQL</span><span class="skill-bar-track" role="meter" aria-label="T-SQL" aria-valuemin="0" aria-valuemax="100" aria-valuenow="95" aria-valuetext="95 out of 100"><span class="skill-bar-fill fill-s" data-w="95"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Pandas</span><span class="skill-bar-track" role="meter" aria-label="Pandas" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" aria-valuetext="90 out of 100"><span class="skill-bar-fill fill-s" data-w="90"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">PySpark</span><span class="skill-bar-track" role="meter" aria-label="PySpark" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" aria-valuetext="70 out of 100"><span class="skill-bar-fill fill-g" data-w="70"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">JavaScript</span><span class="skill-bar-track" role="meter" aria-label="JavaScript" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68" aria-valuetext="68 out of 100"><span class="skill-bar-fill fill-g" data-w="68"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">R</span><span class="skill-bar-track" role="meter" aria-label="R" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55" aria-valuetext="55 out of 100"><span class="skill-bar-fill fill-g" data-w="55"></span></span><span class="skill-bar-level g">Growing</span></li>
-        </ul>
-      </div>
-      <div class="skill-bar-row">
-        <h3 class="cat">ML & AI Frameworks</h3>
-        <ul class="skill-bars-grid">
-          <li class="skill-bar-item"><span class="skill-bar-label">scikit-learn</span><span class="skill-bar-track" role="meter" aria-label="scikit-learn" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88" aria-valuetext="88 out of 100"><span class="skill-bar-fill fill-s" data-w="88"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">PyTorch</span><span class="skill-bar-track" role="meter" aria-label="PyTorch" aria-valuemin="0" aria-valuemax="100" aria-valuenow="78" aria-valuetext="78 out of 100"><span class="skill-bar-fill fill-g" data-w="78"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">TensorFlow</span><span class="skill-bar-track" role="meter" aria-label="TensorFlow" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72" aria-valuetext="72 out of 100"><span class="skill-bar-fill fill-g" data-w="72"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">XGBoost</span><span class="skill-bar-track" role="meter" aria-label="XGBoost" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" aria-valuetext="85 out of 100"><span class="skill-bar-fill fill-s" data-w="85"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">LangChain</span><span class="skill-bar-track" role="meter" aria-label="LangChain" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" aria-valuetext="75 out of 100"><span class="skill-bar-fill fill-g" data-w="75"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Hugging Face</span><span class="skill-bar-track" role="meter" aria-label="Hugging Face" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" aria-valuetext="70 out of 100"><span class="skill-bar-fill fill-g" data-w="70"></span></span><span class="skill-bar-level g">Growing</span></li>
-        </ul>
-      </div>
-      <div class="skill-bar-row">
-        <h3 class="cat">Data & Cloud</h3>
-        <ul class="skill-bars-grid">
-          <li class="skill-bar-item"><span class="skill-bar-label">SQL Server</span><span class="skill-bar-track" role="meter" aria-label="SQL Server" aria-valuemin="0" aria-valuemax="100" aria-valuenow="95" aria-valuetext="95 out of 100"><span class="skill-bar-fill fill-s" data-w="95"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Power BI</span><span class="skill-bar-track" role="meter" aria-label="Power BI" aria-valuemin="0" aria-valuemax="100" aria-valuenow="90" aria-valuetext="90 out of 100"><span class="skill-bar-fill fill-s" data-w="90"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Tableau</span><span class="skill-bar-track" role="meter" aria-label="Tableau" aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" aria-valuetext="85 out of 100"><span class="skill-bar-fill fill-s" data-w="85"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Azure</span><span class="skill-bar-track" role="meter" aria-label="Azure" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72" aria-valuetext="72 out of 100"><span class="skill-bar-fill fill-g" data-w="72"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Docker</span><span class="skill-bar-track" role="meter" aria-label="Docker" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68" aria-valuetext="68 out of 100"><span class="skill-bar-fill fill-g" data-w="68"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Git / GitHub</span><span class="skill-bar-track" role="meter" aria-label="Git / GitHub" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88" aria-valuetext="88 out of 100"><span class="skill-bar-fill fill-s" data-w="88"></span></span><span class="skill-bar-level s">Strong</span></li>
-        </ul>
-      </div>
-      <div class="skill-bar-row">
-        <h3 class="cat">Specializations</h3>
-        <ul class="skill-bars-grid">
-          <li class="skill-bar-item"><span class="skill-bar-label">ETL Pipelines</span><span class="skill-bar-track" role="meter" aria-label="ETL Pipelines" aria-valuemin="0" aria-valuemax="100" aria-valuenow="92" aria-valuetext="92 out of 100"><span class="skill-bar-fill fill-s" data-w="92"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Feature Eng.</span><span class="skill-bar-track" role="meter" aria-label="Feature Eng." aria-valuemin="0" aria-valuemax="100" aria-valuenow="85" aria-valuetext="85 out of 100"><span class="skill-bar-fill fill-s" data-w="85"></span></span><span class="skill-bar-level s">Strong</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">NLP / LLMs</span><span class="skill-bar-track" role="meter" aria-label="NLP / LLMs" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" aria-valuetext="75 out of 100"><span class="skill-bar-fill fill-g" data-w="75"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Computer Vision</span><span class="skill-bar-track" role="meter" aria-label="Computer Vision" aria-valuemin="0" aria-valuemax="100" aria-valuenow="70" aria-valuetext="70 out of 100"><span class="skill-bar-fill fill-g" data-w="70"></span></span><span class="skill-bar-level g">Growing</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">Reinforcement L.</span><span class="skill-bar-track" role="meter" aria-label="Reinforcement L." aria-valuemin="0" aria-valuemax="100" aria-valuenow="60" aria-valuetext="60 out of 100"><span class="skill-bar-fill fill-l" data-w="60"></span></span><span class="skill-bar-level l">Learning</span></li>
-          <li class="skill-bar-item"><span class="skill-bar-label">MLOps</span><span class="skill-bar-track" role="meter" aria-label="MLOps" aria-valuemin="0" aria-valuemax="100" aria-valuenow="65" aria-valuetext="65 out of 100"><span class="skill-bar-fill fill-l" data-w="65"></span></span><span class="skill-bar-level l">Learning</span></li>
-        </ul>
+    <!-- CERTIFICATION -->
+    <div class="cert reveal reveal-d2">
+      <span class="cert-icon" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span>
+      <div class="cert-body">
+        <h3 class="cert-label">Certification</h3>
+        <a class="cert-link" href="https://www.credly.com/badges/679bc8e4-d10e-4878-aa12-62e633c9736d/public_url" target="_blank" rel="noopener">CompTIA Security+ (Sep 2026)<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 17L17 7"/><path d="M8 7h9v9"/></svg><span class="sr-only"> (Credly badge, opens in a new tab)</span></a>
       </div>
     </div>
   </section>
 
-  <!-- AI & AUTOMATION -->
+  <!-- AI TOOLS -->
   <section id="ai" aria-labelledby="ai-title">
-    <div class="reveal"><div class="section-label">AI & Automation</div></div>
-    <div class="reveal reveal-d1"><h2 id="ai-title" class="section-title">AI-native workflow</h2></div>
-    <div class="reveal reveal-d2"><p class="section-desc">I don't just use AI — I run it locally, build with it daily, and integrate it across my entire stack. Every major model, every coding tool, every workflow automated.</p></div>
+    <div class="reveal"><div class="section-label">AI &amp; Automation</div></div>
+    <div class="reveal reveal-d1"><h2 id="ai-title" class="section-title">AI tools I use</h2></div>
+    <div class="reveal reveal-d2"><p class="section-desc">The AI tools I use day to day — for coding, research, and running models locally on my own GPU.</p></div>
 
-    <div class="ai-grid">
-      <div class="ai-card hover-glow reveal reveal-d1">
-        <div class="ai-tier">Tier 1 — Frontier Models</div>
-        <h3 class="ai-title">Foundation LLMs</h3>
-        <div class="ai-list">
-          <span>GPT-4o</span><span>GPT-4 Turbo</span><span>Claude 3.5/4</span><span>Gemini 2.0</span><span>DeepSeek-R1</span><span>Llama 3.1</span><span>Mistral</span><span>Qwen 2.5</span><span>Phi-4</span>
-        </div>
+    <div class="sk-grid">
+      <div class="sk-card ai reveal reveal-d1">
+        <h3 class="sk-title" id="ai-coding"><span class="sk-idx" aria-hidden="true">01</span>AI coding tools</h3>
+        <p class="sk-note">Writing, refactoring, and debugging code in the editor and terminal.</p>
+        <ul class="chips" aria-labelledby="ai-coding">
+          <li>Claude Code</li><li>GitHub Copilot</li><li>Cursor</li><li>Codex (CLI + ChatGPT)</li><li>Google Antigravity</li>
+        </ul>
       </div>
-      <div class="ai-card hover-glow reveal reveal-d2">
-        <div class="ai-tier">Tier 2 — Coding Tools</div>
-        <h3 class="ai-title">AI-Assisted Development</h3>
-        <div class="ai-list">
-          <span>Claude Code</span><span>GitHub Copilot</span><span>Cursor</span><span>Codex CLI</span><span>Aider</span><span>Continue</span><span>OpenHands</span><span>Cline</span>
-        </div>
+      <div class="sk-card ai reveal reveal-d2">
+        <h3 class="sk-title" id="ai-models"><span class="sk-idx" aria-hidden="true">02</span>Models &amp; assistants</h3>
+        <p class="sk-note">Research, writing, and working through problems.</p>
+        <ul class="chips" aria-labelledby="ai-models">
+          <li>Claude</li><li>ChatGPT</li><li>Gemini</li><li>Grok</li><li>Muse</li>
+        </ul>
       </div>
-      <div class="ai-card hover-glow reveal reveal-d3">
-        <div class="ai-tier">Tier 3 — Local Inference</div>
-        <h3 class="ai-title">Self-Hosted AI Stack</h3>
-        <div class="ai-list">
-          <span>LM Studio</span><span>Ollama</span><span>llama.cpp</span><span>vLLM</span><span>GGUF Quant</span><span>ExLlamaV2</span><span>text-gen-webui</span>
-        </div>
+      <div class="sk-card ai reveal reveal-d3">
+        <h3 class="sk-title" id="ai-local"><span class="sk-idx" aria-hidden="true">03</span>Local inference <span class="sk-hw">(RTX 4090)</span></h3>
+        <p class="sk-note">Running open-weight models on my own GPU.</p>
+        <ul class="chips" aria-labelledby="ai-local">
+          <li>Ollama</li><li>LM Studio</li><li>llama.cpp</li><li>Hugging Face Transformers</li>
+        </ul>
       </div>
-      <div class="ai-card hover-glow reveal reveal-d4">
-        <div class="ai-tier">Tier 4 — Automation</div>
-        <h3 class="ai-title">Workflow & Integration</h3>
-        <div class="ai-list">
-          <span>LangChain</span><span>LangGraph</span><span>RAG Pipelines</span><span>Embeddings</span><span>Vector DBs</span><span>n8n</span><span>Zapier</span><span>API Chains</span>
-        </div>
+      <div class="sk-card ai reveal reveal-d4">
+        <h3 class="sk-title" id="ai-auto"><span class="sk-idx" aria-hidden="true">04</span>Automation</h3>
+        <p class="sk-note">Connecting apps and automating routine steps.</p>
+        <ul class="chips" aria-labelledby="ai-auto">
+          <li>Zapier</li>
+        </ul>
       </div>
     </div>
 
     <!-- GPU CARD -->
-    <div class="gpu-card reveal reveal-d3">
-      <h3 class="gpu-title">RTX 4090 — Local AI Powerhouse</h3>
-      <div class="gpu-desc">Running 7B–33B parameter models locally with full GPU acceleration. No API costs, no latency, complete privacy.</div>
-      <div class="gpu-specs">
-        <span>24 GB VRAM</span><span>CUDA 12</span><span>16,384 cores</span><span>42 tok/s (33B)</span><span>82 tok/s (7B)</span>
-      </div>
+    <div class="gpu-card reveal reveal-d2">
+      <div class="gpu-kicker">Hardware</div>
+      <h3 class="gpu-title">NVIDIA GeForce RTX 4090</h3>
+      <p class="gpu-desc">My desktop GPU for local inference. It runs 7B–32B quantized models with Ollama, LM Studio, and llama.cpp.</p>
+      <ul class="gpu-specs" aria-label="GPU specifications">
+        <li>24 GB VRAM</li><li>CUDA</li><li>16,384 CUDA cores</li>
+      </ul>
     </div>
-
-    <!-- AI WORKFLOW DIAGRAM -->
-    <div class="ai-workflow reveal reveal-d4">
-      <h3 class="wf-title" id="wf-title">Typical AI workflow</h3>
-      <ol class="wf-flow" aria-labelledby="wf-title">
-        <li><span class="wf-step"><span class="wf-num" aria-hidden="true">01</span>Research</span></li>
-        <li><span class="wf-step"><span class="wf-num" aria-hidden="true">02</span>Prototype</span></li>
-        <li><span class="wf-step"><span class="wf-num" aria-hidden="true">03</span>Local LLM</span></li>
-        <li><span class="wf-step"><span class="wf-num" aria-hidden="true">04</span>Fine-tune</span></li>
-        <li><span class="wf-step"><span class="wf-num" aria-hidden="true">05</span>Deploy</span></li>
-        <li><span class="wf-step"><span class="wf-num" aria-hidden="true">06</span>Monitor</span></li>
-      </ol>
-    </div>
-  </section>
-
-  <!-- TECH USAGE TREEMAP -->
-  <section id="treemap" aria-labelledby="treemap-title">
-    <div class="reveal"><div class="section-label">Technology Usage</div></div>
-    <div class="reveal reveal-d1"><h2 id="treemap-title" class="section-title">Tech treemap</h2></div>
-    <div class="reveal reveal-d2"><p class="section-desc">Technology proficiency visualized by category weight and individual tool mastery. Hover or tap a tile for details.</p></div>
-    <div class="treemap-wrap reveal reveal-d3">
-      <canvas id="treemapCanvas" class="treemap-canvas" role="img" aria-label="Treemap of technology usage by category weight and tool mastery. The same data is listed after the chart."></canvas>
-    </div>
-    <div class="sr-only" id="treemapData"></div>
   </section>
 
 </main>
@@ -379,428 +229,6 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 </footer>
 
 <script src="js/shared.js"></script>
-<script>
-// Page-specific JS (theme, nav, reveal, scroll UI live in js/shared.js)
-(function () {
-  var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
-  function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
-  function withAlpha(hex, a) {
-    var h = hex.replace('#', '');
-    if (h.length === 3) h = h.replace(/./g, function (c) { return c + c; });
-    var n = parseInt(h, 16);
-    return 'rgba(' + (n >> 16 & 255) + ',' + (n >> 8 & 255) + ',' + (n & 255) + ',' + a + ')';
-  }
-  function onVisible(el, fn, threshold) {
-    if (reduceMotion || !('IntersectionObserver' in window)) { fn(); return; }
-    var obs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) { if (e.isIntersecting) { obs.disconnect(); fn(); } });
-    }, { threshold: threshold || 0.2 });
-    obs.observe(el);
-  }
-  function fillBars(bars, step) {
-    bars.forEach(function (bar, i) {
-      setTimeout(function () { bar.style.width = bar.dataset.w + '%'; }, reduceMotion ? 0 : i * step);
-    });
-  }
-
-  // Radar categories (one source for the chart, tooltip and drilldown)
-  var domains = [
-    { name: 'Data Engineering', short: 'Data Eng', v: 92, color: '--green', detail: 'ETL pipelines, staging tables, cross-DB architecture',
-      sub: [['ETL Pipelines', 92], ['SQL Server', 95], ['Pandas', 90], ['PySpark', 70]] },
-    { name: 'ML / AI', short: 'ML / AI', v: 85, color: '--cyan', detail: 'scikit-learn, PyTorch, TensorFlow, feature engineering',
-      sub: [['scikit-learn', 88], ['PyTorch', 78], ['TensorFlow', 72], ['XGBoost', 85], ['LangChain', 75], ['Hugging Face', 70]] },
-    { name: 'Python', short: 'Python', v: 90, color: '--purple', detail: 'Primary language, 5+ years production use',
-      sub: [['Core Python', 92], ['NumPy', 88], ['Data Structures', 85], ['OOP', 82]] },
-    { name: 'SQL / Data', short: 'SQL', v: 95, color: '--gold', detail: 'T-SQL, SQL Server, complex joins, performance tuning',
-      sub: [['T-SQL', 95], ['SQL Server', 95], ['Query Optimization', 88], ['ETL / SSIS', 85]] },
-    { name: 'Cloud / MLOps', short: 'Cloud', v: 72, color: '--orange', detail: 'Azure, Docker, MLflow, CI/CD pipelines',
-      sub: [['Azure', 72], ['Docker', 68], ['Git/GitHub', 88], ['MLflow', 65]] },
-    { name: 'Visualization', short: 'Viz', v: 88, color: '--red', detail: 'Power BI, Tableau, matplotlib, D3.js',
-      sub: [['Power BI', 90], ['Tableau', 85], ['matplotlib', 80], ['D3.js', 60]] }
-  ];
-
-  // RADAR DRILLDOWN (buttons + canvas both open it)
-  var showDrilldown = (function () {
-    var drilldown = document.getElementById('radarDrilldown');
-    var ddBars = document.getElementById('ddBars');
-    if (!drilldown || !ddBars) return function () {};
-    var ddName = drilldown.querySelector('.dd-name');
-    var ddDot = drilldown.querySelector('.dd-dot');
-    var inner = drilldown.querySelector('.radar-drilldown-inner');
-    var buttons = Array.prototype.slice.call(document.querySelectorAll('.radar-label-item'));
-    var active = -1;
-
-    function render(idx) {
-      var d = domains[idx];
-      var color = 'var(' + d.color + ')';
-      ddName.textContent = d.name;
-      ddName.style.color = color;
-      ddDot.style.background = color;
-      inner.style.borderColor = color;
-      ddBars.innerHTML = '';
-      d.sub.forEach(function (sk) {
-        var pct = sk[1];
-        var cls = pct < 65 ? 'fill-l' : pct < 85 ? 'fill-g' : 'fill-s';
-        var li = document.createElement('li');
-        li.className = 'dd-bar-item';
-        li.innerHTML = '<span class="dd-bar-label">' + sk[0] + '</span>' +
-          '<span class="dd-bar-track" aria-hidden="true"><span class="dd-bar-fill ' + cls + '" data-w="' + pct + '"></span></span>' +
-          '<span class="dd-bar-pct">' + pct + '%</span>';
-        ddBars.appendChild(li);
-      });
-      requestAnimationFrame(function () {
-        setTimeout(function () { fillBars(ddBars.querySelectorAll('.dd-bar-fill'), 60); }, reduceMotion ? 0 : 60);
-      });
-    }
-    function toggle(idx) {
-      if (active === idx) {
-        active = -1;
-        drilldown.hidden = true;
-      } else {
-        active = idx;
-        render(idx);
-        drilldown.hidden = false;
-      }
-      buttons.forEach(function (b, i) { b.setAttribute('aria-expanded', String(i === active)); });
-      return active;
-    }
-    buttons.forEach(function (btn, i) { btn.addEventListener('click', function () { toggle(i); }); });
-    return toggle;
-  })();
-
-  // RADAR CHART (DPR-aware; colours read from the theme tokens)
-  (function () {
-    var canvas = document.getElementById('radarCanvas');
-    if (!canvas) return;
-    var wrap = canvas.parentElement;
-    var ctx = canvas.getContext('2d');
-    var n = domains.length, step = Math.PI * 2 / n;
-    var S = 0, cx = 0, cy = 0, R = 0, progress = 0;
-    var tooltip = document.createElement('div');
-    tooltip.className = 'radar-tooltip';
-    tooltip.setAttribute('aria-hidden', 'true');
-    wrap.appendChild(tooltip);
-
-    function point(i, scale) {
-      var a = -Math.PI / 2 + i * step;
-      return { x: cx + Math.cos(a) * R * scale, y: cy + Math.sin(a) * R * scale };
-    }
-    function size() {
-      var w = wrap.clientWidth;
-      if (!w) return false;
-      var dpr = Math.min(window.devicePixelRatio || 1, 3);
-      if (w !== S || canvas.width !== Math.round(w * dpr)) {
-        S = w;
-        canvas.width = Math.round(w * dpr);
-        canvas.height = Math.round(w * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-      cx = cy = S / 2;
-      R = S * 0.355;
-      return true;
-    }
-    function draw() {
-      if (!size()) return;
-      var light = isLightTheme();
-      var cyan = cssVar('--cyan');
-      ctx.clearRect(0, 0, S, S);
-      ctx.lineWidth = 1;
-      ctx.strokeStyle = light ? 'rgba(61,96,120,0.28)' : 'rgba(143,168,190,0.18)';
-      for (var ring = 1; ring <= 4; ring++) {
-        ctx.beginPath();
-        for (var i = 0; i <= n; i++) {
-          var p = point(i % n, ring / 4);
-          if (i === 0) ctx.moveTo(p.x, p.y); else ctx.lineTo(p.x, p.y);
-        }
-        ctx.closePath(); ctx.stroke();
-      }
-      for (var j = 0; j < n; j++) {
-        var e = point(j, 1);
-        ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(e.x, e.y); ctx.stroke();
-      }
-      ctx.beginPath();
-      for (var k = 0; k <= n; k++) {
-        var q = point(k % n, domains[k % n].v / 100 * progress);
-        if (k === 0) ctx.moveTo(q.x, q.y); else ctx.lineTo(q.x, q.y);
-      }
-      ctx.closePath();
-      ctx.fillStyle = withAlpha(cyan, 0.14); ctx.fill();
-      ctx.strokeStyle = withAlpha(cyan, 0.75); ctx.lineWidth = 2; ctx.stroke();
-      domains.forEach(function (d, i) {
-        var pt = point(i, d.v / 100 * progress);
-        ctx.beginPath(); ctx.arc(pt.x, pt.y, 4.5, 0, Math.PI * 2);
-        ctx.fillStyle = cssVar(d.color); ctx.fill();
-      });
-      ctx.font = '600 12px "JetBrains Mono", monospace';
-      ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      domains.forEach(function (d, i) {
-        var lp = point(i, 1.2);
-        ctx.fillStyle = cssVar(d.color);
-        ctx.fillText(d.short, lp.x, lp.y);
-      });
-    }
-    function hit(e) {
-      var rect = canvas.getBoundingClientRect();
-      var mx = e.clientX - rect.left, my = e.clientY - rect.top;
-      var best = -1, min = 28;
-      domains.forEach(function (d, i) {
-        var p1 = point(i, d.v / 100), p2 = point(i, 1.2);
-        var dist = Math.min(Math.hypot(mx - p1.x, my - p1.y), Math.hypot(mx - p2.x, my - p2.y));
-        if (dist < min) { min = dist; best = i; }
-      });
-      return best;
-    }
-    function showTip(i) {
-      if (i < 0) { tooltip.classList.remove('show'); return; }
-      var d = domains[i];
-      tooltip.innerHTML = '<strong>' + d.name + ' — ' + d.v + '%</strong><br><span>' + d.detail + '</span>';
-      tooltip.classList.add('show');
-      var p = point(i, d.v / 100);
-      var left = Math.max(0, Math.min(S - tooltip.offsetWidth, p.x - tooltip.offsetWidth / 2));
-      var top = p.y - tooltip.offsetHeight - 12;
-      if (top < 0) top = p.y + 14;
-      tooltip.style.left = left + 'px';
-      tooltip.style.top = top + 'px';
-    }
-    if (canHover) {
-      canvas.addEventListener('mousemove', function (e) { showTip(hit(e)); });
-      canvas.addEventListener('mouseleave', function () { showTip(-1); });
-    }
-    canvas.addEventListener('click', function (e) {
-      var i = hit(e);
-      if (i < 0) return;
-      var open = showDrilldown(i);
-      showTip(canHover ? i : -1);
-      if (open === i && !canHover) {
-        var dd = document.getElementById('radarDrilldown');
-        if (dd && dd.scrollIntoView) dd.scrollIntoView({ block: 'nearest', behavior: reduceMotion ? 'auto' : 'smooth' });
-      }
-    });
-
-    var resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(draw, 120);
-    }, { passive: true });
-    window._themeRedrawFns.push(draw);
-    draw();
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
-
-    onVisible(canvas, function () {
-      fillBars(document.querySelectorAll('.radar-label-fill'), 80);
-      if (reduceMotion) { progress = 1; draw(); return; }
-      var start = null;
-      (function anim(ts) {
-        if (start === null) start = ts;
-        var t = Math.min(1, Math.max(0, (ts - start) / 700));
-        progress = 1 - Math.pow(1 - t, 3);
-        draw();
-        if (t < 1) requestAnimationFrame(anim);
-      })(performance.now());
-    }, 0.3);
-  })();
-
-  // SKILL BARS
-  (function () {
-    var el = document.getElementById('skillBars');
-    if (!el) return;
-    onVisible(el, function () { fillBars(el.querySelectorAll('.skill-bar-fill'), 40); }, 0.1);
-  })();
-
-  // TECH USAGE TREEMAP
-  (function () {
-    var canvas = document.getElementById('treemapCanvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var wrap = canvas.parentElement;
-    var data = [
-      { name: 'Languages', weight: 35, color: '--green', items: [['Python', 92], ['T-SQL', 95], ['JavaScript', 68], ['R', 55]] },
-      { name: 'ML Frameworks', weight: 25, color: '--cyan', items: [['scikit-learn', 88], ['PyTorch', 78], ['XGBoost', 85], ['TensorFlow', 72]] },
-      { name: 'Data & Cloud', weight: 25, color: '--purple', items: [['SQL Server', 95], ['Power BI', 90], ['Azure', 72], ['Docker', 68]] },
-      { name: 'AI & LLMs', weight: 15, color: '--gold', items: [['LangChain', 75], ['Hugging Face', 70], ['llama.cpp', 65], ['vLLM', 60]] }
-    ];
-
-    // Text alternative for screen readers
-    var list = document.getElementById('treemapData');
-    if (list) {
-      var html = '<h3>Treemap data</h3><ul>';
-      data.forEach(function (c) {
-        html += '<li>' + c.name + ' (' + c.weight + '% of the chart): ' +
-          c.items.map(function (it) { return it[0] + ' ' + it[1] + '%'; }).join(', ') + '</li>';
-      });
-      list.innerHTML = html + '</ul>';
-    }
-
-    var rects = [], hovered = null, W = 0, H = 0;
-    var HEADER = 28, PAD = 3;
-
-    function layoutWide() {
-      var total = data.reduce(function (s, c) { return s + c.weight; }, 0), x = 0;
-      data.forEach(function (c) {
-        var cw = W * c.weight / total;
-        rects.push({ x: x, y: 0, w: cw, h: H, cat: c, isCategory: true });
-        var ix = x + PAD, iy = HEADER, iw = cw - PAD * 2, ih = H - HEADER - PAD;
-        var tp = c.items.reduce(function (s, it) { return s + it[1]; }, 0), y = iy;
-        c.items.forEach(function (it) {
-          var rh = ih * it[1] / tp;
-          rects.push({ x: ix, y: y, w: iw, h: rh, item: it, cat: c });
-          y += rh;
-        });
-        x += cw;
-      });
-    }
-    // Phones: categories stacked, each a 2 x 2 grid so every tile has room for a 12px label
-    function layoutNarrow() {
-      var total = data.reduce(function (s, c) { return s + c.weight; }, 0), y = 0;
-      data.forEach(function (c) {
-        var rowH = 42 + Math.round(110 * c.weight / total);
-        var ch = HEADER + rowH * 2 + PAD;
-        rects.push({ x: 0, y: y, w: W, h: ch, cat: c, isCategory: true });
-        for (var r = 0; r < 2; r++) {
-          var row = c.items.slice(r * 2, r * 2 + 2);
-          var tp = row.reduce(function (s, it) { return s + it[1]; }, 0), x = PAD;
-          row.forEach(function (it) {
-            var rw = (W - PAD * 2) * it[1] / tp;
-            rects.push({ x: x, y: y + HEADER + r * rowH, w: rw, h: rowH, item: it, cat: c });
-            x += rw;
-          });
-        }
-        y += ch;
-      });
-      return y;
-    }
-    function roundRect(x, y, w, h, rad) {
-      ctx.beginPath();
-      ctx.moveTo(x + rad, y);
-      ctx.arcTo(x + w, y, x + w, y + h, rad);
-      ctx.arcTo(x + w, y + h, x, y + h, rad);
-      ctx.arcTo(x, y + h, x, y, rad);
-      ctx.arcTo(x, y, x + w, y, rad);
-      ctx.closePath();
-    }
-    function draw() {
-      var w = wrap.clientWidth;
-      if (!w) return;
-      var narrow = w < 560;
-      W = w;
-      rects = [];
-      if (narrow) { H = layoutNarrow(); } else { H = 380; layoutWide(); }
-      var dpr = Math.min(window.devicePixelRatio || 1, 3);
-      canvas.style.height = H + 'px';
-      canvas.width = Math.round(W * dpr);
-      canvas.height = Math.round(H * dpr);
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      ctx.clearRect(0, 0, W, H);
-      var light = isLightTheme();
-      var text = light ? '#151e2b' : '#eef3f9';
-      rects.forEach(function (r) {
-        var col = cssVar(r.cat.color);
-        if (r.isCategory) {
-          ctx.fillStyle = withAlpha(col, light ? 0.07 : 0.08);
-          ctx.strokeStyle = withAlpha(col, 0.35);
-          ctx.lineWidth = 1;
-          roundRect(r.x + 1, r.y + 1, r.w - 2, r.h - 2, 8);
-          ctx.fill(); ctx.stroke();
-          ctx.font = '700 12px "JetBrains Mono", monospace';
-          ctx.fillStyle = col; ctx.textAlign = 'left'; ctx.textBaseline = 'top';
-          ctx.fillText(r.cat.name.toUpperCase(), r.x + 10, r.y + 8);
-          return;
-        }
-        var on = hovered && hovered.item === r.item;
-        ctx.fillStyle = withAlpha(col, on ? 0.28 : (light ? 0.13 : 0.12));
-        ctx.strokeStyle = withAlpha(col, on ? 0.8 : 0.3);
-        ctx.lineWidth = on ? 2 : 1;
-        roundRect(r.x + 2, r.y + 2, r.w - 4, r.h - 4, 6);
-        ctx.fill(); ctx.stroke();
-        if (r.w < 44 || r.h < 28) return;
-        var fs = Math.max(12, Math.min(13, r.w / 8));
-        var cxm = r.x + r.w / 2, cym = r.y + r.h / 2;
-        ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        ctx.font = '500 ' + fs + 'px "JetBrains Mono", monospace';
-        ctx.fillStyle = text;
-        if (r.h > 48) {
-          ctx.fillText(r.item[0], cxm, cym - 9);
-          ctx.font = '700 ' + (fs + 2) + 'px "Outfit", sans-serif';
-          ctx.fillStyle = col;
-          ctx.fillText(r.item[1] + '%', cxm, cym + 11);
-        } else {
-          ctx.fillText(r.item[0] + ' ' + r.item[1] + '%', cxm, cym);
-        }
-      });
-    }
-
-    var tooltip = document.createElement('div');
-    tooltip.className = 'treemap-tooltip';
-    tooltip.setAttribute('aria-hidden', 'true');
-    wrap.appendChild(tooltip);
-    function itemAt(mx, my) {
-      for (var i = rects.length - 1; i >= 0; i--) {
-        var r = rects[i];
-        if (!r.isCategory && mx >= r.x + 2 && mx <= r.x + r.w - 2 && my >= r.y + 2 && my <= r.y + r.h - 2) return r;
-      }
-      return null;
-    }
-    function show(e) {
-      var rect = canvas.getBoundingClientRect();
-      var mx = e.clientX - rect.left, my = e.clientY - rect.top;
-      var r = itemAt(mx, my);
-      if (r === hovered || (r && hovered && r.item === hovered.item && e.type === 'mousemove')) return;
-      hovered = r;
-      if (r) {
-        tooltip.innerHTML = '<strong style="color:var(' + r.cat.color + ')">' + r.item[0] + '</strong><br><span class="tt-cat">' +
-          r.cat.name + '</span> &middot; <span class="tt-val">' + r.item[1] + '%</span>';
-        tooltip.classList.add('show');
-        var tx = Math.max(4, Math.min(rect.width - tooltip.offsetWidth - 4, mx - tooltip.offsetWidth / 2));
-        var ty = my - tooltip.offsetHeight - 12;
-        if (ty < 4) ty = my + 16;
-        tooltip.style.left = tx + 'px';
-        tooltip.style.top = ty + 'px';
-      } else {
-        tooltip.classList.remove('show');
-      }
-      draw();
-    }
-    if (canHover) {
-      canvas.addEventListener('mousemove', show);
-      canvas.addEventListener('mouseleave', function () { hovered = null; tooltip.classList.remove('show'); draw(); });
-    }
-    canvas.addEventListener('click', function (e) {
-      var rect = canvas.getBoundingClientRect();
-      var r = itemAt(e.clientX - rect.left, e.clientY - rect.top);
-      if (!canHover && r && hovered && r.item === hovered.item) { hovered = null; tooltip.classList.remove('show'); draw(); return; }
-      hovered = null;
-      show(e);
-    });
-
-    var lastW = 0, resizeTimer;
-    window.addEventListener('resize', function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function () {
-        if (wrap.clientWidth === lastW) return;
-        lastW = wrap.clientWidth;
-        hovered = null; tooltip.classList.remove('show'); draw();
-      }, 120);
-    }, { passive: true });
-    window._themeRedrawFns.push(draw);
-    lastW = wrap.clientWidth;
-    draw();
-    // Fonts may finish loading after the first paint
-    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
-  })();
-
-  // CARD HOVER GLOW — JS only moves the glow centre; colours come from CSS so both themes work
-  if (canHover) {
-    document.querySelectorAll('.hover-glow').forEach(function (card) {
-      card.addEventListener('mousemove', function (e) {
-        var rect = card.getBoundingClientRect();
-        card.style.setProperty('--mx', (e.clientX - rect.left) + 'px');
-        card.style.setProperty('--my', (e.clientY - rect.top) + 'px');
-      });
-    });
-  }
-})();
-</script>
 
 </body>
 </html>
