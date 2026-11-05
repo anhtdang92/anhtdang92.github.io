@@ -22,7 +22,7 @@
 [data-theme="light"] nav{background:rgba(244,246,249,0.9)}
 [data-theme="light"] nav .brand img{filter:none}
 [data-theme="light"] ::selection{background:var(--purple);color:#fff}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
 body{background:var(--bg);color:var(--text);font-family:var(--ff);line-height:1.6;-webkit-font-smoothing:antialiased}
 a{color:var(--cyan);text-decoration:none;transition:color 0.2s}
 a:hover{color:var(--green)}
@@ -64,7 +64,7 @@ section+section::before{content:'';display:block;width:100%;max-width:920px;marg
 
 /* SECTIONS */
 .section-label{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase;margin-bottom:8px}
-.section-label::after{content:'_';animation:blink 1s step-end infinite;color:var(--cyan)}
+.section-label::after{content:'_';animation:blink 1s step-end 4;color:var(--cyan)}
 h2.section-title{font-size:clamp(24px,5vw,32px);font-weight:800;margin-bottom:8px;background:linear-gradient(135deg,#fff 0%,rgba(0,212,255,0.9) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .section-desc{font-size:15px;color:var(--muted);margin-bottom:32px;max-width:560px}
 
@@ -188,7 +188,7 @@ h2.section-title{text-shadow:0 0 20px rgba(0,212,255,0.2),0 0 60px rgba(0,212,25
 
 /* SECTION DIVIDER ANIMATION */
 .section-divider-glow{position:relative}
-.section-divider-glow::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--green),transparent);background-size:200% 100%;animation:dividerShift 4s ease-in-out infinite;opacity:0;transition:opacity 0.6s ease}
+.section-divider-glow::before{content:'';position:absolute;top:-1px;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--cyan),var(--green),transparent);background-size:200% 100%;animation:dividerShift 4s ease-in-out 2;opacity:0;transition:opacity 0.6s ease}
 .section-divider-glow.visible::before{opacity:1}
 @keyframes dividerShift{0%{background-position:0% 0}50%{background-position:100% 0}100%{background-position:0% 0}}
 
@@ -212,7 +212,8 @@ nav:not(.footer-nav) .brand{order:-3}
 nav:not(.footer-nav) .nav-toggle{order:-2;margin-right:8px}
 nav:not(.footer-nav) .theme-toggle{order:-1}
 nav:not(.footer-nav).open{background:var(--bg);gap:0;padding:8px 16px 24px}
-nav:not(.footer-nav).open .theme-toggle{margin-bottom:12px}
+nav:not(.footer-nav).open{align-items:flex-start}
+nav:not(.footer-nav).open .brand,nav:not(.footer-nav).open .nav-toggle,nav:not(.footer-nav).open .theme-toggle{margin-bottom:12px;align-self:center}
 nav:not(.footer-nav).open a:not(.brand){border-bottom:1px solid var(--border);border-radius:0}
 @keyframes navSlideDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
 }
@@ -227,7 +228,7 @@ section{padding:40px 0}
 .project-links{flex-direction:column;align-items:center}
 .project-links a{min-height:44px;display:flex;align-items:center;justify-content:center}
 section+section::before{height:2px}
-.back-to-top{bottom:90px}
+.back-to-top{bottom:calc(16px + env(safe-area-inset-bottom));right:12px}
 .mesh-gradient{display:none}
 .footer{padding:40px 0 32px}
 .section-desc{font-size:14px}
@@ -250,7 +251,10 @@ nav a.active::after{animation:none}
 }
 /* PRINT STYLESHEET */
 @media print{
-nav,.scroll-progress,.back-to-top,.ambient,.mesh-gradient,.noise-overlay,.theme-toggle,.nav-toggle{display:none!important}
+:root,[data-theme="light"]{--bg:#fff;--card:#fff;--inner:#f2f2f2;--card-glass:#fff;--border:#ccc;--text:#000;--muted:#333;--dim:#444;--green:#00663a;--cyan:#005f80;--purple:#6a1fb0;--gold:#6e4700;--orange:#7a3a00;--red:#a01a33;--violet:#6a1fb0}
+body,body *{color:#000!important}
+*{-webkit-text-fill-color:currentColor!important;text-shadow:none!important;box-shadow:none!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+nav,.scroll-progress,.back-to-top,.ambient,.mesh-gradient,.noise-overlay,.theme-toggle,.nav-toggle,.skip-link,canvas{display:none!important}
 body{background:#fff!important;color:#000!important;font-size:12pt}
 .container{max-width:100%}
 section{padding:20px 0!important;page-break-inside:avoid}
