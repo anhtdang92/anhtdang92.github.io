@@ -7,9 +7,9 @@
 <meta name="author" content="Anh Dang">
 <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <title>Anh Dang — Data Analyst II · Building toward ML Engineering</title>
-<meta name="description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS Candidate (Machine Learning). U.S. Army Signal Officer. Secret Clearance. Houston, TX.">
+<meta name="description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS candidate (Machine Learning). U.S. Army Reserve Signal Officer. Secret clearance (DoD). Houston, TX.">
 <meta property="og:title" content="Anh Dang — Data Analyst II · Building toward ML Engineering">
-<meta property="og:description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS Candidate (Machine Learning). Secret Clearance. Houston, TX.">
+<meta property="og:description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS candidate (Machine Learning). Secret clearance (DoD). Houston, TX.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
@@ -22,7 +22,7 @@
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
 <meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
 <meta name="twitter:title" content="Anh Dang — Data Analyst II · Building toward ML Engineering">
-<meta name="twitter:description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS Candidate (Machine Learning). Secret Clearance. Houston, TX.">
+<meta name="twitter:description" content="Data Analyst II building toward ML Engineering. Georgia Tech MSCS candidate (Machine Learning). Secret clearance (DoD). Houston, TX.">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io">
@@ -45,16 +45,28 @@
     "https://github.com/anhtdang92",
     "https://linkedin.com/in/anh-dang92"
   ],
-  "alumniOf": [
-    {
-      "@type": "CollegeOrUniversity",
-      "name": "Georgia Institute of Technology"
+  "worksFor": {
+    "@type": "Organization",
+    "name": "First Community Credit Union"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "University of Houston-Downtown"
+  },
+  "affiliation": {
+    "@type": "CollegeOrUniversity",
+    "name": "Georgia Institute of Technology"
+  },
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "CompTIA Security+",
+    "credentialCategory": "certification",
+    "recognizedBy": {
+      "@type": "Organization",
+      "name": "CompTIA"
     },
-    {
-      "@type": "CollegeOrUniversity",
-      "name": "University of Houston-Downtown"
-    }
-  ],
+    "url": "https://www.credly.com/badges/679bc8e4-d10e-4878-aa12-62e633c9736d/public_url"
+  },
   "knowsAbout": ["Machine Learning", "Data Science", "Python", "SQL", "Data Pipelines", "Deep Learning", "TensorFlow", "PyTorch", "Power BI", "Tableau", "scikit-learn", "Pandas"],
   "address": {
     "@type": "PostalAddress",
@@ -92,12 +104,10 @@ body{line-height:1.7}
 [data-theme="light"] .gh-cell{border-color:rgba(0,0,0,0.05)}
 [data-theme="light"] .gh-cell.l1{background:rgba(0,122,69,0.18)}[data-theme="light"] .gh-cell.l2{background:rgba(0,122,69,0.38)}
 [data-theme="light"] .gh-cell.l3{background:rgba(0,122,69,0.6)}[data-theme="light"] .gh-cell.l4{background:rgba(0,122,69,0.85)}
-[data-theme="light"] .pipe-node rect{fill:rgba(255,255,255,0.85)!important}
 [data-theme="light"] .flip-card-back{background:linear-gradient(135deg,rgba(155,48,255,0.08),rgba(0,136,170,0.06),rgba(0,153,77,0.05))}
-[data-theme="light"] .fi-bar-val{color:#fff}
 
 /* CARD BACKGROUNDS */
-.about-card,.highlight-card,.next-item,.next-card,.kpi-card,.stat-ring,.impact-card,.gh-heatmap,.trajectory-chart,.ml-panel,.pipeline-diagram,.flip-card-front{background:var(--card-glass)}
+.about-card,.highlight-card,.next-item,.next-card,.kpi-card,.stat-ring,.impact-card,.gh-heatmap,.trajectory-chart,.pipeline-diagram,.flip-card-front{background:var(--card-glass)}
 
 /* HERO — name, label and subtitle are visible from first paint (only transform animates) */
 .hero{padding:100px 0 56px;text-align:center;position:relative;z-index:1}
@@ -109,7 +119,9 @@ body{line-height:1.7}
 .hero h1{font-size:clamp(42px,8vw,64px);font-weight:900;letter-spacing:-2px;line-height:1.15;color:#fff;margin-bottom:12px;animation:heroRise 0.6s var(--ease-smooth) both}
 @keyframes heroRise{from{transform:translateY(10px)}to{transform:none}}
 .hero h1 .accent{background:linear-gradient(135deg,var(--purple) 0%,var(--cyan) 55%,var(--green) 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent}
-.hero-sub{font-size:18px;color:var(--muted);font-weight:400;max-width:540px;margin:0 auto 24px}
+.hero-sub{font-size:18px;color:var(--muted);font-weight:400;max-width:580px;margin:0 auto 12px}
+.hero-creds{font-family:var(--mono);font-size:13px;color:var(--muted);letter-spacing:0.3px;line-height:1.6;max-width:620px;margin:0 auto 24px}
+.hero-creds .sep{color:var(--dim);margin:0 6px}
 .hero-tags{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 .hero-tags span{font-family:var(--mono);font-size:13px;padding:4px 12px;border-radius:20px;border:1px solid var(--border);color:var(--text);transition:border-color 0.15s ease,color 0.15s ease;animation:tagPop 0.4s ease both}
 .hero-tags span:nth-child(1){animation-delay:0.15s}.hero-tags span:nth-child(2){animation-delay:0.19s}.hero-tags span:nth-child(3){animation-delay:0.23s}
@@ -149,6 +161,7 @@ body{line-height:1.7}
 .kpi-label{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;line-height:1.4}
 .kpi-sparkline{margin:10px auto 0;display:block;overflow:visible;width:100%;max-width:150px;height:auto}
 .kpi-sparkline polyline,.kpi-sparkline rect,.kpi-sparkline circle{opacity:0;transition:opacity 0.6s ease}
+.kpi-sparkline circle{transform-box:fill-box;transform-origin:center}
 .kpi-sparkline polyline{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s var(--ease-smooth),opacity 0.3s ease}
 .kpi-strip.visible .kpi-sparkline polyline{stroke-dashoffset:0;opacity:1}
 .kpi-strip.visible .kpi-sparkline rect{opacity:1;animation:barGrow 0.8s var(--ease-smooth) both}
@@ -163,6 +176,7 @@ body{line-height:1.7}
 .about-card .label{font-family:var(--mono);font-size:12px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-bottom:4px}
 .about-card .value{font-size:18px;font-weight:700;color:#fff;line-height:1.4}
 .about-card .sub{font-size:14px;color:var(--muted);margin-top:2px}
+.about-card .sub a{text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px}
 .about-text{font-size:16px;color:var(--text);line-height:1.8;margin-bottom:16px}
 .about-text strong{color:#fff;font-weight:600}
 
@@ -191,6 +205,7 @@ body{line-height:1.7}
 .value-banner.visible .value-pill:nth-child(4){transition-delay:0.18s}
 .value-banner.visible .value-pill:nth-child(5){transition-delay:0.24s}
 .value-banner.visible .value-pill:nth-child(6){transition-delay:0.3s}
+.value-banner.visible .value-pill:nth-child(7){transition-delay:0.36s}
 .value-pill.clearance{border-color:rgba(0,255,135,0.4);color:var(--green);background:rgba(0,255,135,0.06)}
 .value-pill.degree{border-color:rgba(224,64,251,0.4);color:var(--purple);background:rgba(224,64,251,0.06)}
 .value-pill.sector{border-color:rgba(0,212,255,0.4);color:var(--cyan);background:rgba(0,212,255,0.06)}
@@ -260,6 +275,8 @@ body{line-height:1.7}
 .trajectory-chart.visible .traj-dot:nth-of-type(3){transition-delay:0.6s}
 .trajectory-chart.visible .traj-dot:nth-of-type(4){transition-delay:0.9s}
 .trajectory-chart.visible .traj-dot:nth-of-type(5){transition-delay:1.2s}
+.trajectory-chart.visible .traj-dot:nth-of-type(6){transition-delay:0.75s}
+.trajectory-chart.visible .traj-dot:nth-of-type(7){transition-delay:1.05s}
 .traj-dot:focus-visible,.traj-dot.is-active{stroke:var(--text);stroke-width:3;stroke-opacity:1}
 .traj-list,.traj-mil{display:none}
 .traj-list{list-style:none;position:relative;margin:0;padding:0 0 0 24px}
@@ -273,60 +290,31 @@ body{line-height:1.7}
 .traj-step-detail{font-size:14px;color:var(--muted);line-height:1.5;margin-top:2px}
 .traj-mil{font-family:var(--mono);font-size:12px;color:var(--purple);border-top:1px dashed var(--border);padding-top:12px;margin-top:2px;line-height:1.6}
 
-/* CHART TOOLTIPS */
-.chart-tooltip,.pipeline-tooltip{position:absolute;left:0;top:0;background:var(--card);border:1px solid var(--cyan);border-radius:var(--radius-md);padding:8px 12px;font-family:var(--mono);font-size:12px;color:var(--text);pointer-events:none;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:10;max-width:280px;box-shadow:0 4px 20px rgba(0,212,255,0.15);line-height:1.5}
-.chart-tooltip.show,.pipeline-tooltip.show{opacity:1;visibility:visible}
-.chart-tooltip .tt-title,.pipeline-tooltip .pt-title{font-weight:700;color:var(--cyan);margin-bottom:2px}
-.chart-tooltip .tt-detail,.pipeline-tooltip .pt-detail{color:var(--muted)}
+/* CHART TOOLTIP (career trajectory) */
+.chart-tooltip{position:absolute;left:0;top:0;background:var(--card);border:1px solid var(--cyan);border-radius:var(--radius-md);padding:8px 12px;font-family:var(--mono);font-size:12px;color:var(--text);pointer-events:none;opacity:0;visibility:hidden;transition:opacity 0.2s ease,visibility 0.2s;z-index:10;max-width:280px;box-shadow:0 4px 20px rgba(0,212,255,0.15);line-height:1.5}
+.chart-tooltip.show{opacity:1;visibility:visible}
+.chart-tooltip .tt-title{font-weight:700;color:var(--cyan);margin-bottom:2px}
+.chart-tooltip .tt-detail{color:var(--muted)}
 
-/* ML METRICS CAROUSEL (WAI-ARIA tabs) */
-.ml-carousel-nav{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
-.ml-carousel-btn{font-family:var(--mono);font-size:12px;padding:6px 16px;min-height:36px;border-radius:8px;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:border-color 0.2s,color 0.2s,background-color 0.2s}
-.ml-carousel-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,212,255,0.06)}
-.ml-carousel-btn[aria-selected="true"]{background:rgba(0,212,255,0.1);border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 12px rgba(0,212,255,0.15)}
-.ml-carousel-panel{display:none}
-.ml-carousel-panel.active{display:block;animation:mlFadeIn 0.4s ease}
-.ml-carousel-panel:focus-visible{outline:2px solid var(--cyan);outline-offset:4px;border-radius:var(--radius-lg)}
-@keyframes mlFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.ml-panel{padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border);margin-bottom:16px;transition:border-color 0.15s ease}
-.ml-carousel-panel.active .ml-panel{border-color:rgba(0,212,255,0.12)}
-.ml-panel-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
-.ml-panel-title{font-family:var(--mono);font-size:13px;color:var(--text);font-weight:600}
-.ml-panel-badge{font-family:var(--mono);font-size:12px;letter-spacing:1px}
-.ml-panel-legend{display:flex;gap:6px 14px;flex-wrap:wrap;justify-content:center;margin-top:12px;font-family:var(--mono);font-size:12px;color:var(--muted)}
-.ml-metric-tabs{display:flex;gap:4px;flex-wrap:wrap}
-.ml-tab{font-family:var(--mono);font-size:12px;padding:4px 12px;min-height:32px;border-radius:6px;border:1px solid var(--border);background:none;color:var(--muted);cursor:pointer;transition:border-color 0.2s,color 0.2s}
-.ml-tab:hover{border-color:var(--cyan);color:var(--cyan)}
-.ml-tab[aria-pressed="true"]{background:rgba(0,212,255,0.1);border-color:var(--cyan);color:var(--cyan)}
-.ml-canvas{display:block;width:100%;margin:0 auto}
-.ml-canvas.square{max-width:340px;aspect-ratio:1;height:auto}
-#neuralNetCanvas{border-radius:10px;touch-action:manipulation}
-.fi-chart{display:grid;gap:6px}
-.fi-row{display:flex;align-items:center;gap:10px}
-.fi-label{font-family:var(--mono);font-size:12px;color:var(--text);min-width:130px;text-align:right}
-.fi-bar-track{flex:1;height:22px;background:var(--inner);border-radius:4px;overflow:hidden;position:relative}
-.fi-bar-fill{height:100%;border-radius:4px;transition:width 1.2s var(--ease-smooth);position:relative;display:flex;align-items:center;justify-content:flex-end;padding-right:8px}
-.fi-bar-val{font-family:var(--mono);font-size:11px;color:#04070d;font-weight:700}
-
-/* PIPELINE — SVG on wide screens, step cards on phones */
-.pipeline-diagram{position:relative;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border);overflow:hidden}
-.pipeline-svg{width:100%;height:auto;display:block}
-.pipe-node{cursor:pointer;outline:none}
-.pipe-node:hover rect,.pipe-node:focus-visible rect,.pipe-node.is-active rect{stroke-width:2.5}
-.pipe-node:focus-visible rect{stroke:var(--text)}
-.pipe-node:hover text,.pipe-node.is-active text{font-weight:700}
-.pipe-steps{display:none;list-style:none;margin:0;padding:0;gap:10px;counter-reset:pstep}
-.pipe-steps li{position:relative;padding:12px 14px;border:1px solid var(--border);border-left:3px solid var(--c);border-radius:10px;background:var(--inner)}
-.pipe-steps li:not(.side){counter-increment:pstep}
-.pipe-step-name{display:block;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--c);letter-spacing:0.3px}
-.pipe-steps li:not(.side) .pipe-step-name::before{content:counter(pstep,decimal-leading-zero) '  ';color:var(--dim);font-weight:500}
-.pipe-step-detail{display:block;font-size:14px;color:var(--text);line-height:1.55;margin-top:2px}
-.pipe-steps li.side{margin-left:18px;border-style:dashed;border-left-style:solid}
-.pipe-step-tag{font-family:var(--mono);font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px;margin-left:6px;font-weight:500}
+/* SYSTEM DESIGN — ATLAS pipeline as numbered step cards (3 across on wide screens, 2 on tablets, 1 on phones) */
+.pipeline-diagram{position:relative;padding:20px;border-radius:var(--radius-lg);border:1px solid var(--border)}
+.pipe-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;list-style:none;margin:0;padding:0;counter-reset:pstep}
+.pipe-steps li{position:relative;display:flex;flex-direction:column;padding:14px 16px;border:1px solid var(--border);border-top:3px solid var(--c);border-radius:10px;background:var(--inner);counter-increment:pstep}
+.pipe-step-name{display:block;font-family:var(--mono);font-size:13px;font-weight:700;color:var(--c);letter-spacing:0.3px;text-transform:uppercase}
+.pipe-step-name::before{content:counter(pstep,decimal-leading-zero) '  ';color:var(--dim);font-weight:500}
+.pipe-step-detail{display:block;font-size:14px;color:var(--text);line-height:1.55;margin-top:6px;flex:1}
+.pipe-step-tech{display:block;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.5;margin-top:10px;padding-top:8px;border-top:1px solid var(--border)}
+/* flow arrows in the gaps between cards on the same row */
+.pipe-steps li::after{content:'';display:none;position:absolute;top:50%;right:-10px;width:7px;height:7px;border-top:2px solid var(--dim);border-right:2px solid var(--dim);transform:translateY(-50%) rotate(45deg);opacity:0.7}
+.pipe-steps li:not(:nth-child(3n))::after{display:block}
+.pipe-foot{display:flex;flex-wrap:wrap;align-items:center;gap:4px 20px;margin-top:14px}
+.pipe-foot a{font-family:var(--mono);font-size:14px;display:inline-flex;align-items:center;min-height:44px}
+.pipe-foot .pipe-note{font-family:var(--mono);font-size:12px;color:var(--muted);margin-left:auto}
 
 /* EXPLORE — cards slide up on hover (mouse) or focus; shown statically on touch / reduced motion */
 .explore-section{padding:40px 0}
 .explore-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px}
+.flip-card.featured{grid-column:1/-1}
 .flip-card{position:relative;height:180px;overflow:hidden;border-radius:var(--radius-lg);text-decoration:none;color:inherit;display:block}
 .flip-card:hover{color:inherit}
 .flip-card-inner{position:relative;width:100%;height:100%}
@@ -338,6 +326,8 @@ body{line-height:1.7}
 .fc-sub{font-family:var(--mono);font-size:12px;color:var(--muted)}
 .fc-svg{margin-bottom:8px;opacity:0.7}
 .fc-cta{font-family:var(--mono);font-size:12px;color:var(--cyan);margin-top:8px}
+.fc-status{display:inline-block;font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:0.5px;line-height:1.4;padding:1px 8px;margin-bottom:6px;border-radius:10px;border:1px solid currentColor;color:var(--gold)}
+.fc-status.featured{color:var(--green)}
 .flip-card-back .stat-line{font-family:var(--mono);font-size:13px;color:var(--text);margin:4px 0}
 .flip-card-back .stat-value{color:var(--green);font-weight:700}
 .flip-card-back .stat-label{color:var(--muted);font-size:12px}
@@ -351,6 +341,7 @@ body{line-height:1.7}
 .flip-card-back{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;padding:0 16px 16px;background:none}
 .flip-card-back .stat-line{display:flex;flex-direction:column;justify-content:center;gap:2px;margin:0;padding:8px 4px;border-radius:8px;background:var(--inner);line-height:1.3}
 .flip-card-back .fc-cta{grid-column:1/-1;margin-top:2px}
+.flip-card.featured .flip-card-back{grid-template-columns:repeat(3,minmax(0,160px));justify-content:center}
 [data-theme="light"] .flip-card-back{background:none}
 }
 
@@ -391,7 +382,7 @@ body{line-height:1.7}
 /* MOBILE TAP FEEDBACK */
 @media(hover:none){
 .about-card:active,.highlight-card:active,.kpi-card:active,.next-card:active,.flip-card:active{transform:scale(0.98);transition-duration:0.1s}
-.hero-links a:active,.ml-carousel-btn:active,.footer-nav a:active{opacity:0.7;transition-duration:0.1s}
+.hero-links a:active,.footer-nav a:active{opacity:0.7;transition-duration:0.1s}
 }
 
 /* RESPONSIVE */
@@ -401,6 +392,9 @@ body{line-height:1.7}
 .kpi-card{flex:1 1 calc(33.333% - 7px)}
 .kpi-card:nth-child(n+4){flex-basis:calc(50% - 5px)}
 .stats-ring-row{grid-template-columns:repeat(2,1fr)}
+.pipe-steps{grid-template-columns:repeat(2,1fr)}
+.pipe-steps li:nth-child(odd)::after{display:block}
+.pipe-steps li:nth-child(even)::after{display:none}
 }
 @media(max-width:600px){
 .container{padding:0 20px}
@@ -413,7 +407,9 @@ body{line-height:1.7}
 .hero-orbs,.hero-scroll{display:none}
 .hero-label{font-size:12px;letter-spacing:1.5px;margin-bottom:12px}
 .hero h1{margin-bottom:10px}
-.hero-sub{font-size:16px;margin-bottom:20px}
+.hero-sub{font-size:16px;margin-bottom:10px}
+.hero-creds{font-size:12px;margin-bottom:20px}
+.hero-creds .sep{margin:0 4px}
 .hero-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:360px;margin:24px auto 0}
 .hero-links a,.hero-links a.primary{padding:12px 8px;min-height:48px;font-size:15px;width:100%}
 section,.explore-section{padding:32px 0}
@@ -444,20 +440,15 @@ section,.explore-section{padding:32px 0}
 .hl-psr{display:block;font-size:15px;line-height:1.6;margin-bottom:6px}
 .hl-tag{display:inline-block;margin:0 6px 0 0;padding:0 6px;vertical-align:1px}
 .highlight-card .hl-metric{display:none}
-/* ML metrics */
-.ml-carousel-nav{flex-wrap:nowrap;overflow-x:auto;margin:0 -20px 14px;padding:2px 20px 6px;scrollbar-width:none}
-.ml-carousel-nav::-webkit-scrollbar{display:none}
-.ml-carousel-btn{flex:0 0 auto;padding:6px 14px;min-height:40px}
-.ml-panel{padding:14px}
-.ml-panel-header{margin-bottom:12px}
-.fi-label{min-width:96px;font-size:12px}
-.fi-bar-track{height:20px}
-/* pipeline */
+/* pipeline: one column of step cards */
 .pipeline-diagram{padding:14px}
-.pipeline-svg,.pipeline-tooltip{display:none}
-.pipe-steps{display:grid;gap:8px}
-.pipe-steps li{padding:10px 12px}
-.pipe-step-detail{line-height:1.5}
+.pipe-steps{grid-template-columns:1fr;gap:8px}
+.pipe-steps li{padding:10px 12px;border-top-width:1px;border-left:3px solid var(--c)}
+.pipe-steps li:nth-child(n)::after{display:none}
+.pipe-step-detail{line-height:1.5;margin-top:2px}
+.pipe-step-tech{margin-top:6px;padding-top:6px}
+.pipe-foot{margin-top:10px}
+.pipe-foot .pipe-note{margin-left:0;flex-basis:100%}
 /* explore */
 .explore-grid{grid-template-columns:1fr;gap:10px}
 .fc-svg{display:none}
@@ -468,7 +459,6 @@ section,.explore-section{padding:32px 0}
 }
 @media(max-width:375px){
 .container{padding:0 16px}
-.ml-carousel-nav{margin:0 -16px 14px;padding:2px 16px 6px}
 .hero h1{font-size:38px}
 .kpi-num{font-size:24px}
 .kpi-card{padding:12px 4px}
@@ -485,8 +475,8 @@ section,.explore-section{padding:32px 0}
 
 /* PRINT */
 @media print{
-.hero-scroll,#cursorGlow,#matrixCanvas,#heroParticles,canvas,.gh-heatmap,.ml-carousel-nav{display:none!important}
-.about-card,.highlight-card,.next-card,.kpi-card,.ml-panel,.stat-ring,.impact-card,.trajectory-chart,.pipeline-diagram,.flip-card-front{background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important}
+.hero-scroll,#cursorGlow,#matrixCanvas,#heroParticles,canvas,.gh-heatmap{display:none!important}
+.about-card,.highlight-card,.next-card,.kpi-card,.stat-ring,.impact-card,.trajectory-chart,.pipeline-diagram,.pipe-steps li,.flip-card-front{background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important}
 .hero h1{color:#000!important}
 .hero h1 .accent{-webkit-text-fill-color:#333!important;background:none!important}
 .kpi-card,.value-pill{opacity:1!important;transform:none!important}
@@ -537,7 +527,8 @@ section,.explore-section{padding:32px 0}
     </div>
     <div class="hero-label">DA II → ML Engineer · Army Signal Officer</div>
     <h1>Anh <span class="accent">Dang</span></h1>
-    <p class="hero-sub">Data Analyst II building toward ML Engineering. Georgia Tech MSCS Candidate (Machine Learning). U.S. Army officer with Secret clearance. Houston, TX.</p>
+    <p class="hero-sub">Data Analyst II building toward ML Engineering. Georgia Tech M.S. CS (Machine Learning) candidate, expected Summer 2027.</p>
+    <p class="hero-creds">U.S. Army Reserve Signal officer<span class="sep" aria-hidden="true">·</span>Secret clearance (DoD)<span class="sep" aria-hidden="true">·</span>CompTIA Security+<span class="sep" aria-hidden="true">·</span>Houston, TX</p>
     <div class="hero-tags" role="list" aria-label="Key skills">
       <span role="listitem">Python</span><span role="listitem">SQL</span><span role="listitem">PyTorch</span><span role="listitem">scikit-learn</span><span role="listitem">Pandas</span>
     </div>
@@ -553,19 +544,22 @@ section,.explore-section{padding:32px 0}
   <!-- METRICS KPI STRIP -->
   <div class="kpi-strip reveal" role="group" aria-label="Key metrics">
     <div class="kpi-card">
-      <div class="kpi-num" style="color:var(--green)" data-kpi="3000000">3M+</div>
-      <div class="kpi-label">ML Decisions/Mo</div>
+      <div class="kpi-num" style="color:var(--green)" id="kpi-years">5+</div>
+      <div class="kpi-label">Yrs data systems</div>
       <svg class="kpi-sparkline" aria-hidden="true" width="120" height="44" viewBox="0 0 120 44">
         <line x1="0" y1="34" x2="100" y2="34" stroke="var(--border)" stroke-width="0.5" opacity="0.4"/>
-        <text x="0" y="34" fill="var(--muted)" font-size="6" font-family="var(--mono)" opacity="0.5">0</text>
-        <text x="0" y="8" fill="var(--muted)" font-size="6" font-family="var(--mono)" opacity="0.5">3M</text>
-        <polyline fill="none" stroke="var(--green)" stroke-width="2" opacity="0.6" points="8,30 18,27 28,23 38,24 48,18 58,14 68,10 78,12 88,6 100,3"/>
-        <polyline fill="none" stroke="var(--green)" stroke-width="0.8" opacity="0.2" points="8,32 18,30 28,28 38,29 48,25 58,22 68,20 78,18 88,14 100,9"/>
-        <circle cx="100" cy="3" r="2.5" fill="var(--green)" opacity="0.8"/>
+        <text x="0" y="42" fill="var(--muted)" font-size="6" font-family="var(--mono)" opacity="0.5">2021</text>
+        <text x="100" y="42" fill="var(--muted)" font-size="6" font-family="var(--mono)" opacity="0.5" text-anchor="end">now</text>
+        <polyline fill="none" stroke="var(--green)" stroke-width="2" opacity="0.6" points="8,30 26,25 44,20 62,15 80,9 100,4"/>
+        <circle cx="26" cy="25" r="1.6" fill="var(--green)" opacity="0.6"/>
+        <circle cx="44" cy="20" r="1.6" fill="var(--green)" opacity="0.6"/>
+        <circle cx="62" cy="15" r="1.6" fill="var(--green)" opacity="0.6"/>
+        <circle cx="80" cy="9" r="1.6" fill="var(--green)" opacity="0.6"/>
+        <circle cx="100" cy="4" r="2.5" fill="var(--green)" opacity="0.8"/>
       </svg>
     </div>
     <div class="kpi-card">
-      <div class="kpi-num" style="color:var(--cyan)" data-kpi="90">90%+</div>
+      <div class="kpi-num" style="color:var(--cyan)">90%+</div>
       <div class="kpi-label">Query time cut</div>
       <svg class="kpi-sparkline" aria-hidden="true" width="120" height="44" viewBox="0 0 120 44">
         <line x1="0" y1="34" x2="100" y2="34" stroke="var(--border)" stroke-width="0.5" opacity="0.4"/>
@@ -580,7 +574,7 @@ section,.explore-section{padding:32px 0}
       </svg>
     </div>
     <div class="kpi-card">
-      <div class="kpi-num" style="color:var(--purple)" data-kpi="4">4</div>
+      <div class="kpi-num" style="color:var(--purple)">4</div>
       <div class="kpi-label">ML Projects</div>
       <svg class="kpi-sparkline" aria-hidden="true" width="120" height="44" viewBox="0 0 120 44">
         <line x1="0" y1="34" x2="100" y2="34" stroke="var(--border)" stroke-width="0.5" opacity="0.4"/>
@@ -591,7 +585,7 @@ section,.explore-section{padding:32px 0}
       </svg>
     </div>
     <div class="kpi-card">
-      <div class="kpi-num" style="color:var(--cyan)" data-kpi="18">18</div>
+      <div class="kpi-num" style="color:var(--cyan)">18</div>
       <div class="kpi-label">GT Credits</div>
       <svg class="kpi-sparkline" aria-hidden="true" width="120" height="44" viewBox="0 0 120 44">
         <line x1="0" y1="34" x2="100" y2="34" stroke="var(--border)" stroke-width="0.5" opacity="0.4"/>
@@ -602,14 +596,15 @@ section,.explore-section{padding:32px 0}
       </svg>
     </div>
     <div class="kpi-card">
-      <div class="kpi-num" style="color:var(--green)" data-kpi="60">60+</div>
-      <div class="kpi-label">Soldiers Led</div>
+      <div class="kpi-num" style="color:var(--green)">60+</div>
+      <div class="kpi-label">Soldier unit supported</div>
       <svg class="kpi-sparkline" aria-hidden="true" width="120" height="44" viewBox="0 0 120 44">
-        <line x1="0" y1="34" x2="100" y2="34" stroke="var(--border)" stroke-width="0.5" opacity="0.4"/>
-        <text x="0" y="34" fill="var(--muted)" font-size="6" font-family="var(--mono)" opacity="0.5">0</text>
-        <text x="0" y="8" fill="var(--muted)" font-size="6" font-family="var(--mono)" opacity="0.5">60</text>
-        <polyline fill="none" stroke="var(--green)" stroke-width="2" opacity="0.5" points="8,28 28,20 50,14 72,8 100,3"/>
-        <circle cx="100" cy="3" r="3" fill="var(--green)" opacity="0.8"/>
+        <circle cx="10" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="20" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="30" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="40" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="50" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/>
+        <circle cx="60" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="70" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="80" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="90" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="100" cy="10" r="2.6" fill="var(--green)" opacity="0.55"/>
+        <circle cx="10" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="20" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="30" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="40" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="50" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/>
+        <circle cx="60" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="70" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="80" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="90" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="100" cy="20" r="2.6" fill="var(--green)" opacity="0.55"/>
+        <circle cx="10" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="20" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="30" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="40" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="50" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/>
+        <circle cx="60" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="70" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="80" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="90" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/> <circle cx="100" cy="30" r="2.6" fill="var(--green)" opacity="0.55"/>
       </svg>
     </div>
   </div>
@@ -627,9 +622,9 @@ section,.explore-section{padding:32px 0}
         <span class="ring-label">Years in Data</span>
       </div>
       <div class="stat-ring reveal reveal-d2">
-        <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--cyan)" data-pct="75"/></svg>
-        <span class="ring-value" style="color:var(--cyan)">3M+</span>
-        <span class="ring-label">ML Decisions/Mo</span>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--cyan)" data-pct="60"/></svg>
+        <span class="ring-value" style="color:var(--cyan)">6/10</span>
+        <span class="ring-label">OMSCS Courses</span>
       </div>
       <div class="stat-ring reveal reveal-d3">
         <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--purple)" data-pct="40"/></svg>
@@ -637,9 +632,9 @@ section,.explore-section{padding:32px 0}
         <span class="ring-label">ML Projects</span>
       </div>
       <div class="stat-ring reveal reveal-d4">
-        <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--green)" data-pct="60"/></svg>
-        <span class="ring-value" style="color:var(--green)">60+</span>
-        <span class="ring-label">Soldiers Led</span>
+        <svg viewBox="0 0 80 80" aria-hidden="true"><circle class="ring-bg" cx="40" cy="40" r="36"/><circle class="ring-fill" cx="40" cy="40" r="36" style="stroke:var(--gold)" id="ring-mil-fill" data-pct="40"/></svg>
+        <span class="ring-value" style="color:var(--gold)" id="ring-mil-val">4</span>
+        <span class="ring-label">Years as Officer</span>
       </div>
     </div>
 
@@ -652,12 +647,12 @@ section,.explore-section{padding:32px 0}
       <div class="about-card reveal reveal-d2">
         <div class="label">Education</div>
         <div class="value">Georgia Tech MSCS (In Progress)</div>
-        <div class="sub">M.S. Computer Science · Machine Learning</div>
+        <div class="sub">M.S. Computer Science · Machine Learning · expected Summer 2027</div>
       </div>
       <div class="about-card reveal reveal-d3">
         <div class="label">Clearance</div>
-        <div class="value">Secret · Army Signal Officer</div>
-        <div class="sub">U.S. Army Reserve · S6 OIC · 1LT</div>
+        <div class="value">Secret clearance (DoD)</div>
+        <div class="sub"><a href="https://www.credly.com/badges/679bc8e4-d10e-4878-aa12-62e633c9736d/public_url" target="_blank" rel="noopener">CompTIA Security+<span class="sr-only"> (verified badge on Credly, opens in a new tab)</span></a> (Sep 2026) · U.S. Army Reserve S6 OIC · 1LT</div>
       </div>
       <div class="about-card reveal reveal-d4">
         <div class="label">Focus</div>
@@ -666,17 +661,18 @@ section,.explore-section{padding:32px 0}
       </div>
     </div>
 
-    <div class="reveal"><p class="about-text">I build production data pipelines, integrate ML platforms, and engineer analytics systems at <strong>First Community Credit Union ($2.9B)</strong>. I've integrated an <strong>ML credit decisioning engine processing 3M+ decisions/month</strong>, built enterprise ETL pipelines for <strong>real-time fraud risk ingestion</strong>, and designed cross-database architectures that reduced query times by <strong>90%+</strong>. My work sits at the intersection of data engineering, applied ML, and domain expertise.</p></div>
-    <div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading communications, cybersecurity, and IT operations for a 60+ soldier unit. <strong><span id="mil-years-2">4</span>+ years</strong> of military officer leadership with an <strong>active Secret clearance</strong>, experience in classified environments, and the operational discipline that defense and government employers value.</p></div>
+    <div class="reveal"><p class="about-text">I build production data pipelines and analytics systems at <strong>First Community Credit Union ($2.9B in assets)</strong>. I've supported the integration of an <strong>ML credit-decisioning platform</strong>, automated a <strong>card risk data pipeline</strong>, and rebuilt cross-database reporting to run <strong>90%+ faster</strong>. My work sits at the intersection of data engineering, applied ML, and financial services.</p></div>
+    <div class="reveal reveal-d1"><p class="about-text">Parallel to my civilian career, I serve as <strong>S6 OIC</strong> in the U.S. Army Reserve — leading unit communications, IT operations, and network planning, and accounting for all signal equipment. I bring <strong><span id="mil-years-2">4</span>+ years</strong> as an Army officer, a <strong>Secret clearance (DoD)</strong>, and <strong>CompTIA Security+</strong> certification.</p></div>
 
     <div class="value-banner reveal reveal-d2">
       <div class="value-banner-title">Why Hire Me</div>
       <div class="value-pills">
-        <span class="value-pill clearance">Secret Clearance (Active)</span>
+        <span class="value-pill clearance">Secret clearance (DoD)</span>
+        <span class="value-pill clearance">CompTIA Security+</span>
         <span class="value-pill degree">Georgia Tech MSCS Candidate · ML</span>
-        <span class="value-pill sector">Defense · Energy · Financial Services</span>
         <span class="value-pill tech">Production Data Systems</span>
-        <span class="value-pill clearance">U.S. Army Officer</span>
+        <span class="value-pill sector">Defense · Energy · Financial Services</span>
+        <span class="value-pill clearance">U.S. Army Reserve Officer</span>
         <span class="value-pill sector">Houston, TX</span>
       </div>
     </div>
@@ -699,19 +695,19 @@ section,.explore-section{padding:32px 0}
 
     <div class="impact-row">
       <div class="impact-card reveal reveal-d1">
-        <div class="impact-num" id="impact-decisions">$2.9B</div>
+        <div class="impact-num">$2.9B</div>
         <div class="impact-label">In assets</div>
-        <div class="impact-sub">ML-powered decisioning</div>
+        <div class="impact-sub">First Community Credit Union</div>
       </div>
       <div class="impact-card reveal reveal-d2">
         <div class="impact-num">176K</div>
-        <div class="impact-label">Members Impacted</div>
-        <div class="impact-sub">Credit decisioning reach</div>
+        <div class="impact-label">Members</div>
+        <div class="impact-sub">Lending portfolio reach</div>
       </div>
       <div class="impact-card reveal reveal-d3">
         <div class="impact-num">41</div>
-        <div class="impact-label">County Expansion</div>
-        <div class="impact-sub">Compliance automation</div>
+        <div class="impact-label">Texas Counties</div>
+        <div class="impact-sub">Compliance reporting</div>
       </div>
     </div>
 
@@ -726,59 +722,58 @@ section,.explore-section{padding:32px 0}
           <line x1="620" y1="20" x2="620" y2="130" stroke="var(--border)" stroke-width="0.5" stroke-dasharray="4"/>
           <defs><linearGradient id="trajGrad" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="var(--cyan)"/><stop offset="100%" stop-color="var(--green)"/></linearGradient></defs>
           <polyline fill="none" stroke="url(#trajGrad)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="60,110 200,95 340,70 480,50 620,30" class="traj-line"/>
-          <polyline fill="none" stroke="var(--purple)" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" points="340,120 480,105 620,85"/>
-          <circle cx="340" cy="120" r="4" fill="var(--purple)"/>
-          <circle cx="480" cy="105" r="4" fill="var(--purple)"/>
-          <circle cx="620" cy="85" r="5" fill="var(--purple)" stroke="var(--purple)" stroke-width="2" stroke-opacity="0.3"/>
-          <text x="60" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">Intern</text>
-          <text x="200" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">IT DA</text>
-          <text x="340" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">IT DA</text>
-          <text x="480" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">DA-I</text>
-          <text x="620" y="150" fill="var(--green)" font-family="var(--mono)" font-size="10" text-anchor="middle" font-weight="700">DA II</text>
-          <text x="340" y="138" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">2LT</text>
-          <text x="480" y="138" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">1LT</text>
-          <text x="620" y="100" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">S6 OIC</text>
+          <polyline fill="none" stroke="var(--purple)" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" points="410,122 570,104 650,96"/>
+          <text x="60" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">Web Dev '20</text>
+          <text x="200" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">Mktg DA '21</text>
+          <text x="340" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">IT DA '21</text>
+          <text x="480" y="150" fill="var(--muted)" font-family="var(--mono)" font-size="10" text-anchor="middle">DA I '23</text>
+          <text x="620" y="150" fill="var(--green)" font-family="var(--mono)" font-size="10" text-anchor="middle" font-weight="700">DA II '26</text>
+          <text x="410" y="110" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">2LT '22</text>
+          <text x="570" y="92" fill="var(--purple)" font-family="var(--mono)" font-size="9" text-anchor="middle">1LT · S6 OIC '25</text>
           <line x1="20" y1="12" x2="45" y2="12" stroke="var(--cyan)" stroke-width="2"/><text x="50" y="15" fill="var(--muted)" font-family="var(--mono)" font-size="9">Civilian</text>
-          <line x1="110" y1="12" x2="135" y2="12" stroke="var(--purple)" stroke-width="2" stroke-dasharray="4,3"/><text x="140" y="15" fill="var(--muted)" font-family="var(--mono)" font-size="9">Military</text>
+          <line x1="110" y1="12" x2="135" y2="12" stroke="var(--purple)" stroke-width="2" stroke-dasharray="4,3"/><text x="140" y="15" fill="var(--muted)" font-family="var(--mono)" font-size="9">Army Reserve</text>
         </g>
-        <circle cx="60" cy="110" r="5" fill="var(--cyan)" class="traj-dot" tabindex="0" role="button" aria-label="IT Intern, 2020: Help Desk to data exposure" data-title="IT Intern" data-detail="Help Desk → Data exposure · 2020"/>
-        <circle cx="200" cy="95" r="5" fill="var(--cyan)" class="traj-dot" tabindex="0" role="button" aria-label="IT Data Analyst, August 2021: SQL and reporting foundations" data-title="IT Data Analyst" data-detail="SQL + reporting foundations · Aug 2021"/>
-        <circle cx="340" cy="70" r="5" fill="var(--cyan)" class="traj-dot" tabindex="0" role="button" aria-label="IT Data Analyst, 2021 to 2023: SQL Server admin and stored procedures" data-title="IT Data Analyst" data-detail="SQL Server admin + stored procs · 2021–2023"/>
-        <circle cx="480" cy="50" r="6" fill="var(--green)" class="traj-dot" tabindex="0" role="button" aria-label="Data Analyst I, April 2023: ML integration and 3M decisions per month" data-title="Data Analyst I" data-detail="ML integration + 3M decisions/mo · Apr 2023"/>
-        <circle cx="620" cy="30" r="7" fill="var(--green)" stroke="var(--green)" stroke-width="2" stroke-opacity="0.3" class="traj-dot" tabindex="0" role="button" aria-label="Data Analyst II, April 2026 onward: Visa DPS pipeline and ML decisioning" data-title="Data Analyst II" data-detail="Visa DPS pipeline · ML decisioning · Apr 2026+"/>
+        <circle cx="60" cy="110" r="5" fill="var(--cyan)" class="traj-dot" tabindex="0" role="button" aria-label="Web Developer Intern, Elle Investments (remote), June to August 2020" data-title="Web Developer Intern" data-detail="Elle Investments (remote, NY) · Jun–Aug 2020"/>
+        <circle cx="200" cy="95" r="5" fill="var(--cyan)" class="traj-dot" tabindex="0" role="button" aria-label="Marketing Data Analyst Intern, First Community Credit Union, June to August 2021: Python and Pandas campaign analytics" data-title="Marketing Data Analyst Intern" data-detail="First Community Credit Union · Python/Pandas campaign analytics · Jun–Aug 2021"/>
+        <circle cx="340" cy="70" r="5" fill="var(--cyan)" class="traj-dot" tabindex="0" role="button" aria-label="IT Data Analyst, August 2021 to April 2023: SQL Server administration and stored procedures for reporting" data-title="IT Data Analyst" data-detail="SQL Server admin + stored procedures for reporting · Aug 2021 – Apr 2023"/>
+        <circle cx="480" cy="50" r="6" fill="var(--green)" class="traj-dot" tabindex="0" role="button" aria-label="Data Analyst I, April 2023 to April 2026: cross-database reporting 90 percent faster, executive Power BI dashboards" data-title="Data Analyst I" data-detail="Cross-database reporting 90%+ faster · Power BI dashboards · Apr 2023 – Apr 2026"/>
+        <circle cx="620" cy="30" r="7" fill="var(--green)" stroke="var(--green)" stroke-width="2" stroke-opacity="0.3" class="traj-dot" tabindex="0" role="button" aria-label="Data Analyst II, April 2026 to now: card risk data pipeline and ML credit-decisioning integration" data-title="Data Analyst II" data-detail="Card risk data pipeline · ML credit-decisioning integration · Apr 2026 – now"/>
+        <circle cx="410" cy="122" r="4.5" fill="var(--purple)" class="traj-dot" tabindex="0" role="button" aria-label="U.S. Army Reserve: commissioned Signal Officer, second lieutenant, July 2022" data-title="Signal Officer (2LT)" data-detail="U.S. Army Reserve · Jul 2022 – May 2025"/>
+        <circle cx="570" cy="104" r="5.5" fill="var(--purple)" stroke="var(--purple)" stroke-width="2" stroke-opacity="0.3" class="traj-dot" tabindex="0" role="button" aria-label="U.S. Army Reserve: S6 OIC, first lieutenant, May 2025 to now: unit communications, IT operations and network planning" data-title="S6 OIC · Signal Officer (1LT)" data-detail="Unit communications, IT operations, network planning · May 2025 – now"/>
       </svg>
       <ol class="traj-list" aria-labelledby="traj-title">
-        <li><div class="traj-step-title">IT Intern</div><div class="traj-step-meta">2020</div><div class="traj-step-detail">Help Desk → Data exposure</div></li>
-        <li><div class="traj-step-title">IT Data Analyst</div><div class="traj-step-meta">Aug 2021 – 2023</div><div class="traj-step-detail">SQL + reporting foundations, then SQL Server admin + stored procs</div></li>
-        <li><div class="traj-step-title">Data Analyst I</div><div class="traj-step-meta">Apr 2023</div><div class="traj-step-detail">ML integration + 3M decisions/mo</div></li>
-        <li class="now"><div class="traj-step-title">Data Analyst II</div><div class="traj-step-meta">Apr 2026 – now</div><div class="traj-step-detail">Visa DPS pipeline · ML decisioning</div></li>
+        <li><div class="traj-step-title">Web Developer Intern</div><div class="traj-step-meta">Jun – Aug 2020</div><div class="traj-step-detail">Elle Investments (remote, NY)</div></li>
+        <li><div class="traj-step-title">Marketing Data Analyst Intern</div><div class="traj-step-meta">Jun – Aug 2021</div><div class="traj-step-detail">Python/Pandas campaign analytics</div></li>
+        <li><div class="traj-step-title">IT Data Analyst</div><div class="traj-step-meta">Aug 2021 – Apr 2023</div><div class="traj-step-detail">SQL Server admin + stored procedures for reporting</div></li>
+        <li><div class="traj-step-title">Data Analyst I</div><div class="traj-step-meta">Apr 2023 – Apr 2026</div><div class="traj-step-detail">Cross-database reporting 90%+ faster · Power BI dashboards</div></li>
+        <li class="now"><div class="traj-step-title">Data Analyst II</div><div class="traj-step-meta">Apr 2026 – now</div><div class="traj-step-detail">Card risk data pipeline · ML credit-decisioning integration</div></li>
       </ol>
-      <p class="traj-mil">U.S. Army Reserve, in parallel: 2LT → 1LT → S6 OIC</p>
+      <p class="traj-mil">U.S. Army Reserve, in parallel: 2LT (Jul 2022) → 1LT · S6 OIC (May 2025 – now)</p>
     </div>
 
     <div class="highlight-grid">
       <div class="highlight-card reveal reveal-d1">
-        <h3><span class="hl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 4l2-2m0 0h-3m3 0v3" stroke="var(--cyan)" stroke-width="1.2"/></svg></span>ML Credit Decisioning Integration</h3>
-        <div class="hl-psr"><span class="hl-tag problem">Problem</span> <span class="hl-body">Manual underwriting couldn't scale — inconsistent decisions across 176K members, slow turnaround, no ML in the loop.</span></div>
-        <div class="hl-psr"><span class="hl-tag solution">Solution</span> <span class="hl-body">Integrated Scienaptic AI's ML credit decisioning engine into the lending workflow. Built data extraction, validation, and reporting pipelines to align model outputs with underwriting criteria.</span></div>
-        <div class="hl-psr"><span class="hl-tag result">Result</span> <span class="hl-body"><strong>3M+ ML-powered credit decisions per month</strong> across 176K members. Faster, more consistent lending decisions at institutional scale.</span></div>
-        <div class="hl-metric">3M+ decisions/month · 176K members · ML-powered</div>
+        <h3><span class="hl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/><path d="M16 4l2-2m0 0h-3m3 0v3" stroke="var(--cyan)" stroke-width="1.2"/></svg></span>ML Credit Decisioning</h3>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> <span class="hl-body">Lending decisions needed faster, more consistent data.</span></div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> <span class="hl-body">Supported integration of an ML credit-decisioning platform: data feeds, validation, and monitoring dashboards.</span></div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <span class="hl-body"><strong>Model-driven decisions</strong> across a 176K-member lending portfolio.</span></div>
+        <div class="hl-metric">ML platform integration · Data feeds + validation · Monitoring dashboards</div>
       </div>
 
       <div class="highlight-card reveal reveal-d2">
-        <h3><span class="hl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M3 12h4l3-9 4 18 3-9h4"/><circle cx="21" cy="12" r="2" fill="var(--cyan)" opacity="0.3"/></svg></span>Visa DPS Risk Pipeline</h3>
-        <div class="hl-psr"><span class="hl-tag problem">Problem</span> <span class="hl-body">Fraud risk signals from Visa's DPS network were siloed — risk management team had no automated way to ingest, transform, or act on payment network alerts.</span></div>
-        <div class="hl-psr"><span class="hl-tag solution">Solution</span> <span class="hl-body">Designed enterprise ETL pipeline with staging tables, stored procedures, and automated workflows to transform raw risk factors into actionable alerts.</span></div>
-        <div class="hl-psr"><span class="hl-tag result">Result</span> <span class="hl-body"><strong>Real-time fraud risk factor ingestion</strong> from Visa's payment network into the credit union's monitoring framework. First automated risk pipeline at the institution.</span></div>
-        <div class="hl-metric">Enterprise ETL · Real-time risk ingestion · First of its kind</div>
+        <h3><span class="hl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--cyan)" stroke-width="1.5"><path d="M3 12h4l3-9 4 18 3-9h4"/><circle cx="21" cy="12" r="2" fill="var(--cyan)" opacity="0.3"/></svg></span>Card Risk Data Pipeline</h3>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> <span class="hl-body">Card risk data was pulled and checked by hand.</span></div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> <span class="hl-body">Built an automated SQL pipeline with stored procedures and data validation.</span></div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <span class="hl-body"><strong>Reliable, scheduled risk data</strong> for the fraud and risk teams.</span></div>
+        <div class="hl-metric">Automated SQL pipeline · Stored procedures · Scheduled delivery</div>
       </div>
 
       <div class="highlight-card reveal reveal-d3">
         <h3><span class="hl-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="1.5"><polygon points="13,2 3,14 12,14 11,22 21,10 12,10" fill="var(--purple)" fill-opacity="0.15"/></svg></span>Cross-Database Optimization</h3>
-        <div class="hl-psr"><span class="hl-tag problem">Problem</span> <span class="hl-body">Daily reporting required expensive cross-server joins between the DNA core banking system and XP2 lending platform — queries took minutes, blocking downstream analytics.</span></div>
-        <div class="hl-psr"><span class="hl-tag solution">Solution</span> <span class="hl-body">Engineered a staging table architecture with incremental sync to eliminate linked server bottlenecks. Local staging tables replaced cross-server joins entirely.</span></div>
-        <div class="hl-psr"><span class="hl-tag result">Result</span> <span class="hl-body"><strong>90%+ query time reduction</strong>. Eliminated the single biggest performance bottleneck in daily reporting. Queries that took minutes now run in seconds.</span></div>
-        <div class="hl-metric">90%+ faster · Minutes → Seconds · Eliminated linked server bottleneck</div>
+        <div class="hl-psr"><span class="hl-tag problem">Problem</span> <span class="hl-body">Reports joining the core banking system to a separate reporting database took minutes to run.</span></div>
+        <div class="hl-psr"><span class="hl-tag solution">Solution</span> <span class="hl-body">Rebuilt the queries with staging tables and optimized T-SQL instead of cross-server joins.</span></div>
+        <div class="hl-psr"><span class="hl-tag result">Result</span> <span class="hl-body"><strong>90%+ faster</strong>, minutes to seconds.</span></div>
+        <div class="hl-metric">90%+ faster · Minutes → seconds · Staging tables + optimized T-SQL</div>
       </div>
 
       <div class="highlight-card reveal reveal-d4">
@@ -791,213 +786,99 @@ section,.explore-section{padding:32px 0}
     </div>
   </section>
 
-  <!-- ML METRICS PANEL -->
-  <section id="ml-metrics" aria-labelledby="ml-metrics-title">
-    <div class="reveal"><div class="section-label">ML Metrics</div></div>
-    <div class="reveal reveal-d1"><h2 id="ml-metrics-title" class="section-title">Model performance</h2></div>
-    <div class="reveal reveal-d2"><div class="section-desc">Illustrative visualizations based on backtest results from my trading projects — confusion matrix, feature importance, model comparison and ROC curve. Not live trading performance.</div></div>
-
-    <div class="ml-carousel-nav reveal reveal-d2" role="tablist" aria-label="Model performance charts">
-      <button type="button" class="ml-carousel-btn" role="tab" id="tab-ml-nn" aria-controls="ml-nn" aria-selected="true" tabindex="0">Neural Network</button>
-      <button type="button" class="ml-carousel-btn" role="tab" id="tab-ml-cm" aria-controls="ml-cm" aria-selected="false" tabindex="-1">Confusion Matrix</button>
-      <button type="button" class="ml-carousel-btn" role="tab" id="tab-ml-fi" aria-controls="ml-fi" aria-selected="false" tabindex="-1">Feature Importance</button>
-      <button type="button" class="ml-carousel-btn" role="tab" id="tab-ml-mc" aria-controls="ml-mc" aria-selected="false" tabindex="-1">Model Comparison</button>
-      <button type="button" class="ml-carousel-btn" role="tab" id="tab-ml-roc" aria-controls="ml-roc" aria-selected="false" tabindex="-1">ROC Curve</button>
-    </div>
-
-    <!-- Neural Network Visualization -->
-    <div class="ml-carousel-panel active" id="ml-nn" role="tabpanel" aria-labelledby="tab-ml-nn" tabindex="0">
-      <div class="ml-panel reveal reveal-d1">
-        <div class="ml-panel-header">
-          <span class="ml-panel-title">Neural Network Architecture</span>
-          <span class="ml-panel-badge" style="color:var(--purple)">Interactive — hover or tap a neuron</span>
-        </div>
-        <canvas id="neuralNetCanvas" class="ml-canvas" width="700" height="220" role="img" aria-label="Illustrative feed-forward neural network: 5 inputs, hidden layers of 8, 6 and 4 neurons, and 2 outputs"></canvas>
-      </div>
-    </div>
-
-    <!-- Confusion Matrix -->
-    <div class="ml-carousel-panel" id="ml-cm" role="tabpanel" aria-labelledby="tab-ml-cm" tabindex="0">
-      <div class="ml-panel reveal reveal-d2">
-        <div class="ml-panel-header">
-          <span class="ml-panel-title">Confusion Matrix — Kraken ML Trading</span>
-          <span class="ml-panel-badge" style="color:var(--green)">~55% Accuracy (initial backtest)</span>
-        </div>
-        <canvas id="confusionMatrix" class="ml-canvas square" width="300" height="300" role="img" aria-label="Confusion matrix: true positives 115, false negatives 85, false positives 95, true negatives 105, 55% accuracy"></canvas>
-        <div class="sr-only">Confusion matrix, rows are actual direction and columns are predicted direction. Actual Up predicted Up: 115 (true positive). Actual Up predicted Down: 85 (false negative). Actual Down predicted Up: 95 (false positive). Actual Down predicted Down: 105 (true negative). Total: 400 samples, 55% accuracy.</div>
-        <div class="ml-panel-legend" id="cmLegend" aria-hidden="true"><span style="color:var(--green)">TP 115</span><span style="color:var(--red)">FN 85</span><span style="color:var(--red)">FP 95</span><span style="color:var(--green)">TN 105</span><span>n = 400</span></div>
-      </div>
-    </div>
-
-    <!-- Feature Importance -->
-    <div class="ml-carousel-panel" id="ml-fi" role="tabpanel" aria-labelledby="tab-ml-fi" tabindex="0">
-      <div class="ml-panel reveal reveal-d3">
-        <div class="ml-panel-header">
-          <span class="ml-panel-title">Feature Importance — Top 10</span>
-          <span class="ml-panel-badge" style="color:var(--cyan)">Gradient Boosting · Feature Importance</span>
-        </div>
-        <div id="featureImportance" class="fi-chart"></div>
-      </div>
-    </div>
-
-    <!-- Model Comparison -->
-    <div class="ml-carousel-panel" id="ml-mc" role="tabpanel" aria-labelledby="tab-ml-mc" tabindex="0">
-      <div class="ml-panel reveal reveal-d4">
-        <div class="ml-panel-header">
-          <span class="ml-panel-title">Model Comparison — Trading Projects</span>
-          <div class="ml-metric-tabs" id="metricTabs" role="group" aria-label="Metric">
-            <button type="button" class="ml-tab" data-metric="accuracy" aria-pressed="true">Accuracy</button>
-            <button type="button" class="ml-tab" data-metric="precision" aria-pressed="false">Precision</button>
-            <button type="button" class="ml-tab" data-metric="recall" aria-pressed="false">Recall</button>
-            <button type="button" class="ml-tab" data-metric="f1" aria-pressed="false">F1 Score</button>
-          </div>
-        </div>
-        <canvas id="modelComparison" class="ml-canvas" width="700" height="200" role="img" aria-label="Model comparison bar chart: Kraken GBM vs ML Trading GBM across accuracy, precision, recall, and F1 metrics"></canvas>
-        <div class="sr-only">Model Comparison: Kraken GBM — Accuracy 55%, Precision 53%, Recall 57%, F1 55%. ML Trading GBM — Accuracy 52%, Precision 50%, Recall 54%, F1 52%.</div>
-      </div>
-    </div>
-
-    <!-- ROC Curve -->
-    <div class="ml-carousel-panel" id="ml-roc" role="tabpanel" aria-labelledby="tab-ml-roc" tabindex="0">
-      <div class="ml-panel reveal reveal-d5">
-        <div class="ml-panel-header">
-          <span class="ml-panel-title">ROC Curve — Binary Classification</span>
-          <span class="ml-panel-badge" style="color:var(--purple)">AUC ≈ 0.58 (initial backtest)</span>
-        </div>
-        <canvas id="rocCurve" class="ml-canvas square" width="320" height="320" role="img" aria-label="Illustrative ROC curve for binary classification with an AUC of about 0.58"></canvas>
-        <div class="sr-only">ROC Curve — Binary Classification. Area Under Curve (AUC) ≈ 0.58. The curve shows modest separation from the random baseline diagonal, consistent with 55% directional accuracy on financial data.</div>
-      </div>
-    </div>
-  </section>
-
-  <!-- DATA PIPELINE ARCHITECTURE -->
+  <!-- SYSTEM DESIGN: ATLAS ML PIPELINE (from the atlas-ml-trading README) -->
   <section id="pipeline" aria-labelledby="pipeline-title">
     <div class="reveal"><div class="section-label">System Design</div></div>
-    <div class="reveal reveal-d1"><h2 id="pipeline-title" class="section-title">Production pipeline</h2></div>
-    <div class="reveal reveal-d2"><div class="section-desc"><span class="only-wide">Interactive architecture diagram — hover, tap or focus a node to see what it does in the ML credit decisioning pipeline.</span><span class="only-narrow">What each stage of the ML credit decisioning pipeline does.</span></div></div>
+    <div class="reveal reveal-d1"><h2 id="pipeline-title" class="section-title">How ATLAS works</h2></div>
+    <div class="reveal reveal-d2"><div class="section-desc">The end-to-end ML pipeline behind ATLAS, my stock-return forecasting project — from raw prices to a served, risk-controlled forecast.</div></div>
 
-    <div class="pipeline-diagram reveal reveal-d3" id="pipelineDiagram">
-      <svg viewBox="0 0 720 200" class="pipeline-svg" role="group" aria-label="ML credit decisioning pipeline architecture">
-        <g aria-hidden="true">
-          <line x1="110" y1="100" x2="140" y2="100" stroke="var(--cyan)" stroke-width="1.5" marker-end="url(#arrowCyan)"/>
-          <line x1="240" y1="100" x2="270" y2="100" stroke="var(--green)" stroke-width="1.5" marker-end="url(#arrowGreen)"/>
-          <line x1="370" y1="100" x2="400" y2="100" stroke="var(--purple)" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
-          <line x1="500" y1="100" x2="530" y2="100" stroke="var(--gold)" stroke-width="1.5" marker-end="url(#arrowGold)"/>
-          <line x1="630" y1="70" x2="650" y2="60" stroke="var(--orange)" stroke-width="1" stroke-dasharray="4"/>
-          <line x1="190" y1="150" x2="190" y2="130" stroke="var(--red)" stroke-width="1" stroke-dasharray="4" marker-end="url(#arrowRed)"/>
-          <defs>
-            <marker id="arrowCyan" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--cyan)"/></marker>
-            <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--green)"/></marker>
-            <marker id="arrowPurple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--purple)"/></marker>
-            <marker id="arrowGold" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--gold)"/></marker>
-            <marker id="arrowRed" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="var(--red)"/></marker>
-          </defs>
-          <text x="360" y="55" fill="var(--muted)" font-family="var(--mono)" font-size="9" text-anchor="middle" opacity="0.6">3M+ decisions/month →</text>
-          <circle class="pipe-dot-anim" cx="0" cy="0" r="3" fill="var(--cyan)" opacity="0">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="0s" path="M110,100 L140,100 L240,100 L270,100 L370,100 L400,100 L500,100 L530,100"/>
-            <animate attributeName="opacity" values="0;0.9;0.9;0" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <circle class="pipe-dot-anim" cx="0" cy="0" r="2.5" fill="var(--green)" opacity="0">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="1s" path="M110,100 L140,100 L240,100 L270,100 L370,100 L400,100 L500,100 L530,100"/>
-            <animate attributeName="opacity" values="0;0.7;0.7;0" dur="3s" repeatCount="indefinite" begin="1s"/>
-          </circle>
-          <circle class="pipe-dot-anim" cx="0" cy="0" r="2" fill="var(--purple)" opacity="0">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="2s" path="M110,100 L140,100 L240,100 L270,100 L370,100 L400,100 L500,100 L530,100"/>
-            <animate attributeName="opacity" values="0;0.6;0.6;0" dur="3s" repeatCount="indefinite" begin="2s"/>
-          </circle>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="DNA Core Banking: primary data source — member accounts, loans, transactions from the DNA core" data-label="DNA Core Banking" data-detail="Primary data source — member accounts, loans, transactions from the DNA core">
-          <rect x="10" y="70" width="100" height="60" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--cyan)" stroke-width="1.5"/>
-          <text x="60" y="95" fill="var(--cyan)" font-family="var(--mono)" font-size="10" text-anchor="middle">DNA Core</text>
-          <text x="60" y="110" fill="var(--muted)" font-family="var(--mono)" font-size="8" text-anchor="middle">Banking</text>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="ETL Pipeline: stored procedures and staging tables — incremental sync, data validation, cross-DB joins eliminated" data-label="ETL Pipeline" data-detail="Stored procedures + staging tables — incremental sync, data validation, cross-DB joins eliminated">
-          <rect x="140" y="70" width="100" height="60" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--green)" stroke-width="1.5"/>
-          <text x="190" y="95" fill="var(--green)" font-family="var(--mono)" font-size="10" text-anchor="middle">ETL</text>
-          <text x="190" y="110" fill="var(--muted)" font-family="var(--mono)" font-size="8" text-anchor="middle">Pipeline</text>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="Feature Store: staged feature tables — 50+ engineered features, credit history, risk scores, behavioral signals" data-label="Feature Store" data-detail="Staged feature tables — 50+ engineered features, credit history, risk scores, behavioral signals">
-          <rect x="270" y="70" width="100" height="60" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--purple)" stroke-width="1.5"/>
-          <text x="320" y="95" fill="var(--purple)" font-family="var(--mono)" font-size="10" text-anchor="middle">Feature</text>
-          <text x="320" y="110" fill="var(--muted)" font-family="var(--mono)" font-size="8" text-anchor="middle">Store</text>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="ML Scoring Engine: Scienaptic AI credit decisioning — 3M+ decisions per month, real-time risk scoring, approve, deny or review" data-label="ML Scoring Engine" data-detail="Scienaptic AI credit decisioning — 3M+ decisions/month, real-time risk scoring, approval/deny/review">
-          <rect x="400" y="70" width="100" height="60" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--gold)" stroke-width="1.5"/>
-          <text x="450" y="95" fill="var(--gold)" font-family="var(--mono)" font-size="10" text-anchor="middle">ML Scoring</text>
-          <text x="450" y="110" fill="var(--muted)" font-family="var(--mono)" font-size="8" text-anchor="middle">Engine</text>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="Decision Output: approve, deny or review — feeds into underwriting workflow, compliance logging, audit trail" data-label="Decision Output" data-detail="Approve / Deny / Review — feeds into underwriting workflow, compliance logging, audit trail">
-          <rect x="530" y="70" width="100" height="60" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--orange)" stroke-width="1.5"/>
-          <text x="580" y="95" fill="var(--orange)" font-family="var(--mono)" font-size="10" text-anchor="middle">Decision</text>
-          <text x="580" y="110" fill="var(--muted)" font-family="var(--mono)" font-size="8" text-anchor="middle">Output</text>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="Monitor Dashboard: Power BI and SQL dashboards — decision distribution, model drift detection, compliance reporting" data-label="Monitoring Dashboard" data-detail="Power BI + SQL dashboards — decision distribution, model drift detection, compliance reporting">
-          <rect x="620" y="10" width="90" height="50" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--red)" stroke-width="1.5"/>
-          <text x="665" y="32" fill="var(--red)" font-family="var(--mono)" font-size="10" text-anchor="middle">Monitor</text>
-          <text x="665" y="46" fill="var(--muted)" font-family="var(--mono)" font-size="8" text-anchor="middle">Dashboard</text>
-        </g>
-        <g class="pipe-node" tabindex="0" role="button" aria-label="Visa DPS Risk Feed: real-time fraud risk signals from the Visa payment network — automated ETL ingestion into risk monitoring" data-label="Visa DPS Risk Feed" data-detail="Real-time fraud risk signals from Visa payment network — automated ETL ingestion into risk monitoring">
-          <rect x="140" y="150" width="100" height="45" rx="10" fill="rgba(11,17,32,0.8)" stroke="var(--red)" stroke-width="1" stroke-dasharray="4"/>
-          <text x="190" y="175" fill="var(--red)" font-family="var(--mono)" font-size="9" text-anchor="middle">Visa DPS Risk</text>
-        </g>
-      </svg>
-      <div class="pipeline-tooltip" id="pipelineTooltip" aria-hidden="true"></div>
-      <ol class="pipe-steps" aria-label="Pipeline stages">
-        <li style="--c:var(--cyan)"><span class="pipe-step-name">DNA Core Banking</span><span class="pipe-step-detail">Primary data source — member accounts, loans, transactions from the DNA core</span></li>
-        <li class="side" style="--c:var(--red)"><span class="pipe-step-name">Visa DPS Risk Feed <span class="pipe-step-tag">feeds ETL</span></span><span class="pipe-step-detail">Real-time fraud risk signals from Visa payment network — automated ETL ingestion into risk monitoring</span></li>
-        <li style="--c:var(--green)"><span class="pipe-step-name">ETL Pipeline</span><span class="pipe-step-detail">Stored procedures + staging tables — incremental sync, data validation, cross-DB joins eliminated</span></li>
-        <li style="--c:var(--purple)"><span class="pipe-step-name">Feature Store</span><span class="pipe-step-detail">Staged feature tables — 50+ engineered features, credit history, risk scores, behavioral signals</span></li>
-        <li style="--c:var(--gold)"><span class="pipe-step-name">ML Scoring Engine</span><span class="pipe-step-detail">Scienaptic AI credit decisioning — 3M+ decisions/month, real-time risk scoring, approval/deny/review</span></li>
-        <li style="--c:var(--orange)"><span class="pipe-step-name">Decision Output</span><span class="pipe-step-detail">Approve / Deny / Review — feeds into underwriting workflow, compliance logging, audit trail</span></li>
-        <li style="--c:var(--red)"><span class="pipe-step-name">Monitoring Dashboard</span><span class="pipe-step-detail">Power BI + SQL dashboards — decision distribution, model drift detection, compliance reporting</span></li>
+    <div class="pipeline-diagram reveal reveal-d3">
+      <ol class="pipe-steps" aria-label="ATLAS pipeline stages">
+        <li style="--c:var(--cyan)"><span class="pipe-step-name">Data</span><span class="pipe-step-detail">Daily OHLCV prices for a 33-stock universe (tech, sector leaders, defensives, ETFs, growth), with two years of history per symbol for training.</span><span class="pipe-step-tech">Yahoo Finance (yfinance) · BigQuery (optional)</span></li>
+        <li style="--c:var(--green)"><span class="pipe-step-name">Features</span><span class="pipe-step-detail">34 technical indicators (moving averages, RSI, MACD, Bollinger Bands, volume, momentum, volatility, ATR, regime, calendar), built into 30-day lookback windows.</span><span class="pipe-step-tech">Pandera schemas validate prices, features and predictions</span></li>
+        <li style="--c:var(--purple)"><span class="pipe-step-name">Models</span><span class="pipe-step-detail">A 2-layer LSTM (Huber loss, MC Dropout uncertainty) in a 7-architecture ablation: LSTM, BiLSTM+Attention, Transformer, CNN-LSTM, Multi-Horizon, XGBoost, Ridge.</span><span class="pipe-step-tech">TensorFlow/Keras · XGBoost · scikit-learn</span></li>
+        <li style="--c:var(--gold)"><span class="pipe-step-name">Evaluation</span><span class="pipe-step-detail">Walk-forward cross-validation, Bayesian tuning, bootstrap confidence intervals (10K resamples) and Diebold-Mariano tests against baselines.</span><span class="pipe-step-tech">Optuna · SHAP · MLflow</span></li>
+        <li style="--c:var(--orange)"><span class="pipe-step-name">Serving</span><span class="pipe-step-detail">A REST endpoint at /api/v1/predict. Vertex AI first, then the local model, then an explicit failure — no silent mock fallback.</span><span class="pipe-step-tech">FastAPI · Vertex AI · Docker Compose</span></li>
+        <li style="--c:var(--red)"><span class="pipe-step-name">Portfolio</span><span class="pipe-step-detail">21-day forecasts feed a rebalancer with risk controls (15% max position, 8% stop-loss, 12% drawdown circuit breaker) in paper-trading mode.</span><span class="pipe-step-tech">Streamlit dashboard · Paper trading</span></li>
       </ol>
+      <div class="pipe-foot">
+        <a href="projects/atlas-ml-trading.html">Read the ATLAS write-up →</a>
+        <a href="https://github.com/anhtdang92/atlas-ml-trading" target="_blank" rel="noopener">Code on GitHub →<span class="sr-only"> (opens in a new tab)</span></a>
+        <span class="pipe-note">150+ tests · CI on GitHub Actions</span>
+      </div>
     </div>
   </section>
 
   <!-- EXPLORE MORE -->
   <section id="explore" class="explore-section" aria-labelledby="explore-title">
     <div class="reveal"><div class="section-label">Explore</div></div>
-    <div class="reveal reveal-d1"><h2 id="explore-title" class="section-title">Dive deeper</h2></div>
+    <div class="reveal reveal-d1"><h2 id="explore-title" class="section-title">Featured projects</h2></div>
     <div class="reveal reveal-d2 explore-grid">
-      <a href="projects/kraken-ml-trading-strategy.html" class="flip-card reveal reveal-d1">
+      <a href="projects/atlas-ml-trading.html" class="flip-card featured reveal reveal-d1">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" preserveAspectRatio="none" aria-hidden="true">
-              <defs><linearGradient id="fc-kraken" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity="0.4"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/></linearGradient></defs>
-              <polygon points="0,46 0,38 16,36 32,30 48,33 64,24 80,28 96,18 112,14 128,20 144,10 160,6 160,46" fill="url(#fc-kraken)"/>
-              <polyline points="0,38 16,36 32,30 48,33 64,24 80,28 96,18 112,14 128,20 144,10 160,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/>
+            <svg class="fc-svg" width="100%" height="48" viewBox="0 0 320 48" preserveAspectRatio="none" aria-hidden="true">
+              <defs><linearGradient id="fc-atlas" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--cyan)" stop-opacity="0.4"/><stop offset="100%" stop-color="var(--cyan)" stop-opacity="0"/></linearGradient></defs>
+              <polygon points="0,46 0,38 24,36 48,30 72,33 96,26 120,28 144,22 168,24 192,17 216,19 240,13 264,15 288,9 320,6 320,46" fill="url(#fc-atlas)"/>
+              <polyline points="0,38 24,36 48,30 72,33 96,26 120,28 144,22 168,24 192,17 216,19 240,13 264,15 288,9 320,6" fill="none" stroke="var(--cyan)" stroke-width="1.5"/>
+              <polyline points="240,13 264,15 288,9 320,6" fill="none" stroke="var(--green)" stroke-width="1.5" stroke-dasharray="4,3"/>
             </svg>
-            <div class="fc-title">Kraken ML Trading</div>
-            <div class="fc-sub">scikit-learn · Kraken API · GCP</div>
+            <span class="fc-status featured">Featured project</span>
+            <div class="fc-title">ATLAS · Stock ML Forecasting</div>
+            <div class="fc-sub">LSTM · 7-model ablation · FastAPI · 150+ tests</div>
           </div>
           <div class="flip-card-back">
-            <div class="stat-line"><span class="stat-value">~1.0</span> <span class="stat-label">Sharpe (backtest)</span></div>
-            <div class="stat-line"><span class="stat-value">~55%</span> <span class="stat-label">Dir. Acc. (backtest)</span></div>
-            <div class="stat-line"><span class="stat-value">20+</span> <span class="stat-label">Features</span></div>
+            <div class="stat-line"><span class="stat-value">7</span> <span class="stat-label">Architectures compared</span></div>
+            <div class="stat-line"><span class="stat-value">34</span> <span class="stat-label">Technical indicators</span></div>
+            <div class="stat-line"><span class="stat-value">150+</span> <span class="stat-label">Tests</span></div>
             <div class="fc-cta">View project →</div>
           </div>
         </div>
       </a>
-      <a href="projects/ml-trading-algorithm.html" class="flip-card reveal reveal-d2">
+      <a href="https://github.com/anhtdang92/argus" target="_blank" rel="noopener" class="flip-card reveal reveal-d2">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" preserveAspectRatio="none" aria-hidden="true">
-              <defs><linearGradient id="fc-mltrade" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--green)" stop-opacity="0.4"/><stop offset="100%" stop-color="var(--green)" stop-opacity="0"/></linearGradient></defs>
-              <polygon points="0,46 0,40 20,38 40,34 60,30 80,26 100,20 120,16 140,18 160,10 160,46" fill="url(#fc-mltrade)"/>
-              <polyline points="0,40 20,38 40,34 60,30 80,26 100,20 120,16 140,18 160,10" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+            <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" aria-hidden="true">
+              <g stroke="var(--dim)" stroke-width="1" opacity="0.7"><line x1="20" y1="24" x2="52" y2="10"/><line x1="20" y1="24" x2="52" y2="38"/><line x1="52" y1="10" x2="88" y2="24"/><line x1="52" y1="38" x2="88" y2="24"/><line x1="88" y1="24" x2="120" y2="10"/><line x1="88" y1="24" x2="120" y2="38"/><line x1="120" y1="10" x2="144" y2="24"/></g>
+              <line x1="120" y1="38" x2="144" y2="24" stroke="var(--red)" stroke-width="1.5" stroke-dasharray="3,2"/>
+              <circle cx="20" cy="24" r="4" fill="var(--cyan)" opacity="0.8"/><circle cx="52" cy="10" r="3.5" fill="var(--cyan)" opacity="0.6"/><circle cx="52" cy="38" r="3.5" fill="var(--cyan)" opacity="0.6"/>
+              <circle cx="88" cy="24" r="4.5" fill="var(--cyan)" opacity="0.8"/><circle cx="120" cy="10" r="3.5" fill="var(--cyan)" opacity="0.6"/><circle cx="144" cy="24" r="3.5" fill="var(--cyan)" opacity="0.6"/>
+              <circle cx="120" cy="38" r="5" fill="var(--red)" opacity="0.85"/><circle cx="120" cy="38" r="9" fill="none" stroke="var(--red)" stroke-width="1" opacity="0.4"/>
             </svg>
-            <div class="fc-title">ML Trading Algorithm</div>
-            <div class="fc-sub">Ensemble · Walk-forward · scikit-learn</div>
+            <span class="fc-status">In progress</span>
+            <div class="fc-title">ARGUS</div>
+            <div class="fc-sub">Cyber threat detection · anomaly ensemble · GNN</div>
           </div>
           <div class="flip-card-back">
-            <div class="stat-line"><span class="stat-value">30+</span> <span class="stat-label">Engineered Features</span></div>
-            <div class="stat-line"><span class="stat-value">Walk-Fwd</span> <span class="stat-label">Validation</span></div>
-            <div class="stat-line"><span class="stat-value">Sharpe</span> <span class="stat-label">Optimization</span></div>
-            <div class="fc-cta">View project →</div>
+            <div class="stat-line"><span class="stat-value">Ensemble</span> <span class="stat-label">LSTM-AE · IF · XGBoost</span></div>
+            <div class="stat-line"><span class="stat-value">GNN</span> <span class="stat-label">Lateral movement</span></div>
+            <div class="stat-line"><span class="stat-value">SHAP</span> <span class="stat-label">Explained alerts</span></div>
+            <div class="fc-cta">View on GitHub →<span class="sr-only"> (opens in a new tab)</span></div>
           </div>
         </div>
       </a>
-      <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener" class="flip-card reveal reveal-d3">
+      <a href="https://github.com/anhtdang92/signal-network-mapper" target="_blank" rel="noopener" class="flip-card reveal reveal-d3">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" aria-hidden="true">
+              <g stroke="var(--green)" stroke-width="1.2" opacity="0.6"><line x1="30" y1="24" x2="80" y2="10"/><line x1="30" y1="24" x2="80" y2="38"/><line x1="80" y1="10" x2="130" y2="24"/><line x1="80" y1="38" x2="130" y2="24"/><line x1="80" y1="10" x2="80" y2="38" stroke-dasharray="3,2"/></g>
+              <circle cx="30" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="1.5"/><text x="30" y="27" fill="var(--cyan)" font-family="var(--mono)" font-size="7" text-anchor="middle">HQ</text>
+              <rect x="72" y="4" width="16" height="12" rx="2" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+              <rect x="72" y="32" width="16" height="12" rx="2" fill="none" stroke="var(--green)" stroke-width="1.5"/>
+              <circle cx="130" cy="24" r="8" fill="none" stroke="var(--cyan)" stroke-width="1.5"/><text x="130" y="27" fill="var(--cyan)" font-family="var(--mono)" font-size="7" text-anchor="middle">S6</text>
+            </svg>
+            <div class="fc-title">Signal Network Mapper</div>
+            <div class="fc-sub">React · ReactFlow · MIL-STD-2525</div>
+          </div>
+          <div class="flip-card-back">
+            <div class="stat-line"><span class="stat-value">S6</span> <span class="stat-label">Network planning</span></div>
+            <div class="stat-line"><span class="stat-value">2525</span> <span class="stat-label">MIL-STD symbols</span></div>
+            <div class="stat-line"><span class="stat-value">React</span> <span class="stat-label">Vite + ReactFlow</span></div>
+            <div class="fc-cta">View on GitHub →<span class="sr-only"> (opens in a new tab)</span></div>
+          </div>
+        </div>
+      </a>
+      <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener" class="flip-card reveal reveal-d4">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" aria-hidden="true">
@@ -1019,7 +900,7 @@ section,.explore-section{padding:32px 0}
           </div>
         </div>
       </a>
-      <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener" class="flip-card reveal reveal-d4">
+      <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener" class="flip-card reveal reveal-d5">
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <svg class="fc-svg" width="100%" height="48" viewBox="0 0 160 48" aria-hidden="true">
@@ -1049,31 +930,31 @@ section,.explore-section{padding:32px 0}
     <div class="reveal"><div class="section-label">What's Next</div></div>
     <div class="reveal reveal-d1"><h2 id="next-title" class="section-title">Building toward</h2></div>
 
-    <div class="reveal reveal-d2 next-pitch"><p class="about-text" style="margin-bottom:24px">Most ML engineers come from pure CS or research backgrounds. I come from the intersection of <strong>production data systems, military operations, and applied ML</strong> — which means I understand both the models and the real-world decisions they power. I've shipped ML integrations processing millions of decisions at First Community Credit Union ($2.9B), managed classified communications infrastructure for the Army, and I'm building deep ML expertise through Georgia Tech's OMSCS program. That combination — <strong>production experience, Secret clearance, domain knowledge, and Georgia Tech ML training</strong> — is what I bring to the table.</p></div>
+    <div class="reveal reveal-d2 next-pitch"><p class="about-text" style="margin-bottom:24px">Most ML engineers come from pure CS or research backgrounds. I come from the intersection of <strong>production data systems, military operations, and applied ML</strong> — which means I understand both the models and the real-world decisions they power. I've built production data pipelines and supported an ML credit-decisioning integration at First Community Credit Union ($2.9B in assets), I lead unit communications and IT operations as an Army Reserve S6 OIC, and I'm building deep ML expertise through Georgia Tech's OMSCS program. That combination — <strong>production experience, a Secret clearance (DoD), domain knowledge, and Georgia Tech ML training</strong> — is what I bring to the table.</p></div>
 
     <div class="next-card reveal reveal-d3">
       <h3>Let's build production ML systems together</h3>
-      <p>Currently a Data Analyst II building toward ML Engineering — advancing through Georgia Tech's OMSCS program while building end-to-end ML projects. Targeting ML Engineer, Data Scientist, and MLE roles.</p>
+      <p>Currently a Data Analyst II building toward ML Engineering — advancing through Georgia Tech's OMSCS program while building end-to-end ML projects. Targeting ML Engineer and Data Scientist roles.</p>
       <div class="next-items">
         <div class="next-item">
           <div class="ni-label">OMSCS</div>
-          <div class="ni-value">Georgia Tech MSCS (In Progress)</div>
-          <div class="ni-date">6 of 10 courses completed</div>
+          <div class="ni-value">Georgia Tech M.S. CS (In Progress)</div>
+          <div class="ni-date">6 of 10 courses · 18/30 credits (24/30 after Fall 2026) · expected Summer 2027</div>
         </div>
         <div class="next-item">
           <div class="ni-label">Completed</div>
-          <div class="ni-value">DVA · ML4T · KBAI · NetSci · AIES · CG&amp;AI</div>
-          <div class="ni-date">Data &amp; Visual Analytics · ML for Trading · Knowledge-Based AI · Network Science · AI Ethics &amp; Society · Computer Graphics &amp; AI</div>
+          <div class="ni-value">DVA · AIES · NetSci · KBAI · CG in the AI Era · ML4T</div>
+          <div class="ni-date">Data &amp; Visual Analytics · AI, Ethics &amp; Society · Network Science · Knowledge-Based AI · Computer Graphics in the AI Era · Machine Learning for Trading</div>
         </div>
         <div class="next-item">
           <div class="ni-label">Roles</div>
-          <div class="ni-value">ML Engineer · MLE · Data Scientist</div>
+          <div class="ni-value">ML Engineer · Data Scientist</div>
           <div class="ni-date">IC or Tech Lead · Remote/Hybrid/Onsite</div>
         </div>
         <div class="next-item">
           <div class="ni-label">Sectors</div>
           <div class="ni-value">Defense · Energy · Financial Services</div>
-          <div class="ni-date">Secret Clearance · Houston, TX</div>
+          <div class="ni-date">Secret clearance (DoD) · Houston, TX</div>
         </div>
       </div>
     </div>

@@ -6,9 +6,9 @@
 <meta name="author" content="Anh Dang">
 <script>try{if(localStorage.getItem('theme')==='light')document.documentElement.setAttribute('data-theme','light')}catch(e){}</script>
 <title>Projects — Anh Dang</title>
-<meta name="description" content="ML projects by Anh Dang — deep learning trading systems with LSTM networks and ensemble methods for market prediction.">
+<meta name="description" content="Anh Dang's projects: ATLAS (LSTM stock forecasting with walk-forward evaluation), ARGUS (threat detection, in progress), Signal Network Mapper, and local GPU AI experiments.">
 <meta property="og:title" content="Projects — Anh Dang">
-<meta property="og:description" content="ML projects — deep learning trading systems and ensemble methods.">
+<meta property="og:description" content="ATLAS LSTM forecasting case study, ARGUS threat detection (in progress), Signal Network Mapper, and local GPU AI experiments.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://anhtdang92.github.io/projects.html">
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
@@ -19,7 +19,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Projects — Anh Dang">
-<meta name="twitter:description" content="ML projects — deep learning trading systems and ensemble methods.">
+<meta name="twitter:description" content="ATLAS LSTM forecasting case study, ARGUS threat detection (in progress), Signal Network Mapper, and local GPU AI experiments.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
 <meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
 <meta name="theme-color" content="#04070d">
@@ -34,90 +34,66 @@
 <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <link rel="stylesheet" href="css/shared.css">
 <style>
-[hidden]{display:none!important}
 .page-top{padding-top:120px}
 
 /* PROJECT GRID */
-.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.project-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:8px}
 
 /* PROJECT CARDS */
-.project{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:20px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.23,1,0.32,1),border-color 0.4s ease,box-shadow 0.4s ease}
-.project:nth-child(2){transition-delay:0.1s}
-.project .project-badge{position:absolute;top:14px;right:14px;font-size:12px;padding:2px 8px}
-.project-name{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;padding-right:52px;line-height:1.35}
-.project-desc{font-size:15px;color:var(--muted);line-height:1.6}
-.project-kpis{font-family:var(--mono);font-size:13px;color:var(--green);margin-top:8px;line-height:1.6}
-.project-spark{margin-top:12px}
-.spark-caption{font-family:var(--mono);font-size:12px;color:var(--dim);margin-bottom:2px}
-.project-sparkline{display:block;width:100%;height:40px;overflow:visible}
-.project-sparkline polyline{stroke-dasharray:200;stroke-dashoffset:200;transition:stroke-dashoffset 1.2s cubic-bezier(0.23,1,0.32,1)}
-.project.visible .project-sparkline polyline{stroke-dashoffset:0}
-.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
-.project-tech span{font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:4px;background:var(--inner);color:var(--muted);border:1px solid var(--border);transition:border-color 0.3s,color 0.3s}
-.project-toggle{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;min-height:40px;margin-top:8px;padding:8px 2px;background:none;border:none;font-family:var(--mono);font-size:13px;color:var(--cyan);cursor:pointer;transition:color 0.2s}
-.project-toggle:hover{color:var(--green)}
-.project-toggle .chev{transition:transform 0.25s ease}
-.project-toggle[aria-expanded="true"] .chev{transform:rotate(90deg)}
-.project-expand{margin-top:2px;animation:fadeUp 0.3s ease both}
-.project-expand p{font-size:15px;color:var(--text);line-height:1.7}
-.card-links{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto;padding-top:14px}
+.project{position:relative;overflow:hidden;display:flex;flex-direction:column;padding:22px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);transition:opacity 0.6s ease,transform 0.6s cubic-bezier(0.23,1,0.32,1),border-color 0.4s ease,box-shadow 0.4s ease}
+.project-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:12px}
+.project-meta .project-badge{font-size:11px;padding:3px 9px;text-transform:uppercase}
+.badge-featured{background:rgba(0,212,255,0.1);color:var(--cyan);border:1px solid rgba(0,212,255,0.35)}
+.badge-status{display:inline-flex!important;align-items:center;gap:6px;background:rgba(255,208,0,0.08);color:var(--gold);border:1px solid rgba(255,208,0,0.4)}
+.badge-status::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;flex-shrink:0}
+.project-name{font-size:19px;font-weight:700;color:var(--text);line-height:1.3}
+.project-repo{font-family:var(--mono);font-size:12px;color:var(--dim);margin:2px 0 10px;overflow-wrap:anywhere}
+.project-desc{font-size:15px;color:var(--muted);line-height:1.65}
+.project-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.project-facts li{font-family:var(--mono);font-size:12px;color:var(--green);padding:4px 10px;border-radius:999px;border:1px solid rgba(0,255,135,0.25);background:rgba(0,255,135,0.05)}
+.project-tech{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.project-tech li{list-style:none;font-family:var(--mono);font-size:12px;padding:3px 8px;border-radius:4px;background:var(--inner);color:var(--muted);border:1px solid var(--border);transition:border-color 0.3s,color 0.3s}
+.card-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px;margin-top:auto;padding-top:16px}
 .card-links a{display:flex;align-items:center;justify-content:center;gap:6px;min-height:44px;padding:8px 12px;border-radius:8px;border:1px solid var(--border);font-family:var(--mono);font-size:13px;color:var(--cyan);text-align:center;transition:border-color 0.2s,color 0.2s,background-color 0.2s}
 .card-links a:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,135,0.05)}
-.card-links a.primary-link{border-color:rgba(0,212,255,0.35);background:rgba(0,212,255,0.06)}
-[data-theme="light"] .project{background-color:rgba(255,255,255,0.55)}
-[data-theme="light"] .project-name{color:#1a1a2e}
+.card-links a.primary-link{border-color:rgba(0,212,255,0.4);background:rgba(0,212,255,0.08);font-weight:600}
 
-/* COMPARISON MATRIX */
-.comparison-matrix{margin-top:40px;background:rgba(11,17,32,0.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-radius:14px;border:1px solid var(--border);overflow:hidden}
-.ml-panel-header{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:14px 20px;border-bottom:1px solid var(--border);background:rgba(224,64,251,0.04)}
-.ml-panel-title{font-family:var(--mono);font-size:14px;font-weight:600;color:var(--purple);letter-spacing:0.5px}
-.cmp-scroll-hint{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
-.cmp-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
-.cmp-table-wrap:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
-.cmp-table{width:100%;border-collapse:collapse;font-size:13px}
-.cmp-table thead{background:rgba(255,255,255,0.02)}
-.cmp-table th{padding:6px 10px;text-align:left;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--dim);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);white-space:nowrap}
-.cmp-sort{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:4px 6px;background:none;border:none;border-radius:6px;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit;cursor:pointer;transition:color 0.2s}
-.cmp-sort:hover,th[aria-sort] .cmp-sort{color:var(--cyan)}
-.cmp-arrow{opacity:0.5}
-th[aria-sort] .cmp-arrow{opacity:1}
-.cmp-table tbody th,.cmp-table td{padding:12px 16px;color:var(--text);border-bottom:1px solid var(--border);font-family:var(--mono);font-size:13px;font-weight:400;text-transform:none;letter-spacing:0;white-space:normal;text-align:left}
-.cmp-table tbody tr:last-child th,.cmp-table tbody tr:last-child td{border-bottom:none}
-.cmp-table tbody th{font-weight:600}
-.deploy-badge{display:inline-block;font-size:12px;padding:2px 8px;border-radius:4px;font-weight:600;letter-spacing:0.5px}
-.deploy-local{background:rgba(224,64,251,0.12);color:var(--purple);border:1px solid rgba(224,64,251,0.25)}
-[data-theme="light"] .comparison-matrix{background-color:rgba(255,255,255,0.55)}
+/* FEATURED (ATLAS) */
+.project.featured{grid-column:1/-1;padding:26px;border-color:rgba(0,212,255,0.3);background-image:linear-gradient(135deg,rgba(224,64,251,0.07) 0%,rgba(0,212,255,0.05) 50%,rgba(0,255,135,0.04) 100%)}
+.project.featured .project-name{font-size:clamp(20px,3.4vw,24px)}
+.project.featured .project-desc{color:var(--text);max-width:720px}
+.project.featured .card-links{max-width:440px}
+
+.more-link{margin-top:24px;font-family:var(--mono);font-size:13px;text-align:center}
+.more-link a{display:inline-flex;align-items:center;min-height:44px;padding:8px 4px}
+
+[data-theme="light"] .project{background-color:rgba(255,255,255,0.7)}
+[data-theme="light"] .badge-status{background:rgba(138,90,0,0.07);border-color:rgba(138,90,0,0.35)}
+[data-theme="light"] .badge-featured{border-color:rgba(0,111,153,0.35)}
+[data-theme="light"] .project-facts li{border-color:rgba(0,122,69,0.3);background:rgba(0,122,69,0.05)}
 
 /* HOVER (pointer devices only) */
 @media(hover:hover){
 .project:hover{border-color:var(--cyan);box-shadow:0 16px 50px rgba(0,212,255,0.12)}
-.project:hover .project-tech span{border-color:rgba(0,212,255,0.25);color:var(--text)}
-.cmp-table tbody tr:hover{background:rgba(0,212,255,0.04)}
+.project:hover .project-tech li{border-color:rgba(0,212,255,0.25);color:var(--text)}
 .hover-glow:hover{background-image:radial-gradient(circle 180px at var(--mx,50%) var(--my,50%),rgba(0,212,255,0.08),transparent 70%)}
+.project.featured.hover-glow:hover{background-image:radial-gradient(circle 220px at var(--mx,50%) var(--my,50%),rgba(0,212,255,0.08),transparent 70%),linear-gradient(135deg,rgba(224,64,251,0.07) 0%,rgba(0,212,255,0.05) 50%,rgba(0,255,135,0.04) 100%)}
 }
 
 /* NEON GLOW ON SECTION TITLES */
 h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,251,0.1)}
 [data-theme="light"] h2.section-title{text-shadow:none}
 
-/* PHONES: cards stack, the comparison table becomes one card per project */
+/* PHONES: cards stack */
 @media(max-width:600px){
 .page-top{padding-top:88px}
 .project-grid{grid-template-columns:1fr}
-.project{padding:18px 16px}
-.ml-panel-header{padding:14px 16px}
-.cmp-scroll-hint{display:none}
-.cmp-table,.cmp-table tbody,.cmp-table tr,.cmp-table tbody th,.cmp-table td{display:block;width:100%}
-.cmp-table thead{display:none}
-.cmp-table tbody tr{padding:14px 16px;border-bottom:1px solid var(--border)}
-.cmp-table tbody tr:last-child{border-bottom:none}
-.cmp-table tbody th{padding:0 0 8px;border:none;font-size:15px;color:var(--text)}
-.cmp-table td{display:grid;grid-template-columns:8.5em minmax(0,1fr);gap:8px;align-items:center;padding:5px 0;border:none}
-.cmp-table td::before{content:attr(data-label);font-size:12px;color:var(--dim);text-transform:uppercase;letter-spacing:1px}
+.project,.project.featured{padding:18px 16px}
+.project-name{font-size:18px}
+.project.featured .card-links{max-width:none}
 }
 @media(prefers-reduced-motion:reduce){
-.project-sparkline polyline{transition:none;stroke-dashoffset:0}
-.project-expand{animation:none}
+.project{transition:none}
 }
 </style>
 </head>
@@ -152,102 +128,99 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <h1 class="sr-only">Projects</h1>
     <div class="reveal"><div class="section-label">Projects</div></div>
     <div class="reveal reveal-d1"><h2 id="projects-title" class="section-title">What I've built</h2></div>
-    <div class="reveal reveal-d2"><p class="section-desc">ML trading systems — from feature engineering and model training to backtesting and deployment. Each repo includes full documentation and reproducible results.</p></div>
+    <div class="reveal reveal-d2"><p class="section-desc">Five public repos. ATLAS has a full case study with walk-forward results and baselines; work that is still in progress is labeled that way.</p></div>
 
     <div class="project-grid">
 
-      <!-- PROJECT 1: Kraken ML Trading -->
-      <article class="project hover-glow reveal reveal-d1" aria-labelledby="p1-name">
-        <span class="project-badge badge-ml">ML</span>
-        <h3 class="project-name" id="p1-name">Kraken ML Trading Strategy</h3>
-        <p class="project-desc">ML-powered cryptocurrency trading strategy using scikit-learn gradient boosted classifiers on Kraken exchange data. Features automated feature engineering, walk-forward validation, and cloud deployment on GCP.</p>
-        <p class="project-kpis">55%+ directional accuracy · 20+ engineered features · Walk-forward validated</p>
-        <div class="project-spark" aria-hidden="true">
-          <div class="spark-caption">Equity Curve</div>
-          <svg class="project-sparkline" viewBox="0 0 120 40" preserveAspectRatio="none" focusable="false">
-            <defs><linearGradient id="kraken-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
-            <polygon points="0,38 0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6 120,38" fill="url(#kraken-fill)"/>
-            <polyline points="0,35 10,33 20,30 30,32 40,26 50,28 60,22 70,18 80,20 90,14 100,10 110,12 120,6" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-          </svg>
+      <!-- 1. ATLAS (featured) -->
+      <article class="project featured hover-glow reveal reveal-d1" aria-labelledby="p-atlas">
+        <div class="project-meta">
+          <span class="project-badge badge-featured">Featured</span>
+          <span class="project-badge badge-ml">ML</span>
         </div>
-        <div class="project-tech" aria-label="Tech stack">
-          <span>Python</span><span>scikit-learn</span><span>Google Cloud</span><span>Kraken API</span><span>Pandas</span>
-        </div>
-        <button type="button" class="project-toggle" aria-expanded="false" aria-controls="p1-more"><svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg> Details</button>
-        <div class="project-expand" id="p1-more" hidden>
-          <p>Built gradient boosted prediction model with 55%+ directional accuracy on 4h candles. Includes automated feature engineering pipeline processing 20+ technical indicators, walk-forward validation, and serverless deployment on GCP Cloud Functions.</p>
-        </div>
+        <h3 class="project-name" id="p-atlas">ATLAS — Stock ML Intelligence System</h3>
+        <p class="project-repo">atlas-ml-trading</p>
+        <p class="project-desc">An LSTM that forecasts 21-day stock returns from 34 technical indicators, tested against six other architectures and simple baselines with Optuna tuning and walk-forward cross-validation. Served through FastAPI and Vertex AI, packaged with Docker, with a Streamlit dashboard.</p>
+        <ul class="project-facts" aria-label="Highlights">
+          <li>7-architecture ablation</li><li>Walk-forward CV</li><li>Bootstrap CIs + Diebold-Mariano</li><li>150+ tests · model card</li>
+        </ul>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>Python</li><li>TensorFlow / Keras</li><li>XGBoost</li><li>Optuna</li><li>FastAPI</li><li>Vertex AI</li><li>Docker</li><li>Streamlit</li>
+        </ul>
         <div class="card-links">
-          <a href="https://github.com/anhtdang92/kraken-ml-trading-strategy" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for Kraken ML Trading Strategy (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
-          <a href="projects/kraken-ml-trading-strategy.html" class="primary-link">Case study<span class="sr-only">: Kraken ML Trading Strategy</span> <span aria-hidden="true">→</span></a>
+          <a href="projects/atlas-ml-trading.html" class="primary-link">Case study<span class="sr-only">: ATLAS</span> <span aria-hidden="true">→</span></a>
+          <a href="https://github.com/anhtdang92/atlas-ml-trading" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for ATLAS (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
         </div>
       </article>
 
-      <!-- PROJECT 2: ML Trading Algorithm -->
-      <article class="project hover-glow reveal reveal-d2" aria-labelledby="p2-name">
-        <span class="project-badge badge-ml">ML</span>
-        <h3 class="project-name" id="p2-name">ML Trading Algorithm</h3>
-        <p class="project-desc">Machine learning trading algorithm with custom feature engineering pipeline, walk-forward backtesting, and systematic signal generation using scikit-learn gradient boosted classifiers.</p>
-        <p class="project-kpis">30+ engineered features · Walk-forward validated · Sharpe-optimized</p>
-        <div class="project-spark" aria-hidden="true">
-          <div class="spark-caption">Portfolio Value</div>
-          <svg class="project-sparkline" viewBox="0 0 120 40" preserveAspectRatio="none" focusable="false">
-            <defs><linearGradient id="mltrade-fill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--purple)" stop-opacity="0.3"/><stop offset="100%" stop-color="var(--purple)" stop-opacity="0"/></linearGradient></defs>
-            <polygon points="0,38 0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8 120,38" fill="url(#mltrade-fill)"/>
-            <polyline points="0,32 12,30 24,28 36,26 48,24 60,20 72,18 84,14 96,16 108,10 120,8" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>
-            <line x1="96" y1="16" x2="96" y2="38" stroke="var(--orange)" stroke-width="1" stroke-dasharray="2" vector-effect="non-scaling-stroke"/>
-          </svg>
+      <!-- 2. ARGUS (in progress) -->
+      <article class="project hover-glow reveal reveal-d1" aria-labelledby="p-argus">
+        <div class="project-meta">
+          <span class="project-badge badge-ml">ML</span>
+          <span class="project-badge badge-status">In progress</span>
         </div>
-        <div class="project-tech" aria-label="Tech stack">
-          <span>Python</span><span>scikit-learn</span><span>Pandas</span><span>Backtesting</span>
-        </div>
-        <button type="button" class="project-toggle" aria-expanded="false" aria-controls="p2-more"><svg class="chev" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M9 6l6 6-6 6"/></svg> Details</button>
-        <div class="project-expand" id="p2-more" hidden>
-          <p>Gradient boosted classifier with 30+ engineered features for daily signal generation. Features walk-forward backtesting with sliding window validation, feature importance pruning, and Sharpe ratio optimization.</p>
-        </div>
+        <h3 class="project-name" id="p-argus">ARGUS</h3>
+        <p class="project-repo">argus</p>
+        <p class="project-desc">Open-source cyber threat detection platform. The architecture and model code are written: an LSTM-autoencoder → Isolation Forest → XGBoost anomaly ensemble for CICIDS2017 and UNSW-NB15, a GNN for lateral movement on LANL auth logs, SHAP explanations, and NER for IOCs. The roadmap phases aren't finished and no trained models are committed yet.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>PyTorch</li><li>PyTorch Geometric</li><li>XGBoost</li><li>SHAP</li><li>FastAPI</li><li>Neo4j</li><li>Next.js</li>
+        </ul>
         <div class="card-links">
-          <a href="https://github.com/anhtdang92/ml-trading-algorithm" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for ML Trading Algorithm (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
-          <a href="projects/ml-trading-algorithm.html" class="primary-link">Case study<span class="sr-only">: ML Trading Algorithm</span> <span aria-hidden="true">→</span></a>
+          <a href="https://github.com/anhtdang92/argus" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for ARGUS (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- 3. Signal Network Mapper -->
+      <article class="project hover-glow reveal reveal-d2" aria-labelledby="p-snm">
+        <div class="project-meta">
+          <span class="project-badge badge-web">WEB</span>
+        </div>
+        <h3 class="project-name" id="p-snm">Signal Network Mapper</h3>
+        <p class="project-repo">signal-network-mapper</p>
+        <p class="project-desc">Interactive tool for S6 officers and signal planners to design and visualize tactical network architectures, with MIL-STD-2525 symbols generated on the fly by milsymbol.js.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>React</li><li>Vite</li><li>ReactFlow</li><li>Tailwind CSS</li><li>milsymbol.js</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/signal-network-mapper" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for Signal Network Mapper (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- 4. CurStar Video Upscaler -->
+      <article class="project hover-glow reveal reveal-d1" aria-labelledby="p-curstar">
+        <div class="project-meta">
+          <span class="project-badge badge-ai">AI</span>
+        </div>
+        <h3 class="project-name" id="p-curstar">CurStar Video Upscaler</h3>
+        <p class="project-repo">curstar-video-upscaler</p>
+        <p class="project-desc">GPU-accelerated video super-resolution built on the open-source STAR diffusion model (spatial-temporal augmentation with text-to-video models), with a FastAPI + Next.js web front end in progress.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>Python</li><li>PyTorch</li><li>Diffusion models</li><li>CUDA</li><li>FastAPI</li><li>Next.js</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/curstar-video-upscaler" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for CurStar Video Upscaler (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
+        </div>
+      </article>
+
+      <!-- 5. DeepSeek Local Inference -->
+      <article class="project hover-glow reveal reveal-d2" aria-labelledby="p-deepseek">
+        <div class="project-meta">
+          <span class="project-badge badge-ai">AI</span>
+        </div>
+        <h3 class="project-name" id="p-deepseek">DeepSeek Local Inference</h3>
+        <p class="project-repo">deepseek-local-inference</p>
+        <p class="project-desc">LLM benchmarking on an RTX 4090: runs DeepSeek-R1 (the Distill-Qwen-7B model) locally with Hugging Face Transformers on reasoning, math and coding prompts and measures tokens per second.</p>
+        <ul class="project-tech" aria-label="Tech stack">
+          <li>Python</li><li>PyTorch</li><li>Transformers</li><li>CUDA</li>
+        </ul>
+        <div class="card-links">
+          <a href="https://github.com/anhtdang92/deepseek-local-inference" target="_blank" rel="noopener">GitHub<span class="sr-only"> repository for DeepSeek Local Inference (opens in a new tab)</span> <span aria-hidden="true">→</span></a>
         </div>
       </article>
 
     </div><!-- project-grid -->
 
-    <div class="comparison-matrix reveal">
-      <div class="ml-panel-header">
-        <h3 class="ml-panel-title" id="cmp-title">Project Comparison Matrix</h3>
-        <span class="cmp-scroll-hint" aria-hidden="true" hidden>Scroll →</span>
-      </div>
-      <div class="cmp-table-wrap" tabindex="0" role="region" aria-labelledby="cmp-title">
-        <table class="cmp-table" id="cmpTable" role="table">
-          <thead role="rowgroup">
-            <tr role="row">
-              <th scope="col" role="columnheader" data-col="name"><button type="button" class="cmp-sort">Project <svg class="cmp-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></button></th>
-              <th scope="col" role="columnheader" data-col="accuracy"><button type="button" class="cmp-sort">Accuracy <svg class="cmp-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></button></th>
-              <th scope="col" role="columnheader" data-col="dataset"><button type="button" class="cmp-sort">Dataset <svg class="cmp-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></button></th>
-              <th scope="col" role="columnheader" data-col="techcount"><button type="button" class="cmp-sort">Tech Count <svg class="cmp-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></button></th>
-              <th scope="col" role="columnheader" data-col="deployment"><button type="button" class="cmp-sort">Deployment <svg class="cmp-arrow" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M7 10l5-5 5 5M7 14l5 5 5-5"/></svg></button></th>
-            </tr>
-          </thead>
-          <tbody role="rowgroup">
-            <tr role="row">
-              <th scope="row" role="rowheader">Kraken ML Trading</th>
-              <td role="cell" data-label="Accuracy" data-value="55">55%+</td>
-              <td role="cell" data-label="Dataset" data-value="Kraken 4h candles">Kraken 4h candles</td>
-              <td role="cell" data-label="Tech count" data-value="5">5</td>
-              <td role="cell" data-label="Deployment"><span class="deploy-badge deploy-local">GCP Cloud Functions</span></td>
-            </tr>
-            <tr role="row">
-              <th scope="row" role="rowheader">ML Trading Algorithm</th>
-              <td role="cell" data-label="Accuracy" data-value="0">—</td>
-              <td role="cell" data-label="Dataset" data-value="Equity daily bars">Equity daily bars</td>
-              <td role="cell" data-label="Tech count" data-value="4">4</td>
-              <td role="cell" data-label="Deployment"><span class="deploy-badge deploy-local">Local</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <p class="more-link reveal"><a href="https://github.com/anhtdang92?tab=repositories" target="_blank" rel="noopener">All repositories on GitHub<span class="sr-only"> (opens in a new tab)</span>&nbsp;<span aria-hidden="true">→</span></a></p>
 
   </section>
 
@@ -269,70 +242,22 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 (function () {
   var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
-
-  // DETAILS EXPANDERS
-  document.querySelectorAll('.project-toggle').forEach(function (btn) {
-    var panel = document.getElementById(btn.getAttribute('aria-controls'));
-    if (!panel) return;
-    btn.addEventListener('click', function () {
-      var open = btn.getAttribute('aria-expanded') !== 'true';
-      btn.setAttribute('aria-expanded', String(open));
-      panel.hidden = !open;
-    });
-  });
+  if (!canHover) return;
 
   // CARD HOVER: glow follows the pointer (colours in CSS) + subtle 3D tilt
-  if (canHover) {
-    document.querySelectorAll('.project').forEach(function (card) {
-      card.addEventListener('mousemove', function (e) {
-        var rect = card.getBoundingClientRect();
-        var x = e.clientX - rect.left, y = e.clientY - rect.top;
-        card.style.setProperty('--mx', x + 'px');
-        card.style.setProperty('--my', y + 'px');
-        if (!reduceMotion && card.classList.contains('visible')) {
-          card.style.transform = 'translateY(-4px) perspective(800px) rotateX(' + ((0.5 - y / rect.height) * 6).toFixed(2) + 'deg) rotateY(' + ((x / rect.width - 0.5) * 6).toFixed(2) + 'deg)';
-        }
-      });
-      card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+  document.querySelectorAll('.project').forEach(function (card) {
+    var maxTilt = card.classList.contains('featured') ? 2 : 6;
+    card.addEventListener('mousemove', function (e) {
+      var rect = card.getBoundingClientRect();
+      var x = e.clientX - rect.left, y = e.clientY - rect.top;
+      card.style.setProperty('--mx', x + 'px');
+      card.style.setProperty('--my', y + 'px');
+      if (!reduceMotion && card.classList.contains('visible')) {
+        card.style.transform = 'translateY(-4px) perspective(800px) rotateX(' + ((0.5 - y / rect.height) * maxTilt).toFixed(2) + 'deg) rotateY(' + ((x / rect.width - 0.5) * maxTilt).toFixed(2) + 'deg)';
+      }
     });
-  }
-
-  // COMPARISON TABLE: sortable columns (buttons in headers, aria-sort on the sorted one)
-  (function () {
-    var table = document.getElementById('cmpTable');
-    if (!table) return;
-    var tbody = table.querySelector('tbody');
-    var heads = Array.prototype.slice.call(table.querySelectorAll('thead th'));
-    var sortCol = null, asc = true;
-    heads.forEach(function (th, colIndex) {
-      th.querySelector('.cmp-sort').addEventListener('click', function () {
-        asc = sortCol === colIndex ? !asc : true;
-        sortCol = colIndex;
-        heads.forEach(function (h) { h.removeAttribute('aria-sort'); });
-        th.setAttribute('aria-sort', asc ? 'ascending' : 'descending');
-        var rows = Array.prototype.slice.call(tbody.rows);
-        rows.sort(function (a, b) {
-          var ca = a.cells[colIndex], cb = b.cells[colIndex];
-          var av = ca.dataset.value || ca.textContent.trim();
-          var bv = cb.dataset.value || cb.textContent.trim();
-          var an = parseFloat(av), bn = parseFloat(bv);
-          var cmp = (!isNaN(an) && !isNaN(bn)) ? an - bn : av.localeCompare(bv);
-          return asc ? cmp : -cmp;
-        });
-        rows.forEach(function (r) { tbody.appendChild(r); });
-      });
-    });
-  })();
-
-  // Show a "Scroll →" hint only when the table is wider than its box
-  (function () {
-    var wrap = document.querySelector('.cmp-table-wrap');
-    var hint = document.querySelector('.cmp-scroll-hint');
-    if (!wrap || !hint) return;
-    function check() { hint.hidden = wrap.scrollWidth <= wrap.clientWidth + 1; }
-    window.addEventListener('resize', check, { passive: true });
-    check();
-  })();
+    card.addEventListener('mouseleave', function () { card.style.transform = ''; });
+  });
 })();
 </script>
 
