@@ -680,6 +680,7 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
       })(performance.now());
     }
     draw();
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
     if (!('IntersectionObserver' in window)) { run(); return; }
     var chartObs = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
