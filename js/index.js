@@ -286,7 +286,7 @@
 
       var legend = document.createElement('div');
       legend.className = 'gh-legend';
-      legend.innerHTML = '<a href="https://github.com/anhtdang92" target="_blank" rel="noopener" style="margin-right:auto;font-family:var(--mono);font-size:12px">View on GitHub →</a>' +
+      legend.innerHTML = '<a href="https://github.com/anhtdang92" target="_blank" rel="noopener" class="gh-legend-link">View on GitHub →</a>' +
         '<span aria-hidden="true">Less</span>' +
         [0, 1, 2, 3, 4].map(function (l) { return '<i class="gh-cell gh-legend-cell' + (l ? ' l' + l : '') + '" aria-hidden="true"></i>'; }).join('') +
         '<span aria-hidden="true">More</span>';

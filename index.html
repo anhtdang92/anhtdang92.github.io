@@ -237,6 +237,7 @@ body{line-height:1.7}
 .gh-legend{display:flex;align-items:center;gap:4px;justify-content:flex-end;margin-top:8px}
 .gh-legend span{font-family:var(--mono);font-size:11px;color:var(--dim)}
 .gh-legend-cell{width:10px;height:10px;aspect-ratio:auto}
+.gh-legend-link{margin-right:auto;font-family:var(--mono);font-size:12px}
 .gh-tooltip{position:fixed;background:var(--card);border:1px solid var(--green);border-radius:var(--radius-md);padding:6px 10px;font-family:var(--mono);font-size:12px;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.15s ease;z-index:200;white-space:nowrap;box-shadow:0 4px 16px rgba(0,255,135,0.15)}
 .gh-tooltip.show{opacity:1}
 
@@ -400,19 +401,22 @@ body{line-height:1.7}
 .pipe-steps li:nth-child(even)::after{display:none}
 }
 @media(max-width:600px){
+.footer-cta-label{font-family:var(--ff);font-size:15px;letter-spacing:0;line-height:1.5;padding:0 16px}
+/* PHONE READABILITY: sentences in the sans font (16px for paragraph copy, 14-15px for secondary lines);
+   mono only for short labels, tags, numbers and dates, at 13px or more with tight letter-spacing. */
 .container{padding:0 20px}
-.section-desc{font-size:15px;margin-bottom:24px}
+.section-desc{margin-bottom:24px}
 .only-wide{display:none}
 .only-narrow{display:inline}
 /* hero */
 .hero{padding:84px 0 32px}
 .hero-avatar{width:80px;height:80px;font-size:32px;margin-bottom:16px}
 .hero-orbs,.hero-scroll{display:none}
-.hero-label{font-size:12px;letter-spacing:1.5px;margin-bottom:12px}
+.hero-label{font-size:13px;letter-spacing:1px;margin-bottom:12px}
 .hero h1{margin-bottom:10px}
-.hero-sub{font-size:16px;margin-bottom:10px}
-.hero-creds{font-size:12px;margin-bottom:20px}
-.hero-creds .sep{margin-left:6px}
+.hero-sub{font-size:16px;margin-bottom:12px}
+.hero-creds{font-family:var(--ff);font-size:15px;letter-spacing:0;line-height:1.6;margin-bottom:20px}
+.hero-creds .sep{margin:0 3px 0 6px}
 .hero-links{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:360px;margin:24px auto 0}
 .hero-links a,.hero-links a.primary{padding:12px 8px;min-height:48px;font-size:15px;width:100%}
 section,.explore-section{padding:32px 0}
@@ -423,42 +427,65 @@ section,.explore-section{padding:32px 0}
 .kpi-card{flex-basis:calc(33.333% - 6px);padding:12px 6px}
 .kpi-card:nth-child(n+4){flex-basis:calc(50% - 4px)}
 .kpi-num{font-size:26px}
-.kpi-label{letter-spacing:0.5px}
-.next-items{grid-template-columns:1fr}
-.about-grid{gap:8px}
-.about-card{padding:12px 14px}
-.about-card .label{letter-spacing:1px}
-.about-card .value{font-size:15px}
-.about-card .sub{font-size:13px;line-height:1.45;margin-top:4px}
-.about-text{font-size:15px}
+.kpi-label{font-size:13px;letter-spacing:0.5px}
+/* about: one card per row so the secondary lines can be full-size */
+.about-grid{grid-template-columns:1fr;gap:8px}
+.about-card{padding:12px 16px}
+.about-card .label{font-size:13px;letter-spacing:1px}
+.about-card .value{font-size:17px}
+.about-card .sub{font-size:16px;line-height:1.55;margin-top:2px;text-wrap:pretty}
+.about-text{font-size:16px;line-height:1.75}
 /* activity card */
 .gh-heatmap{padding:8px 16px}
+.gh-fallback a{font-family:var(--ff);font-size:16px;font-weight:600}
+.gh-total{font-family:var(--ff);font-size:14px;letter-spacing:0}
+.gh-months{height:18px}
+.gh-months span{font-size:13px;line-height:18px}
+.gh-legend span,.gh-legend-link,.gh-tooltip{font-size:13px}
+.gh-legend-link{display:inline-flex;align-items:center;min-height:24px}
 /* highlights */
 .trajectory-chart{padding:16px}
 .trajectory-svg,.chart-tooltip{display:none}
 .traj-list{display:block}
-.traj-mil{display:block}
+.traj-step-meta{font-size:13px}
+.traj-step-detail{font-size:15px}
+.traj-mil{display:block;font-family:var(--ff);font-size:15px;line-height:1.55}
 .highlight-card{padding:16px}
 .highlight-card h3{font-size:17px}
-.hl-psr{display:block;font-size:15px;line-height:1.6;margin-bottom:6px}
-.hl-tag{display:inline-block;margin:0 6px 0 0;padding:0 6px;vertical-align:1px}
+.hl-psr{display:block;font-size:16px;line-height:1.6;margin-bottom:8px}
+.hl-tag{display:inline-block;margin:0 6px 0 0;padding:0 6px;vertical-align:1px;font-size:13px}
 .highlight-card .hl-metric{display:none}
 /* pipeline: one column of step cards */
 .pipeline-diagram{padding:14px}
 .pipe-steps{grid-template-columns:1fr;gap:8px}
-.pipe-steps li{padding:10px 12px;border-top-width:1px;border-left:3px solid var(--c)}
+.pipe-steps li{padding:12px 14px;border-top-width:1px;border-left:3px solid var(--c)}
 .pipe-steps li:nth-child(n)::after{display:none}
-.pipe-step-detail{line-height:1.5;margin-top:2px}
-.pipe-step-tech{margin-top:6px;padding-top:6px}
+.pipe-step-detail{font-size:16px;line-height:1.6;margin-top:4px}
+.pipe-step-tech{font-family:var(--ff);font-size:14px;margin-top:8px;padding-top:8px}
 .pipe-foot{margin-top:10px}
-.pipe-foot .pipe-note{margin-left:0;flex-basis:100%}
+.pipe-foot a{font-family:var(--ff);font-size:16px;font-weight:600}
+.pipe-foot .pipe-note{font-family:var(--ff);font-size:14px;margin-left:0;flex-basis:100%}
 /* explore */
 .explore-grid{grid-template-columns:1fr;gap:10px}
 .fc-svg{display:none}
 .flip-card-front{padding-top:16px}
+.fc-status{font-size:13px}
+.fc-sub{font-family:var(--ff);font-size:15px}
+.fc-cta{font-family:var(--ff);font-size:15px;font-weight:600}
+.flip-card-back{align-items:stretch}
+.flip-card-back .stat-line{justify-content:flex-start}
+.flip-card-back .stat-value{font-size:15px}
+.flip-card-back .stat-label{font-family:var(--ff);font-size:14px;line-height:1.35}
 .explore-more{text-align:center}
+.explore-more a{font-family:var(--ff);font-size:16px;font-weight:600}
+/* next */
 .next-card{padding:16px}
-.next-card p{font-size:15px}
+.next-items{grid-template-columns:1fr}
+.next-item .ni-label{font-size:13px}
+.next-item .ni-value{font-size:17px}
+.next-item .ni-date{font-family:var(--ff);font-size:16px;line-height:1.55;margin-top:4px;text-wrap:pretty}
+/* footer */
+.footer-tech-badge,.footer-tech-sep,.footer-tech-label{font-size:13px}
 }
 @media(max-width:375px){
 .container{padding:0 16px}
@@ -932,7 +959,7 @@ section,.explore-section{padding:32px 0}
 
     <div class="next-card reveal reveal-d3">
       <h3>Currently</h3>
-      <p>Data Analyst II at First Community Credit Union, completing Georgia Tech's M.S. in Computer Science (Machine Learning) and building ML projects on my own time.</p>
+      <p>Data Analyst II at First Community Credit Union, completing Georgia Tech's M.S. in Computer Science (Machine Learning) and building ML projects on my own time. My goal is a role in data science, machine learning engineering, or data engineering.</p>
       <div class="next-items">
         <div class="next-item">
           <div class="ni-label">OMSCS</div>
@@ -950,9 +977,9 @@ section,.explore-section{padding:32px 0}
           <div class="ni-date">Certified Sep 2026</div>
         </div>
         <div class="next-item">
-          <div class="ni-label">Sectors</div>
-          <div class="ni-value">Defense · Energy · Financial Services</div>
-          <div class="ni-date">Secret clearance (DoD) · Houston, TX</div>
+          <div class="ni-label">Career goals</div>
+          <div class="ni-value"><span class="nw">Data Scientist&nbsp;·</span> <span class="nw">Machine Learning Engineer&nbsp;·</span> <span class="nw">Data Engineer</span></div>
+          <div class="ni-date"><span class="nw">Defense, energy, or financial services&nbsp;·</span> <span class="nw">Houston, TX</span></div>
         </div>
       </div>
     </div>
@@ -962,7 +989,7 @@ section,.explore-section{padding:32px 0}
 
 <footer class="footer" role="contentinfo">
   <div class="footer-cta" id="contact">
-    <div class="footer-cta-label">Open to new opportunities</div>
+    <div class="footer-cta-label">Open to data science, ML engineering, and data engineering roles</div>
     <a href="mailto:anhtdang92@gmail.com" class="footer-cta-btn">Let's connect →</a>
   </div>
   <div class="footer-links">
