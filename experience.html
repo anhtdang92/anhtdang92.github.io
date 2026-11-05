@@ -14,14 +14,14 @@
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta property="og:image:alt" content="Anh Dang — Data Analyst II">
 <meta property="og:site_name" content="Anh Dang">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Experience & Education — Anh Dang">
 <meta name="twitter:description" content="Work history, Georgia Tech OMSCS progress (expected Summer 2027), CompTIA Security+, and U.S. Army Reserve service. Secret clearance (DoD).">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
-<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II">
 <meta name="theme-color" content="#04070d">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://anhtdang92.github.io/experience.html">
@@ -189,10 +189,26 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 .tl{margin-left:-4px;padding:10px 10px 10px 16px}
 .tl::before,.tl.now::after{left:-13.5px;top:15px}
 .tl .role{font-size:17px}
-.tl .desc{font-size:15px}
+.tl .desc{font-size:16px;line-height:1.65}
 .timeline + .tl-group{margin-top:28px}
 .edu-card{padding:16px}
 .edu-card .degree{font-size:18px}
+/* readability: sentences in the sans font (>=14px), mono only for short labels/tags/dates at >=13px */
+.tl-group{font-size:14px;letter-spacing:1.2px}
+.tl .highlights span{font-size:13px}
+.edu-card .detail{font-family:var(--ff);font-size:15px;line-height:1.5}
+.edu-card .status{font-size:13px;letter-spacing:0.4px}
+.omscs-donut-label{font-size:13px}
+.sub-label{font-size:13px;letter-spacing:1.2px}
+.course-item .ci-name{font-size:15px}
+.course-item .ci-code,.course-item .ci-grade{font-size:13px}
+.otl-badge,.pr-sub{font-size:13px}
+.plan-note{font-family:var(--ff);font-size:14px;line-height:1.55}
+.next-item .ni-label{font-size:13px}
+.next-item .ni-value{font-size:17px;line-height:1.4}
+.next-item .ni-date{font-family:var(--ff);font-size:16px;line-height:1.55;margin-top:4px}
+.next-item .ni-value a{display:inline-block;padding:2px 0}
+.tl .desc,.edu-card .detail,.plan-note,.about-text,.next-card p,.next-item .ni-date{text-wrap:pretty}
 .omscs-progress{flex-direction:column;align-items:stretch;gap:16px}
 .omscs-donut{margin:0 auto}
 .course-grid{grid-template-columns:1fr}
@@ -268,10 +284,10 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
   <div class="tl hover-glow reveal reveal-d2">
     <h4 class="role">Data Analyst I</h4>
-    <div class="org">First Community Credit Union &middot; Houston, TX</div>
+    <div class="org"><span class="nw">First Community Credit Union&nbsp;&middot;</span> <span class="nw">Houston, TX</span></div>
     <div class="date">Apr 2023 – Apr 2026</div>
     <ul class="desc">
-      <li>Rebuilt cross-database reporting with staging tables and optimized T-SQL — 90%+ faster (minutes to seconds).</li>
+      <li>Rebuilt cross-database reporting with staging tables and optimized <span class="nw">T-SQL</span> — 90%+ faster (minutes to seconds).</li>
       <li>Python statistical analysis (Pandas, Matplotlib) to refine retail transaction limits, informing risk policy.</li>
       <li>Executive Power BI dashboards on lending, delinquency, and member growth.</li>
     </ul>
@@ -480,13 +496,13 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
 
   <section id="next" aria-labelledby="next-title">
     <div class="reveal"><div class="section-label">What's Next</div></div>
-    <div class="reveal reveal-d1"><h2 id="next-title" class="section-title">Building toward</h2></div>
+    <div class="reveal reveal-d1"><h2 id="next-title" class="section-title">Learning and building</h2></div>
 
-<div class="reveal reveal-d2"><p class="about-text" style="margin-bottom:24px">Most ML engineers come from pure CS or research backgrounds. I come from the intersection of <strong>production data systems, military operations, and applied ML</strong> — which means I understand both the models and the real-world decisions they power. At First Community Credit Union ($2.9B in assets) I build automated SQL pipelines and support an ML credit-decisioning platform with data feeds, validation, and monitoring dashboards. In the Army Reserve I lead unit communications and IT operations as an S6 OIC. And I'm building deeper ML expertise through Georgia Tech's OMSCS program. That combination — <strong>production data experience, Secret clearance (DoD), domain knowledge, and Georgia Tech ML training</strong> — is what I bring to the table.</p></div>
+<div class="reveal reveal-d2"><p class="about-text" style="margin-bottom:24px">I work where <strong>production data systems, military operations, and applied ML</strong> meet. At First Community Credit Union ($2.9B in assets) I build automated SQL pipelines and support an ML credit-decisioning platform with data feeds, validation, and monitoring dashboards. In the Army Reserve I lead unit communications and IT operations as an S6 OIC. And I'm studying machine learning through Georgia Tech's OMSCS program.</p></div>
 
 <div class="next-card reveal reveal-d3">
-  <h3>Building production ML systems that drive decisions</h3>
-  <p>Currently a Data Analyst II building toward ML Engineering — advancing through Georgia Tech's OMSCS program while building end-to-end ML projects. Targeting ML Engineer and Data Scientist roles.</p>
+  <h3>Currently</h3>
+  <p>Data Analyst II at First Community Credit Union, completing Georgia Tech's M.S. in Computer Science (Machine Learning) and building ML projects on my own time. My goal is a role in data science, machine learning engineering, or data engineering.</p>
   <div class="next-items">
     <div class="next-item hover-glow">
       <div class="ni-label">OMSCS</div>
@@ -496,17 +512,17 @@ h2.section-title{text-shadow:0 0 20px rgba(224,64,251,0.3),0 0 60px rgba(224,64,
     <div class="next-item hover-glow">
       <div class="ni-label">Completed</div>
       <div class="ni-value"><span class="nw">DVA&nbsp;·</span> <span class="nw">AIES&nbsp;·</span> <span class="nw">NetSci&nbsp;·</span> <span class="nw">KBAI&nbsp;·</span> <span class="nw">CG in the AI Era&nbsp;·</span> <span class="nw">ML4T</span></div>
-      <div class="ni-date">Data &amp; Visual Analytics · AI, Ethics &amp; Society · Network Science · Knowledge-Based AI · Computer Graphics in the AI Era · ML for Trading</div>
+      <div class="ni-date"><span class="nw">Data &amp; Visual Analytics&nbsp;·</span> <span class="nw">AI, Ethics &amp; Society&nbsp;·</span> <span class="nw">Network Science&nbsp;·</span> <span class="nw">Knowledge-Based AI&nbsp;·</span> <span class="nw">Computer Graphics</span> <span class="nw">in the AI Era&nbsp;·</span> <span class="nw">ML for Trading</span></div>
     </div>
     <div class="next-item hover-glow">
-      <div class="ni-label">Target Roles</div>
-      <div class="ni-value">ML Engineer &middot; Data Scientist</div>
-      <div class="ni-date">IC or Tech Lead &middot; Remote/Hybrid/Onsite</div>
+      <div class="ni-label">Certification</div>
+      <div class="ni-value"><a href="https://www.credly.com/badges/679bc8e4-d10e-4878-aa12-62e633c9736d/public_url" target="_blank" rel="noopener">CompTIA Security+<span class="sr-only"> (verified badge on Credly, opens in a new tab)</span></a></div>
+      <div class="ni-date">Certified Sep 2026</div>
     </div>
     <div class="next-item hover-glow">
-      <div class="ni-label">Top Sectors</div>
-      <div class="ni-value">Defense &middot; Energy &middot; Financial Services</div>
-      <div class="ni-date">Secret clearance (DoD) &middot; Houston, TX</div>
+      <div class="ni-label">Career goals</div>
+      <div class="ni-value"><span class="nw">Data Scientist&nbsp;·</span> <span class="nw">Machine Learning Engineer&nbsp;·</span> <span class="nw">Data Engineer</span></div>
+      <div class="ni-date"><span class="nw">Defense, energy, or financial services&nbsp;&middot;</span> <span class="nw">Houston, TX</span></div>
     </div>
   </div>
 </div>

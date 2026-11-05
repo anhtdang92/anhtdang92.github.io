@@ -14,14 +14,14 @@
 <meta property="og:image" content="https://anhtdang92.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta property="og:image:alt" content="Anh Dang — Data Analyst II">
 <meta property="og:site_name" content="Anh Dang">
 <meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ATLAS: Stock ML Intelligence System — Anh Dang">
 <meta name="twitter:description" content="Case study: LSTM stock-return forecasting on 34 indicators, a 7-architecture ablation, walk-forward evaluation against baselines, FastAPI + Vertex AI serving and 150+ tests.">
 <meta name="twitter:image" content="https://anhtdang92.github.io/og-image.png">
-<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II building toward ML Engineering">
+<meta name="twitter:image:alt" content="Anh Dang — Data Analyst II">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#04070d">
 <link rel="canonical" href="https://anhtdang92.github.io/projects/atlas-ml-trading.html">
@@ -176,11 +176,26 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .project-hero .project-desc{font-size:16px}
 .writeup{padding:8px 0 24px}
 .writeup h2{font-size:19px}
-.writeup ul.plain li{font-size:14px}
 .compare{grid-template-columns:1fr 1fr}
 .compare .m-value{font-size:24px}
-.code-body pre{font-size:12px}
 .tech-grid{grid-template-columns:1fr 1fr}
+/* Readability: sentences in the sans font at 16px (secondary 14-15px); mono only for short labels, at 13px+ */
+#breadcrumb ol,#breadcrumb a{font-size:13px}
+.project-hero .hero-badges .project-badge{font-size:13px;letter-spacing:0.8px}
+.project-hero .tech-tags li{font-size:13px}
+.sec-num{font-size:13px;letter-spacing:0.5px}
+.writeup ul.plain li{font-size:16px;line-height:1.7}
+.flow .f-label{font-size:13px;letter-spacing:1px}
+.flow .f-text{font-size:15px;line-height:1.5}
+.decision .adr{font-size:13px;letter-spacing:1px}
+.decision p,.eng p{font-size:16px;line-height:1.65}
+.decision .tag{font-size:13px;letter-spacing:1px}
+.decision .adr-link{font-size:13px}
+.code-filename,.code-lang{font-size:13px}
+.code-body pre{font-size:13px}
+.writeup p.code-note{font-size:16px;line-height:1.6}
+.compare .m-label{font-family:var(--ff);font-size:14px;line-height:1.4;letter-spacing:0;margin-top:6px}
+.results-table .hint{font-size:13px}
 /* Results table: one card per metric on phones */
 .table-wrap{overflow:visible}
 .results-table{display:flex!important;flex-direction:column}
@@ -193,9 +208,9 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
 .results-table .hint{display:inline;margin-left:6px}
 .results-table td{padding:8px 10px;border:1px solid var(--border);border-radius:8px;white-space:normal;font-size:15px}
 .results-table tbody tr:last-child td{border-bottom:1px solid var(--border)}
-.results-table td::before{content:attr(data-label);display:block;font-size:12px;font-weight:400;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
+.results-table td::before{content:attr(data-label);display:block;font-size:13px;font-weight:400;letter-spacing:0.8px;text-transform:uppercase;color:var(--dim);margin-bottom:2px}
 .results-table td.col-lstm{border-color:rgba(0,255,135,0.35)}
-.results-table caption{border-top:1px solid var(--border)}
+.results-table caption{border-top:1px solid var(--border);font-size:15px;line-height:1.6}
 }
 @media(prefers-reduced-motion:reduce){
 .hero-badges,.repo-slug{animation:none}
@@ -246,7 +261,7 @@ code.inline{font-family:var(--mono);font-size:0.88em;padding:1px 6px;border-radi
       <li>Python</li><li>TensorFlow / Keras</li><li>Optuna</li><li>FastAPI</li><li>Vertex AI</li><li>Docker</li>
     </ul>
     <p class="project-desc">An LSTM that forecasts 21-day stock returns from 34 technical indicators, and the evaluation work to find out whether it actually beats simple baselines when it is tested the way it would be used: forward in time, on data it has never seen.</p>
-    <p class="project-impact">Walk-forward CV · 7-architecture ablation · 150+ tests · model card</p>
+    <p class="project-impact">Walk-forward CV · 7-architecture ablation · 150+&nbsp;tests · model card</p>
     <div class="project-links">
       <a href="https://github.com/anhtdang92/atlas-ml-trading" class="primary" target="_blank" rel="noopener">View on GitHub<span class="sr-only"> (opens in a new tab)</span> <span aria-hidden="true">&rarr;</span></a>
       <a href="../projects.html" class="back"><span aria-hidden="true">&larr;</span> All projects</a>

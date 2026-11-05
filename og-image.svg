@@ -17,7 +17,7 @@
   <!-- Name -->
   <text x="100" y="200" font-family="'Outfit', 'Segoe UI', sans-serif" font-size="72" font-weight="900" fill="#ffffff">Anh Dang</text>
   <!-- Title -->
-  <text x="100" y="270" font-family="'JetBrains Mono', monospace" font-size="28" fill="#00d4ff" letter-spacing="2">DATA ANALYST II → ML ENGINEERING</text>
+  <text x="100" y="270" font-family="'JetBrains Mono', monospace" font-size="28" fill="#00d4ff" letter-spacing="2">DATA ANALYST II</text>
   <!-- Divider -->
   <rect x="100" y="300" width="200" height="3" rx="2" fill="url(#accent)"/>
   <!-- Stats -->

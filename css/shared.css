@@ -231,11 +231,23 @@ section{padding:40px 0}
 section+section::before{height:2px}
 .back-to-top{bottom:calc(12px + env(safe-area-inset-bottom));right:8px;width:36px;height:36px;box-shadow:0 4px 14px rgba(0,0,0,0.45)}
 .project-links a{width:100%;max-width:260px;gap:8px}
-.footer{padding-bottom:64px}
 .mesh-gradient{display:none}
-.footer{padding:40px 0 32px}
-.section-desc{font-size:14px}
-.writeup p{font-size:14px}
+.footer{padding:40px 0 64px}
+/* PHONE READABILITY: sentences in the sans font at >=16px (secondary >=14px); mono only for short labels, >=13px */
+body{font-size:16px}
+.section-label{font-size:13px;letter-spacing:1.2px}
+.section-desc{font-size:16px;line-height:1.65}
+.writeup p{font-size:16px;line-height:1.75}
+.project-hero .project-desc{font-size:16px;line-height:1.7}
+.project-hero .project-impact{font-family:var(--ff);font-size:15px;letter-spacing:0}
+.project-hero .tech-tags span{font-size:13px}
+.project-badge{font-size:13px;letter-spacing:0.8px}
+.result-card .r-label,.metric .m-label{font-size:13px;letter-spacing:0.5px}
+.tech-card .tech-name{font-size:14px}
+.tech-card .tech-cat{font-size:13px;letter-spacing:0.5px}
+.footer-text{font-family:var(--ff);font-size:14px;letter-spacing:0}
+.footer-links a{font-size:14px}
+.cta-section p{font-size:16px}
 }
 @media(prefers-reduced-motion:reduce){
 html{scroll-behavior:auto}
